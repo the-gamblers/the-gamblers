@@ -16,6 +16,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        sparse-checkout: |
+          PokerSensei
     - uses: swift-actions/setup-swift@v1
     - name: Get swift version
       run: swift --version # Swift 5.9.2
