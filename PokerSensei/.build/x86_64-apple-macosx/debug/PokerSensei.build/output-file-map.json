@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.build/master.swiftdeps"
+  },
+  "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/Sources/main.swift": {
+    "dependencies": "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.build/main.d",
+    "object": "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.build/main.swift.o",
+    "swiftmodule": "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.build/main.swiftdeps"
+  }
+}

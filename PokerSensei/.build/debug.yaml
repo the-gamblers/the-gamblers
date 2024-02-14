@@ -1,0 +1,55 @@
+client:
+  name: basic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "PokerSensei-debug.exe": ["<PokerSensei-debug.exe>"]
+  "PokerSensei-debug.module": ["<PokerSensei-debug.module>"]
+  "main": ["<PokerSensei-debug.exe>","<PokerSensei-debug.module>"]
+  "test": ["<PokerSensei-debug.exe>","<PokerSensei-debug.module>"]
+default: "main"
+nodes:
+  "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/Sources/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "<PokerSensei-debug.exe>":
+    tool: phony
+    inputs: ["/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei"]
+    outputs: ["<PokerSensei-debug.exe>"]
+
+  "<PokerSensei-debug.module>":
+    tool: phony
+    inputs: ["/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.build/main.swift.o","/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.swiftmodule"]
+    outputs: ["<PokerSensei-debug.module>"]
+
+  "C.PokerSensei-debug.exe":
+    tool: shell
+    inputs: ["/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.build/main.swift.o"]
+    outputs: ["/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei"]
+    description: "Linking ./.build/x86_64-apple-macosx/debug/PokerSensei"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-L","/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug","-o","/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei","-module-name","PokerSensei","-emit-executable","-Xlinker","-alias","-Xlinker","_PokerSensei_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-5.5/macosx","-target","x86_64-apple-macosx10.13","-Xlinker","-add_ast_path","-Xlinker","/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.swiftmodule","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib"]
+
+  "C.PokerSensei-debug.module":
+    tool: swift-compiler
+    inputs: ["/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/Sources/main.swift"]
+    outputs: ["/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.build/main.swift.o","/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.swiftmodule"]
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "PokerSensei"
+    module-output-path: "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.swiftmodule"
+    import-paths: ["/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug"]
+    temps-path: "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.build"
+    objects: ["/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/PokerSensei.build/main.swift.o"]
+    other-args: ["-target","x86_64-apple-macosx10.13","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/index/store","-Onone","-enable-testing","-g","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/.build/x86_64-apple-macosx/debug/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","PokerSensei_main","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-package-name","pokersensei"]
+    sources: ["/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/Sources/main.swift"]
+    is-library: false
+    enable-whole-module-optimization: false
+    num-threads: 8
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/Sources/","/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/Package.swift","/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/PokerSensei/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+
