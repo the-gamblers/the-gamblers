@@ -1,2 +1,0 @@
-# the-gamblers
-Capstone Project
