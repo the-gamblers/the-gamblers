@@ -37,7 +37,7 @@ final class app_birth: XCTestCase {
         let displayedText = PokerSenseiApp.displayedText()
 
         // Check if the displayed text matches "Hello, World!"
-        XCTAssertEqual(displayedText, "Hello, World!", "Displayed text should be 'Hello, World!'")
+        XCTAssertEqual(displayedText, "Hello, Womp orld!", "Displayed text should be 'Hello, World!'")
     }
 
 
