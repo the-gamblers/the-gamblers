@@ -1,0 +1,20 @@
+name: iOS Build
+
+on:
+  push:
+    branches: "**"
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Xcode
+      uses: actions/setup-xcode@v2
+
+    - name: Build iOS app
+      run: |
+        xcodebuild clean build -workspace PokerSensei.xcworkspace -scheme 'PokerSensei' -destination 'platform=iOS Simulator,name=iPhone 15'
