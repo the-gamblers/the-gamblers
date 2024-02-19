@@ -24,32 +24,30 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// var summaries = new[]
-// {
-//     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-// };
-
-// app.MapGet("/weatherforecast", () =>
-// {
-//     var forecast =  Enumerable.Range(1, 5).Select(index =>
-//         new WeatherForecast
-//         (
-//             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-//             Random.Shared.Next(-20, 55),
-//             summaries[Random.Shared.Next(summaries.Length)]
-//         ))
-//         .ToArray();
-//     return forecast;
-// })
-// .WithName("GetWeatherForecast")
-// .WithOpenApi();
-
 app.MapGet("/api/users", async(MongoDBService service) => await service.GetUsersAsync());
+
+app.MapGet("/api/users/{id}", async(MongoDBService service, string id) => 
+{
+    var user = await service.GetByID(id);
+    return user is null ? Results.NotFound() : Results.Ok(user);
+});
+
+app.MapPost("/api/users",async(MongoDBService service, User user) => {
+    await service.CreatedAsync(user);
+    return;
+});
+
+app.MapPut("/api/users/{id}", async(MongoDBService service, string id, string email) => {
+    await service.ChangeEmailAsync(id, email);
+    return;
+});
+
+app.MapDelete("/api/users/{id}", async(MongoDBService service, string id) => 
+{
+    await service.DeleteAsync(id);
+    return;
+});
 
 
 app.Run();
 
-// record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-// {
-//     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-// }

@@ -20,7 +20,10 @@ public class MongoDBService {
         await _userCollection.InsertOneAsync(user);
         return;
     }
-
+    public async Task<User> GetByID(string id) {
+        User byId = await _userCollection.Find(m => m.Id == id).FirstOrDefaultAsync();
+        return byId;
+    }
     public async Task<List<User>> GetUsersAsync() => 
         await _userCollection.Find(_ => true).ToListAsync();
 
