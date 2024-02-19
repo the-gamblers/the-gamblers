@@ -1,13 +1,14 @@
 //
-//  app_birth.swift
-//  PokerSenseiTests
+//  PokerSenTests.swift
+//  PokerSenTests
 //
-//  Created by Roee Belkin on 2/12/24.
+//  Created by Jade Davis on 2/19/24.
 //
 
 import XCTest
+@testable import PokerSen
 
-final class app_birth: XCTestCase {
+final class PokerSenTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -31,22 +32,5 @@ final class app_birth: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
-    func testDisplayHelloWorld() {
-        // Assuming you have a function or property that displays "Hello, World!"
-        let displayedText = PokerSenseiApp.displayedText()
-
-        // Check if the displayed text matches "Hello, World!"
-        XCTAssertEqual(displayedText, "Hello, Womp orld!", "Displayed text should be 'Hello, World!'")
-    }
-
-
-    // Replace YourAppClass with the appropriate class or function name from your app
-    class PokerSenseiApp {
-        static func displayedText() -> String {
-            return "Hello, World!"
-        }
-    }
-
 
 }
