@@ -45,8 +45,14 @@ struct BlueButton: ButtonStyle {
     }
 }
 
+//dynamic message
 struct ContentView: View {
     @State private var message = ""
+    @State private var userID: String = ""
+    @State private var userName: String = ""
+    @State private var userEmail: String = ""
+    @State private var userPassword: String = ""
+
         
     var body: some View {
         ZStack {
@@ -67,47 +73,164 @@ struct ContentView: View {
                     .padding(.bottom, 70)
                     .padding(.top, -100)
                 
-                Button("Click me"){
-                    // TODO: ADD FUNCTION HERE
-                    self.message = "Successfully got users!"
+                TextField("Enter ID", text: $userID)
+                                   .textFieldStyle(RoundedBorderTextFieldStyle())
+                                   .padding()
+                               
+                               TextField("Enter Name", text: $userName)
+                                   .textFieldStyle(RoundedBorderTextFieldStyle())
+                                   .padding()
+                               
+                               TextField("Enter Email", text: $userEmail)
+                                   .textFieldStyle(RoundedBorderTextFieldStyle())
+                                   .padding()
+                               
+                               SecureField("Enter Password", text: $userPassword)
+                                   .textFieldStyle(RoundedBorderTextFieldStyle())
+                                   .padding()
+                               
+                
+                
+                HStack{
+                    Button("C"){
+                        
+                        self.message = "Successfully created users!"
                     
-                    fetchData(from: "http://localhost:5211/api/users") { result in
-                        switch result {
-                        case .success((let data, let response)):
-                            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                                print("Invalid response")
-                                return
-                            }
-                            
-                            do {
-                                let decoder = JSONDecoder()
-                                let users = try decoder.decode([User].self, from: data)
-                                for user in users {
-                                    print("ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))")
-                                    print(" ")
+                        fetchData(from: "http://localhost:5211/api/users") { result in
+                            switch result {
+                            case .success((let data, let response)):
+                                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                                    print("Invalid response")
+                                    return
                                 }
-                            } catch {
-                                print("Error decoding JSON: \(error)")
+                                
+                                do {
+                                    let decoder = JSONDecoder()
+                                    let users = try decoder.decode([User].self, from: data)
+                                    for user in users {
+                                        print("ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))")
+                                        print(" ")
+                                    }
+                                } catch {
+                                    print("Error decoding JSON: \(error)")
+                                }
+                                
+                            case .failure(let error):
+                                print("Error fetching data: \(error)")
                             }
-                            
-                        case .failure(let error):
-                            print("Error fetching data: \(error)")
                         }
+                        
+                        // message dissappears after 3 sec
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.message = ""}
+                        
                     }
-                    
-                    // message dissappears after 3 sec
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.message = ""}
+                    Button("R"){
+                        
+                        self.message = "Successfully read users!"
+                        
+                        fetchData(from: "http://localhost:5211/api/users") { result in
+                            switch result {
+                            case .success((let data, let response)):
+                                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                                    print("Invalid response")
+                                    return
+                                }
+                                
+                                do {
+                                    let decoder = JSONDecoder()
+                                    let users = try decoder.decode([User].self, from: data)
+                                    for user in users {
+                                        print("ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))")
+                                        print(" ")
+                                    }
+                                } catch {
+                                    print("Error decoding JSON: \(error)")
+                                }
+                                
+                            case .failure(let error):
+                                print("Error fetching data: \(error)")
+                            }
+                        }
+                        
+                        // message dissappears after 3 sec
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.message = ""}
+                        
+                    }
+                    Button("U"){
+                        
+                        self.message = "Successfully updated users!"
+                        
+                        fetchData(from: "http://localhost:5211/api/users") { result in
+                            switch result {
+                            case .success((let data, let response)):
+                                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                                    print("Invalid response")
+                                    return
+                                }
+                                
+                                do {
+                                    let decoder = JSONDecoder()
+                                    let users = try decoder.decode([User].self, from: data)
+                                    for user in users {
+                                        print("ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))")
+                                        print(" ")
+                                    }
+                                } catch {
+                                    print("Error decoding JSON: \(error)")
+                                }
+                                
+                            case .failure(let error):
+                                print("Error fetching data: \(error)")
+                            }
+                        }
+                        
+                        // message dissappears after 3 sec
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.message = ""}
+                        
+                    }
+                    Button("D"){
+                        
+                        self.message = "Successfully deleted users!"
+                        
+                        fetchData(from: "http://localhost:5211/api/users") { result in
+                            switch result {
+                            case .success((let data, let response)):
+                                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                                    print("Invalid response")
+                                    return
+                                }
+                                
+                                do {
+                                    let decoder = JSONDecoder()
+                                    let users = try decoder.decode([User].self, from: data)
+                                    for user in users {
+                                        print("ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))")
+                                        print(" ")
+                                    }
+                                } catch {
+                                    print("Error decoding JSON: \(error)")
+                                }
+                                
+                            case .failure(let error):
+                                print("Error fetching data: \(error)")
+                            }
+                        }
+                        
+                        // message dissappears after 3 sec
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.message = ""}
+                        
+                    }
+
                     
                 }
-                Text(message)
-                    .foregroundColor(.green)
-
+                .padding(15.0)
+                .buttonStyle(BlueButton())
+                .imageScale(/*@START_MENU_TOKEN@*/.large/*@END_MENU_TOKEN@*/)
             }
-            .padding(12.0)
-            .buttonStyle(BlueButton())
-            .imageScale(/*@START_MENU_TOKEN@*/.large/*@END_MENU_TOKEN@*/)
             
         }
+        Text(message)
+            .foregroundColor(.green)
     }
        
     
@@ -117,4 +240,3 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-
