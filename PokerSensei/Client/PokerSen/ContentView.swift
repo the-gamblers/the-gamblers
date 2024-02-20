@@ -33,6 +33,46 @@ func fetchData(from urlString: String, completion: @escaping (Result<(Data, URLR
     }
 }
 
+// POST func
+func postData(name: String, email: String, password: String, completion: @escaping ([String: Any]?, Error?) -> Void) {
+    
+    let json: [String: Any] = ["name": name, "email": email, "password": password]
+    
+    do {
+        let jsonData = try JSONSerialization.data(withJSONObject: json) // Serialize JSON data
+        
+        // create post request
+        let url = URL(string: "http://localhost:5211/api/users")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type") // Set content type
+        
+        // Set JSON data to request body
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                completion(nil, error)
+                return
+            }
+            
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                completion(responseJSON, nil) // Pass response JSON and nil error to completion handler
+            } else {
+                completion(nil, NSError(domain: "InvalidResponse", code: 0, userInfo: nil)) // Provide an error if unable to parse response JSON
+            }
+        }
+        
+        task.resume()
+    } catch {
+        print("Error serializing JSON: \(error)")
+        completion(nil, error)
+    }
+}
+
+
 // blue button style
 struct BlueButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
@@ -72,29 +112,34 @@ struct ContentView: View {
                     .frame(width: 100, height: 100)
                     .padding(.bottom, 70)
                     .padding(.top, -100)
-                
-                TextField("Enter ID", text: $userID)
-                                   .textFieldStyle(RoundedBorderTextFieldStyle())
-                                   .padding()
                                
-                               TextField("Enter Name", text: $userName)
-                                   .textFieldStyle(RoundedBorderTextFieldStyle())
-                                   .padding()
+                TextField("Enter Name", text: $userName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
                                
-                               TextField("Enter Email", text: $userEmail)
-                                   .textFieldStyle(RoundedBorderTextFieldStyle())
-                                   .padding()
+                TextField("Enter Email", text: $userEmail)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
                                
-                               SecureField("Enter Password", text: $userPassword)
-                                   .textFieldStyle(RoundedBorderTextFieldStyle())
-                                   .padding()
-                               
-                
+                SecureField("Enter Password", text: $userPassword)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
                 
                 HStack{
                     Button("C"){
                         
-                        self.message = "Successfully created users!"
+                        self.message = "POSTed -> Name: \(String(describing: userName)), Email: \(String(describing: userEmail)), Password: \(String(describing: userPassword))"
+                        
+                        postData(name: userName, email: userEmail, password: userPassword) { (result, error) in
+                            if let result = result {
+                                print("success: \(result)")
+                            }
+                            
+                        }
+                        // message dissappears after 5 sec
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.message = ""}
+                    }
+                    Button("R"){
                     
                         fetchData(from: "http://localhost:5211/api/users") { result in
                             switch result {
@@ -108,8 +153,8 @@ struct ContentView: View {
                                     let decoder = JSONDecoder()
                                     let users = try decoder.decode([User].self, from: data)
                                     for user in users {
+                                        self.message = "ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))"
                                         print("ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))")
-                                        print(" ")
                                     }
                                 } catch {
                                     print("Error decoding JSON: \(error)")
@@ -120,104 +165,16 @@ struct ContentView: View {
                             }
                         }
                         
-                        // message dissappears after 3 sec
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.message = ""}
-                        
-                    }
-                    Button("R"){
-                        
-                        self.message = "Successfully read users!"
-                        
-                        fetchData(from: "http://localhost:5211/api/users") { result in
-                            switch result {
-                            case .success((let data, let response)):
-                                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                                    print("Invalid response")
-                                    return
-                                }
-                                
-                                do {
-                                    let decoder = JSONDecoder()
-                                    let users = try decoder.decode([User].self, from: data)
-                                    for user in users {
-                                        print("ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))")
-                                        print(" ")
-                                    }
-                                } catch {
-                                    print("Error decoding JSON: \(error)")
-                                }
-                                
-                            case .failure(let error):
-                                print("Error fetching data: \(error)")
-                            }
-                        }
-                        
-                        // message dissappears after 3 sec
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.message = ""}
+                        // message dissappears after 5 sec
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { self.message = ""}
                         
                     }
                     Button("U"){
                         
-                        self.message = "Successfully updated users!"
-                        
-                        fetchData(from: "http://localhost:5211/api/users") { result in
-                            switch result {
-                            case .success((let data, let response)):
-                                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                                    print("Invalid response")
-                                    return
-                                }
-                                
-                                do {
-                                    let decoder = JSONDecoder()
-                                    let users = try decoder.decode([User].self, from: data)
-                                    for user in users {
-                                        print("ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))")
-                                        print(" ")
-                                    }
-                                } catch {
-                                    print("Error decoding JSON: \(error)")
-                                }
-                                
-                            case .failure(let error):
-                                print("Error fetching data: \(error)")
-                            }
-                        }
-                        
-                        // message dissappears after 3 sec
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.message = ""}
                         
                     }
                     Button("D"){
                         
-                        self.message = "Successfully deleted users!"
-                        
-                        fetchData(from: "http://localhost:5211/api/users") { result in
-                            switch result {
-                            case .success((let data, let response)):
-                                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                                    print("Invalid response")
-                                    return
-                                }
-                                
-                                do {
-                                    let decoder = JSONDecoder()
-                                    let users = try decoder.decode([User].self, from: data)
-                                    for user in users {
-                                        print("ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))")
-                                        print(" ")
-                                    }
-                                } catch {
-                                    print("Error decoding JSON: \(error)")
-                                }
-                                
-                            case .failure(let error):
-                                print("Error fetching data: \(error)")
-                            }
-                        }
-                        
-                        // message dissappears after 3 sec
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.message = ""}
                         
                     }
 
