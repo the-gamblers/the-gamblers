@@ -72,6 +72,44 @@ func postData(name: String, email: String, password: String, completion: @escapi
     }
 }
 
+// PUT func
+func updateUserData(id: String, email: String, completion: @escaping ([String: Any]?, Error?) -> Void) {
+    let json: [String: Any] = ["id": id, "email": email]
+    
+    do {
+        let jsonData = try JSONSerialization.data(withJSONObject: json) // Serialize JSON data
+        
+        // Create put request
+        let url = URL(string: "http://localhost:5211/api/users/\(id)?email=\(email)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT" // Use PUT method for update
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type") // Set content type
+        
+        // Set JSON data to request body
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                completion(nil, error)
+                return
+            }
+            
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                completion(responseJSON, nil) // Pass response JSON and nil error to completion handler
+            } else {
+                completion(nil, NSError(domain: "InvalidResponse", code: 0, userInfo: nil)) // Provide an error if unable to parse response JSON
+            }
+        }
+        
+        task.resume()
+    } catch {
+        print("Error serializing JSON: \(error)")
+        completion(nil, error)
+    }
+}
+
 
 // blue button style
 struct BlueButton: ButtonStyle {
@@ -112,6 +150,10 @@ struct ContentView: View {
                     .frame(width: 100, height: 100)
                     .padding(.bottom, 70)
                     .padding(.top, -100)
+                
+                TextField("Enter ID", text: $userID)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
                                
                 TextField("Enter Name", text: $userName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -134,7 +176,6 @@ struct ContentView: View {
                             if let result = result {
                                 print("success: \(result)")
                             }
-                            
                         }
                         // message dissappears after 5 sec
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.message = ""}
@@ -171,7 +212,17 @@ struct ContentView: View {
                     }
                     Button("U"){
                         
+                        let userID = "65d5206193555294d8a8a947" // for testing since I have to type ID on preview (can't copy & paste)
+                        self.message = ("PUTing (updating email) -> ID: \(userID), Email: \(String(describing: userEmail))")
                         
+                        updateUserData(id: userID, email: userEmail) { (result, error) in
+                                if let result = result {
+                                    print("success: \(result)")
+                                }
+                            }
+                        
+                        // message dissappears after 5 sec
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { self.message = ""}
                     }
                     Button("D"){
                         
