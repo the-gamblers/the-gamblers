@@ -14,6 +14,8 @@
 		202CD6B62B83A144009FB1C0 /* PokerSenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6B52B83A144009FB1C0 /* PokerSenTests.swift */; };
 		202CD6C02B83A144009FB1C0 /* PokerSenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6BF2B83A144009FB1C0 /* PokerSenUITests.swift */; };
 		202CD6C22B83A144009FB1C0 /* PokerSenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6C12B83A144009FB1C0 /* PokerSenUITestsLaunchTests.swift */; };
+		202CD6CF2B864574009FB1C0 /* ReplayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6CE2B864574009FB1C0 /* ReplayListView.swift */; };
+		202CD6D12B8645F3009FB1C0 /* ReplayTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6D02B8645F3009FB1C0 /* ReplayTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		202CD6BB2B83A144009FB1C0 /* PokerSenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokerSenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		202CD6BF2B83A144009FB1C0 /* PokerSenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerSenUITests.swift; sourceTree = "<group>"; };
 		202CD6C12B83A144009FB1C0 /* PokerSenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerSenUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		202CD6CE2B864574009FB1C0 /* ReplayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayListView.swift; sourceTree = "<group>"; };
+		202CD6D02B8645F3009FB1C0 /* ReplayTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 			children = (
 				202CD6A42B83A13F009FB1C0 /* PokerSenApp.swift */,
 				202CD6A62B83A13F009FB1C0 /* ContentView.swift */,
+				202CD6CE2B864574009FB1C0 /* ReplayListView.swift */,
+				202CD6D02B8645F3009FB1C0 /* ReplayTableView.swift */,
 				202CD6A82B83A143009FB1C0 /* Assets.xcassets */,
 				202CD6AA2B83A143009FB1C0 /* Preview Content */,
 			);
@@ -257,6 +263,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				202CD6D12B8645F3009FB1C0 /* ReplayTableView.swift in Sources */,
+				202CD6CF2B864574009FB1C0 /* ReplayListView.swift in Sources */,
 				202CD6A72B83A13F009FB1C0 /* ContentView.swift in Sources */,
 				202CD6A52B83A13F009FB1C0 /* PokerSenApp.swift in Sources */,
 			);

@@ -33,7 +33,7 @@ func fetchData(from urlString: String, completion: @escaping (Result<(Data, URLR
     }
 }
 
-// POST func
+// POST user info to database
 func postData(name: String, email: String, password: String, completion: @escaping ([String: Any]?, Error?) -> Void) {
     
     let json: [String: Any] = ["name": name, "email": email, "password": password]
@@ -72,7 +72,7 @@ func postData(name: String, email: String, password: String, completion: @escapi
     }
 }
 
-// PUT func
+// PUT updated email in database
 func updateUserData(id: String, email: String, completion: @escaping ([String: Any]?, Error?) -> Void) {
     let json: [String: Any] = ["id": id, "email": email]
     
@@ -110,6 +110,7 @@ func updateUserData(id: String, email: String, completion: @escaping ([String: A
     }
 }
 
+// delete user in database
 func deleteUserData(id: String, completion: @escaping ([String: Any]?, Error?) -> Void) {
     let json: [String: Any] = ["id": id]
     
@@ -160,9 +161,11 @@ struct BlueButton: ButtonStyle {
     }
 }
 
-//dynamic message
+
 struct ContentView: View {
-    @State private var message = ""
+    
+    // variables
+    @State private var message = "" // dynamic message
     @State private var userID: String = ""
     @State private var userName: String = ""
     @State private var userEmail: String = ""
@@ -249,7 +252,7 @@ struct ContentView: View {
                     }
                     Button("U"){
                         
-                        //let userID = "65d527f393555294d8a8a948" // for testing since I have to type ID on preview (can't copy & paste)
+                        //let userID = "65d621d1eb548c6cd15d6a46" // for testing since I have to type ID on preview (can't copy & paste)
                         self.message = ("PUTing (updating email) -> ID: \(userID), Email: \(String(describing: userEmail))")
                         
                         updateUserData(id: userID, email: userEmail) { (result, error) in
@@ -262,7 +265,7 @@ struct ContentView: View {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 5) { self.message = ""}
                     }
                     Button("D"){
-                        //let userID = "65d527f393555294d8a8a948" // for testing since I have to type ID on preview (can't copy & paste)
+                        //let userID = "65d621d1eb548c6cd15d6a46" // for testing since I have to type ID on preview (can't copy & paste)
                         self.message = ("DELETEing -> ID: \(userID)")
                         
                         deleteUserData(id: userID) { (result, error) in
