@@ -35,10 +35,10 @@ struct ListButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .background(Color(red: 0.00, green: 0.38, blue: 0.94).opacity(0.8))
+            .background(.gray)
             .font(.caption)
             .foregroundStyle(Color.white).opacity(1)
-            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
     }
 }
 
@@ -78,29 +78,26 @@ struct ReplayListView: View {
                         }
                         .listStyle(.insetGrouped)
                         .scrollContentBackground(.hidden)
-                        .padding(.top, -75)
                         .shadow(color: Color.gray, radius: 7, x: -0, y: 5)
-                        .frame(height: 500)
+                        //.frame(height: 500)
                 })
             
                 // title
                 .navigationTitle("REPLAYS")
-            
-                // profile placeholder
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        HStack {
+                    ToolbarItemGroup(placement: .primaryAction) {
+                        Button {
+                            print("slide up user profile...")
+                        }
+                        label: {
                             Image(systemName: "person.circle.fill")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 40, height: 40)
-                                .padding(.horizontal, 15)
-                                .padding(.bottom, 20)
-                                .padding(.top, 108)
+                                .foregroundColor(.black)
                         }
                     }
                 }
-            
         }
     }
 }
