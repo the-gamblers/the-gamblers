@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct ReplayTableView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+    let replay: Replays
+       
+       var body: some View {
+           VStack {
+               Text("Title: \(replay.title)")
+                   .font(.title)
+               Text("Subtitle: \(replay.subtitle)")
+               Text("Notes: \(replay.notes)")
+           }
+           .padding()
+           .navigationBarTitle("Replay Details", displayMode: .inline)
+           .navigationBarBackButtonHidden(false)
+       }
 }
 
 #Preview {
-    ReplayTableView()
+    ReplayTableView(replay: Replays(title: "Sample Title", subtitle: "Sample Subtitle", notes: "Sample Notes", link: "Sample Link"))
 }

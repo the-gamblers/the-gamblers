@@ -30,7 +30,7 @@ private var replay = [
     Replays(title: "Game #45", subtitle: "Feb 06, 2024 11:57 PM", notes: "Notes", link: "fjvonevkjwno")
 ]
 
-// button style for the list
+// button style for the list (for later)
 struct ListButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -44,71 +44,64 @@ struct ListButton: ButtonStyle {
 
 // main view
 struct ReplayListView: View {
-   
+    @State private var showTableView = false
+    
     var body: some View {
-        Color(red: 238/255, green: 238/255, blue: 238/255)
-            .ignoresSafeArea()
-            .overlay(
-            
-                VStack(alignment: .leading) {
-                    
-                    HStack{
-                        // title
-                        Text("REPLAY")
-                            .font(.largeTitle)
-                            .fontWeight(.heavy)
-                            .padding(.horizontal, 25)
-                            .padding(.bottom, 20)
-                            .padding(.top, 15)
+        NavigationView {
+            Color(red: 238/255, green: 238/255, blue: 238/255)
+                .ignoresSafeArea()
+                .overlay(
+                    VStack(alignment: .leading) {
                         
-                        Spacer()
-                        
-                        // profile
-                        Image(systemName: "person.circle.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 50, height: 50)
-                            .padding(.horizontal, 25)
-                            .padding(.bottom, 20)
-                            .padding(.top, 15)
-                    }
-                    .padding(.top, -130)
-                    .padding(.bottom, 5)
-                
-                    
-                    // whole list of replays
-                    List {
-                        // go through each replay object and render
-                        ForEach(replay) { replayItem in
-                            HStack{
-                                // text on left side (title, date, notes)
-                                VStack(alignment: .leading) {
-                                    Text(replayItem.title)
-                                        .font(.title3)
-                                        .bold()
-                                    Text(replayItem.subtitle)
-                                        .font(.subheadline)
-                                    Text(replayItem.notes)
-                                        .font(.caption)
+                        // list of replays
+                        List {
+                            ForEach(replay) { replayItem in
+                                HStack {
+                                    Button("Image"){ /*TODO: Add img of game*/ }
+                                    VStack(alignment: .leading) {
+                                        Text(replayItem.title)
+                                            .font(.title3)
+                                            .bold()
+                                        Text(replayItem.subtitle)
+                                            .font(.subheadline)
+                                        Text(replayItem.notes)
+                                            .font(.caption)
+                                    }
+                                    Spacer()
+                            
+                                    // when replay is pressed, navigate to Table View & see data
+                                    NavigationLink(destination: ReplayTableView(replay: replayItem)) {}
                                 }
-                                Spacer()
-                                // button on right side
-                                Button("Watch Gameplay"){
-                                    // TODO: go to replay link
-                                }
-                                .frame(width: 140, height: 70)
+                                .padding(.vertical, 8)
+                                .buttonStyle(ListButton())
                             }
-                            .padding(.vertical, 8)
-                            .buttonStyle(ListButton())
+                        }
+                        .listStyle(.insetGrouped)
+                        .scrollContentBackground(.hidden)
+                        .padding(.top, -75)
+                        .shadow(color: Color.gray, radius: 7, x: -0, y: 5)
+                        .frame(height: 500)
+                })
+            
+                // title
+                .navigationTitle("REPLAYS")
+            
+                // profile placeholder
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        HStack {
+                            Image(systemName: "person.circle.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 40, height: 40)
+                                .padding(.horizontal, 15)
+                                .padding(.bottom, 20)
+                                .padding(.top, 108)
                         }
                     }
-                    .listStyle(.insetGrouped)
-                    .scrollContentBackground(.hidden)
-                    .padding(.top, -70)
-                    .shadow(color: Color.gray, radius: 7, x: -0, y: 5)
-                    .frame(height: 500)
                 }
-            )
+            
+        }
     }
 }
 
