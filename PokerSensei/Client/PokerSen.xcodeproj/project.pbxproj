@@ -16,6 +16,9 @@
 		202CD6C22B83A144009FB1C0 /* PokerSenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6C12B83A144009FB1C0 /* PokerSenUITestsLaunchTests.swift */; };
 		202CD6CF2B864574009FB1C0 /* ReplayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6CE2B864574009FB1C0 /* ReplayListView.swift */; };
 		202CD6D12B8645F3009FB1C0 /* ReplayTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6D02B8645F3009FB1C0 /* ReplayTableView.swift */; };
+		37DD437D2B8F2C5300D59D9E /* NavigationPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */; };
+		37DD437F2B8F302500D59D9E /* StatisticsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD437E2B8F302500D59D9E /* StatisticsPage.swift */; };
+		37DD43812B8F942A00D59D9E /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD43802B8F942A00D59D9E /* HomePage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,9 @@
 		202CD6C12B83A144009FB1C0 /* PokerSenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerSenUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		202CD6CE2B864574009FB1C0 /* ReplayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayListView.swift; sourceTree = "<group>"; };
 		202CD6D02B8645F3009FB1C0 /* ReplayTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayTableView.swift; sourceTree = "<group>"; };
+		37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPage2.swift; sourceTree = "<group>"; };
+		37DD437E2B8F302500D59D9E /* StatisticsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPage.swift; sourceTree = "<group>"; };
+		37DD43802B8F942A00D59D9E /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,9 @@
 			children = (
 				202CD6A42B83A13F009FB1C0 /* PokerSenApp.swift */,
 				202CD6A62B83A13F009FB1C0 /* ContentView.swift */,
+				37DD437E2B8F302500D59D9E /* StatisticsPage.swift */,
+				37DD43802B8F942A00D59D9E /* HomePage.swift */,
+				37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */,
 				202CD6CE2B864574009FB1C0 /* ReplayListView.swift */,
 				202CD6D02B8645F3009FB1C0 /* ReplayTableView.swift */,
 				202CD6A82B83A143009FB1C0 /* Assets.xcassets */,
@@ -265,8 +274,11 @@
 			files = (
 				202CD6D12B8645F3009FB1C0 /* ReplayTableView.swift in Sources */,
 				202CD6CF2B864574009FB1C0 /* ReplayListView.swift in Sources */,
+				37DD437D2B8F2C5300D59D9E /* NavigationPage2.swift in Sources */,
 				202CD6A72B83A13F009FB1C0 /* ContentView.swift in Sources */,
 				202CD6A52B83A13F009FB1C0 /* PokerSenApp.swift in Sources */,
+				37DD43812B8F942A00D59D9E /* HomePage.swift in Sources */,
+				37DD437F2B8F302500D59D9E /* StatisticsPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,7 +441,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PokerSen/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -457,7 +469,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PokerSen/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

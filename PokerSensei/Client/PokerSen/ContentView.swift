@@ -161,6 +161,46 @@ struct BlueButton: ButtonStyle {
     }
 }
 
+struct NavigationPage: View {
+    @State private var selection: Tab = .home
+
+    enum Tab {
+        case statistics
+        case home
+        case replay
+    }
+
+    var body: some View {
+        TabView(selection: $selection) {
+            StatisticsPage()
+                .tabItem {
+                    Label("Statistics", systemImage: "chart.bar.fill")
+                }
+                .tag(Tab.statistics)
+            
+            ContentView()
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+                .tag(Tab.home)
+            
+            ReplayListView()
+                .tabItem {
+                    Label("Replay", systemImage: "arrow.triangle.2.circlepath")
+                }
+                .tag(Tab.replay)
+        }
+        .font(.title2)
+        // Ensuring the tab bar ignores the keyboard if it appears
+        .ignoresSafeArea(.keyboard)
+    }
+}
+
+struct NavigationView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationPage()
+    }
+}
 
 struct ContentView: View {
     
@@ -182,14 +222,14 @@ struct ContentView: View {
                     .fontWeight(.heavy)
                     .lineLimit(nil)
                     .padding(.bottom, 20)
-                    .padding(.top, -150)
+                    .padding(.top, -100)   // or removr it to make sure it stays within safe area
                 
                 Image(systemName: "suit.club.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100)
                     .padding(.bottom, 70)
-                    .padding(.top, -100)
+                    .padding(.top, -60) // or removr it to make sure it stays within safe area
                 
                 TextField("Enter ID", text: $userID)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
