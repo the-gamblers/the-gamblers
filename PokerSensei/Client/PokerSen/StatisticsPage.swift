@@ -88,7 +88,7 @@ struct RecommendationContent: View {
 
 struct TipsTricksContent: View {
     var body: some View {
-        Text("Fold it unsure!")
+        Text("Fold it unsure :)")
             .padding()
             .background(RoundedRectangle(cornerRadius: 25).fill(Color.white))
             .shadow(radius: 3)

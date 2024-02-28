@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NavigationPage: View {
+struct NavigationPage2: View {
     @State private var selection: Tab = .home
 
     enum Tab {
@@ -24,7 +24,7 @@ struct NavigationPage: View {
                 }
                 .tag(Tab.statistics)
             
-            ContentView()
+            HomePage()
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
@@ -37,12 +37,13 @@ struct NavigationPage: View {
                 .tag(Tab.replay)
         }
         .font(.title2)
+        .ignoresSafeArea(.keyboard)
     }
 }
 
 // Preview of NavigationView
-struct NavigationView_Previews: PreviewProvider {
+struct NavigationView_Previews2: PreviewProvider {
     static var previews: some View {
-        NavigationPage()
+        NavigationPage2()
     }
 }
