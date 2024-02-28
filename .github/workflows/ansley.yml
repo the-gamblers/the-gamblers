@@ -1,4 +1,4 @@
-name: "Build iOS app 1"
+name: "Build iOS app"
 
 on:
   push:
