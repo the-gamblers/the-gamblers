@@ -5,6 +5,7 @@ DerivedData/
 *.dSYM.zip
 *.dSYM
 
+Debug/*
 # OS X Finder
 .DS_Store
 
