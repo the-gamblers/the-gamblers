@@ -278,6 +278,38 @@ struct ContentView: View {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 5) { self.message = ""}
                         
                     }
+                    Button("Stockfish"){
+                    
+                        fetchData(from: "https://stockfish.online/api/stockfish.php") { result in
+                            switch result {
+                            case .success((let data, let response)):
+                                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                                    print("Invalid response")
+                                    return
+                                }
+                                
+                                do {
+                                    let decoder = JSONDecoder()
+                                    let users = try decoder.decode([User].self, from: data)
+                                    print(users)
+                                    for user in users {
+                                        self.message = user.message
+                                        // "ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))"
+                                        // print("ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))")
+                                    }
+                                } catch {
+                                    print("Error decoding JSON: \(error)")
+                                }
+                                
+                            case .failure(let error):
+                                print("Error fetching data: \(error)")
+                            }
+                        }
+                        
+                        // message dissappears after 5 sec
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { self.message = ""}
+                        
+                    }
 
                     
                 }
