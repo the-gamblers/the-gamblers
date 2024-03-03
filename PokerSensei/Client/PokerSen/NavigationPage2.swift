@@ -17,27 +17,35 @@ struct NavigationPage2: View {
     }
 
     var body: some View {
-        TabView(selection: $selection) {
-            StatisticsPage()
-                .tabItem {
-                    Label("Statistics", systemImage: "chart.bar.fill")
-                }
-                .tag(Tab.statistics)
-            
-            HomePage()
-                .tabItem {
-                    Label("Home", systemImage: "house.fill")
-                }
-                .tag(Tab.home)
-            
-            ReplayListView()
-                .tabItem {
-                    Label("Replay", systemImage: "arrow.triangle.2.circlepath")
-                }
-                .tag(Tab.replay)
+        NavigationView{
+            TabView(selection: $selection) {
+                ProgressPage()
+                    .tabItem {
+                        Label("Progress", systemImage: "chart.bar.fill")
+                            .font(.title2.bold())
+                            .foregroundColor(.accentColor)
+                    }
+                    .tag(Tab.statistics)
+                
+                HomePage()
+                    .tabItem {
+                        Label("Home", systemImage: "house.fill")
+                            .font(.title2.bold())
+                            .foregroundColor(.accentColor)
+                    }
+                    .tag(Tab.home)
+                
+                ReplayListView()
+                    .tabItem {
+                        Label("Replay", systemImage: "arrow.triangle.2.circlepath")
+                            .font(.title2.bold())
+                            .foregroundColor(.accentColor)
+                    }
+                    .tag(Tab.replay)
+            }
+            .font(.title2)
+            .ignoresSafeArea(.keyboard)
         }
-        .font(.title2)
-        .ignoresSafeArea(.keyboard)
     }
 }
 
