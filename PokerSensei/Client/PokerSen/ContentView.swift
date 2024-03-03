@@ -7,6 +7,9 @@
 
 import SwiftUI
 import Foundation
+import PythonKit
+
+let stockfish = Python.import("Stockfish")
 
 struct User: Decodable {
     var id: String
@@ -31,6 +34,38 @@ func fetchData(from urlString: String, completion: @escaping (Result<(Data, URLR
     } else {
         completion(.failure(NSError(domain: "InvalidURL", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
     }
+}
+
+// fetch database info
+func displaystockfish() {
+    let x = "somestring"
+    print(x)
+    // let test = numpy.sqrt(33)
+    print("numpy")
+    // let _ = print(test)
+    let game = stockfish.Stockfish()
+    print("post game")
+    game.startEngine()
+    print("post start")
+    let board = game.get_board_visual()
+    print("post board")
+    let __ = print(board)
+    print("post print")
+
+    // if let url = URL(string: urlString) {
+    //     let task = URLSession.shared.dataTask(with: url) { data, response, error in
+    //         if let error = error {
+    //             completion(.failure(error))
+    //         } else if let data = data, let response = response {
+    //             completion(.success((data, response)))
+    //         } else {
+    //             completion(.failure(NSError(domain: "UnknownError", code: 0, userInfo: nil)))
+    //         }
+    //     }
+    //     task.resume()
+    // } else {
+    //     completion(.failure(NSError(domain: "InvalidURL", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
+    // }
 }
 
 // POST user info to database
@@ -172,11 +207,11 @@ struct NavigationPage: View {
 
     var body: some View {
         TabView(selection: $selection) {
-            StatisticsPage()
-                .tabItem {
-                    Label("Statistics", systemImage: "chart.bar.fill")
-                }
-                .tag(Tab.statistics)
+//            StatisticsPage()
+//                .tabItem {
+//                    Label("Statistics", systemImage: "chart.bar.fill")
+//                }
+//                .tag(Tab.statistics)
             
             ContentView()
                 .tabItem {
@@ -184,11 +219,11 @@ struct NavigationPage: View {
                 }
                 .tag(Tab.home)
             
-            ReplayListView()
-                .tabItem {
-                    Label("Replay", systemImage: "arrow.triangle.2.circlepath")
-                }
-                .tag(Tab.replay)
+//            ReplayListView()
+//                .tabItem {
+//                    Label("Replay", systemImage: "arrow.triangle.2.circlepath")
+//                }
+//                .tag(Tab.replay)
         }
         .font(.title2)
         // Ensuring the tab bar ignores the keyboard if it appears
@@ -261,33 +296,36 @@ struct ContentView: View {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.message = ""}
                     }
                     Button("R"){
+                        let _ = print("pre display")
+                        displaystockfish()
+                        print("yo")
                     
-                        fetchData(from: "http://localhost:5211/api/users") { result in
-                            switch result {
-                            case .success((let data, let response)):
-                                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                                    print("Invalid response")
-                                    return
-                                }
-                                
-                                do {
-                                    let decoder = JSONDecoder()
-                                    let users = try decoder.decode([User].self, from: data)
-                                    for user in users {
-                                        self.message = "ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))"
-                                        print("ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))")
-                                    }
-                                } catch {
-                                    print("Error decoding JSON: \(error)")
-                                }
-                                
-                            case .failure(let error):
-                                print("Error fetching data: \(error)")
-                            }
-                        }
-                        
-                        // message dissappears after 5 sec
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { self.message = ""}
+//                        fetchData(from: "http://localhost:5211/api/users") { result in
+//                            switch result {
+//                            case .success((let data, let response)):
+//                                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+//                                    print("Invalid response")
+//                                    return
+//                                }
+//                                
+//                                do {
+//                                    let decoder = JSONDecoder()
+//                                    let users = try decoder.decode([User].self, from: data)
+//                                    for user in users {
+//                                        self.message = "ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))"
+//                                        print("ID: \(user.id), Name: \(String(describing: user.name)), Email: \(String(describing: user.email)), Password: \(String(describing: user.password))")
+//                                    }
+//                                } catch {
+//                                    print("Error decoding JSON: \(error)")
+//                                }
+//                                
+//                            case .failure(let error):
+//                                print("Error fetching data: \(error)")
+//                            }
+//                        }
+//                        
+//                        // message dissappears after 5 sec
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { self.message = ""}
                         
                     }
                     Button("U"){
