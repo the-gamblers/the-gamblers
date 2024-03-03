@@ -30,8 +30,6 @@ struct ReplayTableView: View {
                     .background(Color.gray)
                     
                     Spacer()
-                    Button("EOG STATS"){}
-                        .buttonStyle(BlueButton())
                 }
                     .padding()
                     .navigationBarTitle("\(replay.title) Details", displayMode: .inline)

@@ -18,9 +18,9 @@ struct NavigationPage2: View {
 
     var body: some View {
         TabView(selection: $selection) {
-            StatisticsPage()
+            ProgressPage()
                 .tabItem {
-                    Label("Statistics", systemImage: "chart.bar.fill")
+                    Label("Progress", systemImage: "chart.bar.fill")
                 }
                 .tag(Tab.statistics)
             

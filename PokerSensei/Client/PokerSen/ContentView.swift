@@ -161,46 +161,46 @@ struct BlueButton: ButtonStyle {
     }
 }
 
-struct NavigationPage: View {
-    @State private var selection: Tab = .home
+//struct NavigationPage: View {
+//    @State private var selection: Tab = .home
+//
+//    enum Tab {
+//        case statistics
+//        case home
+//        case replay
+//    }
+//
+//    var body: some View {
+//        TabView(selection: $selection) {
+//            StatisticsPage()
+//                .tabItem {
+//                    Label("Statistics", systemImage: "chart.bar.fill")
+//                }
+//                .tag(Tab.statistics)
+//            
+//            ContentView()
+//                .tabItem {
+//                    Label("Home", systemImage: "house.fill")
+//                }
+//                .tag(Tab.home)
+//            
+//            ReplayListView()
+//                .tabItem {
+//                    Label("Replay", systemImage: "arrow.triangle.2.circlepath")
+//                }
+//                .tag(Tab.replay)
+//        }
+//        .font(.title2)
+//        // Ensuring the tab bar ignores the keyboard if it appears
+//        .ignoresSafeArea(.keyboard)
+//    }
+//}
 
-    enum Tab {
-        case statistics
-        case home
-        case replay
-    }
-
-    var body: some View {
-        TabView(selection: $selection) {
-            StatisticsPage()
-                .tabItem {
-                    Label("Statistics", systemImage: "chart.bar.fill")
-                }
-                .tag(Tab.statistics)
-            
-            ContentView()
-                .tabItem {
-                    Label("Home", systemImage: "house.fill")
-                }
-                .tag(Tab.home)
-            
-            ReplayListView()
-                .tabItem {
-                    Label("Replay", systemImage: "arrow.triangle.2.circlepath")
-                }
-                .tag(Tab.replay)
-        }
-        .font(.title2)
-        // Ensuring the tab bar ignores the keyboard if it appears
-        .ignoresSafeArea(.keyboard)
-    }
-}
-
-struct NavigationView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationPage()
-    }
-}
+//struct NavigationView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationPage()
+//    }
+//}
 
 struct ContentView: View {
     
