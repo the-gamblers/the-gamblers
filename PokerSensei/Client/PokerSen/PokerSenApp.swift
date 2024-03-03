@@ -11,7 +11,7 @@ import SwiftUI
 struct PokerSenApp: App {
     var body: some Scene {
         WindowGroup {
-            ReplayListView()
+            NavigationPage2()
         }
     }
 }

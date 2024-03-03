@@ -1,3 +1,10 @@
+//
+//  NavigationPage.swift
+//  PokerSen
+//
+//  Created by Sadokat Khakimova on 2/23/24.
+//
+
 import SwiftUI
 
 struct ProgressPage: View {
@@ -17,9 +24,9 @@ struct ProgressPage: View {
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
-                    .opacity(0.5) // Adjust the opacity as needed
+                    .opacity(0.5)
 
-                // Content with white rounded rectangle background
+                // rounded rectangle background
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
                         ZStack {
@@ -60,14 +67,13 @@ struct ProgressPage: View {
                         .padding(.top, 30)
 //                        .padding(.bottom, 20)
                     }
+                    .navigationTitle("Progress Page")
                 }
-                .navigationTitle("Progress Page")
+                
             }
         }
     }
 }
-
-// ... other view structs like HistoryRow, SectionHeader, etc., remain the same ...
 
 struct ProgressPage_Previews: PreviewProvider {
     static var previews: some View {

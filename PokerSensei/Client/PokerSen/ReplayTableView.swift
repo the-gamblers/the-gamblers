@@ -1,58 +1,122 @@
 //
-//  ReplayTableView.swift
+//  GameStats.swift
 //  PokerSen
 //
-//  Created by Jade Davis on 2/21/24.
+//  Created by Sadokat Khakimova on 3/2/24.
 //
 
 import SwiftUI
 
 struct ReplayTableView: View {
     let replay: Replays
-    
+    let moves = ["1. d4 d6", "2. f4 c5", "3. c3 f5", "4. f3 f6"]
+    @State private var currentMoveIndex = 0
+
+
     var body: some View {
-        Color(red: 238/255, green: 238/255, blue: 238/255)
-            .ignoresSafeArea()
-            .overlay(
+        ZStack{
+//            Image("background-pic") // background image
+//                .resizable()
+//                .scaledToFill()
+//                .edgesIgnoringSafeArea(.all)
+//                .opacity(0.3)
+            
+            ScrollView {
                 VStack {
-                    Text("\(replay.title)")
+                    // Game title and notes
+                    Text(replay.title)
                         .font(.title)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    Text("\(replay.subtitle)")
-                        .font(.title2)
+                        .bold()
+                    Text(replay.subtitle)
+                        .font(.subheadline)
                     Text("Notes: \(replay.notes)")
+                        .font(.caption)
+                        .padding(.bottom)
+                    
+                    // Analysis section
+                    Text("Analysis")
+                        .font(.headline)
+                        .padding(.bottom, 10)
+                    HStack {
+                        Text("+7.21").bold()
+                        Text("b5 dxe3 fxe5 dxe5 c7+ Qe7 xe5 bd7 xd7 xd7 xa8 Qf6").lineLimit(1)
+                    }
+                    HStack {
+                        Text("-1.51").bold()
+                        Text("fxe5 dxe5 Ab5 aa6 Ad2 ee6 Axe5 d8 Ad3 ae3 Af4 a6").lineLimit(1)
+                    }
+                    .padding(.bottom, 20)
+                    
                     Image("chess-table")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                    HStack{
-                       // play/pause/ffward
-                    }
-                    .background(Color.gray)
                     
-                    Spacer()
-                }
-                    .padding()
-                    .navigationBarTitle("\(replay.title) Details", displayMode: .inline)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .primaryAction) {
-                            Button {
-                                print("About tapped!")
+                    Text("Queen's Pawn Opening")
+                        .font(.headline)
+                        .padding(.vertical)
+                    
+                    // Replaying moves
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill(Color(hex: 0xF3F3F3))
+                        .frame(height: 100)
+                        .overlay(
+                            Text(moves[currentMoveIndex])
+                                .padding()
+                        )
+                        .padding()
+                    
+                    // Control buttons
+                    HStack {
+                        Button(action: {
+                            if currentMoveIndex > 0 {
+                                currentMoveIndex -= 1
                             }
-                            label: {
-                                Image(systemName: "person.circle.fill")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 40, height: 40)
-                                    .foregroundColor(.black)
+                        }) {
+                            Image(systemName: "chevron.backward")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 30)
+                        }
+                        Spacer()
+                        Button(action: {
+                        }) {
+                            Image(systemName: "pause")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 30)
+                        }
+                        Spacer()
+                        Button(action: {
+                            if currentMoveIndex < moves.count - 1 {
+                                currentMoveIndex += 1
                             }
+                        }) {
+                            Image(systemName: "chevron.forward")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 30)
                         }
                     }
-                    .navigationBarBackButtonHidden(false)
-                
-        )
+                    .padding()
+                }
+                .padding()
+            }
+        }
+        .navigationBarTitle("\(replay.title) Details", displayMode: .inline)
+        .navigationBarItems(trailing: Button(action: {
+            // Add your action here
+        }) {
+            Image(systemName: "person.circle.fill")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 40, height: 40)
+                .foregroundColor(.black)
+        })
     }
 }
 
-#Preview {
-    ReplayTableView(replay: Replays(title: "Game #13", subtitle: "Feb 14, 2024 10:12 PM", notes: "did this, that, and whatnot", link: "Sample Link"))
+struct ReplayTableView_Previews: PreviewProvider {
+    static var previews: some View {
+        ReplayTableView(replay: Replays(title: "Game #13", subtitle: "Feb 14, 2024 10:12 PM", notes: "You are making simple mistakes", link: "Sample Link"))
+    }
 }
