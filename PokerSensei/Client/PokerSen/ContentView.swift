@@ -285,46 +285,6 @@ struct ContentView: View {
                     }
                     Button("Stockfish"){
                     
-                        /*
-                        fetchData(from: "https://stockfish.online/api/stockfish.php?fen=r2q1rk1/ppp2ppp/3bbn2/3p4/8/1B1P4/PPP2PPP/RNB1QRK1 w - - 5 11&depth=13&mode=eval") { result in
-                            switch result {
-                            case .success((let data, let response)):
-                                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                                    print("Invalid response")
-                                    return
-                                }
-
-                                if let responseString = String(data: da, encoding: .utf8) {
-                                    // Print or process the response string as needed
-                                    print("Response: \(responseString)")
-                                } else {
-                                    print("Error: Could not convert data to string")
-                                }
-                                
-                                do {
-                                    print(httpResponse)
-                                    print("this is after response\n\n\n\n")
-                                    print(response.suggestedFilename)
-                                    print(response.textEncodingName)
-                                    print(response.expectedContentLength)
-                                    print(response.mimeType)
-                                    print(response.url)
-                                    let decoder = JSONDecoder()
-                                    let games = try decoder.decode([Game].self, from: data)
-                                    for game in games {
-                                        self.message = "Success? \(game.success), Data: \(game.data)"
-                                        print(game.data)
-                                    }
-                                    
-                                } catch {
-                                    print("Error decoding JSON: \(error)")
-                                }
-                                
-                            case .failure(let error):
-                                print("Error fetching data: \(error)")
-                            }
-                        }
-                        */
                         print("pre url")
                         let apiUrl = URL(string: "https://stockfish.online/api/stockfish.php?fen=r2q1rk1/ppp2ppp/3bbn2/3p4/8/1B1P4/PPP2PPP/RNB1QRK1 w - - 5 11&depth=5&mode=bestmove")!
 
@@ -360,15 +320,7 @@ struct ContentView: View {
                                 return
                             }
 
-                            print("pre response string")
-                            // Convert the data to a string
-                            // if let responseString = String(data: responseData, encoding: .utf8) {
-                            //     // Print or process the response string as needed
-                            //     print(type(of: responseString))
-                            //     print("Response: \(responseString)")
-                            // } else {
-                            //     print("Error: Could not convert data to string")
-                            // }
+
                             do {
                                 let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
                                 
@@ -377,6 +329,7 @@ struct ContentView: View {
                                     // Now you have the string "bestmove b1c3 ponder h7h6" in jsonData
                                     print("Best move: \(jsonData)")
                                     self.message = jsonData
+
                                 } else {
                                     print("Data key not found in JSON response")
                                 }
