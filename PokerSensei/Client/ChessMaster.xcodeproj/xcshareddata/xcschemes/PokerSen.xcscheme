@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "202CD6A02B83A13F009FB1C0"
-               BuildableName = "PokerSen.app"
-               BlueprintName = "PokerSen"
-               ReferencedContainer = "container:PokerSen.xcodeproj">
+               BuildableName = "ChessMaster.app"
+               BlueprintName = "ChessMaster"
+               ReferencedContainer = "container:ChessMaster.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,9 +35,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "202CD6B02B83A144009FB1C0"
-               BuildableName = "PokerSenTests.xctest"
-               BlueprintName = "PokerSenTests"
-               ReferencedContainer = "container:PokerSen.xcodeproj">
+               BuildableName = "ChessMasterTests.xctest"
+               BlueprintName = "ChessMasterTests"
+               ReferencedContainer = "container:ChessMaster.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -46,9 +46,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "202CD6BA2B83A144009FB1C0"
-               BuildableName = "PokerSenUITests.xctest"
-               BlueprintName = "PokerSenUITests"
-               ReferencedContainer = "container:PokerSen.xcodeproj">
+               BuildableName = "ChessMasterUITests.xctest"
+               BlueprintName = "ChessMasterUITests"
+               ReferencedContainer = "container:ChessMaster.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -68,9 +68,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "202CD6A02B83A13F009FB1C0"
-            BuildableName = "PokerSen.app"
-            BlueprintName = "PokerSen"
-            ReferencedContainer = "container:PokerSen.xcodeproj">
+            BuildableName = "ChessMaster.app"
+            BlueprintName = "ChessMaster"
+            ReferencedContainer = "container:ChessMaster.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "202CD6A02B83A13F009FB1C0"
-            BuildableName = "PokerSen.app"
-            BlueprintName = "PokerSen"
-            ReferencedContainer = "container:PokerSen.xcodeproj">
+            BuildableName = "ChessMaster.app"
+            BlueprintName = "ChessMaster"
+            ReferencedContainer = "container:ChessMaster.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
