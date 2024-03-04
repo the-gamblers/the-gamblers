@@ -14,6 +14,12 @@
 		202CD6B62B83A144009FB1C0 /* PokerSenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6B52B83A144009FB1C0 /* PokerSenTests.swift */; };
 		202CD6C02B83A144009FB1C0 /* PokerSenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6BF2B83A144009FB1C0 /* PokerSenUITests.swift */; };
 		202CD6C22B83A144009FB1C0 /* PokerSenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6C12B83A144009FB1C0 /* PokerSenUITestsLaunchTests.swift */; };
+		202CD6CF2B864574009FB1C0 /* ReplayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6CE2B864574009FB1C0 /* ReplayListView.swift */; };
+		202CD6D12B8645F3009FB1C0 /* ReplayTableViewOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6D02B8645F3009FB1C0 /* ReplayTableViewOLD.swift */; };
+		37DD437D2B8F2C5300D59D9E /* NavigationPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */; };
+		37DD437F2B8F302500D59D9E /* ProgressPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD437E2B8F302500D59D9E /* ProgressPage.swift */; };
+		37DD43812B8F942A00D59D9E /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD43802B8F942A00D59D9E /* HomePage.swift */; };
+		37DD43832B94E57E00D59D9E /* ReplayTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD43822B94E57E00D59D9E /* ReplayTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,16 +40,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		202CD6A12B83A13F009FB1C0 /* PokerSen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerSen.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		202CD6A12B83A13F009FB1C0 /* ChessMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		202CD6A42B83A13F009FB1C0 /* PokerSenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerSenApp.swift; sourceTree = "<group>"; };
 		202CD6A62B83A13F009FB1C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		202CD6A82B83A143009FB1C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		202CD6AB2B83A143009FB1C0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		202CD6B12B83A144009FB1C0 /* PokerSenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokerSenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		202CD6B12B83A144009FB1C0 /* ChessMasterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessMasterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		202CD6B52B83A144009FB1C0 /* PokerSenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerSenTests.swift; sourceTree = "<group>"; };
-		202CD6BB2B83A144009FB1C0 /* PokerSenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokerSenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		202CD6BB2B83A144009FB1C0 /* ChessMasterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessMasterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		202CD6BF2B83A144009FB1C0 /* PokerSenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerSenUITests.swift; sourceTree = "<group>"; };
 		202CD6C12B83A144009FB1C0 /* PokerSenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerSenUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		202CD6CE2B864574009FB1C0 /* ReplayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayListView.swift; sourceTree = "<group>"; };
+		202CD6D02B8645F3009FB1C0 /* ReplayTableViewOLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayTableViewOLD.swift; sourceTree = "<group>"; };
+		37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPage2.swift; sourceTree = "<group>"; };
+		37DD437E2B8F302500D59D9E /* ProgressPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPage.swift; sourceTree = "<group>"; };
+		37DD43802B8F942A00D59D9E /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		37DD43822B94E57E00D59D9E /* ReplayTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +86,7 @@
 		202CD6982B83A13F009FB1C0 = {
 			isa = PBXGroup;
 			children = (
-				202CD6A32B83A13F009FB1C0 /* PokerSen */,
+				202CD6A32B83A13F009FB1C0 /* ChessMaster */,
 				202CD6B42B83A144009FB1C0 /* PokerSenTests */,
 				202CD6BE2B83A144009FB1C0 /* PokerSenUITests */,
 				202CD6A22B83A13F009FB1C0 /* Products */,
@@ -84,22 +96,28 @@
 		202CD6A22B83A13F009FB1C0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				202CD6A12B83A13F009FB1C0 /* PokerSen.app */,
-				202CD6B12B83A144009FB1C0 /* PokerSenTests.xctest */,
-				202CD6BB2B83A144009FB1C0 /* PokerSenUITests.xctest */,
+				202CD6A12B83A13F009FB1C0 /* ChessMaster.app */,
+				202CD6B12B83A144009FB1C0 /* ChessMasterTests.xctest */,
+				202CD6BB2B83A144009FB1C0 /* ChessMasterUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		202CD6A32B83A13F009FB1C0 /* PokerSen */ = {
+		202CD6A32B83A13F009FB1C0 /* ChessMaster */ = {
 			isa = PBXGroup;
 			children = (
 				202CD6A42B83A13F009FB1C0 /* PokerSenApp.swift */,
 				202CD6A62B83A13F009FB1C0 /* ContentView.swift */,
+				37DD437E2B8F302500D59D9E /* ProgressPage.swift */,
+				37DD43822B94E57E00D59D9E /* ReplayTableView.swift */,
+				37DD43802B8F942A00D59D9E /* HomePage.swift */,
+				37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */,
+				202CD6CE2B864574009FB1C0 /* ReplayListView.swift */,
+				202CD6D02B8645F3009FB1C0 /* ReplayTableViewOLD.swift */,
 				202CD6A82B83A143009FB1C0 /* Assets.xcassets */,
 				202CD6AA2B83A143009FB1C0 /* Preview Content */,
 			);
-			path = PokerSen;
+			path = ChessMaster;
 			sourceTree = "<group>";
 		};
 		202CD6AA2B83A143009FB1C0 /* Preview Content */ = {
@@ -130,9 +148,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		202CD6A02B83A13F009FB1C0 /* PokerSen */ = {
+		202CD6A02B83A13F009FB1C0 /* ChessMaster */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 202CD6C52B83A144009FB1C0 /* Build configuration list for PBXNativeTarget "PokerSen" */;
+			buildConfigurationList = 202CD6C52B83A144009FB1C0 /* Build configuration list for PBXNativeTarget "ChessMaster" */;
 			buildPhases = (
 				202CD69D2B83A13F009FB1C0 /* Sources */,
 				202CD69E2B83A13F009FB1C0 /* Frameworks */,
@@ -142,14 +160,14 @@
 			);
 			dependencies = (
 			);
-			name = PokerSen;
+			name = ChessMaster;
 			productName = PokerSen;
-			productReference = 202CD6A12B83A13F009FB1C0 /* PokerSen.app */;
+			productReference = 202CD6A12B83A13F009FB1C0 /* ChessMaster.app */;
 			productType = "com.apple.product-type.application";
 		};
-		202CD6B02B83A144009FB1C0 /* PokerSenTests */ = {
+		202CD6B02B83A144009FB1C0 /* ChessMasterTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 202CD6C82B83A144009FB1C0 /* Build configuration list for PBXNativeTarget "PokerSenTests" */;
+			buildConfigurationList = 202CD6C82B83A144009FB1C0 /* Build configuration list for PBXNativeTarget "ChessMasterTests" */;
 			buildPhases = (
 				202CD6AD2B83A144009FB1C0 /* Sources */,
 				202CD6AE2B83A144009FB1C0 /* Frameworks */,
@@ -160,14 +178,14 @@
 			dependencies = (
 				202CD6B32B83A144009FB1C0 /* PBXTargetDependency */,
 			);
-			name = PokerSenTests;
+			name = ChessMasterTests;
 			productName = PokerSenTests;
-			productReference = 202CD6B12B83A144009FB1C0 /* PokerSenTests.xctest */;
+			productReference = 202CD6B12B83A144009FB1C0 /* ChessMasterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		202CD6BA2B83A144009FB1C0 /* PokerSenUITests */ = {
+		202CD6BA2B83A144009FB1C0 /* ChessMasterUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 202CD6CB2B83A144009FB1C0 /* Build configuration list for PBXNativeTarget "PokerSenUITests" */;
+			buildConfigurationList = 202CD6CB2B83A144009FB1C0 /* Build configuration list for PBXNativeTarget "ChessMasterUITests" */;
 			buildPhases = (
 				202CD6B72B83A144009FB1C0 /* Sources */,
 				202CD6B82B83A144009FB1C0 /* Frameworks */,
@@ -178,9 +196,9 @@
 			dependencies = (
 				202CD6BD2B83A144009FB1C0 /* PBXTargetDependency */,
 			);
-			name = PokerSenUITests;
+			name = ChessMasterUITests;
 			productName = PokerSenUITests;
-			productReference = 202CD6BB2B83A144009FB1C0 /* PokerSenUITests.xctest */;
+			productReference = 202CD6BB2B83A144009FB1C0 /* ChessMasterUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -206,7 +224,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 202CD69C2B83A13F009FB1C0 /* Build configuration list for PBXProject "PokerSen" */;
+			buildConfigurationList = 202CD69C2B83A13F009FB1C0 /* Build configuration list for PBXProject "ChessMaster" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -219,9 +237,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				202CD6A02B83A13F009FB1C0 /* PokerSen */,
-				202CD6B02B83A144009FB1C0 /* PokerSenTests */,
-				202CD6BA2B83A144009FB1C0 /* PokerSenUITests */,
+				202CD6A02B83A13F009FB1C0 /* ChessMaster */,
+				202CD6B02B83A144009FB1C0 /* ChessMasterTests */,
+				202CD6BA2B83A144009FB1C0 /* ChessMasterUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -257,8 +275,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				202CD6D12B8645F3009FB1C0 /* ReplayTableViewOLD.swift in Sources */,
+				202CD6CF2B864574009FB1C0 /* ReplayListView.swift in Sources */,
+				37DD437D2B8F2C5300D59D9E /* NavigationPage2.swift in Sources */,
+				37DD43832B94E57E00D59D9E /* ReplayTableView.swift in Sources */,
 				202CD6A72B83A13F009FB1C0 /* ContentView.swift in Sources */,
 				202CD6A52B83A13F009FB1C0 /* PokerSenApp.swift in Sources */,
+				37DD43812B8F942A00D59D9E /* HomePage.swift in Sources */,
+				37DD437F2B8F302500D59D9E /* ProgressPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,12 +308,12 @@
 /* Begin PBXTargetDependency section */
 		202CD6B32B83A144009FB1C0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 202CD6A02B83A13F009FB1C0 /* PokerSen */;
+			target = 202CD6A02B83A13F009FB1C0 /* ChessMaster */;
 			targetProxy = 202CD6B22B83A144009FB1C0 /* PBXContainerItemProxy */;
 		};
 		202CD6BD2B83A144009FB1C0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 202CD6A02B83A13F009FB1C0 /* PokerSen */;
+			target = 202CD6A02B83A13F009FB1C0 /* ChessMaster */;
 			targetProxy = 202CD6BC2B83A144009FB1C0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -421,7 +445,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PokerSen/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -449,7 +473,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PokerSen/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -485,7 +509,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PokerSen.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PokerSen";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChessMaster.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChessMaster";
 			};
 			name = Debug;
 		};
@@ -504,7 +528,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PokerSen.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PokerSen";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChessMaster.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChessMaster";
 			};
 			name = Release;
 		};
@@ -545,7 +569,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		202CD69C2B83A13F009FB1C0 /* Build configuration list for PBXProject "PokerSen" */ = {
+		202CD69C2B83A13F009FB1C0 /* Build configuration list for PBXProject "ChessMaster" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				202CD6C32B83A144009FB1C0 /* Debug */,
@@ -554,7 +578,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		202CD6C52B83A144009FB1C0 /* Build configuration list for PBXNativeTarget "PokerSen" */ = {
+		202CD6C52B83A144009FB1C0 /* Build configuration list for PBXNativeTarget "ChessMaster" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				202CD6C62B83A144009FB1C0 /* Debug */,
@@ -563,7 +587,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		202CD6C82B83A144009FB1C0 /* Build configuration list for PBXNativeTarget "PokerSenTests" */ = {
+		202CD6C82B83A144009FB1C0 /* Build configuration list for PBXNativeTarget "ChessMasterTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				202CD6C92B83A144009FB1C0 /* Debug */,
@@ -572,7 +596,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		202CD6CB2B83A144009FB1C0 /* Build configuration list for PBXNativeTarget "PokerSenUITests" */ = {
+		202CD6CB2B83A144009FB1C0 /* Build configuration list for PBXNativeTarget "ChessMasterUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				202CD6CC2B83A144009FB1C0 /* Debug */,
