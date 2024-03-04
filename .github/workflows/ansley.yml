@@ -53,7 +53,7 @@ jobs:
 
       - name: build archive
         run: |
-          xcodebuild -scheme "PokerSensei" \
+          xcodebuild -scheme "PokerSen" \
           -archivePath $RUNNER_TEMP/PokerSensei\build\PokerSensei.xcarchive \
           -sdk iphoneos \
           -configuration Debug \
