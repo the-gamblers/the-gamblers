@@ -15,6 +15,11 @@ struct User: Decodable {
     var password: String?
 }
 
+struct Game: Decodable {
+    var success: Bool?
+    var data: String?
+}
+
 // fetch database info
 func fetchData(from urlString: String, completion: @escaping (Result<(Data, URLResponse), Error>) -> Void) {
     if let url = URL(string: urlString) {
@@ -313,6 +318,68 @@ struct ContentView: View {
                                     print("success: \(result)")
                                 }
                             }
+                        
+                        // message dissappears after 5 sec
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { self.message = ""}
+                        
+                    }
+                    Button("Stockfish"){
+                    
+                        print("pre url")
+                        let apiUrl = URL(string: "https://stockfish.online/api/stockfish.php?fen=r2q1rk1/ppp2ppp/3bbn2/3p4/8/1B1P4/PPP2PPP/RNB1QRK1 w - - 5 11&depth=5&mode=bestmove")!
+
+                        // Create a URLSession instance
+                        let session = URLSession.shared
+                        print("post session")
+
+                        // Create a data task to fetch the data
+                        let task = session.dataTask(with: apiUrl) { data, response, error in
+                        // Check for errors
+
+                            print("post task")
+                            if let error = error {
+                                print("Error: \(error.localizedDescription)")
+                                return
+                            }
+
+                            // Check if a response was received
+                            guard let httpResponse = response as? HTTPURLResponse else {
+                                print("Error: No HTTP response")
+                                return
+                            }
+
+                            // Check if the response status code indicates success
+                            guard (200...299).contains(httpResponse.statusCode) else {
+                                print("Error: HTTP status code \(httpResponse.statusCode)")
+                                return
+                            }
+
+                            // Check if data was returned
+                            guard let responseData = data else {
+                                print("Error: No data received")
+                                return
+                            }
+
+
+                            do {
+                                let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
+                                
+                                // Check if parsing succeeded and "data" key exists
+                                if let jsonData = json?["data"] as? String {
+                                    // Now you have the string "bestmove b1c3 ponder h7h6" in jsonData
+                                    print("Best move: \(jsonData)")
+                                    self.message = jsonData
+
+                                } else {
+                                    print("Data key not found in JSON response")
+                                }
+                        } catch {
+                            // Handle error thrown by JSONSerialization.jsonObject
+                            print("Error parsing JSON: \(error)")
+                        }
+                        
+}
+                        task.resume()
                         
                         // message dissappears after 5 sec
                         DispatchQueue.main.asyncAfter(deadline: .now() + 5) { self.message = ""}
