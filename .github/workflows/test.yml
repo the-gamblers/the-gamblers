@@ -11,4 +11,4 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: build xcode
-        run: xcodebuild -scheme PokerSen
+        run: xcodebuild -scheme ChessMaster
