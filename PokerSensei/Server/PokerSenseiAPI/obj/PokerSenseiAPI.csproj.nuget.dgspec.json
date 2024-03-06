@@ -1,27 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jadedavis/Documents/the-gamblers-1/PokerSensei/Server/PokerSenseiAPI/PokerSenseiAPI.csproj": {}
+    "C:\\Users\\ansle\\school\\csce482\\the-gamblers\\PokerSensei\\Server\\PokerSenseiAPI\\PokerSenseiAPI.csproj": {}
   },
   "projects": {
-    "/Users/jadedavis/Documents/the-gamblers-1/PokerSensei/Server/PokerSenseiAPI/PokerSenseiAPI.csproj": {
+    "C:\\Users\\ansle\\school\\csce482\\the-gamblers\\PokerSensei\\Server\\PokerSenseiAPI\\PokerSenseiAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jadedavis/Documents/the-gamblers-1/PokerSensei/Server/PokerSenseiAPI/PokerSenseiAPI.csproj",
+        "projectUniqueName": "C:\\Users\\ansle\\school\\csce482\\the-gamblers\\PokerSensei\\Server\\PokerSenseiAPI\\PokerSenseiAPI.csproj",
         "projectName": "PokerSenseiAPI",
-        "projectPath": "/Users/jadedavis/Documents/the-gamblers-1/PokerSensei/Server/PokerSenseiAPI/PokerSenseiAPI.csproj",
-        "packagesPath": "/Users/jadedavis/.nuget/packages/",
-        "outputPath": "/Users/jadedavis/Documents/the-gamblers-1/PokerSensei/Server/PokerSenseiAPI/obj/",
+        "projectPath": "C:\\Users\\ansle\\school\\csce482\\the-gamblers\\PokerSensei\\Server\\PokerSenseiAPI\\PokerSenseiAPI.csproj",
+        "packagesPath": "C:\\Users\\ansle\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ansle\\school\\csce482\\the-gamblers\\PokerSensei\\Server\\PokerSenseiAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/jadedavis/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\ansle\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
@@ -32,11 +29,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -75,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
