@@ -4,7 +4,8 @@ DerivedData/
 *.ipa
 *.dSYM.zip
 *.dSYM
-*.xcworkspace
+
+/Debug
 
 # OS X Finder
 .DS_Store
@@ -16,7 +17,6 @@ DerivedData/
 *.perspective
 *.perspectivev3
 *.pbxuser
-*.xcworkspace
 xcuserdata
 
 # Build products
