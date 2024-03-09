@@ -10,10 +10,14 @@ import SwiftUI
 // TODO: match to database schema
 struct Replays: Identifiable {
     let title: String
-    let id = UUID()
+    // let id = UUID()
     let subtitle: String
     let notes: String
     let link: String
+}
+
+func getGames() {
+    fetchData
 }
 
 // TODO: need to read from database
