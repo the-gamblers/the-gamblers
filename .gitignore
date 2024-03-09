@@ -31,3 +31,6 @@ build/
 *~
 *.dat
 *.dep
+
+# server files to ignore
+ChessMasterAPI.csproj.nuget*
