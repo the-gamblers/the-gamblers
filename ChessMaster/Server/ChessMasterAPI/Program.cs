@@ -2,7 +2,6 @@ using ChessMasterAPI.Models;
 using ChessMasterAPI.Services;
 
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -24,25 +23,27 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/api/users", async(MongoDBService service) => await service.GetUsersAsync());
+app.MapGet("/api/users", async (MongoDBService service) => await service.GetUsersAsync());
 
-app.MapGet("/api/users/{id}", async(MongoDBService service, string id) => 
+app.MapGet("/api/users/{id}", async (MongoDBService service, string id) =>
 {
     var user = await service.GetByID(id);
     return user is null ? Results.NotFound() : Results.Ok(user);
 });
 
-app.MapPost("/api/users",async(MongoDBService service, User user) => {
+app.MapPost("/api/users", async (MongoDBService service, User user) =>
+{
     await service.CreatedAsync(user);
     return;
 });
 
-app.MapPut("/api/users/{id}", async(MongoDBService service, string id, string email) => {
+app.MapPut("/api/users/{id}", async (MongoDBService service, string id, string email) =>
+{
     await service.ChangeEmailAsync(id, email);
     return;
 });
 
-app.MapDelete("/api/users/{id}", async(MongoDBService service, string id) => 
+app.MapDelete("/api/users/{id}", async (MongoDBService service, string id) =>
 {
     await service.DeleteAsync(id);
     return;

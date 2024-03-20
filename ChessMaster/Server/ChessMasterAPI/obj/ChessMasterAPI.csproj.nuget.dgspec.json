@@ -1,27 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/ChessMaster/Server/ChessMasterAPI/ChessMasterAPI.csproj": {}
+    "C:\\Users\\ansle\\school\\csce482\\the-gamblers\\ChessMaster\\Server\\ChessMasterAPI\\ChessMasterAPI.csproj": {}
   },
   "projects": {
-    "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/ChessMaster/Server/ChessMasterAPI/ChessMasterAPI.csproj": {
+    "C:\\Users\\ansle\\school\\csce482\\the-gamblers\\ChessMaster\\Server\\ChessMasterAPI\\ChessMasterAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/ChessMaster/Server/ChessMasterAPI/ChessMasterAPI.csproj",
+        "projectUniqueName": "C:\\Users\\ansle\\school\\csce482\\the-gamblers\\ChessMaster\\Server\\ChessMasterAPI\\ChessMasterAPI.csproj",
         "projectName": "ChessMasterAPI",
-        "projectPath": "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/ChessMaster/Server/ChessMasterAPI/ChessMasterAPI.csproj",
-        "packagesPath": "/Users/roeebelkin/.nuget/packages/",
-        "outputPath": "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/ChessMaster/Server/ChessMasterAPI/obj/",
+        "projectPath": "C:\\Users\\ansle\\school\\csce482\\the-gamblers\\ChessMaster\\Server\\ChessMasterAPI\\ChessMasterAPI.csproj",
+        "packagesPath": "C:\\Users\\ansle\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ansle\\school\\csce482\\the-gamblers\\ChessMaster\\Server\\ChessMasterAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/roeebelkin/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\ansle\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
@@ -42,9 +39,13 @@
               "target": "Package",
               "version": "[8.0.2, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools.DotNet": {
+              "target": "Package",
+              "version": "[2.0.3, )"
+            },
             "MongoDB.driver": {
               "target": "Package",
-              "version": "[2.23.1, )"
+              "version": "[2.24.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -70,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.103/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

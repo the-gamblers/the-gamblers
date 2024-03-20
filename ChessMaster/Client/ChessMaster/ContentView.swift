@@ -33,7 +33,7 @@ func fetchData(from urlString: String, completion: @escaping (Result<(Data, URLR
             }
         }
         task.resume()
-    } else {
+    } else {c
         completion(.failure(NSError(domain: "InvalidURL", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
     }
 }
