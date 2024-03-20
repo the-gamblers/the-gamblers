@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import Chess
 
 @main
 struct PokerSenApp: App {
+    
+    @StateObject private var vm = ChessStore()
     var body: some Scene {
         WindowGroup {
             NavigationPage2()
+                .environmentObject(vm)
         }
     }
 }

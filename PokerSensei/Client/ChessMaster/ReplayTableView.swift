@@ -47,9 +47,8 @@ struct ReplayTableView: View {
                     }
                     .padding(.bottom, 20)
                     
-                    Image("chess-table")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                    ChessView() // View Chess Board
+                        .frame(height: 400)
                     
                     Text("Queen's Pawn Opening")
                         .font(.headline)
