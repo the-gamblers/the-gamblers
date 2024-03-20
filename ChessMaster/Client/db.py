@@ -29,3 +29,23 @@ conn.commit()
 
 # Closing the connection
 conn.close()
+
+
+def test_insert():
+    # Connecting to sqlite
+    conn = sqlite3.connect("test.sqlite")
+
+    # Creating a cursor object using the
+    # cursor() method
+    cursor = conn.cursor()
+    cursor.execute("""INSERT INTO STUDENT VALUES ('Please', '7th', 'W')""")
+
+    print("Data Inserted in the table: ")
+    data = cursor.execute("""SELECT * FROM STUDENT""")
+    for row in data:
+        print(row)
+
+    conn.commit()
+
+    # Closing the connection
+    conn.close()

@@ -7,6 +7,9 @@
 
 import SwiftUI
 import Foundation
+import PythonKit
+
+let PythonLibrary = PythonLibrary.use()
 
 struct User: Decodable {
     var id: String
@@ -254,16 +257,18 @@ struct ContentView: View {
                 
                 HStack{
                     Button("C"){
+
+                        PythonLibrary.runSimpleString("import ../db; db.test_insert()")
                         
-                        self.message = "POSTed -> Name: \(String(describing: userName)), Email: \(String(describing: userEmail)), Password: \(String(describing: userPassword))"
+                        // self.message = "POSTed -> Name: \(String(describing: userName)), Email: \(String(describing: userEmail)), Password: \(String(describing: userPassword))"
                         
-                        postData(name: userName, email: userEmail, password: userPassword) { (result, error) in
-                            if let result = result {
-                                print("success: \(result)")
-                            }
-                        }
-                        // message dissappears after 5 sec
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.message = ""}
+                        // postData(name: userName, email: userEmail, password: userPassword) { (result, error) in
+                        //     if let result = result {
+                        //         print("success: \(result)")
+                        //     }
+                        // }
+                        // // message dissappears after 5 sec
+                        // DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.message = ""}
                     }
                     Button("R"){
                     
