@@ -34,3 +34,6 @@ build/
 
 # server files to ignore
 ChessMasterAPI.csproj.nuget*
+
+ChessMaster/Server/ChessMasterAPI/obj/Debug/net8.0/ChessMasterAPI.AssemblyInfo.cs
+ChessMaster/Server/ChessMasterAPI/obj/Debug/net8.0/ChessMasterAPI.AssemblyInfoInputs.cache
