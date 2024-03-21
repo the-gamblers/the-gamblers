@@ -47,56 +47,9 @@ struct ReplayTableView: View {
                     }
                     .padding(.bottom, 20)
                     
-                    ChessView() // View Chess Board
-                        .frame(height: 400)
-                    
-                    Text("Queen's Pawn Opening")
-                        .font(.headline)
-                        .padding(.vertical)
-                    
-                    // Replaying moves
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(Color(hex: 0xF3F3F3))
-                        .frame(height: 100)
-                        .overlay(
-                            Text(moves[currentMoveIndex])
-                                .padding()
-                        )
-                        .padding()
-                    
-                    // Control buttons
-                    HStack {
-                        Button(action: {
-                            if currentMoveIndex > 0 {
-                                currentMoveIndex -= 1
-                            }
-                        }) {
-                            Image(systemName: "chevron.backward")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 30)
-                        }
-                        Spacer()
-                        Button(action: {
-                        }) {
-                            Image(systemName: "pause")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 30)
-                        }
-                        Spacer()
-                        Button(action: {
-                            if currentMoveIndex < moves.count - 1 {
-                                currentMoveIndex += 1
-                            }
-                        }) {
-                            Image(systemName: "chevron.forward")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 30)
-                        }
-                    }
-                    .padding()
+                    // View Chess Board
+                    ChessView()
+                        .frame(height: 650)
                 }
                 .padding()
             }

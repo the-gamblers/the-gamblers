@@ -6,13 +6,50 @@
 //
 
 import SwiftUI
+import Chess
 
-struct PlayableView: View {
+struct PlayablePreview: View {
+   
+    @StateObject private var store: ChessStore
+    
+    init() {
+        // Initialize ChessStore with a sample game
+        let black = Chess.Robot(side: .black)
+        let white = Chess.HumanPlayer(side: .white)
+        var game = Chess.Game(white, against: black)
+         
+        self._store = StateObject(wrappedValue: ChessStore(game: game))
+    
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            BoardView()
+                .environmentObject(store)
+            }
+            .padding()
+        }
+    }
+
+struct PlayablePreviewView: View {
+    
+    var body: some View {
+        PlayablePreview()
     }
 }
 
-#Preview {
-    PlayableView()
+struct PlayableView: View {
+       
+    var body: some View {
+        VStack {
+           
+            PlayablePreviewView()
+        }
+    }
+}
+
+struct PlayableView_Previews: PreviewProvider {
+    static var previews: some View {
+        PlayableView()
+    }
 }
