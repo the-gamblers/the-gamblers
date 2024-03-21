@@ -20,7 +20,12 @@ def start_app():
 
 
 def close_app():
+    conn.commit()
     conn.close()
+
+
+def pause_game():
+    conn.commit()
 
 
 start_app()
@@ -30,14 +35,12 @@ def create_user(username, password):
     cursor.execute(
         f"""INSERT INTO users (username, password) VALUES ('{username}', '{password}')"""
     )
-    conn.commit()
 
 
 def change_password(username, new_password):
     cursor.execute(
         f"""UPDATE users SET password = '{new_password}' WHERE username = '{username}'"""
     )
-    conn.commit()
 
 
 # NOTE: this seems unnecessary
@@ -45,12 +48,10 @@ def update_user(column, value, ref_col, ref_val):
     cursor.execute(
         f"""UPDATE users SET {column} = '{value}' WHERE {ref_col} = '{ref_val}'"""
     )
-    conn.commit()
 
 
 def delete_user(username):
     cursor.execute(f"""DELETE FROM users WHERE username = '{username}'""")
-    conn.commit()
 
 
 # Q: should uci be not null? seems like it should so the replay will work
@@ -62,7 +63,6 @@ def create_game(title=None, notes=None, uci=None):
     cursor.execute(
         f"""INSERT INTO games (user, title, notes, uci) VALUES ('{curr_user}', '{fixed_title}', '{fixed_notes}', '{fixed_uci}')"""
     )
-    conn.commit()
 
 
 def edit_note(gameID, note):
@@ -108,8 +108,6 @@ def test_insert():
     data = cursor.execute("""SELECT * FROM STUDENT""")
     for row in data:
         print(row)
-
-    conn.commit()
 
     # Closing the connection
     conn.close()
