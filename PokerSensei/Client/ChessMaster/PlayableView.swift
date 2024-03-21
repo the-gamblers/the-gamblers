@@ -16,7 +16,7 @@ struct PlayablePreview: View {
         // Initialize ChessStore with a sample game
         let black = Chess.Robot(side: .black)
         let white = Chess.HumanPlayer(side: .white)
-        var game = Chess.Game(white, against: black)
+        let game = Chess.Game(white, against: black)
          
         self._store = StateObject(wrappedValue: ChessStore(game: game))
     
