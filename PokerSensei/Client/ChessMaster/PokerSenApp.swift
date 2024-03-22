@@ -10,12 +10,18 @@ import Chess
 
 @main
 struct PokerSenApp: App {
-    
+    @State var isLoggedin: Bool = false
     @StateObject private var vm = ChessStore()
+    
     var body: some Scene {
         WindowGroup {
-            NavigationPage2()
-                .environmentObject(vm)
+            if isLoggedin {
+                NavigationPage2()
+                    .environmentObject(vm)
+            }
+            else {
+                LandingLoginView(isLoggedin: $isLoggedin)
+            }
         }
     }
 }

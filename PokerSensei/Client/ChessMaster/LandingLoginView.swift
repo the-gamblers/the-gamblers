@@ -4,6 +4,7 @@ struct LandingLoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var isLoginSuccessful = false
+    @Binding var isLoggedin: Bool
     
     var body: some View {
         NavigationView { // Wrap in NavigationView
@@ -39,6 +40,7 @@ struct LandingLoginView: View {
                     // Replace with actual authentication process
                     if username == "Jade" && password == "Jade" {
                         isLoginSuccessful = true
+                        isLoggedin = true
                     } else {
                         isLoginSuccessful = false
                     }
@@ -56,6 +58,12 @@ struct LandingLoginView: View {
                     Text("Login Successful!")
                         .foregroundColor(.green)
                         .padding(.top, 20)
+                    
+                        .background(
+                            NavigationLink(destination: NavigationPage2()) {
+                                                   EmptyView()
+                            }
+                        )
                 } else if username != "" || password != "" {
                     Text("Invalid Username or Password")
                         .foregroundColor(.red)
@@ -75,14 +83,61 @@ struct LandingLoginView: View {
 }
 
 struct CreateUserView: View {
+    @State private var username: String = ""
+    @State private var password: String = ""
+    @State private var firstname: String = ""
+    @State private var lastname: String = ""
+    
     var body: some View {
-        Text("Create User View")
-            .navigationBarTitle("Create User")
+        
+        Text("CREATE ACCOUNT")
+            .font(.title)
+            .lineLimit(nil)
+            .padding(.bottom, 10)
+        
+        TextField("First Name", text: $firstname)
+            .padding()
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(20)
+            .padding(.horizontal)
+        
+        TextField("Last Name", text: $lastname)
+            .padding()
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(20)
+            .padding(.horizontal)
+        
+        TextField("Email Address", text: $username)
+            .padding()
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(20)
+            .padding(.horizontal)
+        
+        SecureField("Password", text: $password)
+            .padding()
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(20)
+            .padding(.horizontal)
+            .navigationBarTitle("Create an Account")
+        
+        Button(action: {
+            // Perform creation authentication here
+            // Replace with actual authentication process
+          
+        }) {
+            Text("SIGN UP")
+                .foregroundColor(.white)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.blue)
+                .cornerRadius(25)
+                .padding(.horizontal)
+        }
     }
 }
 
 struct LandingLoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LandingLoginView()
+        LandingLoginView(isLoggedin: .constant(false))
     }
 }
