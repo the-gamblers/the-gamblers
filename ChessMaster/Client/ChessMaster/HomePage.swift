@@ -23,6 +23,11 @@ extension Color {
 
 
 struct HomePage: View {
+    @State private var showProfile = false
+    
+    func showProfileView() {
+           showProfile.toggle()
+       }
     var body: some View {
         NavigationView {
             ZStack{
@@ -76,13 +81,16 @@ struct HomePage: View {
                 }
                 .background(Color("bkColor").ignoresSafeArea())
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: Button(action: {}) {
+                .navigationBarItems(trailing: Button(action: {showProfile = true}) {
                     Image(systemName: "person.circle.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 40, height: 40)
                         .foregroundColor(.black)
                 })
+                .sheet(isPresented: $showProfile) {
+                                ProfileView(isLoggedin: .constant(true))
+                }
             }
         }
     }

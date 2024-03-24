@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct ChessMasterApp: App {
+    @State var isLoggedin: Bool = false
+    @StateObject private var vm = ChessStore()
+    
     var body: some Scene {
         WindowGroup {
-            NavigationPage2()
+            if isLoggedin {
+                NavigationPage2()
+                    .environmentObject(vm)
+            }
+            else {
+                LandingLoginView(isLoggedin: $isLoggedin)
+            }
         }
     }
 }

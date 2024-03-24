@@ -16,11 +16,19 @@
 		202CD6C22B83A144009FB1C0 /* ChessMasterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6C12B83A144009FB1C0 /* ChessMasterUITestsLaunchTests.swift */; };
 		202CD6CF2B864574009FB1C0 /* ReplayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6CE2B864574009FB1C0 /* ReplayListView.swift */; };
 		202CD6D12B8645F3009FB1C0 /* ReplayTableViewOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6D02B8645F3009FB1C0 /* ReplayTableViewOLD.swift */; };
+<<<<<<< HEAD:ChessMaster/Client/ChessMaster.xcodeproj/project.pbxproj
 		37203D7C2BB091780021EEE2 /* UploadPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37203D7B2BB091780021EEE2 /* UploadPhotoView.swift */; };
 		37203D7E2BB092090021EEE2 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37203D7D2BB092090021EEE2 /* CameraView.swift */; };
 		372380A82BB0D63800B74B70 /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372380A72BB0D63800B74B70 /* StartGameView.swift */; };
 		372380AA2BB0F03C00B74B70 /* FinishGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372380A92BB0F03C00B74B70 /* FinishGameView.swift */; };
 		372380AC2BB0F99400B74B70 /* GameSavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372380AB2BB0F99400B74B70 /* GameSavingView.swift */; };
+=======
+		20ADDDD72BAA2C6A006677D2 /* Chess in Frameworks */ = {isa = PBXBuildFile; productRef = 20ADDDD62BAA2C6A006677D2 /* Chess */; };
+		20ADDDD92BAA2D56006677D2 /* ChessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ADDDD82BAA2D56006677D2 /* ChessView.swift */; };
+		20ADDDDB2BAC9759006677D2 /* PlayableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ADDDDA2BAC9759006677D2 /* PlayableView.swift */; };
+		20ADDDDF2BACA60C006677D2 /* LandingLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ADDDDE2BACA60C006677D2 /* LandingLoginView.swift */; };
+		20ADDDE32BAE490A006677D2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ADDDE22BAE490A006677D2 /* ProfileView.swift */; };
+>>>>>>> 7decfaa478f36520ed6ece467a14c86998a01518:PokerSensei/Client/ChessMaster.xcodeproj/project.pbxproj
 		37DD437D2B8F2C5300D59D9E /* NavigationPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */; };
 		37DD437F2B8F302500D59D9E /* ProgressPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD437E2B8F302500D59D9E /* ProgressPage.swift */; };
 		37DD43812B8F942A00D59D9E /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD43802B8F942A00D59D9E /* HomePage.swift */; };
@@ -57,11 +65,18 @@
 		202CD6C12B83A144009FB1C0 /* ChessMasterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessMasterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		202CD6CE2B864574009FB1C0 /* ReplayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayListView.swift; sourceTree = "<group>"; };
 		202CD6D02B8645F3009FB1C0 /* ReplayTableViewOLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayTableViewOLD.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD:ChessMaster/Client/ChessMaster.xcodeproj/project.pbxproj
 		37203D7B2BB091780021EEE2 /* UploadPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotoView.swift; sourceTree = "<group>"; };
 		37203D7D2BB092090021EEE2 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		372380A72BB0D63800B74B70 /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
 		372380A92BB0F03C00B74B70 /* FinishGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishGameView.swift; sourceTree = "<group>"; };
 		372380AB2BB0F99400B74B70 /* GameSavingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSavingView.swift; sourceTree = "<group>"; };
+=======
+		20ADDDD82BAA2D56006677D2 /* ChessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessView.swift; sourceTree = "<group>"; };
+		20ADDDDA2BAC9759006677D2 /* PlayableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayableView.swift; sourceTree = "<group>"; };
+		20ADDDDE2BACA60C006677D2 /* LandingLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingLoginView.swift; sourceTree = "<group>"; };
+		20ADDDE22BAE490A006677D2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+>>>>>>> 7decfaa478f36520ed6ece467a14c86998a01518:PokerSensei/Client/ChessMaster.xcodeproj/project.pbxproj
 		37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPage2.swift; sourceTree = "<group>"; };
 		37DD437E2B8F302500D59D9E /* ProgressPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPage.swift; sourceTree = "<group>"; };
 		37DD43802B8F942A00D59D9E /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
@@ -131,6 +146,9 @@
 				202CD6CE2B864574009FB1C0 /* ReplayListView.swift */,
 				202CD6D02B8645F3009FB1C0 /* ReplayTableViewOLD.swift */,
 				20ADDDD82BAA2D56006677D2 /* ChessView.swift */,
+				20ADDDDA2BAC9759006677D2 /* PlayableView.swift */,
+				20ADDDDE2BACA60C006677D2 /* LandingLoginView.swift */,
+				20ADDDE22BAE490A006677D2 /* ProfileView.swift */,
 				202CD6A82B83A143009FB1C0 /* Assets.xcassets */,
 				202CD6AA2B83A143009FB1C0 /* Preview Content */,
 			);
@@ -299,6 +317,9 @@
 				372380AA2BB0F03C00B74B70 /* FinishGameView.swift in Sources */,
 				372380A82BB0D63800B74B70 /* StartGameView.swift in Sources */,
 				202CD6CF2B864574009FB1C0 /* ReplayListView.swift in Sources */,
+				20ADDDDB2BAC9759006677D2 /* PlayableView.swift in Sources */,
+				20ADDDDF2BACA60C006677D2 /* LandingLoginView.swift in Sources */,
+				20ADDDE32BAE490A006677D2 /* ProfileView.swift in Sources */,
 				37DD437D2B8F2C5300D59D9E /* NavigationPage2.swift in Sources */,
 				372380AC2BB0F99400B74B70 /* GameSavingView.swift in Sources */,
 				37203D7E2BB092090021EEE2 /* CameraView.swift in Sources */,
