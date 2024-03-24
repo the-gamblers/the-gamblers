@@ -206,7 +206,7 @@ struct ProgressPage: View {
                             }
                         }
                         .padding()
-                        .padding(.leading, 50)
+                        .padding(.leading, 40)
 
                     }
                     

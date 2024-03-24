@@ -45,27 +45,28 @@ struct ListButton: ButtonStyle {
 // main view
 struct ReplayListView: View {
     @State private var showTableView = false
-    
+    @State private var showProfile = false // Step 1
+
+    // Step 2
+    func showProfileView() {
+        showProfile.toggle()
+    }
+
     var body: some View {
         NavigationView {
-            ZStack{
-//                Image("background-pic")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-//                    .opacity(0.5)
-                
+            ZStack {
                 Color(red: 238/255, green: 238/255, blue: 238/255)
                     .opacity(0.2)
                     .ignoresSafeArea()
                     .overlay(
                         VStack(alignment: .leading) {
-                            
                             // list of replays
                             List {
                                 ForEach(replay) { replayItem in
                                     HStack {
-                                        Button("Image"){ /*TODO: Add img of game*/ }
+                                        Button("Image") {
+                                            // TODO: Add img of game
+                                        }
                                         VStack(alignment: .leading) {
                                             Text(replayItem.title)
                                                 .font(.title3)
@@ -76,8 +77,6 @@ struct ReplayListView: View {
                                                 .font(.caption)
                                         }
                                         Spacer()
-                                        
-                                        // when replay is pressed, navigate to Table View & see data
                                         NavigationLink(destination: ReplayTableView(replay: replayItem)) {}
                                     }
                                     .padding(.vertical, 8)
@@ -87,25 +86,23 @@ struct ReplayListView: View {
                             .listStyle(.insetGrouped)
                             .scrollContentBackground(.hidden)
                             .shadow(color: Color.gray, radius: 7, x: -0, y: 5)
-                            //.frame(height: 500)
                         })
-                }
-                // title
-                .navigationTitle("REPLAYS")
-                .toolbar {
-                    ToolbarItemGroup(placement: .primaryAction) {
-                        Button {
-                            print("slide up user profile...")
-                        }
-                        label: {
-                            Image(systemName: "person.circle.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 40, height: 40)
-                                .foregroundColor(.black)
-                        }
+            }
+            .navigationTitle("REPLAYS")
+            .toolbar {
+                ToolbarItemGroup(placement: .primaryAction) {
+                    Button(action: {showProfile = true}) { // Step 3
+                        Image(systemName: "person.circle.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(.black)
                     }
                 }
+            }
+            .sheet(isPresented: $showProfile) {
+                ProfileView(isLoggedin: .constant(true))
+            }
         }
     }
 }

@@ -11,7 +11,11 @@ struct ReplayTableView: View {
     let replay: Replays
     let moves = ["1. d4 d6", "2. f4 c5", "3. c3 f5", "4. f3 f6"]
     @State private var currentMoveIndex = 0
-
+    @State private var showProfile = false
+        
+    func showProfileView() {
+            showProfile.toggle()
+        }
 
     var body: some View {
         ZStack{
@@ -55,15 +59,16 @@ struct ReplayTableView: View {
             }
         }
         .navigationBarTitle("\(replay.title) Details", displayMode: .inline)
-        .navigationBarItems(trailing: Button(action: {
-            // Add your action here
-        }) {
+        .navigationBarItems(trailing: Button(action: {showProfile = true}) {
             Image(systemName: "person.circle.fill")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 40, height: 40)
                 .foregroundColor(.black)
         })
+        .sheet(isPresented: $showProfile) {
+            ProfileView(isLoggedin: .constant(true))
+        }
     }
 }
 
