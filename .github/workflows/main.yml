@@ -14,4 +14,4 @@ jobs:
 
     - name: Build iOS app
       run: |
-        xcodebuild clean build -workspace PokerSensei.xcworkspace -scheme 'PokerSensei' -destination 'platform=iOS Simulator,name=iPhone 15'
+        xcodebuild clean build -workspace ChessMaster.xcworkspace -scheme 'ChessMaster' -destination 'platform=iOS Simulator,name=iPhone 15'
