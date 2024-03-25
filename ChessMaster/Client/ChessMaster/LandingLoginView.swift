@@ -36,8 +36,8 @@ struct LandingLoginView: View {
                     .padding(.horizontal)
                 
                 Button(action: {
-                    // Perform login authentication here
-                    // Replace with actual authentication process
+                    // TODO: Perform login authentication here
+                
                     if username == "Jade" && password == "Jade" {
                         isLoginSuccessful = true
                         isLoggedin = true
@@ -121,8 +121,8 @@ struct CreateUserView: View {
             .navigationBarTitle("Create an Account")
         
         Button(action: {
-            // Perform creation authentication here
-            // Replace with actual authentication process
+            // TODO: Perform creation user process here
+             
           
         }) {
             Text("SIGN UP")

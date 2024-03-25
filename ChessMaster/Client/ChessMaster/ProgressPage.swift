@@ -102,7 +102,7 @@ struct ProgressPage: View {
                                             Image(systemName: "person.line.dotted.person.fill")
                                             Text("4")
                                                 .font(.headline)
-                                            Text("Ties")
+                                            Text("Draws")
                                                 .font(.subheadline)
                                         }
                                         .padding(20)

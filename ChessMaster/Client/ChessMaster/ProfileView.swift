@@ -47,7 +47,7 @@ struct ProfileView: View {
                     .padding(.bottom, 20)
                 
                 Button(action: {
-                    // Perform logout action
+                    // TODO: Perform logout action
                     isLoggedin = false
                 }) {
                     Text("Logout")
