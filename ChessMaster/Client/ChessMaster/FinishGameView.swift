@@ -11,6 +11,7 @@ import AVFoundation
 
 struct FinishGameView: View {
     @State private var cameraSession = AVCaptureSession()
+    @State private var navigateToGameSaving = false
 
     var body: some View {
         ZStack {
@@ -21,7 +22,7 @@ struct FinishGameView: View {
                 Spacer()
                 CameraPreviewView(session: cameraSession)
                     .cornerRadius(25)
-                    .aspectRatio(9/16, contentMode: .fit) // Switch back to .fit if .fill is zooming in too much
+                    .aspectRatio(9/16, contentMode: .fit)
                     .overlay(
                         RoundedRectangle(cornerRadius: 25)
                             .stroke(Color.gray, lineWidth: 2)
@@ -36,9 +37,8 @@ struct FinishGameView: View {
 
                 Spacer(minLength: 30)
                 
-                // Adjust the spacing as needed
                 Button("END GAME") {
-                    // Handle the action when "END GAME" is tapped
+                    navigateToGameSaving = true
                 }
                 .font(.headline)
                 .foregroundColor(Color.white)
@@ -49,13 +49,18 @@ struct FinishGameView: View {
                 .padding(.bottom, 50)
                 
                 Spacer()
+                
+                NavigationLink(destination: GameSavingView(), isActive: $navigateToGameSaving) {
+                    EmptyView()
+                }
+                .hidden()
             }
         }
     }
 
     func startCameraSession() {
         DispatchQueue.global(qos: .userInitiated).async {
-            // Setup and start the camera session here
+            // setup and start the camera session 
             guard let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else { return }
             guard let input = try? AVCaptureDeviceInput(device: device) else { return }
 

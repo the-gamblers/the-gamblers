@@ -9,7 +9,7 @@ import SwiftUI
 import AVFoundation
 
 struct StartGameView: View {
-    @State private var isCameraActive = false // State to control camera activation
+    @State private var isCameraActive = false
     @State private var cameraSession = AVCaptureSession()
     @State private var navigateToEndGame = false
 
@@ -25,7 +25,6 @@ struct StartGameView: View {
                     .aspectRatio(4/3, contentMode: .fit)
                     .shadow(radius: 5)
                     .onAppear {
-                        // Start the camera session
                         isCameraActive = true
                         if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
                             startCameraSession()
@@ -37,11 +36,7 @@ struct StartGameView: View {
                             }
                         }
                     }
-                    .onDisappear {
-                        // Stop the camera session when the view disappears
-                        cameraSession.stopRunning()
-                    }
-
+                
                 Spacer()
                 
                 if isCameraActive {
@@ -58,11 +53,10 @@ struct StartGameView: View {
                 Spacer()
                 
                 NavigationLink(destination: FinishGameView(), isActive: $navigateToEndGame) {
-                                        EmptyView()
-                                    }
+                        EmptyView()
+                }
 
                 Button("START GAME") {
-                    // Handle the action when "START GAME" is tapped
                     navigateToEndGame = true
                 }
                 .font(.headline)
@@ -79,7 +73,7 @@ struct StartGameView: View {
 
     func startCameraSession() {
         DispatchQueue.global(qos: .userInitiated).async {
-            // Setup and start the camera session here
+            // setup and start the camera session
             guard let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else { return }
             guard let input = try? AVCaptureDeviceInput(device: device) else { return }
 
@@ -110,7 +104,6 @@ struct CameraPreviewView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UIView, context: Context) {
-        // Update the preview layer's frame in case the layout has changed.
         if let layer = uiView.layer.sublayers?.first as? AVCaptureVideoPreviewLayer {
             layer.frame = uiView.bounds
         }

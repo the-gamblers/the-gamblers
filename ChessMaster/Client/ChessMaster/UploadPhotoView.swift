@@ -51,25 +51,25 @@ struct UploadPhotoView: View {
             .background(RoundedRectangle(cornerRadius: 25).fill(Color(hex: 0x0766AD)))
             .shadow(radius: 5)
             .padding()
-            .disabled(inputImage == nil) // Disable if no image is selected
+            .disabled(inputImage == nil) // disable if no image is selected
+            
             NavigationLink(destination: StartGameView(), isActive: $navigateToCameraReady) {
-                        EmptyView()
-                    }
+                EmptyView()
+            }
             .hidden()
             Spacer()
         }
         .sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
-                ImagePicker(image: self.$inputImage)
+            ImagePicker(image: self.$inputImage)
         }
-            .fullScreenCover(isPresented: $showCamera, onDismiss: loadImage) {
-                CameraView(image: self.$inputImage, cameraIsReady: self.$cameraIsReady)
+        .fullScreenCover(isPresented: $showCamera, onDismiss: loadImage) {
+            CameraView(image: self.$inputImage, cameraIsReady: self.$cameraIsReady)
         }
 //        .navigationBarItems(trailing: EditButton())
         .ignoresSafeArea(edges: .bottom)
     }
 
     func loadImage() {
-        // Perform actions needed after image is selected
     }
     
     func checkCameraAuthorization() {
@@ -88,7 +88,7 @@ struct UploadPhotoView: View {
 
         case .denied, .restricted:
             break
-            // Ideally, show an alert to the user guiding them to enable camera access in Settings
+            // show an alert to the user guiding them to enable camera access in Settings
             
         @unknown default:
             break
