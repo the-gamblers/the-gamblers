@@ -16,6 +16,10 @@
 		202CD6C22B83A144009FB1C0 /* ChessMasterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6C12B83A144009FB1C0 /* ChessMasterUITestsLaunchTests.swift */; };
 		202CD6CF2B864574009FB1C0 /* ReplayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6CE2B864574009FB1C0 /* ReplayListView.swift */; };
 		202CD6D12B8645F3009FB1C0 /* ReplayTableViewOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6D02B8645F3009FB1C0 /* ReplayTableViewOLD.swift */; };
+		37203D7C2BB091780021EEE2 /* UploadPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37203D7B2BB091780021EEE2 /* UploadPhotoView.swift */; };
+		37203D7E2BB092090021EEE2 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37203D7D2BB092090021EEE2 /* CameraView.swift */; };
+		372380A82BB0D63800B74B70 /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372380A72BB0D63800B74B70 /* StartGameView.swift */; };
+		372380AA2BB0F03C00B74B70 /* FinishGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372380A92BB0F03C00B74B70 /* FinishGameView.swift */; };
 		37DD437D2B8F2C5300D59D9E /* NavigationPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */; };
 		37DD437F2B8F302500D59D9E /* ProgressPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD437E2B8F302500D59D9E /* ProgressPage.swift */; };
 		37DD43812B8F942A00D59D9E /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD43802B8F942A00D59D9E /* HomePage.swift */; };
@@ -52,6 +56,10 @@
 		202CD6C12B83A144009FB1C0 /* ChessMasterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessMasterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		202CD6CE2B864574009FB1C0 /* ReplayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayListView.swift; sourceTree = "<group>"; };
 		202CD6D02B8645F3009FB1C0 /* ReplayTableViewOLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayTableViewOLD.swift; sourceTree = "<group>"; };
+		37203D7B2BB091780021EEE2 /* UploadPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotoView.swift; sourceTree = "<group>"; };
+		37203D7D2BB092090021EEE2 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		372380A72BB0D63800B74B70 /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
+		372380A92BB0F03C00B74B70 /* FinishGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishGameView.swift; sourceTree = "<group>"; };
 		37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPage2.swift; sourceTree = "<group>"; };
 		37DD437E2B8F302500D59D9E /* ProgressPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPage.swift; sourceTree = "<group>"; };
 		37DD43802B8F942A00D59D9E /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
@@ -108,8 +116,12 @@
 			children = (
 				202CD6A42B83A13F009FB1C0 /* ChessMasterApp.swift */,
 				202CD6A62B83A13F009FB1C0 /* ContentView.swift */,
+				37203D7D2BB092090021EEE2 /* CameraView.swift */,
 				37DD437E2B8F302500D59D9E /* ProgressPage.swift */,
+				37203D7B2BB091780021EEE2 /* UploadPhotoView.swift */,
 				37DD43822B94E57E00D59D9E /* ReplayTableView.swift */,
+				372380A92BB0F03C00B74B70 /* FinishGameView.swift */,
+				372380A72BB0D63800B74B70 /* StartGameView.swift */,
 				37DD43802B8F942A00D59D9E /* HomePage.swift */,
 				37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */,
 				202CD6CE2B864574009FB1C0 /* ReplayListView.swift */,
@@ -276,8 +288,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				202CD6D12B8645F3009FB1C0 /* ReplayTableViewOLD.swift in Sources */,
+				372380AA2BB0F03C00B74B70 /* FinishGameView.swift in Sources */,
+				372380A82BB0D63800B74B70 /* StartGameView.swift in Sources */,
 				202CD6CF2B864574009FB1C0 /* ReplayListView.swift in Sources */,
 				37DD437D2B8F2C5300D59D9E /* NavigationPage2.swift in Sources */,
+				37203D7E2BB092090021EEE2 /* CameraView.swift in Sources */,
+				37203D7C2BB091780021EEE2 /* UploadPhotoView.swift in Sources */,
 				37DD43832B94E57E00D59D9E /* ReplayTableView.swift in Sources */,
 				202CD6A72B83A13F009FB1C0 /* ContentView.swift in Sources */,
 				202CD6A52B83A13F009FB1C0 /* ChessMasterApp.swift in Sources */,
@@ -371,6 +387,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -428,6 +446,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -446,8 +466,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 9AC9RD6GRV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We would like to access your camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -474,8 +497,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 9AC9RD6GRV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We would like to access your camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

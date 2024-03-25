@@ -7,6 +7,7 @@
 
 
 import SwiftUI
+import UIKit
 
 extension Color {
     init(hex: UInt, alpha: Double = 1) {
@@ -66,7 +67,10 @@ struct HomePage: View {
                         OverallStatisticsContent()
                     }
                     .padding(.bottom, 20)
-                    StartGameContent()
+                    
+                    NavigationLink(destination: UploadPhotoView()) {
+                        StartGameContent()
+                    }
                     
                     Spacer()
                 }
