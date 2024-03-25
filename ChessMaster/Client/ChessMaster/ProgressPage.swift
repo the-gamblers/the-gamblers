@@ -175,23 +175,50 @@ struct ProgressPage: View {
                                         Spacer()
                                     }
                                     .padding(.top, 20)
+                                    
                                 }
-                                .padding(.leading)
+                                //.padding(.leading)
+                                
+                                
+
                             }
+                            .padding()
+                            
+                        
                         }
                         .padding(.horizontal)
                         .padding(.top, 30)
-//                        .padding(.bottom, 20)
-                        
+                                            
+                        NavigationLink(destination: PlayableView()) {
+                            VStack {
+                                HStack {
+                                    Image(systemName: "gamecontroller")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(height: 30)
+                                    Text("Play Against a Bot!")
+                                        .padding()
+                                }
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .clipShape(Capsule())
+                            }
+                        }
+                        .padding()
+                        .padding(.leading, 40)
+
                     }
                     
                     .navigationTitle("PROGRESS")
                 }
                 
+                
            ) }
             
             
         }
+        
     }
 }
 

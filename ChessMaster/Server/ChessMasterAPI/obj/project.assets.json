@@ -1228,19 +1228,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/saddy_khakimova/.nuget/packages/": {}
+    "/Users/jadedavis/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/saddy_khakimova/Documents/CSCE482/the-gamblers/ChessMaster/Server/ChessMasterAPI/ChessMasterAPI.csproj",
+      "projectUniqueName": "/Users/jadedavis/Documents/the-gamblers-main-add/ChessMaster/Server/ChessMasterAPI/ChessMasterAPI.csproj",
       "projectName": "ChessMasterAPI",
-      "projectPath": "/Users/saddy_khakimova/Documents/CSCE482/the-gamblers/ChessMaster/Server/ChessMasterAPI/ChessMasterAPI.csproj",
-      "packagesPath": "/Users/saddy_khakimova/.nuget/packages/",
-      "outputPath": "/Users/saddy_khakimova/Documents/CSCE482/the-gamblers/ChessMaster/Server/ChessMasterAPI/obj/",
+      "projectPath": "/Users/jadedavis/Documents/the-gamblers-main-add/ChessMaster/Server/ChessMasterAPI/ChessMasterAPI.csproj",
+      "packagesPath": "/Users/jadedavis/.nuget/packages/",
+      "outputPath": "/Users/jadedavis/Documents/the-gamblers-main-add/ChessMaster/Server/ChessMasterAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/saddy_khakimova/.nuget/NuGet/NuGet.Config"
+        "/Users/jadedavis/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
