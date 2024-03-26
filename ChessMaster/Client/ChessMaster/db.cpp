@@ -19,7 +19,6 @@ static int print_data(void *data, int num_cols, char **col_vals, char **col_name
     {
         std::cout << col_names[i] << ": " << (col_vals[i] ? col_vals[i] : "NULL") << " ";
     }
-    std::cout << "DONE" << std::endl;
     return 0;
 }
 
@@ -51,7 +50,6 @@ static int return_int(void *data, int num_cols, char **col_vals, char **col_name
     return 0;
 }
 
-// TODO: check that race conditions don't happen here, shouldn't but would be SOL
 // FIXME: format how needed
 static int write_data(void *data, int num_cols, char **col_vals, char **col_names)
 {

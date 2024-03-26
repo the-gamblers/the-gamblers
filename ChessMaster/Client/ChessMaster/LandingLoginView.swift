@@ -37,7 +37,7 @@ struct LandingLoginView: View {
                 
                 Button(action: {
                     // TODO: Perform login authentication here
-                
+                    // FIXME: db.check_user(username, password) ? isLoginSuccessful = true; isLoggedin = true;
                     if username == "Jade" && password == "Jade" {
                         isLoginSuccessful = true
                         isLoggedin = true
@@ -122,6 +122,7 @@ struct CreateUserView: View {
         
         Button(action: {
             // TODO: Perform creation user process here
+            // FIXME: create_user(username, password); check_user(username, password);
              
           
         }) {

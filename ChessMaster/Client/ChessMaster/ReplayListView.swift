@@ -8,6 +8,7 @@
 import SwiftUI
 
 // TODO: match to database schema
+// FIXME: user, date, title, note, uci
 struct Replays: Identifiable {
     let title: String
     let id = UUID()
