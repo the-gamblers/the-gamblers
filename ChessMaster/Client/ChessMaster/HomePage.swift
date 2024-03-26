@@ -7,6 +7,7 @@
 
 
 import SwiftUI
+import UIKit
 
 extension Color {
     init(hex: UInt, alpha: Double = 1) {
@@ -22,6 +23,12 @@ extension Color {
 
 
 struct HomePage: View {
+    @State private var showProfile = false
+       
+    func showProfileView() {
+        showProfile.toggle()
+    }
+    
     var body: some View {
         NavigationView {
             ZStack{
@@ -66,19 +73,25 @@ struct HomePage: View {
                         OverallStatisticsContent()
                     }
                     .padding(.bottom, 20)
-                    StartGameContent()
+                    
+                    NavigationLink(destination: UploadPhotoView()) {
+                        StartGameContent()
+                    }
                     
                     Spacer()
                 }
                 .background(Color("bkColor").ignoresSafeArea())
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: Button(action: {}) {
-                    Image(systemName: "person.circle.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 40, height: 40)
-                        .foregroundColor(.black)
-                })
+                .navigationBarItems(trailing: Button(action: {showProfile = true}) {
+                                    Image(systemName: "person.circle.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 40, height: 40)
+                                        .foregroundColor(.black)
+                                })
+                                .sheet(isPresented: $showProfile) {
+                                                ProfileView(isLoggedin: .constant(true))
+                                }
             }
         }
     }
