@@ -326,6 +326,7 @@ struct ContentView: View {
                     Button("Stockfish"){
                     
                         print("pre url")
+                        print(square())
                         let apiUrl = URL(string: "https://stockfish.online/api/stockfish.php?fen=r2q1rk1/ppp2ppp/3bbn2/3p4/8/1B1P4/PPP2PPP/RNB1QRK1 w - - 5 11&depth=5&mode=bestmove")!
 
                         // Create a URLSession instance
