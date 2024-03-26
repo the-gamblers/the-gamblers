@@ -369,7 +369,8 @@ struct ContentView: View {
                                 if let jsonData = json?["data"] as? String {
                                     // Now you have the string "bestmove b1c3 ponder h7h6" in jsonData
                                     print("Best move: \(jsonData)")
-                                    self.message = jsonData
+                                    let data:String = String(square())
+                                    self.message = data
 
                                 } else {
                                     print("Data key not found in JSON response")
