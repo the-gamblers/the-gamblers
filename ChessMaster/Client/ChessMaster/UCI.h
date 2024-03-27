@@ -2,8 +2,8 @@
 extern "C" {
 #endif
 
+char* UCI_to_FEN(char* UCI);
 
-int square();
 
 #ifdef __cplusplus    
 }

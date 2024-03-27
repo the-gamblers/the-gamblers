@@ -1,8 +1,7 @@
 #include "db.h"
 
-
 int square(){
-    return 4;
+    return 2;
 }
 // #include <iostream>
 // #include <cstring>
