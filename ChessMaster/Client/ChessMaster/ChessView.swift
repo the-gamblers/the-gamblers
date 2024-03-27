@@ -166,6 +166,7 @@ struct ChessView: View {
         VStack {
             TextView()
             SquareTargetedPreviewView()
+            
         }
     }
 }

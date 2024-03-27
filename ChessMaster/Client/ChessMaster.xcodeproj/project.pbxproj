@@ -12,6 +12,7 @@
 		200A11F42BB122C200F28AC0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A11F12BB122C200F28AC0 /* ProfileView.swift */; };
 		200A11F52BB122C200F28AC0 /* LandingLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A11F22BB122C200F28AC0 /* LandingLoginView.swift */; };
 		200A11F62BB122C200F28AC0 /* PlayableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A11F32BB122C200F28AC0 /* PlayableView.swift */; };
+		200A11F82BB45C2F00F28AC0 /* ChessSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A11F72BB45C2F00F28AC0 /* ChessSettingsView.swift */; };
 		202CD6A52B83A13F009FB1C0 /* ChessMasterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6A42B83A13F009FB1C0 /* ChessMasterApp.swift */; };
 		202CD6A72B83A13F009FB1C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6A62B83A13F009FB1C0 /* ContentView.swift */; };
 		202CD6A92B83A143009FB1C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 202CD6A82B83A143009FB1C0 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		200A11F12BB122C200F28AC0 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		200A11F22BB122C200F28AC0 /* LandingLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingLoginView.swift; sourceTree = "<group>"; };
 		200A11F32BB122C200F28AC0 /* PlayableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayableView.swift; sourceTree = "<group>"; };
+		200A11F72BB45C2F00F28AC0 /* ChessSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessSettingsView.swift; sourceTree = "<group>"; };
 		202CD6A12B83A13F009FB1C0 /* ChessMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		202CD6A42B83A13F009FB1C0 /* ChessMasterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessMasterApp.swift; sourceTree = "<group>"; };
 		202CD6A62B83A13F009FB1C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -126,10 +128,10 @@
 		202CD6A32B83A13F009FB1C0 /* ChessMaster */ = {
 			isa = PBXGroup;
 			children = (
+				202CD6A42B83A13F009FB1C0 /* ChessMasterApp.swift */,
 				200A11F22BB122C200F28AC0 /* LandingLoginView.swift */,
 				200A11F32BB122C200F28AC0 /* PlayableView.swift */,
 				200A11F12BB122C200F28AC0 /* ProfileView.swift */,
-				202CD6A42B83A13F009FB1C0 /* ChessMasterApp.swift */,
 				202CD6A62B83A13F009FB1C0 /* ContentView.swift */,
 				37203D7D2BB092090021EEE2 /* CameraView.swift */,
 				37DD437E2B8F302500D59D9E /* ProgressPage.swift */,
@@ -143,6 +145,7 @@
 				202CD6CE2B864574009FB1C0 /* ReplayListView.swift */,
 				200A11EC2BB1225600F28AC0 /* ChessView.swift */,
 				202CD6D02B8645F3009FB1C0 /* ReplayTableViewOLD.swift */,
+				200A11F72BB45C2F00F28AC0 /* ChessSettingsView.swift */,
 				202CD6A82B83A143009FB1C0 /* Assets.xcassets */,
 				202CD6AA2B83A143009FB1C0 /* Preview Content */,
 			);
@@ -318,6 +321,7 @@
 				202CD6CF2B864574009FB1C0 /* ReplayListView.swift in Sources */,
 				37DD437D2B8F2C5300D59D9E /* NavigationPage2.swift in Sources */,
 				372380AC2BB0F99400B74B70 /* GameSavingView.swift in Sources */,
+				200A11F82BB45C2F00F28AC0 /* ChessSettingsView.swift in Sources */,
 				200A11F42BB122C200F28AC0 /* ProfileView.swift in Sources */,
 				37203D7E2BB092090021EEE2 /* CameraView.swift in Sources */,
 				37203D7C2BB091780021EEE2 /* UploadPhotoView.swift in Sources */,

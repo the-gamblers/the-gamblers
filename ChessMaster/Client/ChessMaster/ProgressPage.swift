@@ -158,20 +158,7 @@ struct ProgressPage: View {
                                                     .stroke(Color.gray.opacity(0.5), lineWidth: 1)
                                             )
                                             
-                                            // Favorite Move
-                                        VStack(alignment: .center) {
-                                                Image(systemName: "heart.fill")
-                                                Text("Favorite Move")
-                                                    .font(.headline)
-                                                Text("Queen's Gambit")
-                                                    .font(.subheadline)
-                                            }
-                                            .padding(20)
-                                            .frame(width:155, height: 90)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-                                            )
+                                       
                                         Spacer()
                                     }
                                     .padding(.top, 20)
