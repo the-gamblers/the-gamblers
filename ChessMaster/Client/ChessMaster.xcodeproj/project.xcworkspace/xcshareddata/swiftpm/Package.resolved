@@ -1,6 +1,24 @@
 {
   "pins" : [
     {
+      "identity" : "chesskit-engine",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/chesskit-app/chesskit-engine",
+      "state" : {
+        "revision" : "84b9687a5a2316b984d8079e83493c28ed4d73d5",
+        "version" : "0.2.2"
+      }
+    },
+    {
+      "identity" : "chesskit-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/chesskit-app/chesskit-swift",
+      "state" : {
+        "revision" : "9cbbd3cc6a0df9037a1c72ccdd538d8b32559a25",
+        "version" : "0.3.2"
+      }
+    },
+    {
       "identity" : "swift-chess",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/dpedley/swift-chess.git",

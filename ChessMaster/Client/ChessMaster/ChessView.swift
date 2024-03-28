@@ -1,5 +1,6 @@
 import SwiftUI
 import Chess
+import ChessKit
 
 struct TextView: View {
     var body: some View {
@@ -15,22 +16,18 @@ struct SquareTargetedPreview: View {
     @State private var isPlaying = false // State variable to track play/pause
     
     // TODO: get fen strings from game into an array
-    let fenStrings = [
-            "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR", // start FEN
-            "8/5k2/3p4/1p1Pp2p/pP2Pp1P/P4P1K/8/8 b - - 99 50",
-            "r4r2/1pp4k/p3P2p/2Pp1p2/bP5Q/P3q3/1B1n4/K6R b - - 1 33",
-            "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2",
-            
-        ]
+    var fenStrings: [String] = ["rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",] // starting postion
     
     // TODO: get best move for each fen str and convert to fen to display
-    let bestFenStrings = [
-        "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1",
-            "rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2",
-            "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2",
-            "rnbqkbnr/ppp1pppp/8/3p4/2PP4/8/PP2PPPP/RNBQKBNR b KQkq c3 0 2",
-            
+    var bestFenStrings: [String] = ["rnbqkbnr/ppp1pppp/8/3p4/8/1P6/P1PPPPPP/RNBQKBNR w KQkq d6 0 2"] // best move orig (doesnt mean anything)
+    
+    
+    let uciStrings = ["b2b3 d7d5",
+        "b2b3 d7d5 f2f3 h7h5",
+        "b2b3 d7d5 f2f3 h7h5 d2d3 a7a6 b3b4",
+        "b2b3 d7d5 f2f3 h7h5 d2d3 a7a6 b3b4 d5d4"
         ]
+   
     
     init() {
         // Initialize ChessStore with a sample game
@@ -48,6 +45,22 @@ struct SquareTargetedPreview: View {
         // Set initial properties of the game
         self.store.game.userPaused = true
         self.store.game.setRobotPlaybackSpeed(3.0)
+        
+        // go through UCI & each play
+        for uciString in uciStrings {
+            let uciMoves = getUCIMoves(UCIs: uciString)
+            print("Parsed UCI Moves", uciMoves)
+            let fen = uciToFEN(uciMoves: uciMoves)
+            print("UCI converted to fen",fen)
+            fenStrings.append(fen)
+            print(fenStrings)
+            
+            // get best move
+            let bestMove = getBestMoveForUCI(uciMoves: uciMoves)
+            let modifiedMoves = changeMoveToBestMove(originalMove: uciMoves, bestMove: bestMove)
+            let bestFen = uciToFEN(uciMoves: modifiedMoves)
+            bestFenStrings.append(bestFen)
+        }
         
     }
     
@@ -85,6 +98,7 @@ struct SquareTargetedPreview: View {
             HStack {
                 Button(action: {
                     // Handle back button action
+                    isPlaying = false
                     if fenIndex > 0 {
                         fenIndex -= 1
                         self.store.game.board.resetBoard(FEN:fenStrings[fenIndex])}
@@ -133,6 +147,7 @@ struct SquareTargetedPreview: View {
                 Button(action: {
                     // Handle forward button action
                     //self.store.game.board.resetBoard(FEN: "8/5k2/3p4/1p1Pp2p/pP2Pp1P/P4P1K/8/8 b - - 99 50")
+                    isPlaying = false
                     if fenIndex < fenStrings.count - 1 {
                         fenIndex += 1
                         self.store.game.board.resetBoard(FEN: fenStrings[fenIndex])}
