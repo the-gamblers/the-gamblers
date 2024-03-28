@@ -24,33 +24,28 @@ struct PlayablePreview: View {
     
     var body: some View {
         Color(red: 242/255, green: 242/255, blue: 247/255)
-            //.opacity(0.2)
             .ignoresSafeArea()
             .overlay(
                 VStack {
-            BoardView()
-                .environmentObject(store)
-            ChessSettingsView()
-                .environmentObject(store)
-            }
-            
+                    BoardView()
+                        .environmentObject(store)
+                    ChessSettingsView()
+                        .environmentObject(store)
+                }
+                    
             .padding()
-            )
-        }
+        )}
     }
 
 struct PlayablePreviewView: View {
-    
     var body: some View {
         PlayablePreview()
     }
 }
 
 struct PlayableView: View {
-       
     var body: some View {
         VStack {
-           
             PlayablePreviewView()
         }
     }

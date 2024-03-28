@@ -18,7 +18,6 @@ struct ProfileView: View {
         NavigationView {
             VStack {
                 Spacer()
-                
                 Image(systemName: "person.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -58,13 +57,10 @@ struct ProfileView: View {
                         .cornerRadius(25)
                         .padding(.horizontal)
                 }
-                
                 Spacer()
             }
             .padding()
-            
         }
-        
     }
 }
 

@@ -10,21 +10,25 @@ import Chess
 import ChessKit
 import ChessKitEngine
 
-// 1. get uci string func from db
+/**
+ * Retrieves UCI string from database.
+ *
+ * - Returns: A string representing UCI moves.
+ */
 func getUCIStringFromDB() -> String {
-    // Implementation goes here
+    // TODO: Implementation goes here
     
-    // hardcoded for now
+    // Hardcoded for now
     let uci = "b2b3 d7d5 f2f3 h7h5 d2d3 a7a6 b3b4 d5d4"
     return uci
 }
 
-// 2. getUCImoves(string UCIs) - parse uci
-/* Example usage:
-     let uciString = getUCIStringFromDB()
-     let uciMoves = getUCIMoves(UCIs: uciString)
-     print(uciMoves) // Output: [("e2-e4", "b7-b5"), ("f2-f3", "h7-h5")]
-*/
+/**
+ * Parses UCI string into an array of tuples representing moves.
+ *
+ * - Parameter UCIs: UCI string to parse.
+ * - Returns: An array of tuples representing moves.
+ */
 func getUCIMoves(UCIs: String) -> [(String, String)] {
     var uciMoves: [(String, String)] = []
     
@@ -44,59 +48,58 @@ func getUCIMoves(UCIs: String) -> [(String, String)] {
     return uciMoves
 }
 
-// UCI to FEN
+/**
+ * Converts UCI moves parsed from `getUCIMoves()` into a FEN string.
+ *
+ * - Parameter uciMoves: Array of tuples representing moves.
+ * - Returns: A FEN string.
+ */
 func uciToFEN(uciMoves: [(String, String)]) -> String  {
-    
     // Initial FEN position
     var board = Board(position: .standard)
     
-    // uciMoves [("e2-e4", "b7-b5"), ("f2-f3", "h7-h5")]
-    // uciMove ex: ("e2-e4", "b7-b5")
-    // loop through and move pieces on board
+    // Loop through uci and move pieces on board
     for uciMove in uciMoves {
         let move1 = uciMove.0
         let move2 = uciMove.1
         
-        // Splitting move strings to get starting and ending positions
-        let start1 = String(move1.prefix(2))
-        let end1 = String(move1.suffix(2))
-        let start2 = String(move2.prefix(2))
-        let end2 = String(move2.suffix(2))
-        
-        // setting to Square notation for CHessKit
-        let beginng1 = Square(start1)
-        let stop1 = Square(end1)
-        let beginng2 = Square(start2)
-        let stop2 = Square(end2)
+        // Convert moves to Square notation for ChessKit
+        let start1 = Square(String(move1.prefix(2)))
+        let end1 = Square(String(move1.suffix(2)))
+        let start2 = Square(String(move2.prefix(2)))
+        let end2 = Square(String(move2.suffix(2)))
         
         // Making moves on the board
-        board.move(pieceAt: beginng1, to: stop1)
-        board.move(pieceAt: beginng2, to: stop2)
-        
-        
+        board.move(pieceAt: start1, to: end1)
+        board.move(pieceAt: start2, to: end2)
     }
     
-    // returns FEN conversiion of given uci moves
+    // Return FEN conversion of given UCI moves
     return FENParser.convert(position: board.position)
 }
 
-// - take last move (your move) and get best move for given UCI
+/**
+ * Retrieves the best move for the given UCI moves.
+ *
+ * - Parameter uciMoves: Array of tuples representing moves.
+ * - Returns: A string representing the best move.
+ */
 func getBestMoveForUCI(uciMoves: [(String, String)]) -> String{
-    
-    // ex: original [("e2-e4", "b7-b5"), ("f2-f3", "h7-h5")]
-    
-    // best move logic goes here... for now hardcoded
-    let bestMove = "g2-g3" // instead of f2-f3
-    
+    // TODO: Best move logic goes here... For now hardcoded
+    let bestMove = "g2-g3" // Instead of f2-f3
     return bestMove
 }
 
-// - change original move to best move and keep other player's move the same, ret as UCI
-func changeMoveToBestMove(originalMove: [(String, String)], bestMove: String) ->  [(String, String)] {
-    // Implementation goes here
-    // XX: best move
-    // [("e2-e4", "b7-b5"), ("f2-f3", "h7-h5")]
-    //          ret -> [("e2-e4", "b7-b5"), ("X-X", "h7-h5")]
+/**
+ * Changes the original move to the best move while keeping the other player's move the same.
+ *
+ * - Parameters:
+ *   - originalMove: Array of tuples representing original moves.
+ *   - bestMove: The best move to replace the original move.
+ * - Returns: An array of tuples representing modified moves.
+ */
+func changeMoveToBestMove(originalMove: [(String, String)], bestMove: String) -> [(String, String)] {
+    // TODO: Implementation goes here
     return [("e2e4", "b7b5"), (bestMove, "h7h5")]
 }
 

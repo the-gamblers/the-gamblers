@@ -2,8 +2,8 @@
 //  ChessSettingsView.swift
 //  ChessMaster
 //
-//  Created by Jade Davis on 3/27/24.
-//
+//  Created by Douglas Pedley on 12/14/20.
+//  Edited by Jade Davis on 3/27/24.
 //
 
 import Foundation

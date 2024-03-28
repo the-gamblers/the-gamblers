@@ -18,14 +18,7 @@ struct ProgressPage: View {
 
     var body: some View {
         NavigationView {
-            
             ZStack {
-                // Background image
-                //Image("background-pic")
-                 //   .resizable()
-                   // .scaledToFill()
-                    //.edgesIgnoringSafeArea(.all)
-                    //.opacity(0.5)
                 Color(red: 238/255, green: 238/255, blue: 238/255)
                     .opacity(0.2)
                     .ignoresSafeArea()
@@ -162,16 +155,9 @@ struct ProgressPage: View {
                                         Spacer()
                                     }
                                     .padding(.top, 20)
-                                    
                                 }
-                                //.padding(.leading)
-                                
-                                
-
                             }
                             .padding()
-                            
-                        
                         }
                         .padding(.horizontal)
                         .padding(.top, 30)
@@ -194,18 +180,11 @@ struct ProgressPage: View {
                         }
                         .padding()
                         .padding(.leading, 40)
-
                     }
-                    
                     .navigationTitle("PROGRESS")
                 }
-                
-                
            ) }
-            
-            
         }
-        
     }
 }
 
