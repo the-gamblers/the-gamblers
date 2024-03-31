@@ -2,7 +2,7 @@
 extern "C" {
 #endif
 
-
+const char* test(); 
 int square();
 
 #ifdef __cplusplus    

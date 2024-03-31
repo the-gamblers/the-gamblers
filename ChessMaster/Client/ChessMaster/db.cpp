@@ -1,4 +1,17 @@
 #include "db.h"
+#include <string>
+
+const char* temporary; 
+
+const char* test(){
+    std::string temp = "aienrstmanerismtne";
+    temp += "boog";
+
+    char * final = new char[temp.length() + 1];
+
+    std::strcpy(final, temp.c_str());
+    return final;
+}
 
 int square(){
     return 2;
