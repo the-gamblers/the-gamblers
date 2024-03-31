@@ -13,5 +13,6 @@
 - (void)deleteGamesByUser;
 - (void)deleteGamesById;
 - (void)switchGame:(NSString *)title;
+- (NSString *)testy;
 
 @end

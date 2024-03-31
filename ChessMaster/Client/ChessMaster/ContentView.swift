@@ -368,7 +368,9 @@ struct ContentView: View {
                                 if let jsonData = json?["data"] as? String {
                                     // Now you have the string "bestmove b1c3 ponder h7h6" in jsonData
                                     print("Best move: \(jsonData)")
-                                    let data:String = "something"
+                                    let wrapperItem = dbWrapper(title: "tempTitle:")
+                                    let combined = "temp"// wrapperItem?.retrieveGames(byTitle: "temp").joined(seperator: ", ")
+                                    let data:String = ("this \(combined)")
                                     self.message = data
 
                                 } else {

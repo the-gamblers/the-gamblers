@@ -73,4 +73,8 @@
     self.cppitem->switch_game(std::string([title cStringUsingEncoding:NSUTF8StringEncoding]));
 }
 
+- (NSString *)testy {
+    return [NSString stringWithUTF8String:self.cppitem->testy().c_str()];
+}
+
 @end

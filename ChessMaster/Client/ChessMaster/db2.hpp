@@ -34,6 +34,7 @@ public:
     void delete_games_by_user();
     void delete_games_by_id();
     void switch_game(std::string title);
+    std::string testy();
 
 };
 #endif /* db2_hpp */

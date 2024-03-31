@@ -199,14 +199,18 @@ void Database::switch_game(std::string title)
     curr_game = *id;
 }
 
-int main(int argc, char **argv)
-{
-    Database db = Database("test");
 
-    std::cout << "valid user? " << db.check_user("jim", "halpert") << std::endl;
-
-    db.retrieve_games_by_title("game3");
-    db.switch_game("game4");
-    std::cout << "before edit note" << std::endl;
-    db.edit_note("howdy");
+std::string Database::testy(){
+    return "this is database::testy";
 }
+// int main(int argc, char **argv)
+// {
+//     Database db = Database("test");
+
+//     std::cout << "valid user? " << db.check_user("jim", "halpert") << std::endl;
+
+//     db.retrieve_games_by_title("game3");
+//     db.switch_game("game4");
+//     std::cout << "before edit note" << std::endl;
+//     db.edit_note("howdy");
+// }
