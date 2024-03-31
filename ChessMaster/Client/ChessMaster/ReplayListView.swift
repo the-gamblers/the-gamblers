@@ -10,6 +10,7 @@ import SwiftUI
 // TODO: match to database schema
 // FIXME: user, date, title, note, uci
 struct Replays: Identifiable {
+    var id: ObjectIdentifier
     let title: String
     let date: String
     let notes: String
@@ -18,16 +19,16 @@ struct Replays: Identifiable {
 
 // TODO: need to read from database
 private var replay = [
-    Replays(title: "Game #49", subtitle: "Feb 20, 2024 11:45 PM", notes: "Notes", link: "fjvonevkjwno"),
-    Replays(title: "Game #48", subtitle: "Feb 15, 2024 10:23 PM", notes: "Notes", link: "fjvonevkjwno"),
-    Replays(title: "Game #47", subtitle: "Feb 14, 2024 10:12 PM", notes: "Notes", link: "fjvonevkjwno"),
-    Replays(title: "Game #46", subtitle: "Feb 11, 2024 11:10 PM", notes: "Notes", link: "fjvonevkjwno"),
-    Replays(title: "Game #45", subtitle: "Feb 06, 2024 11:57 PM", notes: "Notes", link: "fjvonevkjwno"),
-    Replays(title: "Game #49", subtitle: "Feb 20, 2024 11:45 PM", notes: "Notes", link: "fjvonevkjwno"),
-    Replays(title: "Game #48", subtitle: "Feb 15, 2024 10:23 PM", notes: "Notes", link: "fjvonevkjwno"),
-    Replays(title: "Game #47", subtitle: "Feb 14, 2024 10:12 PM", notes: "Notes", link: "fjvonevkjwno"),
-    Replays(title: "Game #46", subtitle: "Feb 11, 2024 11:10 PM", notes: "Notes", link: "fjvonevkjwno"),
-    Replays(title: "Game #45", subtitle: "Feb 06, 2024 11:57 PM", notes: "Notes", link: "fjvonevkjwno")
+    Replays(id: <#ObjectIdentifier#>, title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "fjvonevkjwno"),
+    Replays(id: <#ObjectIdentifier#>, title: "Game #48", date: "Feb 15, 2024 10:23 PM", notes: "Notes", uci: "fjvonevkjwno"),
+    Replays(id: <#ObjectIdentifier#>, title: "Game #47", date: "Feb 14, 2024 10:12 PM", notes: "Notes", uci: "fjvonevkjwno"),
+    Replays(id: <#ObjectIdentifier#>, title: "Game #46", date: "Feb 11, 2024 11:10 PM", notes: "Notes", uci: "fjvonevkjwno"),
+    Replays(id: <#ObjectIdentifier#>, title: "Game #45", date: "Feb 06, 2024 11:57 PM", notes: "Notes", uci: "fjvonevkjwno"),
+    Replays(id: <#ObjectIdentifier#>, title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "fjvonevkjwno"),
+    Replays(id: <#ObjectIdentifier#>, title: "Game #48", date: "Feb 15, 2024 10:23 PM", notes: "Notes", uci: "fjvonevkjwno"),
+    Replays(id: <#ObjectIdentifier#>, title: "Game #47", date: "Feb 14, 2024 10:12 PM", notes: "Notes", uci: "fjvonevkjwno"),
+    Replays(id: <#ObjectIdentifier#>, title: "Game #46", date: "Feb 11, 2024 11:10 PM", notes: "Notes", uci: "fjvonevkjwno"),
+    Replays(id: <#ObjectIdentifier#>, title: "Game #45", date: "Feb 06, 2024 11:57 PM", notes: "Notes", uci: "fjvonevkjwno")
 ]
 
 // button style for the list (for later)

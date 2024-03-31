@@ -1,5 +1,6 @@
 #include "db.h"
 #include <iostream>
+#include <string>
 #include <cstring>
 
 struct PW
@@ -53,11 +54,11 @@ static int return_int(void *data, int num_cols, char **col_vals, char **col_name
 // FIXME: format how needed
 static int write_data(void *data, int num_cols, char **col_vals, char **col_names)
 {
-    std::vector<std::string> *buf = static_cast<std::vector<std::string> *>(data);
+    std::vector<std::string> *buf = static_cast<std::vector<const char *> *>(data);
 
     for (int i = 0; i < num_cols; i++)
     {
-        buf->push_back(std::string(col_names[i]) + ": " + (col_vals[i] ? std::string(col_vals[i]) : "NULL") + " ");
+        buf->push_backconst char *(col_names[i]) + ": " + (col_vals[i] ? std::string(col_vals[i]) : "NULL") + " ");
     }
 
     return 0;
@@ -65,7 +66,7 @@ static int write_data(void *data, int num_cols, char **col_vals, char **col_name
 
 // ------------------------------------ DATABASE ------------------------------------
 
-Database::Database(std::string name) : db(nullptr), curr_user(""), curr_game(-1), zErrMsg(nullptr), buffer({})
+Database::Database(const char * name) : db(nullptr), curr_user(""), curr_game(-1), zErrMsg(nullptr), buffer({})
 {
     if (sqlite3_open((name + ".sqlite").c_str(), &db) != SQLITE_OK)
     {
@@ -84,7 +85,7 @@ Database::~Database()
     std::cout << "DATABASE CLOSED!" << std::endl;
 }
 
-void Database::create_user(std::string username, std::string password)
+void Database::create_user(const char * username, const char * password)
 {
     // const char *query = "SELECT * FROM sqlite_master;";
     std::string query = ("INSERT INTO users (username, password) VALUES ('" + username + "', '" + password + "');");
@@ -96,7 +97,7 @@ void Database::create_user(std::string username, std::string password)
 }
 
 // call during login process
-bool Database::check_user(std::string username, std::string password)
+bool Database::check_userconst char * usernameconst char * password)
 {
     PW pw;
     pw.password = password;
@@ -112,7 +113,7 @@ bool Database::check_user(std::string username, std::string password)
     return pw.result;
 }
 
-void Database::change_password(std::string new_password)
+void Database::change_passwordconst char * new_password)
 {
     if (curr_user != "")
     {
@@ -134,7 +135,7 @@ void Database::delete_user()
         std::cerr << "ERROR: " << zErrMsg << std::endl;
 }
 
-void Database::create_game(std::string title = "", std::string notes = "", std::string uci = "")
+void Database::create_gameconst char * title = ""const char * notes = ""const char * uci = "")
 {
     std::string query = ("INSERT INTO games (user, title, notes, uci) VALUES ('" + curr_user + "', '" + title + "', '" + notes + "', '" + uci + "')");
     int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
@@ -143,7 +144,7 @@ void Database::create_game(std::string title = "", std::string notes = "", std::
         std::cerr << "ERROR: " << zErrMsg << std::endl;
 }
 
-void Database::edit_note(std::string note)
+void Database::edit_noteconst char * note)
 {
     std::string query = ("UPDATE games SET notes = '" + note + "' WHERE GAMEID = '" + std::to_string(curr_game) + "'");
     int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
@@ -152,7 +153,7 @@ void Database::edit_note(std::string note)
         std::cerr << "ERROR: " << zErrMsg << std::endl;
 }
 
-std::vector<std::string> Database::retrieve_games_by_title(std::string title)
+std::vector<std::string> Database::retrieve_games_by_titleconst char * title)
 {
     std::string query = ("SELECT * FROM games WHERE title = '" + title + "' AND user = '" + curr_user + "'");
     int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
@@ -187,7 +188,7 @@ void Database::delete_games_by_id()
 }
 
 // switch current game and get new id to grab data from
-void Database::switch_game(std::string title)
+void Database::switch_gameconst char * title)
 {
     int temp = 1;
     int *id = &temp;

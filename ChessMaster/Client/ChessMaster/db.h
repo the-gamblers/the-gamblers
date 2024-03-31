@@ -1,32 +1,35 @@
-#ifndef DB_H_
-#define DB_H_
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include <sqlite3.h>
-#include <string>
-#include <vector>
+//#include <vector>
+//#incude <string>
 
-class Database
-{
-private:
+typedef struct {
     sqlite3 *db;
-    std::string curr_user;
+    char *curr_user;
     int curr_game;
     char *zErrMsg;
-    std::vector<std::string> buffer;
+    char **buffer;
+    int buffer_size;
+} Database;
 
-public:
-    Database(std::string name);
-    ~Database();
-    void create_user(std::string username, std::string password);
-    bool check_user(std::string username, std::string password);
-    void change_password(std::string new_password);
-    void delete_user();
-    void create_game(std::string title, std::string notes, std::string uci);
-    void edit_note(std::string note);
-    std::vector<std::string> retrieve_games_by_title(std::string title);
-    void delete_games_by_user();
-    void delete_games_by_id();
-    void switch_game(std::string title);
-};
+void database_init(Database *db, const char *name);
+void database_destroy(Database *db);
+void database_create_user(Database *db, const char *username, const char *password);
+int database_check_user(Database *db, const char *username, const char *password);
+void database_change_password(Database *db, const char *new_password);
+void database_delete_user(Database *db);
+void database_create_game(Database *db, const char *title, const char *notes, const char *uci);
+void database_edit_note(Database *db, const char *note);
+char **database_retrieve_games_by_title(Database *db, const char *title);
+void database_delete_games_by_user(Database *db);
+void database_delete_games_by_id(Database *db);
+void database_switch_game(Database *db, const char *title);
 
+
+
+#ifdef __cplusplus
+}
 #endif
