@@ -5,5 +5,6 @@
 // #define ChessMaster-Bridging-Header.h
 
 #include "db.h"
+#import "dbWrapper.h"
 
 // #endif

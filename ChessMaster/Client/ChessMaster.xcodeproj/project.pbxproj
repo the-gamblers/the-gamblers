@@ -30,6 +30,8 @@
 		37DD437F2B8F302500D59D9E /* ProgressPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD437E2B8F302500D59D9E /* ProgressPage.swift */; };
 		37DD43812B8F942A00D59D9E /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD43802B8F942A00D59D9E /* HomePage.swift */; };
 		37DD43832B94E57E00D59D9E /* ReplayTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD43822B94E57E00D59D9E /* ReplayTableView.swift */; };
+		E1030E082BB9C83F001189E6 /* db2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1030E062BB9C83F001189E6 /* db2.cpp */; };
+		E1030E0C2BB9CC1F001189E6 /* dbWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = E1030E0B2BB9CC1F001189E6 /* dbWrapper.mm */; };
 		E1F823222BB378A000FECCCD /* db.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1F823212BB378A000FECCCD /* db.cpp */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +78,11 @@
 		37DD437E2B8F302500D59D9E /* ProgressPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPage.swift; sourceTree = "<group>"; };
 		37DD43802B8F942A00D59D9E /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		37DD43822B94E57E00D59D9E /* ReplayTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayTableView.swift; sourceTree = "<group>"; };
+		E1030E062BB9C83F001189E6 /* db2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = db2.cpp; sourceTree = "<group>"; };
+		E1030E072BB9C83F001189E6 /* db2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = db2.hpp; sourceTree = "<group>"; };
+		E1030E092BB9C917001189E6 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		E1030E0A2BB9CBC6001189E6 /* dbWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dbWrapper.h; sourceTree = "<group>"; };
+		E1030E0B2BB9CC1F001189E6 /* dbWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = dbWrapper.mm; sourceTree = "<group>"; };
 		E1F8231F2BB3789500FECCCD /* db.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = db.h; sourceTree = "<group>"; };
 		E1F823202BB3789F00FECCCD /* ChessMaster-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChessMaster-Bridging-Header.h"; sourceTree = "<group>"; };
 		E1F823212BB378A000FECCCD /* db.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = db.cpp; sourceTree = "<group>"; };
@@ -131,7 +138,12 @@
 			isa = PBXGroup;
 			children = (
 				200A11F22BB122C200F28AC0 /* LandingLoginView.swift */,
+				E1030E062BB9C83F001189E6 /* db2.cpp */,
+				E1030E072BB9C83F001189E6 /* db2.hpp */,
+				E1030E0A2BB9CBC6001189E6 /* dbWrapper.h */,
+				E1030E0B2BB9CC1F001189E6 /* dbWrapper.mm */,
 				200A11F32BB122C200F28AC0 /* PlayableView.swift */,
+				E1030E092BB9C917001189E6 /* module.modulemap */,
 				200A11F12BB122C200F28AC0 /* ProfileView.swift */,
 				202CD6A42B83A13F009FB1C0 /* ChessMasterApp.swift */,
 				E1F823212BB378A000FECCCD /* db.cpp */,
@@ -329,11 +341,13 @@
 				200A11F42BB122C200F28AC0 /* ProfileView.swift in Sources */,
 				37203D7E2BB092090021EEE2 /* CameraView.swift in Sources */,
 				37203D7C2BB091780021EEE2 /* UploadPhotoView.swift in Sources */,
+				E1030E082BB9C83F001189E6 /* db2.cpp in Sources */,
 				200A11F62BB122C200F28AC0 /* PlayableView.swift in Sources */,
 				37DD43832B94E57E00D59D9E /* ReplayTableView.swift in Sources */,
 				202CD6A72B83A13F009FB1C0 /* ContentView.swift in Sources */,
 				202CD6A52B83A13F009FB1C0 /* ChessMasterApp.swift in Sources */,
 				E1F823222BB378A000FECCCD /* db.cpp in Sources */,
+				E1030E0C2BB9CC1F001189E6 /* dbWrapper.mm in Sources */,
 				37DD43812B8F942A00D59D9E /* HomePage.swift in Sources */,
 				37DD437F2B8F302500D59D9E /* ProgressPage.swift in Sources */,
 			);
@@ -522,7 +536,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tamu.ChessMaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = ./ChessMaster/db2.hpp;
 				SWIFT_OBJC_BRIDGING_HEADER = "ChessMaster/ChessMaster-Bridging-Header.h";
+				SWIFT_OBJC_INTEROP_MODE = objc;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -556,7 +572,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tamu.ChessMaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = ./ChessMaster/db2.hpp;
 				SWIFT_OBJC_BRIDGING_HEADER = "ChessMaster/ChessMaster-Bridging-Header.h";
+				SWIFT_OBJC_INTEROP_MODE = objc;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
