@@ -326,7 +326,6 @@ struct ContentView: View {
                     Button("Stockfish"){
                     
                         print("pre url")
-                        print(dbWrapper().testy())
                         let apiUrl = URL(string: "https://stockfish.online/api/stockfish.php?fen=r2q1rk1/ppp2ppp/3bbn2/3p4/8/1B1P4/PPP2PPP/RNB1QRK1 w - - 5 11&depth=5&mode=bestmove")!
 
                         // Create a URLSession instance
@@ -369,7 +368,7 @@ struct ContentView: View {
                                 if let jsonData = json?["data"] as? String {
                                     // Now you have the string "bestmove b1c3 ponder h7h6" in jsonData
                                     print("Best move: \(jsonData)")
-                                    let data:String = dbWrapper().testy()
+                                    let data:String = "something"
                                     self.message = data
 
                                 } else {

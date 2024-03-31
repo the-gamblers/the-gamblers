@@ -28,39 +28,49 @@
 }
 
 - (BOOL)checkUser:(NSString *)username password:(NSString *)password {
-    return [_database check_user:username password:password];
+    bool result = self.cppitem->check_user(std::string([username cStringUsingEncoding:NSUTF8StringEncoding]), std::string([password cStringUsingEncoding:NSUTF8StringEncoding]));
+    return result;
 }
 
 - (void)changePassword:(NSString *)newPassword {
-    [_database change_password:newPassword];
+    self.cppitem->change_password(std::string([newPassword cStringUsingEncoding:NSUTF8StringEncoding]));
 }
 
 - (void)deleteUser {
-    [_database delete_user];
+    self.cppitem->delete_user();
 }
 
 - (void)createGameWithTitle:(NSString *)title notes:(NSString *)notes uci:(NSString *)uci {
-    [_database create_game:title notes:notes uci:uci];
+    self.cppitem->create_game(std::string([title cStringUsingEncoding:NSUTF8StringEncoding]), std::string([notes cStringUsingEncoding:NSUTF8StringEncoding]), std::string([uci cStringUsingEncoding:NSUTF8StringEncoding]));
 }
 
 - (void)editNote:(NSString *)note {
-    [_database edit_note:note];
+    self.cppitem->edit_note(std::string([note cStringUsingEncoding:NSUTF8StringEncoding]));
 }
 
 - (NSArray<NSString *> *)retrieveGamesByTitle:(NSString *)title {
-    return [_database retrieve_games_by_title:title];
+    std::vector<std::string> games = self.cppitem->retrieve_games_by_title(std::string([title cStringUsingEncoding:NSUTF8StringEncoding]));
+    
+    NSMutableArray<NSString *> *result = [NSMutableArray arrayWithCapacity:games.size()];
+    for (const auto &game : games) {
+        NSString *gameString = [NSString stringWithUTF8String:game.c_str()];
+        [result addObject:gameString];
+    }
+    
+    return result;
+
 }
 
 - (void)deleteGamesByUser {
-    [_database delete_games_by_user];
+    self.cppitem->delete_games_by_user();
 }
 
 - (void)deleteGamesById {
-    [_database delete_games_by_id];
+    self.cppitem->delete_games_by_id();
 }
 
 - (void)switchGame:(NSString *)title {
-    [_database switch_game:title];
+    self.cppitem->switch_game(std::string([title cStringUsingEncoding:NSUTF8StringEncoding]));
 }
 
 @end

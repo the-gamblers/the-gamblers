@@ -11,7 +11,7 @@ struct LandingLoginView: View {
             VStack {
                 Spacer()
                 
-                Text(dbWrapper().testy())
+                Text("CHESS")
                     .font(.title)
                     .fontWeight(.heavy)
                     .lineLimit(nil)
