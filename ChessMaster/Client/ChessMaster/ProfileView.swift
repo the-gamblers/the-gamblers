@@ -48,6 +48,7 @@ struct ProfileView: View {
                 
                 Button(action: {
                     // TODO: Perform logout action
+                    // FIXME: need cpp functionality here? only thing is set curr_user to ""
                     isLoggedin = false
                 }) {
                     Text("Logout")

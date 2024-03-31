@@ -8,12 +8,12 @@
 import SwiftUI
 
 // TODO: match to database schema
+// FIXME: user, date, title, note, uci
 struct Replays: Identifiable {
     let title: String
-    let id = UUID()
-    let subtitle: String
+    let date: String
     let notes: String
-    let link: String
+    let uci: String
 }
 
 // TODO: need to read from database
