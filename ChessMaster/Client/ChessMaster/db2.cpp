@@ -302,20 +302,20 @@ std::vector<std::string> Database::get_uci()
     return res;
 }
 
-int main(int argc, char **argv)
-{
-    Database db = Database("test");
+// int main(int argc, char **argv)
+// {
+//     Database db = Database("test");
 
-    db.check_user("ansley", "thompson");
+//     db.check_user("ansley", "thompson");
 
-    db.create_game();
+//     db.create_game();
 
-    db.edit_title("game4");
+//     db.edit_title("game4");
 
-    // db.switch_game("game2");
+//     // db.switch_game("game2");
 
-    // std::vector<std::string> uci = db.get_uci();
+//     // std::vector<std::string> uci = db.get_uci();
 
-    // for (auto a : uci)
-    //     std::cout << a << std::endl;
-}
+//     // for (auto a : uci)
+//     //     std::cout << a << std::endl;
+// }
