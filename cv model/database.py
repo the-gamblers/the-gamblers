@@ -7,12 +7,13 @@ import time
 conn = sqlite3.connect("../ChessMaster/Client/ChessMaster/test.sqlite")
 cursor = conn.cursor()
 
+# cursor.execute("DELETE FROM games;")
+# conn.commit()
+
 gameid = -1
 
-
-def start_game():
-    conn = sqlite3.connect("../ChessMaster/Client/ChessMaster/test.sqlite")
-    cursor = conn.cursor()
+# cursor.execute("DELETE FROM games;")
+# conn.commit()
 
 
 def end_game():
@@ -26,7 +27,7 @@ conn.commit()
 
 def get_game():
     cursor.execute(
-        "INSERT INTO games (user, title, uci, fens) VALUES ('ansley', 'ansley10', '', '')"
+        "INSERT INTO games (user, title, uci, fens) VALUES ('ansley', 'ansley10ABCs', '', '')"
     )
     cursor.execute("SELECT GAMEID FROM games WHERE fens = '' AND uci = ''")
 
@@ -35,28 +36,16 @@ def get_game():
     gameid = cursor.fetchone()[0]
 
 
-cursor.execute("ALTER TABLE games ADD COLUMN time TEXT")
-conn.commit()
-
-# end_game()
-
-# gameid = get_game()
-# print(gameid)
-
-
 def write_fen(fen):
-    print("writing fen to database at: ", gameid)
     cursor.execute(
         "UPDATE games SET fens = '" + fen + "' WHERE GAMEID = " + str(gameid)
     )
-    print("wrote to database")
     conn.commit()
 
 
 def write_uci(uci):
-    print("writing uci to database at: ", gameid)
+    print("writing to db: " + uci)
     cursor.execute("UPDATE games SET uci = '" + uci + "' WHERE GAMEID = " + str(gameid))
-    print("wrote to database")
     conn.commit()
 
 

@@ -10,12 +10,11 @@ from game import Game
 from board_basics import Board_basics
 from helper import perspective_transform
 from videocapture import Video_capture_thread
-from database import start_game, end_game, write_time
+from database import end_game, write_time
 
 
-start_game()
 start_time = time.time()
-start_delay = 5  # seconds
+start_delay = 1  # seconds
 cap_index = 0
 cap_api = cv2.CAP_ANY
 token = ""
