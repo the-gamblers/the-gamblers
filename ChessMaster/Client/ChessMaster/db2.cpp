@@ -146,9 +146,9 @@ void Database::create_game(std::string title = "", std::string notes = "", std::
     if (title.empty())
     {
         std::time_t now = std::time(nullptr);
-        char buffer[80];
-        std::strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", std::localtime(&now));
-        std::string currentDateTime(buffer);
+        char buff[80];
+        std::strftime(buff, sizeof(buff), "%Y-%m-%d %H:%M:%S", std::localtime(&now));
+        std::string currentDateTime(buff);
         title = currentDateTime;
     }
     std::string query = ("INSERT INTO games (user, title, notes, uci, fens) VALUES ('" + curr_user + "', '" + title + "', '" + notes + "', '" + uci + "', '" + fen + "')");
@@ -182,6 +182,7 @@ void Database::edit_note(std::string note)
 
 std::vector<std::string> Database::retrieve_games_by_title(std::string title)
 {
+    buffer = {};
     std::string query = ("SELECT * FROM games WHERE title = '" + title + "' AND user = '" + curr_user + "'");
     int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
 
@@ -195,6 +196,7 @@ std::vector<std::string> Database::retrieve_games_by_title(std::string title)
 
 std::vector<std::string> Database::retrieve_games_by_user()
 {
+    buffer = {};
     std::string query = ("SELECT * FROM games WHERE user = '" + curr_user + "'");
     int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
 
@@ -239,7 +241,8 @@ void Database::switch_game(std::string title)
 
 void Database::edit_fen(std::string fen)
 {
-    std::string query = ("UPDATE games SET fens = '" + fen + "' WHERE GAMEID = '" + std::to_string(curr_game) + "'");
+    buffer = {};
+    std::string query = ("UPDATE games SET fen = '" + fen + "' WHERE GAMEID = '" + std::to_string(curr_game) + "'");
     int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
 
     if (rc != SQLITE_OK)
@@ -248,9 +251,12 @@ void Database::edit_fen(std::string fen)
     }
 }
 
-std::vector<std::string> Database::get_fen()
+std::vector<std::string> Database::get_fen(int gameid = -1)
 {
-    std::string query = ("SELECT fens FROM games WHERE GAMEID = '" + std::to_string(curr_game) + "'");
+    buffer = {};
+    gameid = gameid == -1 ? curr_game : gameid;
+    std::string query = ("SELECT fens FROM games WHERE GAMEID = " + std::to_string(gameid));
+
     int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
 
     if (rc != SQLITE_OK)
@@ -276,9 +282,11 @@ std::vector<std::string> Database::get_fen()
     return res;
 }
 
-std::vector<std::string> Database::get_uci()
+std::vector<std::string> Database::get_uci(int gameid = -1)
 {
-    std::string query = ("SELECT uci FROM games WHERE GAMEID = '" + std::to_string(curr_game) + "'");
+    buffer = {};
+    gameid = gameid == -1 ? curr_game : gameid;
+    std::string query = ("SELECT uci FROM games WHERE GAMEID = " + std::to_string(gameid));
     int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
 
     if (rc != SQLITE_OK)
@@ -297,6 +305,7 @@ std::vector<std::string> Database::get_uci()
     {
         std::smatch match = *i;
         res.push_back(match[0].str());
+        std::cout << match[0].str() << std::endl;
     }
 
     return res;
@@ -308,14 +317,22 @@ std::vector<std::string> Database::get_uci()
 
 //     db.check_user("ansley", "thompson");
 
-//     db.create_game();
+//     // db.create_game();
 
-//     db.edit_title("game4");
+//     // db.edit_title("game4");
 
-//     // db.switch_game("game2");
+//     db.switch_game("game2");
 
-//     // std::vector<std::string> uci = db.get_uci();
+//     std::vector<std::string>
+//         uci = db.get_uci();
 
 //     // for (auto a : uci)
+//     //     std::cout << a << std::endl;
+
+//     std::cout << "----------------------------------" << std::endl;
+
+//     std::vector<std::string> uci2 = db.get_uci(5);
+
+//     // for (auto a : uci2)
 //     //     std::cout << a << std::endl;
 // }

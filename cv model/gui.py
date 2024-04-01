@@ -169,8 +169,6 @@ c = tk.Checkbutton(
 )
 c.grid(row=3, column=0, sticky="W", columnspan=1)
 
-c1 = tk.Checkbutton(window, text="Make moves of opponent too.", variable=make_opponent)
-c1.grid(row=4, column=0, sticky="W", columnspan=1)
 
 values = ["Do not delay game start.", "1 second delayed game start."] + [
     str(i) + " seconds delayed game start." for i in range(2, 6)

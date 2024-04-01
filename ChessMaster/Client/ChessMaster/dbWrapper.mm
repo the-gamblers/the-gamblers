@@ -93,8 +93,8 @@
     self.cppitem->edit_fen(std::string([fen cStringUsingEncoding:NSUTF8StringEncoding]));
 }
 
-- (NSArray<NSString *> *)getFen {
-    std::vector<std::string> fens = self.cppitem->get_fen();
+- (NSArray<NSString *> *)getFen (NSInteger)gameid{
+    std::vector<std::string> fens = self.cppitem->get_fen:gameid;
     
     NSMutableArray<NSString *> *result = [NSMutableArray arrayWithCapacity:fens.size()];
     for (const auto &fen : fens) {
@@ -105,8 +105,8 @@
     return result;
 }
 
-- (NSArray<NSString *> *)getUci {
-    std::vector<std::string> Ucis = self.cppitem->get_uci();
+- (NSArray<NSString *> *)getUci (NSInteger)gameid{
+    std::vector<std::string> Ucis = self.cppitem->get_uci:gameid;
     
     NSMutableArray<NSString *> *result = [NSMutableArray arrayWithCapacity:Ucis.size()];
     for (const auto &uci : Ucis) {

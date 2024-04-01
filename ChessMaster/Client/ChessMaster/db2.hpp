@@ -38,7 +38,7 @@ public:
     void delete_games_by_id();
     void switch_game(std::string title);
     void edit_fen(std::string fen);
-    std::vector<std::string> get_fen();
-    std::vector<std::string> get_uci();
+    std::vector<std::string> get_fen(int gameid);
+    std::vector<std::string> get_uci(int gameid);
 };
 #endif /* db2_hpp */
