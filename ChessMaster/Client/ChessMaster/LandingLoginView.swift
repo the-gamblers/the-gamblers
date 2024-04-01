@@ -38,6 +38,9 @@ struct LandingLoginView: View {
                 Button(action: {
                     // TODO: Perform login authentication here
                 
+                    let wrapperItem = dbWrapper(title: "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/ChessMaster/Client/ChessMaster/test")
+                    wrapperItem?.createUser("Roee",password: "Roee")
+                    print(wrapperItem?.testy())
                     if username == "Jade" && password == "Jade" {
                         isLoginSuccessful = true
                         isLoggedin = true

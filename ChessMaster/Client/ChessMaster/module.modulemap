@@ -1,0 +1,4 @@
+module CxxTest{
+    header "db2.hpp"
+    requires cplusplus
+}
