@@ -13,9 +13,6 @@ from database import get_game, write_fen, write_uci
 # from lichess_commentator import Lichess_commentator
 
 i = 0
-
-uci = ""
-fen = ""
 get_game()
 
 
@@ -26,6 +23,8 @@ class Game:
         start_delay,
         token,
         roi_mask,
+        uci,
+        fen,
     ):
         self.board_basics = board_basics
         self.executed_moves = []
@@ -37,6 +36,8 @@ class Game:
         self.features = None
         self.labels = None
         self.save_file = "hog.bin"
+        self.uci = ' '
+        self.fen = ' '
 
         if token:
             commentator_thread = Lichess_commentator()
@@ -338,11 +339,7 @@ class Game:
         print("FEN:" + self.board.fen())
 
         # TODO: check that this runs when it should (valid moves)
-        if success:
-            uci += valid_move_string
-            fen += self.board.fen() + ","
-            write_uci(uci)
-            write_fen(fen)
+            
 
         cv2.imwrite("moves/" + valid_move_string + ".jpg", previous_frame)
         if not success:
@@ -356,6 +353,23 @@ class Game:
             else:
                 print(self.board.fen())
                 return False
+        else:
+            if self.uci == ' ':
+                self.uci = valid_move_string
+            else:
+                self.uci += valid_move_string
+            
+            if self.fen == ' ':
+                self.fen = self.board.fen() + ','
+            else:
+                self.fen += self.board.fen() + ','
+
+
+            self.uci += valid_move_string
+            self.fen += self.board.fen() + ","
+            write_uci(self.uci)
+            write_fen(self.fen)
+            print("-- wrote to db -- \n" + self.uci + " : " + self.fen + "\n-----------")
 
         valid_move_UCI = chess.Move.from_uci(valid_move_string)
 

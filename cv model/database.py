@@ -1,4 +1,5 @@
 import sqlite3
+import datetime
 
 # from stockfish import Stockfish
 
@@ -20,7 +21,7 @@ def end_game():
 
 def get_game():
     cursor.execute(
-        "INSERT INTO games (user, title, uci, fens) VALUES ('ansley', 'ansley4', '', '')"
+        "INSERT INTO games (user, title, uci, fens) VALUES ('ansley', 'ansley10', '', '')"
     )
     cursor.execute("SELECT GAMEID FROM games WHERE fens = '' AND uci = ''")
 
@@ -29,19 +30,26 @@ def get_game():
     gameid = cursor.fetchone()[0]
 
 
+cursor.execute("DELETE FROM games;")
+end_game()
+
 # gameid = get_game()
 # print(gameid)
 
 
 def write_fen(fen):
+    print("writing fen to database at: ", gameid)
     cursor.execute(
         "UPDATE games SET fens = '" + fen + "' WHERE GAMEID = " + str(gameid)
     )
+    print("wrote to database")
     conn.commit()
 
 
 def write_uci(uci):
+    print("writing uci to database at: ", gameid)
     cursor.execute("UPDATE games SET uci = '" + uci + "' WHERE GAMEID = " + str(gameid))
+    print("wrote to database")
     conn.commit()
 
 
