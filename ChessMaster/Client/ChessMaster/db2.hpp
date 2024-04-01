@@ -32,6 +32,7 @@ public:
     void create_game(std::string title, std::string notes, std::string uci);
     void edit_note(std::string note);
     std::vector<std::string> retrieve_games_by_title(std::string title);
+    std::vector<std::string> retrieve_games_by_user();
     void delete_games_by_user();
     void delete_games_by_id();
     void switch_game(std::string title);

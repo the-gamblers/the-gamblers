@@ -58,7 +58,7 @@ static int write_data(void *data, int num_cols, char **col_vals, char **col_name
 
     for (int i = 0; i < num_cols; i++)
     {
-        buf->push_back(std::string(col_names[i]) + ": " + (col_vals[i] ? std::string(col_vals[i]) : "NULL") + " ");
+        buf->push_back(col_vals[i] ? std::string(col_vals[i]) : "NULL");
     }
 
     return 0;
@@ -167,6 +167,19 @@ std::vector<std::string> Database::retrieve_games_by_title(std::string title)
     return buffer;
 }
 
+std::vector<std::string> Database::retrieve_games_by_user()
+{
+    std::string query = ("SELECT * FROM games WHERE user = '" + curr_user + "'");
+    int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
+
+    if (rc != SQLITE_OK)
+    {
+        std::cerr << "ERROR: " << zErrMsg << std::endl;
+        return {};
+    }
+    return buffer;
+}
+
 void Database::delete_games_by_user()
 {
     std::string query = ("DELETE FROM games WHERE user = '" + curr_user + "'");
@@ -251,7 +264,7 @@ int main(int argc, char **argv)
     std::cout << "valid user? " << db.check_user("ansley", "thompson") << std::endl;
 
     db.switch_game("game4");
-    std::vector<std::string> fens = db.get_fen();
+    std::vector<std::string> fens = db.retrieve_games_by_user();
     for (auto a : fens)
         std::cout << a << std::endl;
 }
