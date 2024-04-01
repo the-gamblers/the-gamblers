@@ -25,7 +25,8 @@ def get_game():
     cursor.execute("SELECT GAMEID FROM games WHERE fens = '' AND uci = ''")
 
     conn.commit()
-    return cursor.fetchone()[0]
+    global gameid
+    gameid = cursor.fetchone()[0]
 
 
 # gameid = get_game()
