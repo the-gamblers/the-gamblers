@@ -29,7 +29,8 @@ public:
     bool check_user(std::string username, std::string password);
     void change_password(std::string new_password);
     void delete_user();
-    void create_game(std::string title, std::string notes, std::string uci);
+    void create_game(std::string title, std::string notes, std::string uci, std::string fen);
+    void edit_title(std::string title);
     void edit_note(std::string note);
     std::vector<std::string> retrieve_games_by_title(std::string title);
     std::vector<std::string> retrieve_games_by_user();
@@ -38,6 +39,6 @@ public:
     void switch_game(std::string title);
     void edit_fen(std::string fen);
     std::vector<std::string> get_fen();
-    std::string testy();
+    std::vector<std::string> get_uci();
 };
 #endif /* db2_hpp */
