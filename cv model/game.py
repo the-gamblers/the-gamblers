@@ -10,7 +10,7 @@ from helper import detect_state, get_square_image
 from commentator import Commentator_thread
 from database import get_game, write_fen, write_uci
 
-from lichess_commentator import Lichess_commentator
+# from lichess_commentator import Lichess_commentator
 
 i = 0
 
@@ -38,24 +38,24 @@ class Game:
         self.labels = None
         self.save_file = "hog.bin"
 
-        # if token:
-        #     commentator_thread = Lichess_commentator()
-        #     commentator_thread.daemon = True
-        #     # commentator_thread.stream = (
-        #     #     self.internet_game.client.board.stream_game_state(
-        #     #         self.internet_game.game_id
-        #     #     )
-        #     # )
-        #     # commentator_thread.game_state.we_play_white = (
-        #     #     self.internet_game.we_play_white
-        #     # )
-        #     commentator_thread.game_state.game = self
-        #     self.commentator = commentator_thread
-        # else:
-        #     commentator_thread = Commentator_thread()
-        #     commentator_thread.daemon = True
-        #     commentator_thread.game_state.game_thread = self
-        #     self.commentator = commentator_thread
+        if token:
+            commentator_thread = Lichess_commentator()
+            commentator_thread.daemon = True
+            commentator_thread.stream = (
+                self.internet_game.client.board.stream_game_state(
+                    self.internet_game.game_id
+                )
+            )
+            commentator_thread.game_state.we_play_white = (
+                self.internet_game.we_play_white
+            )
+            commentator_thread.game_state.game = self
+            self.commentator = commentator_thread
+        else:
+            commentator_thread = Commentator_thread()
+            commentator_thread.daemon = True
+            commentator_thread.game_state.game_thread = self
+            self.commentator = commentator_thread
 
     def initialize_hog(self, frame):
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
