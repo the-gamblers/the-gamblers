@@ -13,14 +13,15 @@
 #include <sqlite3.h>
 #include <vector>
 
-
-class Database {
+class Database
+{
 private:
     sqlite3 *db;
     std::string curr_user;
     int curr_game;
     char *zErrMsg;
     std::vector<std::string> buffer;
+
 public:
     Database(std::string name);
     ~Database();
@@ -34,7 +35,8 @@ public:
     void delete_games_by_user();
     void delete_games_by_id();
     void switch_game(std::string title);
+    void edit_fen(std::string fen);
+    std::vector<std::string> get_fen();
     std::string testy();
-
 };
 #endif /* db2_hpp */

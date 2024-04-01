@@ -1,6 +1,8 @@
 #include "db2.hpp"
 #include <iostream>
 #include <cstring>
+#include <regex>
+#include <iterator>
 
 struct PW
 {
@@ -50,7 +52,6 @@ static int return_int(void *data, int num_cols, char **col_vals, char **col_name
     return 0;
 }
 
-// FIXME: format how needed
 static int write_data(void *data, int num_cols, char **col_vals, char **col_names)
 {
     std::vector<std::string> *buf = static_cast<std::vector<std::string> *>(data);
@@ -75,7 +76,7 @@ Database::Database(std::string name) : db(nullptr), curr_user(""), curr_game(-1)
     }
 
     // sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS users(username TEXT UNIQUE NOT NULL, password TEXT NOT NULL, primary key (username));", NULL, 0, NULL);
-    // sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS games(GAMEID INTEGER, user TEXT NOT NULL, date DATETIME DEFAULT CURRENT_DATE, title TEXT, notes TEXT, uci TEXT, primary key (GAMEID), FOREIGN KEY (user) REFERENCES users(username));", NULL, 0, NULL);
+    sqlite3_exec(db, "ALTER TABLE games ADD COLUMN fens TEXT", NULL, 0, &zErrMsg);
     std::cout << "DATABASE OPEN!" << std::endl;
 }
 
@@ -163,9 +164,6 @@ std::vector<std::string> Database::retrieve_games_by_title(std::string title)
         std::cerr << "ERROR: " << zErrMsg << std::endl;
         return {};
     }
-
-    for (auto a : buffer)
-        std::cout << a << std::endl;
     return buffer;
 }
 
@@ -200,19 +198,60 @@ void Database::switch_game(std::string title)
     curr_game = *id;
 }
 
+void Database::edit_fen(std::string fen)
+{
+    std::string query = ("UPDATE games SET fens = '" + fen + "' WHERE GAMEID = '" + std::to_string(curr_game) + "'");
+    int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
 
-std::string Database::testy(){
+    if (rc != SQLITE_OK)
+    {
+        std::cerr << "ERROR: " << zErrMsg << std::endl;
+    }
+}
+
+std::vector<std::string> Database::get_fen()
+{
+    std::string query = ("SELECT fens FROM games WHERE GAMEID = '" + std::to_string(curr_game) + "'");
+    int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
+
+    if (rc != SQLITE_OK)
+    {
+        std::cerr << "ERROR: " << zErrMsg << std::endl;
+        return {};
+    }
+
+    // replace column title, only get fen between commas
+    std::string fenstr = buffer.at(0);
+    std::regex repl("^fens: ");
+    fenstr = std::regex_replace(fenstr, repl, "");
+
+    std::vector<std::string> res = {};
+    std::regex pattern("(.*?),");
+    auto bufStart = std::sregex_iterator(fenstr.begin(), fenstr.end(), pattern);
+    auto bufEnd = std::sregex_iterator();
+
+    for (std::sregex_iterator i = bufStart; i != bufEnd; i++)
+    {
+        std::smatch match = *i;
+        res.push_back(match[1].str());
+    }
+
+    return res;
+}
+
+std::string Database::testy()
+{
     return "Testy is running";
 }
 
-// int main(int argc, char **argv)
-// {
-//     Database db = Database("test");
+int main(int argc, char **argv)
+{
+    Database db = Database("test");
 
-//     std::cout << "valid user? " << db.check_user("jim", "halpert") << std::endl;
+    std::cout << "valid user? " << db.check_user("ansley", "thompson") << std::endl;
 
-//     db.retrieve_games_by_title("game3");
-//     db.switch_game("game4");
-//     std::cout << "before edit note" << std::endl;
-//     db.edit_note("howdy");
-// }
+    db.switch_game("game4");
+    std::vector<std::string> fens = db.get_fen();
+    for (auto a : fens)
+        std::cout << a << std::endl;
+}
