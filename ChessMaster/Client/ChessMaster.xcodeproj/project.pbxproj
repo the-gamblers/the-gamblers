@@ -32,6 +32,7 @@
 		37DD43832B94E57E00D59D9E /* ReplayTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD43822B94E57E00D59D9E /* ReplayTableView.swift */; };
 		E1030E082BB9C83F001189E6 /* db2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1030E062BB9C83F001189E6 /* db2.cpp */; };
 		E1030E0C2BB9CC1F001189E6 /* dbWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = E1030E0B2BB9CC1F001189E6 /* dbWrapper.mm */; };
+		E1030E0E2BBA44BA001189E6 /* test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E1030E0D2BBA44BA001189E6 /* test.sqlite */; };
 		E1F823222BB378A000FECCCD /* db.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1F823212BB378A000FECCCD /* db.cpp */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		E1030E092BB9C917001189E6 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		E1030E0A2BB9CBC6001189E6 /* dbWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dbWrapper.h; sourceTree = "<group>"; };
 		E1030E0B2BB9CC1F001189E6 /* dbWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = dbWrapper.mm; sourceTree = "<group>"; };
+		E1030E0D2BBA44BA001189E6 /* test.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.sqlite; sourceTree = "<group>"; };
 		E1F8231F2BB3789500FECCCD /* db.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = db.h; sourceTree = "<group>"; };
 		E1F823202BB3789F00FECCCD /* ChessMaster-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChessMaster-Bridging-Header.h"; sourceTree = "<group>"; };
 		E1F823212BB378A000FECCCD /* db.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = db.cpp; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				37203D7D2BB092090021EEE2 /* CameraView.swift */,
 				E1F8231F2BB3789500FECCCD /* db.h */,
 				37DD437E2B8F302500D59D9E /* ProgressPage.swift */,
+				E1030E0D2BBA44BA001189E6 /* test.sqlite */,
 				37203D7B2BB091780021EEE2 /* UploadPhotoView.swift */,
 				37DD43822B94E57E00D59D9E /* ReplayTableView.swift */,
 				372380A92BB0F03C00B74B70 /* FinishGameView.swift */,
@@ -305,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				202CD6AC2B83A143009FB1C0 /* Preview Assets.xcassets in Resources */,
+				E1030E0E2BBA44BA001189E6 /* test.sqlite in Resources */,
 				202CD6A92B83A143009FB1C0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
