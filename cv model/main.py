@@ -10,10 +10,11 @@ from game import Game
 from board_basics import Board_basics
 from helper import perspective_transform
 from videocapture import Video_capture_thread
-from database import start_game, end_game
+from database import start_game, end_game, write_time
 
 
 start_game()
+start_time = time.time()
 start_delay = 5  # seconds
 cap_index = 0
 cap_api = cv2.CAP_ANY
@@ -46,19 +47,12 @@ corners, side_view_compensation, rotation_count, roi_mask = pickle.load(infile)
 infile.close()
 board_basics = Board_basics(side_view_compensation, rotation_count)
 
-game = Game(
-    board_basics,
-    start_delay,
-    token,
-    roi_mask,
-    ' ',
-    ' '
-)
+game = Game(board_basics, start_delay, token, roi_mask, " ", " ")
 
 video_capture_thread = Video_capture_thread()
 video_capture_thread.daemon = True
-# video_capture_thread.capture = cv2.VideoCapture(cap_index, cap_api)
-video_capture_thread.capture = cv2.VideoCapture(1, cap_api)
+video_capture_thread.capture = cv2.VideoCapture(cap_index, cap_api)
+# video_capture_thread.capture = cv2.VideoCapture(1, cap_api)
 video_capture_thread.start()
 
 pts1 = np.float32(
@@ -172,5 +166,7 @@ while not game.board.is_game_over() and not game.commentator.game_state.resign_o
         move_fgbg.apply(frame)
         previous_frame_queue.append(frame)
 end_game()
+end_time = time.time()
+write_time(start_time, end_time)
 cv2.destroyAllWindows()
 time.sleep(2)
