@@ -52,7 +52,8 @@ game = Game(
 
 video_capture_thread = Video_capture_thread()
 video_capture_thread.daemon = True
-video_capture_thread.capture = cv2.VideoCapture(cap_index, cap_api)
+# video_capture_thread.capture = cv2.VideoCapture(cap_index, cap_api)
+video_capture_thread.capture = cv2.VideoCapture(1, cap_api)
 video_capture_thread.start()
 
 pts1 = np.float32(
