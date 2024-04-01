@@ -8,7 +8,6 @@
 import SwiftUI
 
 // TODO: match to database schema
-// FIXME: user, date, title, note, uci
 struct Replays: Identifiable {
     let title: String
     let date: String
@@ -17,6 +16,7 @@ struct Replays: Identifiable {
 }
 
 // TODO: need to read from database
+// FIXME: let all_games = retrieve_games_by_user
 private var replay = [
     Replays(title: "Game #49", subtitle: "Feb 20, 2024 11:45 PM", notes: "Notes", link: "fjvonevkjwno"),
     Replays(title: "Game #48", subtitle: "Feb 15, 2024 10:23 PM", notes: "Notes", link: "fjvonevkjwno"),

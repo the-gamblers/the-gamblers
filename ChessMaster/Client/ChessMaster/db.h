@@ -12,6 +12,7 @@ private:
     std::string curr_user;
     int curr_game;
     char *zErrMsg;
+    // std::vector<std::list<std::string>> buffer;
     std::vector<std::string> buffer;
 
 public:
@@ -24,7 +25,8 @@ public:
     void create_game(std::string title, std::string notes, std::string uci);
     void edit_note(std::string note);
     std::vector<std::string> retrieve_games_by_title(std::string title);
-    void delete_games_by_user();
+    std::vector<std::string> retrieve_games_by_user(std::string title);
+    delete_games_by_user();
     void delete_games_by_id();
     void switch_game(std::string title);
 };

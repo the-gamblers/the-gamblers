@@ -50,13 +50,18 @@ static int return_int(void *data, int num_cols, char **col_vals, char **col_name
     return 0;
 }
 
-// FIXME: format how needed
+// FIXME: makes more sense to be vect<list[string]> bc the list will be static
 static int write_data(void *data, int num_cols, char **col_vals, char **col_names)
 {
+    // std::vector<std::list<std::string>> *buf = static_cast<std::vector<std::list<std::string>> *>(data);
     std::vector<std::string> *buf = static_cast<std::vector<std::string> *>(data);
 
     for (int i = 0; i < num_cols; i++)
     {
+
+        // std::list<std::string> temp = {col_vals[i]};
+
+        // buf->push_back(temp);
         buf->push_back(std::string(col_names[i]) + ": " + (col_vals[i] ? std::string(col_vals[i]) : "NULL") + " ");
     }
 
@@ -155,6 +160,22 @@ void Database::edit_note(std::string note)
 std::vector<std::string> Database::retrieve_games_by_title(std::string title)
 {
     std::string query = ("SELECT * FROM games WHERE title = '" + title + "' AND user = '" + curr_user + "'");
+    int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
+
+    if (rc != SQLITE_OK)
+    {
+        std::cerr << "ERROR: " << zErrMsg << std::endl;
+        return {};
+    }
+
+    for (auto a : buffer)
+        std::cout << a << std::endl;
+    return buffer;
+}
+
+std::vector<std::string> Database::retrieve_games_by_user(std::string title)
+{
+    std::string query = ("SELECT * FROM games WHERE user = '" + curr_user + "'");
     int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
 
     if (rc != SQLITE_OK)
