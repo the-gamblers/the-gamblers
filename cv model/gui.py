@@ -11,19 +11,6 @@ running_process = None
 token = ""
 
 
-def lichess():
-    global token
-    new_token = askstring(
-        "Lichess API Access Token",
-        "Please enter your Lichess API Access Token below.",
-        initialvalue=token,
-    )
-    if new_token is None:
-        pass
-    else:
-        token = new_token
-
-
 def on_closing():
     if running_process:
         if running_process.poll() is None:
@@ -61,9 +48,6 @@ def stop_process(ignore=None):
 
 def board_calibration(ignore=None):
     arguments = [sys.executable, "board_calibration.py", "show-info"]
-    # arguments = ["board_calibration.exe", "show-info"]
-    # working_directory = sys.argv[0][:-3]
-    # arguments = [working_directory+"board_calibration", "show-info"]
     selected_camera = camera.get()
     if selected_camera != OPTIONS[0]:
         cap_index = OPTIONS.index(selected_camera) - 1
@@ -71,12 +55,6 @@ def board_calibration(ignore=None):
     process = subprocess.Popen(
         arguments, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
     )
-    # startupinfo = subprocess.STARTUPINFO()
-    # startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-    # process = subprocess.Popen(arguments, stdout=subprocess.PIPE,
-    #                           stderr=subprocess.STDOUT, stdin=subprocess.PIPE, startupinfo=startupinfo)
-    # process = subprocess.Popen(arguments, stdout=subprocess.PIPE,
-    #                           stderr=subprocess.STDOUT, cwd=working_directory)
     global running_process
     running_process = process
     log_thread = Thread(
@@ -88,9 +66,6 @@ def board_calibration(ignore=None):
 
 def start_game(ignore=None):
     arguments = [sys.executable, "main.py"]
-    # arguments = ["main.exe"]
-    # working_directory = sys.argv[0][:-3]
-    # arguments = [working_directory+"main"]
     if no_template.get():
         arguments.append("no-template")
     if make_opponent.get():
@@ -114,16 +89,10 @@ def start_game(ignore=None):
         cap_index = OPTIONS.index(selected_camera) - 1
         arguments.append("cap=" + str(cap_index))
 
-    selected_voice = voice.get()
-
     process = subprocess.Popen(
         arguments, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
     )
-    # startupinfo = subprocess.STARTUPINFO()
-    # startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-    # process = subprocess.Popen(arguments, stdout=subprocess.PIPE,
-    #                           stderr=subprocess.STDOUT, stdin=subprocess.PIPE, startupinfo=startupinfo)
-    # process = subprocess.Popen(arguments, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, cwd=working_directory)
+
     global running_process
     running_process = process
     log_thread = Thread(target=log_process, args=(process, "Game finished.\n"))
@@ -132,11 +101,10 @@ def start_game(ignore=None):
 
 
 window = tk.Tk()
-window.title("Play online chess with real chess board by Alper Karayaman")
+window.title("Chess Master")
 
 menu_bar = tk.Menu(window)
 connection = tk.Menu(menu_bar, tearoff=False)
-connection.add_command(label="Lichess", command=lichess)
 
 menu_bar.add_cascade(label="Connection", menu=connection)
 
@@ -181,33 +149,6 @@ menu = tk.OptionMenu(menu_frame, camera, *OPTIONS)
 menu.config(width=max(len(option) for option in OPTIONS), anchor="w")
 menu.grid(column=1, row=0, sticky=tk.W)
 
-voice_frame = tk.Frame(window)
-voice_frame.grid(row=1, column=0, columnspan=2, sticky="W")
-voice = tk.StringVar()
-VOICE_OPTIONS = ["Default"]
-try:
-    import platform
-
-    if platform.system() == "Darwin":
-        import mac_say
-
-        for v in mac_say.voices():
-            VOICE_OPTIONS.append(v[0] + " " + v[1])
-    else:
-        import pyttsx3
-
-        engine = pyttsx3.init()
-        for v in engine.getProperty("voices"):
-            VOICE_OPTIONS.append(v.name)
-except:
-    pass
-voice.set(VOICE_OPTIONS[0])
-voice_label = tk.Label(voice_frame, text="Voice preference:")
-voice_label.grid(column=0, row=0, sticky=tk.W)
-voice_menu = tk.OptionMenu(voice_frame, voice, *VOICE_OPTIONS)
-voice_menu.config(width=max(len(option) for option in VOICE_OPTIONS), anchor="w")
-voice_menu.grid(column=1, row=0, sticky=tk.W)
-
 
 def save_promotion(*args):
     outfile = open("promotion.bin", "wb")
@@ -219,16 +160,7 @@ promotion_frame = tk.Frame(window)
 promotion_frame.grid(row=2, column=0, columnspan=2, sticky="W")
 promotion = tk.StringVar()
 promotion.trace("w", save_promotion)
-PROMOTION_OPTIONS = ["Queen", "Knight", "Rook", "Bishop"]
-promotion.set(PROMOTION_OPTIONS[0])
-promotion_label = tk.Label(promotion_frame, text="Promotion piece:")
-promotion_label.grid(column=0, row=0, sticky=tk.W)
-promotion_menu = tk.OptionMenu(promotion_frame, promotion, *PROMOTION_OPTIONS)
-promotion_menu.config(
-    width=max(len(option) for option in PROMOTION_OPTIONS), anchor="w"
-)
-promotion_menu.grid(column=1, row=0, sticky=tk.W)
-promotion_menu.configure(state="disabled")
+PROMOTION_OPTIONS = ["Queen"]
 
 c = tk.Checkbutton(
     window,
@@ -239,15 +171,6 @@ c.grid(row=3, column=0, sticky="W", columnspan=1)
 
 c1 = tk.Checkbutton(window, text="Make moves of opponent too.", variable=make_opponent)
 c1.grid(row=4, column=0, sticky="W", columnspan=1)
-
-c2 = tk.Checkbutton(window, text="Make moves by drag and drop.", variable=drag_drop)
-c2.grid(row=5, column=0, sticky="W", columnspan=1)
-
-c2 = tk.Checkbutton(window, text="Say my moves.", variable=comment_me)
-c2.grid(row=6, column=0, sticky="W", columnspan=1)
-
-c3 = tk.Checkbutton(window, text="Say opponent's moves.", variable=comment_opponent)
-c3.grid(row=7, column=0, sticky="W", columnspan=1)
 
 values = ["Do not delay game start.", "1 second delayed game start."] + [
     str(i) + " seconds delayed game start." for i in range(2, 6)
@@ -283,7 +206,6 @@ fields = [
     drag_drop,
     default_value,
     camera,
-    voice,
 ]
 save_file = "gui.bin"
 
@@ -301,8 +223,8 @@ def load_settings():
         infile.close()
         global token
         token = variables[-1]
-        if variables[-2] in VOICE_OPTIONS:
-            voice.set(variables[-2])
+        # if variables[-2] in VOICE_OPTIONS:
+        #     voice.set(variables[-2])
 
         if variables[-3] in OPTIONS:
             camera.set(variables[-3])
