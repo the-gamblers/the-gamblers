@@ -244,7 +244,7 @@ std::string Database::testy()
     return "Testy is running";
 }
 
-int main(int argc, char **argv)
+/* int main(int argc, char **argv)
 {
     Database db = Database("test");
 
@@ -254,4 +254,4 @@ int main(int argc, char **argv)
     std::vector<std::string> fens = db.get_fen();
     for (auto a : fens)
         std::cout << a << std::endl;
-}
+} */

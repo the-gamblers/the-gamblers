@@ -24,6 +24,7 @@ extension Color {
 
 struct HomePage: View {
     @State private var showProfile = false
+    @Binding var isLoggedin: Bool
        
     func showProfileView() {
         showProfile.toggle()
@@ -90,7 +91,7 @@ struct HomePage: View {
                                         .foregroundColor(.black)
                                 })
                                 .sheet(isPresented: $showProfile) {
-                                                ProfileView(isLoggedin: .constant(true))
+                                                ProfileView(isLoggedin: $isLoggedin)
                                 }
             }
         }
@@ -123,6 +124,6 @@ struct StartGameContent: View {
 
 struct HomePage_Previews: PreviewProvider {
     static var previews: some View {
-        HomePage()
+        HomePage(isLoggedin: .constant(true))
     }
 }

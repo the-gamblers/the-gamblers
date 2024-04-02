@@ -19,19 +19,13 @@ struct ReplayTableView: View {
 
     var body: some View {
         ZStack{
-//            Image("background-pic") // background image
-//                .resizable()
-//                .scaledToFill()
-//                .edgesIgnoringSafeArea(.all)
-//                .opacity(0.3)
-            
             ScrollView {
                 VStack {
                     // Game title and notes
                     Text(replay.title)
                         .font(.title)
                         .bold()
-                    Text(replay.subtitle)
+                    Text(replay.date)
                         .font(.subheadline)
                     Text("Notes: \(replay.notes)")
                         .font(.caption)
@@ -74,6 +68,6 @@ struct ReplayTableView: View {
 
 struct ReplayTableView_Previews: PreviewProvider {
     static var previews: some View {
-        ReplayTableView(replay: Replays(title: "Game #13", subtitle: "Feb 14, 2024 10:12 PM", notes: "You are making simple mistakes", link: "Sample Link"))
+        ReplayTableView(replay: Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]))
     }
 }

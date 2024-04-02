@@ -9,18 +9,13 @@ struct SquareTargetedPreview: View {
     @StateObject private var store: ChessStore
     @State private var isPlaying = false // State variable to track play/pause
     
-    // TODO: get fen strings from game into an array
+    // TODO: get fen strings from replay game
     var fenStrings: [String] = ["rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",] // starting postion
     // TODO: get best move for each fen str and convert to fen to display
     var bestFenStrings: [String] = ["rnbqkbnr/ppp1pppp/8/3p4/8/1P6/P1PPPPPP/RNBQKBNR w KQkq d6 0 2"] // best move orig (doesnt mean anything)
     
-    // Sample UCI strings for now
-    let uciStrings = ["b2b3 d7d5",
-        "b2b3 d7d5 f2f3 h7h5",
-        "b2b3 d7d5 f2f3 h7h5 d2d3 a7a6 b3b4",
-        "b2b3 d7d5 f2f3 h7h5 d2d3 a7a6 b3b4 d5d4"
-        ]
-   
+    // TODO: UCI String from db
+    let uciStrings = makeUCIStrings(originalUCI: "e2e4 d7d5 f2f3 h7h5 d2d3 a7a6 b3b4 d5d4")
     
     init() {
     

@@ -73,7 +73,6 @@ func uciToFEN(uciMoves: [(String, String)]) -> String  {
         board.move(pieceAt: start1, to: end1)
         board.move(pieceAt: start2, to: end2)
     }
-    
     // Return FEN conversion of given UCI moves
     return FENParser.convert(position: board.position)
 }
@@ -87,6 +86,10 @@ func uciToFEN(uciMoves: [(String, String)]) -> String  {
 func getBestMoveForUCI(uciMoves: [(String, String)]) -> String{
     // TODO: Best move logic goes here... For now hardcoded
     let bestMove = "g2-g3" // Instead of f2-f3
+    
+    // create Stockfish engine
+   
+    
     return bestMove
 }
 
@@ -102,7 +105,28 @@ func changeMoveToBestMove(originalMove: [(String, String)], bestMove: String) ->
     // TODO: Implementation goes here
     return [("e2e4", "b7b5"), (bestMove, "h7h5")]
 }
-
+ 
+func makeUCIStrings(originalUCI: String) -> [String] {
+    let moves = originalUCI.components(separatedBy: " ")
+    var seperatedMoves = [String]()
+    var uciStrings = [String]()
+    var combinedMoves = ""
+    
+    for i in stride(from: 0, to: moves.count, by: 2) {
+            var uciString = ""
+            for j in i..<min(i + 2, moves.count) {
+                uciString += moves[j] + " "
+            }
+            seperatedMoves.append(uciString.trimmingCharacters(in: .whitespaces))
+        }
+    
+    for moves in seperatedMoves {
+        combinedMoves += moves + " "
+        uciStrings.append(combinedMoves.trimmingCharacters(in: .whitespaces))
+    }
+    
+    return uciStrings
+}
 
 
 

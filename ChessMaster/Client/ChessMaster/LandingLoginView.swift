@@ -6,6 +6,11 @@ struct LandingLoginView: View {
     @State private var isLoginSuccessful = false
     @Binding var isLoggedin: Bool
     
+    func saveCredentials(username: String, password: String) {
+        UserDefaults.standard.set(username, forKey: "username")
+        UserDefaults.standard.set(password, forKey: "password")
+    }
+    
     var body: some View {
         NavigationView { // Wrap in NavigationView
             VStack {
@@ -38,12 +43,13 @@ struct LandingLoginView: View {
                 Button(action: {
                     // TODO: Perform login authentication here
                 
-                    let wrapperItem = dbWrapper(title: "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/ChessMaster/Client/ChessMaster/test")
-                    wrapperItem?.createUser("Roee",password: "Roee")
+                    let wrapperItem = dbWrapper(title: "/Users/jadedavis/Documents/gambs-sprint-4-2/ChessMaster/Client/ChessMaster/test")
+                    let isValid = wrapperItem?.checkUser(username,password: password)
                     print(wrapperItem?.testy())
-                    if username == "Jade" && password == "Jade" {
+                    if isValid ?? false {
                         isLoginSuccessful = true
                         isLoggedin = true
+                        saveCredentials(username: username, password: password)
                     } else {
                         isLoginSuccessful = false
                     }
@@ -63,18 +69,18 @@ struct LandingLoginView: View {
                         .padding(.top, 20)
                     
                         .background(
-                            NavigationLink(destination: NavigationPage2()) {
+                            NavigationLink(destination: NavigationPage2(isLoggedin: $isLoggedin)) {
                                                    EmptyView()
                             }
                         )
-                } else if username != "" || password != "" {
+                } else {
                     Text("Invalid Username or Password")
                         .foregroundColor(.red)
                         .padding(.top, 20)
                 }
                 
                 Spacer()
-                NavigationLink(destination: CreateUserView()) {
+                NavigationLink(destination: CreateUserView(isLoggedin: .constant(false))) {
                     Text("Don't have an account? Sign Up")
                         .foregroundColor(.blue)
                         .padding(.bottom, 20)
@@ -90,6 +96,8 @@ struct CreateUserView: View {
     @State private var password: String = ""
     @State private var firstname: String = ""
     @State private var lastname: String = ""
+    @State private var isLoginSuccessful = false
+    @Binding var isLoggedin: Bool
     
     var body: some View {
         
@@ -125,8 +133,14 @@ struct CreateUserView: View {
         
         Button(action: {
             // TODO: Perform creation user process here
-             
-          
+            let wrapperItem = dbWrapper(title: "/Users/jadedavis/Documents/gambs-sprint-4-2/ChessMaster/Client/ChessMaster/test")
+           wrapperItem?.createUser(username, password: password)
+            if ((wrapperItem?.testy()) != nil) {
+                isLoggedin = true
+                isLoginSuccessful = true
+            }
+
+            
         }) {
             Text("SIGN UP")
                 .foregroundColor(.white)
@@ -136,6 +150,23 @@ struct CreateUserView: View {
                 .cornerRadius(25)
                 .padding(.horizontal)
         }
+        
+        if isLoginSuccessful {
+            Text("You signed up successfully! Now you can Log in.")
+                .foregroundColor(.green)
+                .padding(.top, 20)
+            
+                .background(
+                    NavigationLink(destination: NavigationPage2(isLoggedin: $isLoggedin)) {
+                                           EmptyView()
+                    }
+                )
+        } else {
+            Text("Invalid Username or Password")
+                .foregroundColor(.red)
+                .padding(.top, 20)
+        }
+        
     }
 }
 
