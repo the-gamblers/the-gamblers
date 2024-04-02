@@ -21,14 +21,11 @@ def end_game():
     conn.close()
 
 
-
-
-
 def get_game():
     # cursor.execute("DELETE FROM games;")
     # conn.commit()
     cursor.execute(
-        "INSERT INTO games (user, title, uci, fens) VALUES ('ansley', 'ansley10ABCs', '', '')"
+        "INSERT INTO games (user, title, uci, fens) VALUES ('ansley', 'ansley10', '', '')"
     )
     cursor.execute("SELECT GAMEID FROM games WHERE fens = '' AND uci = ''")
 
@@ -43,6 +40,7 @@ def write_fen(fen):
     )
     conn.commit()
 
+
 # cursor.execute("UPDATE users SET wins = 6 WHERE username = 'ansley'")
 # conn.commit()
 
@@ -53,15 +51,17 @@ def write_fen(fen):
 # for row in rows:
 #     print(row)
 
+
 def write_uci(uci):
     cursor.execute("UPDATE games SET uci = '" + uci + "' WHERE GAMEID = " + str(gameid))
     conn.commit()
 
-gameid = 1
 
-start_time = time.time()
-time.sleep(3)
-end_time = time.time()
+get_game()
+
+# start_time = time.time()
+# time.sleep(3)
+# end_time = time.time()
 
 
 def write_time(start, end):
@@ -69,11 +69,20 @@ def write_time(start, end):
     elapsed_time = datetime.timedelta(seconds=totalTime)
 
     cursor.execute(
-        "UPDATE games SET time = '" + str(elapsed_time) + "' WHERE GAMEID = " + str(gameid)
+        "UPDATE games SET time = '"
+        + str(elapsed_time)
+        + "' WHERE GAMEID = "
+        + str(gameid)
     )
     conn.commit()
 
-write_time(start_time, end_time)
+
+fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1,rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1,rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2,rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2"
+
+uci = "e3e4c6c5"
+
+write_fen(fen)
+write_uci(uci)
 
 # need to figure out python constructor
 # def get_best_move(fen):
