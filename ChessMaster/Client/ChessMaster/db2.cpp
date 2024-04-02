@@ -334,29 +334,3 @@ std::vector<std::string> Database::get_uci(int gameid = -1)
 
     return res;
 }
-
-// int main(int argc, char **argv)
-// {
-//     Database db = Database("test");
-
-//     db.check_user("ansley", "ansley");
-
-//     // db.create_game();
-
-//     // db.edit_title("game4");
-
-//     db.switch_game("ansley10");
-
-//     std::vector<std::string>
-//         uci = db.get_uci();
-
-//     for (auto a : uci)
-//         std::cout << a << std::endl;
-
-//     std::cout << "----------------------------------" << std::endl;
-
-//     std::vector<std::string> uci2 = db.get_fen();
-
-//     for (auto a : uci2)
-//         std::cout << a << std::endl;
-// }
