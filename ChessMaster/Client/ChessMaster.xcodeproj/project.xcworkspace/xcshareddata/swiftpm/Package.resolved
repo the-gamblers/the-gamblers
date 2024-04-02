@@ -1,4 +1,5 @@
 {
+  "originHash" : "41d208447093bdb2736b1f9b6d14b6b1efd860873f95afbe16d08f59d64329fb",
   "pins" : [
     {
       "identity" : "swift-chess",
@@ -19,5 +20,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
