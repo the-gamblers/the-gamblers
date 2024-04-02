@@ -1,5 +1,3 @@
-import time
-
 import chess
 import cv2
 import numpy as np
@@ -17,15 +15,7 @@ get_game()
 
 
 class Game:
-    def __init__(
-        self,
-        board_basics,
-        start_delay,
-        token,
-        roi_mask,
-        uci,
-        fen,
-    ):
+    def __init__(self, board_basics, start_delay, token, roi_mask, uci, fen):
         self.board_basics = board_basics
         self.executed_moves = []
         self.played_moves = []
@@ -132,7 +122,6 @@ class Game:
         return board_state
 
     def get_valid_move_hog(self, fgmask, frame):
-        # print("Hog working")
         board = [
             [
                 self.board_basics.get_square_image(row, column, fgmask).mean()
@@ -164,7 +153,6 @@ class Game:
             ):
                 self.board.push(move_to_register)
                 if self.check_state_hog(board_result):
-                    # print("Hog!")
                     self.board.pop()
                     return True, move_to_register.uci()
                 else:
@@ -188,7 +176,6 @@ class Game:
                     else:
                         self.board.pop()
         if potential_moves:
-            # print("Hog!")
             return True, max(potential_moves)[1]
         else:
             return False, ""
@@ -211,7 +198,6 @@ class Game:
         result_hog = self.detect_state_hog(frame)
         state = self.check_state_for_light(result, result_hog)
         if state:
-            # print("Light change")
             return True
         else:
             return False
@@ -225,10 +211,8 @@ class Game:
                 square = chess.parse_square(square_name)
                 piece = self.board.piece_at(square)
                 if piece and (not result[row][column]):
-                    # print("Expected piece at " + square_name)
                     return False
                 if (not piece) and (result[row][column]):
-                    # print("Expected empty at " + square_name)
                     return False
         return True
 
@@ -241,10 +225,8 @@ class Game:
                 square = chess.parse_square(square_name)
                 piece = self.board.piece_at(square)
                 if piece and (True not in result[row][column]):
-                    # print("Expected piece at " + square_name)
                     return False
                 if (not piece) and (False not in result[row][column]):
-                    # print("Expected empty at " + square_name)
                     return False
         return True
 
@@ -259,15 +241,12 @@ class Game:
                 square = chess.parse_square(square_name)
                 piece = self.board.piece_at(square)
                 if piece and (False in result[row][column]):
-                    # print(square_name)
                     return False
                 if (not piece) and (True in result[row][column]):
-                    # print(square_name)
                     return False
         return True
 
     def get_valid_move_canny(self, fgmask, frame):
-        # print("Canny working")
         board = [
             [
                 self.board_basics.get_square_image(row, column, fgmask).mean()
@@ -299,7 +278,6 @@ class Game:
             ):
                 self.board.push(move_to_register)
                 if self.check_state_for_move(board_result):
-                    # print("Canny!")
                     self.board.pop()
                     return True, move_to_register.uci()
                 else:
@@ -323,7 +301,6 @@ class Game:
                     else:
                         self.board.pop()
         if potential_moves:
-            # print("Canny!")
             return True, max(potential_moves)[1]
         else:
             return False, ""
@@ -335,10 +312,6 @@ class Game:
         success, valid_move_string = self.get_valid_move(
             potential_squares, potential_moves
         )
-        # print("Valid move string:" + valid_move_string)
-        # print("FEN:" + self.board.fen())
-
-        # TODO: check that this runs when it should (valid moves)
 
         cv2.imwrite("moves/" + valid_move_string + ".jpg", previous_frame)
         if not success:
@@ -346,11 +319,9 @@ class Game:
             print("Camera detected a potential move, but no valid move was played")
             if not success:
                 success, valid_move_string = self.get_valid_move_hog(fgmask, next_frame)
-                # print("Valid move string 3:" + valid_move_string)
             if success:
                 pass
             else:
-                # print(self.board.fen())
                 return False
         else:
             if self.uci == " ":
@@ -377,8 +348,6 @@ class Game:
         print(self.board)
         print("\n\n")
 
-        # self.internet_game.is_our_turn = not self.internet_game.is_our_turn
-
         self.learn(next_frame)
         self.board_basics.update_ssim(
             previous_frame, next_frame, valid_move_UCI, is_capture, color
@@ -399,13 +368,11 @@ class Game:
                 square = chess.parse_square(square_name)
                 piece = self.board.piece_at(square)
                 if piece and (not result[row][column]):
-                    # print("Learning piece at " + square_name)
                     piece_hog = self.hog.compute(
                         cv2.resize(get_square_image(row, column, frame), (64, 64))
                     )
                     new_pieces.append(piece_hog)
                 if (not piece) and (result[row][column]):
-                    # print("Learning empty at " + square_name)
                     square_hog = self.hog.compute(
                         cv2.resize(get_square_image(row, column, frame), (64, 64))
                     )
@@ -427,16 +394,10 @@ class Game:
 
         self.features = self.features[:100]
         self.labels = self.labels[:100]
-        # print(self.features.shape)
-        # print(self.labels.shape)
         self.knn = cv2.ml.KNearest_create()
         self.knn.train(self.features, cv2.ml.ROW_SAMPLE, self.labels)
 
     def get_valid_move(self, potential_squares, potential_moves):
-        # print("Potential squares:")
-        # print(potential_squares)
-        # print("Potential moves:")
-        # print(potential_moves)
 
         move_to_register = self.get_move_to_register()
 
@@ -455,7 +416,6 @@ class Game:
             try:
                 move = chess.Move.from_uci(uci_move)
             except Exception as e:
-                # print(e)
                 continue
 
             if move in self.board.legal_moves:
@@ -468,10 +428,8 @@ class Game:
                 promoted_move = chess.Move.from_uci(uci_move_promoted)
                 if promoted_move in self.board.legal_moves:
                     valid_move_string = uci_move_promoted
-                    # print("There has been a promotion")
 
         potential_squares = [square[1] for square in potential_squares]
-        # print(potential_squares)
         # Detect castling king side with white
         if (
             ("e1" in potential_squares)
@@ -516,7 +474,6 @@ class Game:
             return False, valid_move_string
 
         if valid_move_string:
-            # print("ssim!")
             return True, valid_move_string
         else:
             return False, valid_move_string

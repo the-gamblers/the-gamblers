@@ -15,16 +15,17 @@ class Commentator_thread(Thread):
         self.game_state = Game_state()
         self.classifier = None
 
-    def run(self):
-        resized_chessboard = self.game_state.get_chessboard()
-        self.game_state.previous_chessboard_image = resized_chessboard
-        self.game_state.classifier = Classifier(self.game_state)
+    # def run(self):
+    #     print("is this running")
+    #     resized_chessboard = self.game_state.get_chessboard()
+    #     self.game_state.previous_chessboard_image = resized_chessboard
+    #     self.game_state.classifier = Classifier(self.game_state)
 
-        while not self.game_state.board.is_game_over():
-            is_my_turn = (self.game_state.we_play_white) == (
-                self.game_state.board.turn == chess.WHITE
-            )
-            found_move, move = self.game_state.register_move_if_needed()
+    #     while not self.game_state.board.is_game_over():
+    #         is_my_turn = (self.game_state.we_play_white) == (
+    #             self.game_state.board.turn == chess.WHITE
+    #         )
+    #         found_move, move = self.game_state.register_move_if_needed()
 
 
 class Game_state:
@@ -43,6 +44,8 @@ class Game_state:
 
     def get_chessboard(self):
         position = self.board_position_on_screen
+        print("position")
+        print(position)
         monitor = {
             "top": 0,
             "left": 0,

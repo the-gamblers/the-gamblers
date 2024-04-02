@@ -25,10 +25,6 @@ def log_process(process, finish_message):
     button_stop.grid(row=0, column=0, columnspan=2, sticky="ew")
     while True:
         output = process.stdout.readline()
-        text = output.decode()
-        # pattern = r'^[^,;\\]*$'
-        # matches = re.match(pattern, text)
-
         if output:
             logs_text.insert(tk.END, output.decode())
             logs_text.see(tk.END)
@@ -41,9 +37,7 @@ def log_process(process, finish_message):
     start.grid(row=0, column=0)
     board = tk.Button(button_frame, text="Board Calibration", command=board_calibration)
     board.grid(row=0, column=1)
-    if promotion_menu.cget("state") == "normal":
-        promotion.set(PROMOTION_OPTIONS[0])
-        promotion_menu.configure(state="disabled")
+    promotion.set(PROMOTION_OPTIONS[0])
 
 
 def stop_process(ignore=None):
@@ -85,7 +79,7 @@ def start_game(ignore=None):
     global token
     if token:
         arguments.append("token=" + token)
-        promotion_menu.configure(state="normal")
+        # promotion_menu.configure(state="normal")
         promotion.set(PROMOTION_OPTIONS[0])
 
     arguments.append("delay=" + str(values.index(default_value.get())))
@@ -107,7 +101,7 @@ def start_game(ignore=None):
 
 
 window = tk.Tk()
-window.title("Chess Master")
+window.title("Chess Vision")
 
 menu_bar = tk.Menu(window)
 connection = tk.Menu(menu_bar, tearoff=False)
@@ -168,13 +162,6 @@ promotion = tk.StringVar()
 promotion.trace("w", save_promotion)
 PROMOTION_OPTIONS = ["Queen"]
 
-c = tk.Checkbutton(
-    window,
-    text="Find chess board of online game without template images.",
-    variable=no_template,
-)
-c.grid(row=3, column=0, sticky="W", columnspan=1)
-
 
 values = ["Do not delay game start.", "1 second delayed game start."] + [
     str(i) + " seconds delayed game start." for i in range(2, 6)
@@ -228,8 +215,6 @@ def load_settings():
         infile.close()
         global token
         token = variables[-1]
-        # if variables[-2] in VOICE_OPTIONS:
-        #     voice.set(variables[-2])
 
         if variables[-3] in OPTIONS:
             camera.set(variables[-3])
