@@ -375,6 +375,7 @@ class Game:
         is_capture = self.board.is_capture(valid_move_UCI)
         color = int(self.board.turn)
         self.board.push(valid_move_UCI)
+        print(self.board)
 
         # self.internet_game.is_our_turn = not self.internet_game.is_our_turn
 
