@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ProgressPage: View {
-    @State private var selectedTimeFrame: TimeFrame = .sevenDays
-
-    enum TimeFrame: String, CaseIterable {
-        case sevenDays = "7 days"
-        case thirtyDays = "30 days"
-        case allTime = "All Time"
-    }
-
+//    @State private var selectedTimeFrame: TimeFrame = .allTime
+//
+//    enum TimeFrame: String, CaseIterable {
+////        case sevenDays = "7 days"
+////        case thirtyDays = "30 days"
+//        case allTime = "All Time"
+//    }
+    @State private var username: String = ""
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -37,7 +38,7 @@ struct ProgressPage: View {
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 40, height: 40)
-                                    Text("username00")
+                                    Text(username)
                                         .font(.title2)
                                     Spacer()
                                     Image(systemName: "flame.fill")
@@ -46,11 +47,11 @@ struct ProgressPage: View {
                                 .padding(.horizontal)
                                 .padding(.top, 20)
 
-                                Picker("Timeframe", selection: $selectedTimeFrame) {
-                                    ForEach(TimeFrame.allCases, id: \.self) { timeframe in
-                                        Text(timeframe.rawValue).tag(timeframe)
-                                    }
-                                }
+//                                Picker("Timeframe", selection: $selectedTimeFrame) {
+//                                    ForEach(TimeFrame.allCases, id: \.self) { timeframe in
+//                                        Text(timeframe.rawValue).tag(timeframe)
+//                                    }
+//                                }
                                 .pickerStyle(SegmentedPickerStyle())
                                 .padding()
 
@@ -122,19 +123,19 @@ struct ProgressPage: View {
                                             )
                                             
                                             // Best Game
-                                            VStack {
-                                                Image(systemName: "star.fill")
-                                                Text("Best Game")
-                                                    .font(.headline)
-                                                Text("Match XYZ")
-                                                    .font(.subheadline)
-                                            }
-                                            .padding(20)
-                                            .frame(width:155, height: 90)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-                                            )
+//                                            VStack {
+//                                                Image(systemName: "star.fill")
+//                                                Text("Best Game")
+//                                                    .font(.headline)
+//                                                Text("Match XYZ")
+//                                                    .font(.subheadline)
+//                                            }
+//                                            .padding(20)
+//                                            .frame(width:155, height: 90)
+//                                            .overlay(
+//                                                RoundedRectangle(cornerRadius: 10)
+//                                                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+//                                            )
                                             
                                             // Total Games
                                             VStack {
@@ -184,6 +185,11 @@ struct ProgressPage: View {
                     .navigationTitle("PROGRESS")
                 }
            ) }
+
+            .onAppear {
+                self.username = UserDefaults.standard.string(forKey: "username") ?? "Default Username"
+             }
+
         }
     }
 }
