@@ -16,11 +16,6 @@ jobs:
     steps:
       # this was more debug as was curious what came pre-installed
       # GitHub shares this online, e.g. https://github.com/actions/runner-images/blob/macOS-12/20230224.1/images/macos/macos-12-Readme.md
-      - name: Set XCode Version
-        uses: actions/setup-node/@v2
-        with:
-          xcode-version: '15.x'
-      
       - name: check Xcode version
         run: /usr/bin/xcodebuild -version
 
@@ -61,7 +56,7 @@ jobs:
 
       - name: build archive
         run: |
-          xcodebuild \
+          xcodebuild 
           -project "ChessMaster/Client/ChessMaster.xcodeproj" \
           -scheme "ChessMaster" \
           -archivePath $RUNNER_TEMP/ChessMaster\build\ChessMaster.xcarchive \
