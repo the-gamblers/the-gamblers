@@ -16,6 +16,21 @@ struct ProgressPage: View {
 //        case allTime = "All Time"
 //    }
     @State private var username: String = ""
+    @State private var wins: Int = 0
+    @State private var losses: Int = 0
+    @State private var draws: Int = 0
+    
+    
+    func fetchUserStats() {
+        let wrapperItem = dbWrapper(title: "/Users/saddy_khakimova/Documents/CSCE482/the-gamblers/ChessMaster/Client/ChessMaster/test1")
+        
+        if let stats = wrapperItem?.getUserStats(username) as? [String: NSNumber] {
+
+            wins = stats["wins"]?.intValue ?? 0
+            losses = stats["losses"]?.intValue ?? 0
+            draws = stats["draws"]?.intValue ?? 0
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -64,7 +79,7 @@ struct ProgressPage: View {
                                             Image(systemName: "hand.thumbsdown.fill")
                                                 .resizable()
                                                 .frame(width: 20, height: 20)
-                                            Text("38")
+                                            Text("\(losses)")
                                                 .font(.headline)
                                             Text("Losses")
                                                 .font(.subheadline)
@@ -80,7 +95,7 @@ struct ProgressPage: View {
                                             Image(systemName: "trophy.fill")
                                                 .resizable()
                                                 .frame(width: 20, height: 20)
-                                            Text("67")
+                                            Text("\(wins)")
                                                 .font(.headline)
                                             Text("Wins")
                                                 .font(.subheadline)
@@ -94,7 +109,7 @@ struct ProgressPage: View {
                                         // ties
                                         VStack{
                                             Image(systemName: "person.line.dotted.person.fill")
-                                            Text("4")
+                                            Text("\(draws)")
                                                 .font(.headline)
                                             Text("Draws")
                                                 .font(.subheadline)
@@ -185,9 +200,12 @@ struct ProgressPage: View {
                     .navigationTitle("PROGRESS")
                 }
            ) }
+            
+            
 
             .onAppear {
                 self.username = UserDefaults.standard.string(forKey: "username") ?? "Default Username"
+                fetchUserStats()
              }
 
         }

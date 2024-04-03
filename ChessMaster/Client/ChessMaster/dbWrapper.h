@@ -14,5 +14,7 @@
 - (void)deleteGamesById;
 - (void)switchGame:(NSString *)title;
 - (NSString *)testy;
+- (void)recordGameResultForUser:(NSString *)username result:(NSString *)result;
+- (NSDictionary *)getUserStats:(NSString *)username;
 
 @end

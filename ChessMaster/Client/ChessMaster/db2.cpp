@@ -209,6 +209,25 @@ void Database::edit_fen(std::string fen)
     }
 }
 
+void Database::record_game_result(std::string username, std::string result) {
+    std::string query = "UPDATE users SET ";
+    if (result == "win") {
+        query += "wins = wins + 1";
+    } else if (result == "loss") {
+        query += "losses = losses + 1";
+    } else if (result == "draw") {
+        query += "draws = draws + 1";
+    }
+    query += " WHERE username = '" + username + "';";
+    sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
+}
+
+
+std::tuple<int, int, int, int> Database::get_user_stats(std::string username) {
+    std::string query = "SELECT wins, losses, draws FROM users WHERE username = '" + username + "';";
+    return std::make_tuple(0, 0, 0, 0);
+}
+
 std::vector<std::string> Database::get_fen()
 {
     std::string query = ("SELECT fens FROM games WHERE GAMEID = '" + std::to_string(curr_game) + "'");
@@ -219,7 +238,7 @@ std::vector<std::string> Database::get_fen()
         std::cerr << "ERROR: " << zErrMsg << std::endl;
         return {};
     }
-
+    
     // replace column title, only get fen between commas
     std::string fenstr = buffer.at(0);
     std::regex repl("^fens: ");
