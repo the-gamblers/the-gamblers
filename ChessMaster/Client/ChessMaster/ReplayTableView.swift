@@ -30,7 +30,6 @@ struct ReplayTableView: View {
                     Text("Notes: \(replay.notes)")
                         .font(.caption)
                         .padding(.bottom)
-                    
                     // Analysis section
                     Text("Analysis")
                         .font(.headline)
@@ -46,7 +45,7 @@ struct ReplayTableView: View {
                     .padding(.bottom, 20)
                     
                     // View Chess Board
-                    ChessView()
+                    ChessView(replay: replay)
                         .frame(height: 650)
                 }
                 .padding()
@@ -68,6 +67,6 @@ struct ReplayTableView: View {
 
 struct ReplayTableView_Previews: PreviewProvider {
     static var previews: some View {
-        ReplayTableView(replay: Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]))
+        ReplayTableView(replay: Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci:  "b2b3 d7d5 f2f3 h7h5 d2d3 a7a6 b3b4 d5d4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]))
     }
 }

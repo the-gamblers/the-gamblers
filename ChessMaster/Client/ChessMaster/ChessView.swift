@@ -4,6 +4,7 @@ import ChessKit
 
 /// View for displaying chess moves with animations.
 struct SquareTargetedPreview: View {
+    var replay: Replays?
     // State variables
     @State private var fenIndex = 0 // Index to track the current FEN string
     @StateObject private var store: ChessStore
@@ -14,11 +15,15 @@ struct SquareTargetedPreview: View {
     // TODO: get best move for each fen str and convert to fen to display
     var bestFenStrings: [String] = ["rnbqkbnr/ppp1pppp/8/3p4/8/1P6/P1PPPPPP/RNBQKBNR w KQkq d6 0 2"] // best move orig (doesnt mean anything)
     
-    // TODO: UCI String from db
-    let uciStrings = makeUCIStrings(originalUCI: "e2e4 d7d5 f2f3 h7h5 d2d3 a7a6 b3b4 d5d4")
+    // get uci str from replay and parse into play-by-play ucis
+    private var uciStrings: [String] {
+        guard let replay = replay else { return [] }
+        print(replay)
+        return makeUCIStrings(originalUCI: replay.uci)
+    }
     
-    init() {
-    
+    init(replay: Replays?) {
+        self.replay = replay
         // Initialize ChessStore with a sample game
         let game = Chess.Game.sampleGame()
         self._store = StateObject(wrappedValue: ChessStore(game: game))
@@ -140,24 +145,27 @@ struct SquareTargetedPreview: View {
 
 /// View for displaying the SquareTargetedPreview.
 struct SquareTargetedPreviewView: View {
-    var body: some View {
-        SquareTargetedPreview()
-    }
+    let replay: Replays // Define a property to hold the replay object
+        
+        var body: some View {
+            SquareTargetedPreview(replay: replay) // Pass the replay object to SquareTargetedPreview
+        }
 }
 
 /// Main ChessView containing other views.
 struct ChessView: View {
+    let replay: Replays
     var body: some View {
         VStack {
-            SquareTargetedPreviewView()
+            SquareTargetedPreviewView(replay: replay)
         }
     }
 }
 
 /// Preview provider for ChessView.
 struct ChessView_Previews: PreviewProvider {
+    static var replay: Replays = Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci:  "b2b3 d7d5 f2f3 h7h5 d2d3 a7a6", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ])
     static var previews: some View {
-        ChessView()
+        ChessView(replay: replay)
     }
 }
-

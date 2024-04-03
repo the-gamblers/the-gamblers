@@ -16,7 +16,8 @@ import ChessKitEngine
  * - Returns: A string representing UCI moves.
  */
 func getUCIStringFromDB() -> String {
-    // TODO: Implementation goes here
+    // TODO: Implementation goes here, get UCI from replay.uci
+   
     
     // Hardcoded for now
     let uci = "b2b3 d7d5 f2f3 h7h5 d2d3 a7a6 b3b4 d5d4"
@@ -105,7 +106,8 @@ func changeMoveToBestMove(originalMove: [(String, String)], bestMove: String) ->
     // TODO: Implementation goes here
     return [("e2e4", "b7b5"), (bestMove, "h7h5")]
 }
- 
+
+
 func makeUCIStrings(originalUCI: String) -> [String] {
     let moves = originalUCI.components(separatedBy: " ")
     var seperatedMoves = [String]()

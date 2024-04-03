@@ -12,6 +12,7 @@ struct ProfileView: View {
     @State private var firstname: String = "Jade"
     @State private var lastname: String = "Davis"
     @State private var password: String = ""
+    @State private var origPassword: String = ""
     @State private var showAlert = false
     @State private var isEditing: Bool = false
     @Binding var isLoggedin: Bool
@@ -57,8 +58,9 @@ struct ProfileView: View {
                         Alert(title: Text("Change Password"), message: Text("Are you sure you want to change the password?"),
                                 primaryButton: .default(Text("Yes")) {
                                     // TODO: fix password change
-                                    print(password)
+                                    print("entered password: ", password)
                                     let wrapperItem = dbWrapper(title: "/Users/jadedavis/Documents/gambs-sprint-4-2/ChessMaster/Client/ChessMaster/test")
+                                    let istrue = wrapperItem?.checkUser(username, password: origPassword)
                                     wrapperItem?.changePassword(password)
                                     print(wrapperItem?.testy())
                             
@@ -89,12 +91,39 @@ struct ProfileView: View {
                     Text("Logout")
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.red)
+                        .background(Color.gray)
                         .foregroundColor(.white)
                         .cornerRadius(25)
                         .padding(.horizontal)
                 }
                 Spacer()
+                Button(action: {
+                    // TODO: Perform delete action
+                    showAlert = true
+                    print("delete button pressed")
+                    isLoggedin = false
+                    print(isLoggedin)
+                    UserDefaults.standard.removeObject(forKey: "username")
+                    UserDefaults.standard.removeObject(forKey: "password")
+                }) {
+                    Text("Delete Account")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.red)
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                        .padding(.horizontal) 
+                        .alert(isPresented: $showAlert) {
+                            Alert(title: Text("Delete Account"), message: Text("Are you sure you want to delete your account? This cannot be undone."),
+                                    primaryButton: .default(Text("Yes")) {
+                                    let wrapperItem = dbWrapper(title: "/Users/jadedavis/Documents/gambs-sprint-4-2/ChessMaster/Client/ChessMaster/test")
+                                    let istrue = wrapperItem?.checkUser(username, password: origPassword)
+                                    wrapperItem?.deleteUser()
+                                
+                                    },
+                                    secondaryButton: .cancel(Text("No")))
+                            }
+                }
                 if isLoggedin == false {
                     Text("Logging Out...")
                         .padding(.top, 20)
@@ -109,7 +138,8 @@ struct ProfileView: View {
                 // Retrieve saved credentials
                 username = UserDefaults.standard.string(forKey: "username") ?? ""
                 // Password retrieval can be insecure; use a secure storage option for sensitive data
-                password = UserDefaults.standard.string(forKey: "password") ?? ""
+                origPassword = UserDefaults.standard.string(forKey: "password") ?? ""
+                password = origPassword
             }
         }
     }

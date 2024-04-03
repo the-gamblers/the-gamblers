@@ -18,12 +18,12 @@ struct Replays: Identifiable {
     let fen: [String]
 }
 
-// TODO: need to read from database
+// TODO: need to read from database, get list of games with (user,title,etc) in form of Replay item like below 
 private var replay = [
     Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4",fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
-    Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
-    Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4",fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
-    Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
+    Replays(user: "jade", title: "Game #59", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci:  "b2b3 d7d5 f2f3 h7h5 d2d3 a7a6 b3b4 d5d4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
+    Replays(user: "jade", title: "Game #69", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5",fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
+    Replays(user: "jade", title: "Game #79", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
     Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
     Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
     Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
