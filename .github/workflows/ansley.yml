@@ -54,7 +54,7 @@ jobs:
       - name: build archive
         run: |
           xcodebuild \
-          -project "ChessMaster/Client/Chessmaster.xcodeproj"
+          -project "ChessMaster/Client/Chessmaster.xcodeproj" \
           -scheme "ChessMaster" \
           -archivePath $RUNNER_TEMP/ChessMaster\build\ChessMaster.xcarchive \
           -sdk iphoneos \
