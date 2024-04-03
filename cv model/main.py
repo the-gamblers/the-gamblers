@@ -51,6 +51,8 @@ game = Game(
     start_delay,
     token,
     roi_mask,
+    ' ',
+    ' '
 )
 
 video_capture_thread = Video_capture_thread()

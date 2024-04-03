@@ -24,6 +24,8 @@ build/
 *.o
 *.LinkFileList
 *.hmap
+/cv\ model/moves/*
+/cv\ model/__pycache__/
 
 # Automatic backup files
 *~.nib/
