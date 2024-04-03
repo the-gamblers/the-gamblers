@@ -43,7 +43,7 @@ struct LandingLoginView: View {
                 Button(action: {
                     // TODO: Perform login authentication here
                 
-                    let wrapperItem = dbWrapper(title: "/Users/jadedavis/Documents/gambs-sprint-4-2/ChessMaster/Client/ChessMaster/test")
+                    let wrapperItem = dbWrapper(title: "/Users/saddy_khakimova/Documents/CSCE482/the-gamblers/ChessMaster/Client/ChessMaster/test1")
                     let isValid = wrapperItem?.checkUser(username,password: password)
                     print(wrapperItem?.testy())
                     if isValid ?? false {
@@ -133,7 +133,7 @@ struct CreateUserView: View {
         
         Button(action: {
             // TODO: Perform creation user process here
-            let wrapperItem = dbWrapper(title: "/Users/jadedavis/Documents/gambs-sprint-4-2/ChessMaster/Client/ChessMaster/test")
+            let wrapperItem = dbWrapper(title: "/Users/saddy_khakimova/Documents/CSCE482/the-gamblers/ChessMaster/Client/ChessMaster/test1")
            wrapperItem?.createUser(username, password: password)
             if ((wrapperItem?.testy()) != nil) {
                 isLoggedin = true
