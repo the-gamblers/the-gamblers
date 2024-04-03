@@ -364,12 +364,8 @@ class Game:
             else:
                 self.fen += self.board.fen() + ','
 
-
-            self.uci += valid_move_string
-            self.fen += self.board.fen() + ","
             write_uci(self.uci)
             write_fen(self.fen)
-            print("-- wrote to db -- \n" + self.uci + " : " + self.fen + "\n-----------")
 
         valid_move_UCI = chess.Move.from_uci(valid_move_string)
 
