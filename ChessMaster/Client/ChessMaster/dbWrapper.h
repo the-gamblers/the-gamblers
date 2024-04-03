@@ -17,8 +17,7 @@
 - (void)switchGame:(NSString *)title;
 - (void)editFen:(NSString *)fen;
 - (NSString *)testy;
-- (NSArray<NSString *> *)getFen;
-- (NSArray<NSString *> *)getUci;
-
+- (NSArray<NSString *> *)getFen(NSInteger)gameid;
+- (NSArray<NSString *> *)getUci(NSInteger)gameid;
 
 @end
