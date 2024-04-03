@@ -1,5 +1,5 @@
 {
-  "originHash" : "4c80a9353adfc777c592a419e368acac49247b9131b8c367f84ea1ccce10f209", 
+  "originHash" : "4c80a9353adfc777c592a419e368acac49247b9131b8c367f84ea1ccce10f209",
   "pins" : [
     {
       "identity" : "chesskit-engine",
