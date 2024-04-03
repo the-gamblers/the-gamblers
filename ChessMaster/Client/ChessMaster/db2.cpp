@@ -3,6 +3,7 @@
 #include <cstring>
 #include <regex>
 #include <iterator>
+#include <ctime>
 
 struct PW
 {
@@ -58,7 +59,7 @@ static int write_data(void *data, int num_cols, char **col_vals, char **col_name
 
     for (int i = 0; i < num_cols; i++)
     {
-        buf->push_back(std::string(col_names[i]) + ": " + (col_vals[i] ? std::string(col_vals[i]) : "NULL") + " ");
+        buf->push_back(col_vals[i] ? std::string(col_vals[i]) : "NULL");
     }
 
     return 0;
@@ -68,16 +69,19 @@ static int write_data(void *data, int num_cols, char **col_vals, char **col_name
 
 Database::Database(std::string name) : db(nullptr), curr_user(""), curr_game(-1), zErrMsg(nullptr), buffer({})
 {
-    std::cout << sqlite3_open((name + ".sqlite").c_str(), &db);
     if (sqlite3_open((name + ".sqlite").c_str(), &db) != SQLITE_OK)
     {
         std::cout << "ERROR: database not open" << std::endl;
+        std::cout << sqlite3_open((name + ".sqlite").c_str(), &db) << std::endl;
         return;
     }
 
+    // sqlite3_exec(db, "DROP TABLE games;", NULL, 0, NULL);
+
+    // sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS games(GAMEID INTEGER, user TEXT NOT NULL, date DATETIME DEFAULT CURRENT_DATE, title TEXT UNIQUE, notes TEXT, uci TEXT, fens TEXT, primary key (GAMEID), FOREIGN KEY (user) REFERENCES users(username));", NULL, 0, NULL);
     // sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS users(username TEXT UNIQUE NOT NULL, password TEXT NOT NULL, primary key (username));", NULL, 0, NULL);
-    sqlite3_exec(db, "ALTER TABLE games ADD COLUMN fens TEXT", NULL, 0, &zErrMsg);
-    std::cout << "DATABASE OPEN!" << std::endl;
+    // sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS games(GAMEID INTEGER, user TEXT NOT NULL, date DATETIME DEFAULT CURRENT_DATE, title TEXT, notes TEXT, uci TEXT, fens TEXT, primary key (GAMEID), FOREIGN KEY (user) REFERENCES users(username));", NULL, 0, NULL);
+    // sqlite3_exec(db, "ALTER TABLE games ADD COLUMN fens TEXT", NULL, 0, &zErrMsg);
 }
 
 Database::~Database()
@@ -136,9 +140,31 @@ void Database::delete_user()
         std::cerr << "ERROR: " << zErrMsg << std::endl;
 }
 
-void Database::create_game(std::string title = "", std::string notes = "", std::string uci = "")
+// this is called when someone starts a game
+void Database::create_game(std::string title = "", std::string notes = "", std::string uci = "", std::string fen = "")
 {
-    std::string query = ("INSERT INTO games (user, title, notes, uci) VALUES ('" + curr_user + "', '" + title + "', '" + notes + "', '" + uci + "')");
+    if (title.empty())
+    {
+        std::time_t now = std::time(nullptr);
+        char buffer[80];
+        std::strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", std::localtime(&now));
+        std::string currentDateTime(buffer);
+        title = currentDateTime;
+    }
+    std::string query = ("INSERT INTO games (user, title, notes, uci, fens) VALUES ('" + curr_user + "', '" + title + "', '" + notes + "', '" + uci + "', '" + fen + "')");
+    int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
+
+    // switch curr_game to the game being played
+    switch_game(title);
+
+    if (rc != SQLITE_OK)
+        std::cerr
+            << "ERROR: " << zErrMsg << std::endl;
+}
+
+void Database::edit_title(std::string title)
+{
+    std::string query = ("UPDATE games SET title = '" + title + "' WHERE GAMEID = '" + std::to_string(curr_game) + "'");
     int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
 
     if (rc != SQLITE_OK)
@@ -157,6 +183,19 @@ void Database::edit_note(std::string note)
 std::vector<std::string> Database::retrieve_games_by_title(std::string title)
 {
     std::string query = ("SELECT * FROM games WHERE title = '" + title + "' AND user = '" + curr_user + "'");
+    int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
+
+    if (rc != SQLITE_OK)
+    {
+        std::cerr << "ERROR: " << zErrMsg << std::endl;
+        return {};
+    }
+    return buffer;
+}
+
+std::vector<std::string> Database::retrieve_games_by_user()
+{
+    std::string query = ("SELECT * FROM games WHERE user = '" + curr_user + "'");
     int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
 
     if (rc != SQLITE_OK)
@@ -222,8 +261,6 @@ std::vector<std::string> Database::get_fen()
 
     // replace column title, only get fen between commas
     std::string fenstr = buffer.at(0);
-    std::regex repl("^fens: ");
-    fenstr = std::regex_replace(fenstr, repl, "");
 
     std::vector<std::string> res = {};
     std::regex pattern("(.*?),");
@@ -239,19 +276,46 @@ std::vector<std::string> Database::get_fen()
     return res;
 }
 
-std::string Database::testy()
+std::vector<std::string> Database::get_uci()
 {
-    return "Testy is running";
+    std::string query = ("SELECT uci FROM games WHERE GAMEID = '" + std::to_string(curr_game) + "'");
+    int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
+
+    if (rc != SQLITE_OK)
+    {
+        std::cerr << "ERROR: " << zErrMsg << std::endl;
+        return {};
+    }
+
+    std::string ucistr = buffer.at(0);
+    std::vector<std::string> res = {};
+    std::regex pattern("[a-h][1-8][a-h][1-8][q]?");
+    auto bufStart = std::sregex_iterator(ucistr.begin(), ucistr.end(), pattern);
+    auto bufEnd = std::sregex_iterator();
+
+    for (std::sregex_iterator i = bufStart; i != bufEnd; i++)
+    {
+        std::smatch match = *i;
+        res.push_back(match[0].str());
+    }
+
+    return res;
 }
 
-/* int main(int argc, char **argv)
-{
-    Database db = Database("test");
+// int main(int argc, char **argv)
+// {
+//     Database db = Database("test");
 
-    std::cout << "valid user? " << db.check_user("ansley", "thompson") << std::endl;
+//     db.check_user("ansley", "thompson");
 
-    db.switch_game("game4");
-    std::vector<std::string> fens = db.get_fen();
-    for (auto a : fens)
-        std::cout << a << std::endl;
-} */
+//     db.create_game();
+
+//     db.edit_title("game4");
+
+//     // db.switch_game("game2");
+
+//     // std::vector<std::string> uci = db.get_uci();
+
+//     // for (auto a : uci)
+//     //     std::cout << a << std::endl;
+// }
