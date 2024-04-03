@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ChessMaster", "ChessMaster", "{9B2F1568-668D-46A2-9480-EAF65D7CF9BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{57F39FE7-9E5A-4174-9EEB-20EA30C942F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessMasterAPI", "ChessMaster\Server\ChessMasterAPI\ChessMasterAPI.csproj", "{DA651F56-7D75-45C2-AA49-CA5CBAB91A67}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA651F56-7D75-45C2-AA49-CA5CBAB91A67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA651F56-7D75-45C2-AA49-CA5CBAB91A67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA651F56-7D75-45C2-AA49-CA5CBAB91A67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA651F56-7D75-45C2-AA49-CA5CBAB91A67}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{57F39FE7-9E5A-4174-9EEB-20EA30C942F4} = {9B2F1568-668D-46A2-9480-EAF65D7CF9BD}
+		{DA651F56-7D75-45C2-AA49-CA5CBAB91A67} = {57F39FE7-9E5A-4174-9EEB-20EA30C942F4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95FF8F9F-6A87-4C41-8557-2AC431BAD227}
+	EndGlobalSection
+EndGlobal
