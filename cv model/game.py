@@ -335,8 +335,8 @@ class Game:
         success, valid_move_string = self.get_valid_move(
             potential_squares, potential_moves
         )
-        print("Valid move string:" + valid_move_string)
-        print("FEN:" + self.board.fen())
+        # print("Valid move string:" + valid_move_string)
+        # print("FEN:" + self.board.fen())
 
         # TODO: check that this runs when it should (valid moves)
             
@@ -344,14 +344,15 @@ class Game:
         cv2.imwrite("moves/" + valid_move_string + ".jpg", previous_frame)
         if not success:
             success, valid_move_string = self.get_valid_move_canny(fgmask, next_frame)
-            print("Valid move string 2:" + valid_move_string)
+            #print("Valid move string 2:" + valid_move_string)
+            print("Camera detected a potential move, but no valid move was played")
             if not success:
                 success, valid_move_string = self.get_valid_move_hog(fgmask, next_frame)
-                print("Valid move string 3:" + valid_move_string)
+                #print("Valid move string 3:" + valid_move_string)
             if success:
                 pass
             else:
-                print(self.board.fen())
+                #print(self.board.fen())
                 return False
         else:
             if self.uci == ' ':
@@ -376,6 +377,7 @@ class Game:
         color = int(self.board.turn)
         self.board.push(valid_move_UCI)
         print(self.board)
+        print("\n\n")
 
         # self.internet_game.is_our_turn = not self.internet_game.is_our_turn
 
@@ -433,10 +435,10 @@ class Game:
         self.knn.train(self.features, cv2.ml.ROW_SAMPLE, self.labels)
 
     def get_valid_move(self, potential_squares, potential_moves):
-        print("Potential squares:")
-        print(potential_squares)
-        print("Potential moves:")
-        print(potential_moves)
+        # print("Potential squares:")
+        # print(potential_squares)
+        # print("Potential moves:")
+        # print(potential_moves)
 
         move_to_register = self.get_move_to_register()
 
@@ -455,7 +457,7 @@ class Game:
             try:
                 move = chess.Move.from_uci(uci_move)
             except Exception as e:
-                print(e)
+                #print(e)
                 continue
 
             if move in self.board.legal_moves:

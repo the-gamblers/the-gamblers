@@ -5,9 +5,9 @@ import sys
 from threading import Thread
 import pickle
 import os
+import re
 
 running_process = None
-
 token = ""
 
 
@@ -25,10 +25,16 @@ def log_process(process, finish_message):
     button_stop.grid(row=0, column=0, columnspan=2, sticky="ew")
     while True:
         output = process.stdout.readline()
+        text = output.decode()
+        # pattern = r'^[^,;\\]*$'
+        # matches = re.match(pattern, text)
+
         if output:
             logs_text.insert(tk.END, output.decode())
+            logs_text.see(tk.END)
         if process.poll() is not None:
             logs_text.insert(tk.END, finish_message)
+            logs_text.see(tk.END)
             break
     global start, board
     start = tk.Button(button_frame, text="Start Game", command=start_game)
@@ -192,6 +198,7 @@ text_frame = tk.Frame(window)
 text_frame.grid(row=10, column=0)
 scroll_bar = tk.Scrollbar(text_frame)
 logs_text = tk.Text(text_frame, background="gray", yscrollcommand=scroll_bar.set)
+logs_text.see(tk.END)
 scroll_bar.config(command=logs_text.yview)
 scroll_bar.pack(side=tk.RIGHT, fill=tk.Y)
 logs_text.pack(side="left")

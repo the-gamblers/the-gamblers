@@ -42,7 +42,7 @@ def write_fen(fen):
 
 
 def write_uci(uci):
-    print("writing to db: " + uci)
+    #print("writing to db: " + uci)
     cursor.execute("UPDATE games SET uci = '" + uci + "' WHERE GAMEID = " + str(gameid))
     conn.commit()
 
