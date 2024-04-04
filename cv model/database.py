@@ -43,23 +43,37 @@ def write_fen(fen):
     )
     conn.commit()
 
+# cursor.execute("UPDATE users SET wins = 6 WHERE username = 'ansley'")
+# conn.commit()
+
+
+# cursor.execute("SELECT fens FROM games WHERE user = 'ansley'")
+# conn.commit()
+# rows = cursor.fetchall()
+# for row in rows:
+#     print(row)
 
 def write_uci(uci):
-    #print("writing to db: " + uci)
     cursor.execute("UPDATE games SET uci = '" + uci + "' WHERE GAMEID = " + str(gameid))
     conn.commit()
+
+gameid = 1
+
+start_time = time.time()
+time.sleep(3)
+end_time = time.time()
 
 
 def write_time(start, end):
     totalTime = end - start
-    elapsed_time = time.strftime("%H:%M:%S", totalTime)
+    elapsed_time = datetime.timedelta(seconds=totalTime)
 
     cursor.execute(
-        "UPDATE games SET time = '" + elapsed_time + "' WHERE GAMEID = " + str(gameid)
+        "UPDATE games SET time = '" + str(elapsed_time) + "' WHERE GAMEID = " + str(gameid)
     )
-    print("wrote to database")
     conn.commit()
 
+write_time(start_time, end_time)
 
 # need to figure out python constructor
 # def get_best_move(fen):
