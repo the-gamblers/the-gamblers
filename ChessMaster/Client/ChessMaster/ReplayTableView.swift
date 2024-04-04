@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ReplayTableView: View {
     let replay: Replays
-    let moves = ["1. d4 d6", "2. f4 c5", "3. c3 f5", "4. f3 f6"]
     @State private var currentMoveIndex = 0
     @State private var showProfile = false
+    @Binding var isLoggedin: Bool
         
     func showProfileView() {
             showProfile.toggle()
@@ -34,15 +34,6 @@ struct ReplayTableView: View {
                     Text("Analysis")
                         .font(.headline)
                         .padding(.bottom, 10)
-                    HStack {
-                        Text("+7.21").bold()
-                        Text("b5 dxe3 fxe5 dxe5 c7+ Qe7 xe5 bd7 xd7 xd7 xa8 Qf6").lineLimit(1)
-                    }
-                    HStack {
-                        Text("-1.51").bold()
-                        Text("fxe5 dxe5 Ab5 aa6 Ad2 ee6 Axe5 d8 Ad3 ae3 Af4 a6").lineLimit(1)
-                    }
-                    .padding(.bottom, 20)
                     
                     // View Chess Board
                     ChessView(replay: replay)
@@ -60,13 +51,13 @@ struct ReplayTableView: View {
                 .foregroundColor(.black)
         })
         .sheet(isPresented: $showProfile) {
-            ProfileView(isLoggedin: .constant(true))
+            ProfileView(isLoggedin: $isLoggedin)
         }
     }
 }
 
 struct ReplayTableView_Previews: PreviewProvider {
     static var previews: some View {
-        ReplayTableView(replay: Replays(gameID: "1", user: "jade", date: "Feb 20, 2024 11:45 PM", title: "Game #49", notes: "Notes", uci:  "b2b3 d7d5 f2f3 h7h5 d2d3 a7a6 b3b4 d5d4", fen: "rnbqkbnr ppppppppRNBQKBNR"))
+        ReplayTableView(replay: Replays(gameID: "1", user: "jade", date: "Feb 20, 2024 11:45 PM", title: "Game #49", notes: "Notes", uci:  "b2b3 d7d5 f2f3 h7h5 d2d3 a7a6 b3b4 d5d4", fen: "rnbqkbnr ppppppppRNBQKBNR"), isLoggedin: .constant(true))
     }
 }

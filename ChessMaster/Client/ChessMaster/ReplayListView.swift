@@ -40,6 +40,7 @@ struct ReplayListView: View {
     @State private var passWord: String = ""
     @State private var userName: String = ""
     @State private var replay: [Replays] = []
+    @Binding var isLoggedin: Bool
 
     // Step 2
     func showProfileView() {
@@ -72,7 +73,7 @@ struct ReplayListView: View {
                                                 .font(.caption)
                                         }
                                         Spacer()
-                                        NavigationLink(destination: ReplayTableView(replay: replayItem)) {}
+                                        NavigationLink(destination: ReplayTableView(replay: replayItem, isLoggedin: $isLoggedin)) {}
                                     }
                                     .padding(.vertical, 8)
                                     .buttonStyle(ListButton())
@@ -96,7 +97,7 @@ struct ReplayListView: View {
                 }
             }
             .sheet(isPresented: $showProfile) {
-                ProfileView(isLoggedin: .constant(true))
+                ProfileView(isLoggedin: $isLoggedin)
             }
         }
         .onAppear {
@@ -112,7 +113,7 @@ struct ReplayListView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ReplayListView()
+        ReplayListView(isLoggedin: .constant(true))
     }
 }
 

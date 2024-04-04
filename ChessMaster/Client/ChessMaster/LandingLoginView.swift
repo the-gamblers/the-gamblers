@@ -4,6 +4,7 @@ struct LandingLoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var isLoginSuccessful = false
+    @State private var showPassword: Bool = false
     @Binding var isLoggedin: Bool
     
     func saveCredentials(username: String, password: String) {
@@ -28,18 +29,40 @@ struct LandingLoginView: View {
                     .frame(width: 100, height: 100)
                     .padding(.bottom, 30)
                 
-                TextField("Email Address", text: $username)
+                TextField("Username", text: $username)
                     .padding()
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(20)
                     .padding(.horizontal)
-                
-                SecureField("Password", text: $password)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(20)
-                    .padding(.horizontal)
-                
+                    .autocapitalization(.none)
+    
+                ZStack(alignment: .trailing) {
+                        if showPassword {
+                            TextField("Password", text: $password)
+                                    .padding()
+                                    .background(Color.gray.opacity(0.1))
+                                    .cornerRadius(20)
+                                    .padding(.horizontal)
+                                    .autocapitalization(.none)
+                            } else {
+                                SecureField("Password", text: $password)
+                                    .padding()
+                                    .background(Color.gray.opacity(0.1))
+                                    .cornerRadius(20)
+                                    .padding(.horizontal)
+                                    .autocapitalization(.none)
+                            }
+                            
+                            Button(action: {
+                                self.showPassword.toggle()
+                            }) {
+                                Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
+                                    .padding(.trailing, 30)
+                            }
+                            .foregroundColor(.secondary)
+                    }
+                    .padding(.vertical)
+            
                 Button(action: {
                     // TODO: Perform login authentication here
                 
@@ -66,7 +89,6 @@ struct LandingLoginView: View {
                     Text("Login Successful!")
                         .foregroundColor(.green)
                         .padding(.top, 20)
-                    
                         .background(
                             NavigationLink(destination: NavigationPage2(isLoggedin: $isLoggedin)) {
                                                    EmptyView()
@@ -96,6 +118,7 @@ struct CreateUserView: View {
     @State private var firstname: String = ""
     @State private var lastname: String = ""
     @State private var isLoginSuccessful = false
+    @State private var showPassword: Bool = false
     @Binding var isLoggedin: Bool
     
     var body: some View {
@@ -105,30 +128,40 @@ struct CreateUserView: View {
             .lineLimit(nil)
             .padding(.bottom, 10)
         
-        TextField("First Name", text: $firstname)
+        TextField("Username", text: $username)
             .padding()
             .background(Color.gray.opacity(0.1))
             .cornerRadius(20)
             .padding(.horizontal)
+            .autocapitalization(.none)
         
-        TextField("Last Name", text: $lastname)
-            .padding()
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(20)
-            .padding(.horizontal)
-        
-        TextField("Email Address", text: $username)
-            .padding()
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(20)
-            .padding(.horizontal)
-        
-        SecureField("Password", text: $password)
-            .padding()
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(20)
-            .padding(.horizontal)
-            .navigationBarTitle("Create an Account")
+        ZStack(alignment: .trailing) {
+                if showPassword {
+                    TextField("Password", text: $password)
+                            .padding()
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(20)
+                            .padding(.horizontal)
+                            .autocapitalization(.none)
+                    } else {
+                        SecureField("Password", text: $password)
+                            .padding()
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(20)
+                            .padding(.horizontal)
+                            .autocapitalization(.none)
+                    }
+                    
+                    Button(action: {
+                        self.showPassword.toggle()
+                    }) {
+                        Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
+                            .padding(.trailing, 30)
+                    }
+                    .foregroundColor(.secondary)
+            }
+            .padding(.vertical)
+    
         
         Button(action: {
             // TODO: Perform creation user process here

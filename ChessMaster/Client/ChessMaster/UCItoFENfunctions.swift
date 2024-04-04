@@ -23,15 +23,14 @@ func getUCIStringFromDB(gameID: String) -> [String] {
         }
     
     // TODO: Implementation goes here, get UCI from replay.gameID
-    if let wrapperItem = wrapperItem, wrapperItem.checkUser("ansley", password: "thompson") {
         // Retrieve games by user
-        if let games = wrapperItem.getUci(intValue) as? [String] {
+        if let games = wrapperItem?.getUci(intValue) as? [String] {
             for game in games {
-                //print("UCIs", game)
+                print("UCIs", game)
             }
             return games
         }
-    }
+
     
     // Return an empty array if authentication fails or if games retrieval fails
     return []
@@ -56,15 +55,14 @@ func getFENStringFromDB(gameID: String) -> [String] {
     }
     
     // TODO: Implementation goes here, get FEN from replay.gameID
-    if let wrapperItem = wrapperItem, wrapperItem.checkUser("ansley", password: "thompson") {
         // Retrieve games by user
-        if let games = wrapperItem.getFen(intValue) as? [String] {
+        if let games = wrapperItem?.getFen(intValue) as? [String] {
             for game in games {
-                //print("FENs:", game)
+                print("FENs:", game)
             }
             return games
         }
-    }
+
     
     // Return an empty array if authentication fails or if games retrieval fails
     return []
