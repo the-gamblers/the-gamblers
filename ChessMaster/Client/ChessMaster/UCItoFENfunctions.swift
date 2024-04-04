@@ -177,42 +177,43 @@ func getBestMove(fen: String) -> String{
     // TODO: Best move logic goes here... For now hardcoded
     // let bestMove = "g2-g3" // Instead of f2-f3
     print("pre url")
-        let apiUrl = URL(string: "https://stockfish.online/api/stockfish.php?fen=r2q1rk1/ppp2ppp/3bbn2/3p4/8/1B1P4/PPP2PPP/RNB1QRK1 w - - 5 11&depth=5&mode=bestmove")!
-
-        // Create a URLSession instance
-        var message : String = ""
+    let apiUrlString = "https://stockfish.online/api/stockfish.php?fen=\(fen)&depth=5&mode=bestmove"
+    var message : String = ""
+    if let apiUrl = URL(string: apiUrlString){
+        //let apiUrl = URL(string: "https://stockfish.online/api/stockfish.php?fen=r2q1rk1/ppp2ppp/3bbn2/3p4/8/1B1P4/PPP2PPP/RNB1QRK1 w - - 5 11&depth=5&mode=bestmove")!
+    
         let session = URLSession.shared
         print("post session")
-
+        
         // Create a data task to fetch the data
         let task = session.dataTask(with: apiUrl) { data, response, error in
-        // Check for errors
-
+            // Check for errors
+            
             print("post task")
             if let error = error {
                 print("Error: \(error.localizedDescription)")
                 return
             }
-
+            
             // Check if a response was received
             guard let httpResponse = response as? HTTPURLResponse else {
                 print("Error: No HTTP response")
                 return
             }
-
+            
             // Check if the response status code indicates success
             guard (200...299).contains(httpResponse.statusCode) else {
                 print("Error: HTTP status code \(httpResponse.statusCode)")
                 return
             }
-
+            
             // Check if data was returned
             guard let responseData = data else {
                 print("Error: No data received")
                 return
             }
-
-
+            
+            
             do {
                 let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
                 
@@ -232,7 +233,7 @@ func getBestMove(fen: String) -> String{
                             
                             // Replace "b1c3" with "b1-c3"
                             message = firstMove.prefix(2) + "-" + firstMove.suffix(2)
-                        
+                            
                             
                             print("First move after bestmove: \(message)")
                         } else {
@@ -244,15 +245,16 @@ func getBestMove(fen: String) -> String{
                 } else {
                     print("Data key not found in JSON response")
                 }
-
-        } catch {
-            // Handle error thrown by JSONSerialization.jsonObject
-            print("Error parsing JSON: \(error)")
+                
+            } catch {
+                // Handle error thrown by JSONSerialization.jsonObject
+                print("Error parsing JSON: \(error)")
+            }
+            
         }
-        
-}
         task.resume()
-    return message
+    }
+        return message
 }
 
 /**
