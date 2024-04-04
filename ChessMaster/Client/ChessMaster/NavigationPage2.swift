@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NavigationPage2: View {
     @State private var selection: Tab = .home
+    @Binding var isLoggedin: Bool
 
     enum Tab {
         case statistics
@@ -27,7 +28,7 @@ struct NavigationPage2: View {
                     }
                     .tag(Tab.statistics)
                 
-                HomePage()
+                HomePage(isLoggedin: $isLoggedin)
                     .tabItem {
                         Label("Home", systemImage: "house.fill")
                             .font(.title2.bold())
@@ -52,6 +53,6 @@ struct NavigationPage2: View {
 // Preview of NavigationView
 struct NavigationView_Previews2: PreviewProvider {
     static var previews: some View {
-        NavigationPage2()
+        NavigationPage2(isLoggedin: .constant(true))
     }
 }

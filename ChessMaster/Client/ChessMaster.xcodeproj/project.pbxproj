@@ -24,7 +24,6 @@
 		202CD6C02B83A144009FB1C0 /* ChessMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6BF2B83A144009FB1C0 /* ChessMasterUITests.swift */; };
 		202CD6C22B83A144009FB1C0 /* ChessMasterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6C12B83A144009FB1C0 /* ChessMasterUITestsLaunchTests.swift */; };
 		202CD6CF2B864574009FB1C0 /* ReplayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6CE2B864574009FB1C0 /* ReplayListView.swift */; };
-		202CD6D12B8645F3009FB1C0 /* ReplayTableViewOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6D02B8645F3009FB1C0 /* ReplayTableViewOLD.swift */; };
 		37203D7C2BB091780021EEE2 /* UploadPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37203D7B2BB091780021EEE2 /* UploadPhotoView.swift */; };
 		37203D7E2BB092090021EEE2 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37203D7D2BB092090021EEE2 /* CameraView.swift */; };
 		372380A82BB0D63800B74B70 /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372380A72BB0D63800B74B70 /* StartGameView.swift */; };
@@ -74,7 +73,6 @@
 		202CD6BF2B83A144009FB1C0 /* ChessMasterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessMasterUITests.swift; sourceTree = "<group>"; };
 		202CD6C12B83A144009FB1C0 /* ChessMasterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessMasterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		202CD6CE2B864574009FB1C0 /* ReplayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayListView.swift; sourceTree = "<group>"; };
-		202CD6D02B8645F3009FB1C0 /* ReplayTableViewOLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayTableViewOLD.swift; sourceTree = "<group>"; };
 		37203D7B2BB091780021EEE2 /* UploadPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotoView.swift; sourceTree = "<group>"; };
 		37203D7D2BB092090021EEE2 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		372380A72BB0D63800B74B70 /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 				37DD43802B8F942A00D59D9E /* HomePage.swift */,
 				37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */,
 				202CD6CE2B864574009FB1C0 /* ReplayListView.swift */,
-				202CD6D02B8645F3009FB1C0 /* ReplayTableViewOLD.swift */,
 				200A11F72BB45C2F00F28AC0 /* ChessSettingsView.swift */,
 				200A11EC2BB1225600F28AC0 /* ChessView.swift */,
 				200A11FC2BB478B300F28AC0 /* UCItoFENfunctions.swift */,
@@ -343,7 +340,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				202CD6D12B8645F3009FB1C0 /* ReplayTableViewOLD.swift in Sources */,
 				200A11ED2BB1225600F28AC0 /* ChessView.swift in Sources */,
 				200A11F52BB122C200F28AC0 /* LandingLoginView.swift in Sources */,
 				372380AA2BB0F03C00B74B70 /* FinishGameView.swift in Sources */,

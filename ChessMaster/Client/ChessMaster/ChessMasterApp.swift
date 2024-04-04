@@ -16,7 +16,7 @@ struct ChessMasterApp: App {
     var body: some Scene {
         WindowGroup {
             if isLoggedin {
-                NavigationPage2()
+                NavigationPage2(isLoggedin: $isLoggedin)
                     .environmentObject(vm)
             }
             else {
