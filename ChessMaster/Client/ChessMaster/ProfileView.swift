@@ -59,7 +59,7 @@ struct ProfileView: View {
                                 primaryButton: .default(Text("Yes")) {
                                     // TODO: fix password change
                                     print("entered password: ", password)
-                                    let wrapperItem = dbWrapper(title: "/Users/jadedavis/Documents/gambs-sprint-4-2/ChessMaster/Client/ChessMaster/test")
+                                    let wrapperItem = dbWrapper(title: "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/ChessMaster/Client/ChessMaster/test")
                                     let istrue = wrapperItem?.checkUser(username, password: origPassword)
                                     wrapperItem?.changePassword(password)
                                     //print(wrapperItem?.testy())
@@ -116,7 +116,7 @@ struct ProfileView: View {
                         .alert(isPresented: $showAlert) {
                             Alert(title: Text("Delete Account"), message: Text("Are you sure you want to delete your account? This cannot be undone."),
                                     primaryButton: .default(Text("Yes")) {
-                                    let wrapperItem = dbWrapper(title: "/Users/jadedavis/Documents/gambs-sprint-4-2/ChessMaster/Client/ChessMaster/test")
+                                    let wrapperItem = dbWrapper(title: "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/ChessMaster/Client/ChessMaster/test")
                                     let istrue = wrapperItem?.checkUser(username, password: origPassword)
                                     wrapperItem?.deleteUser()
                                 

@@ -22,7 +22,7 @@ struct ProgressPage: View {
     
     
     func fetchUserStats() {
-        let wrapperItem = dbWrapper(title: "/Users/saddy_khakimova/Documents/CSCE482/the-gamblers/ChessMaster/Client/ChessMaster/test1")
+        let wrapperItem = dbWrapper(title: "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/ChessMaster/Client/ChessMaster/test")
         
         if let stats = wrapperItem?.getUserStats(username) as? [String: NSNumber] {
 

@@ -43,7 +43,7 @@ struct LandingLoginView: View {
                 Button(action: {
                     // TODO: Perform login authentication here
                 
-                    let wrapperItem = dbWrapper(title: "/Users/saddy_khakimova/Documents/CSCE482/the-gamblers/ChessMaster/Client/ChessMaster/test1")
+                    let wrapperItem = dbWrapper(title: "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/ChessMaster/Client/ChessMaster/test")
                     let isValid = wrapperItem?.checkUser(username,password: password)
                     //print(wrapperItem?.testy())
                     if isValid ?? false {

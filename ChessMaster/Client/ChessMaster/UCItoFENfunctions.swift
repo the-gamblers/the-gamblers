@@ -23,7 +23,7 @@ func getUCIStringFromDB(gameID: String) -> [String] {
         }
     
     // TODO: Implementation goes here, get UCI from replay.gameID
-    let wrapperItem = dbWrapper(title: "/Users/jadedavis/Documents/gambs-sprint-4-2/ChessMaster/Client/ChessMaster/test")
+    let wrapperItem = dbWrapper(title: "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/ChessMaster/Client/ChessMaster/test")
     if let wrapperItem = wrapperItem, wrapperItem.checkUser("ansley", password: "thompson") {
         // Retrieve games by user
         if let games = wrapperItem.getUci(intValue) as? [String] {
@@ -57,7 +57,7 @@ func getFENStringFromDB(gameID: String) -> [String] {
     }
     
     // TODO: Implementation goes here, get FEN from replay.gameID
-    let wrapperItem = dbWrapper(title: "/Users/jadedavis/Documents/gambs-sprint-4-2/ChessMaster/Client/ChessMaster/test")
+    let wrapperItem = dbWrapper(title: "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/ChessMaster/Client/ChessMaster/test")
     if let wrapperItem = wrapperItem, wrapperItem.checkUser("ansley", password: "thompson") {
         // Retrieve games by user
         if let games = wrapperItem.getFen(intValue) as? [String] {
@@ -73,7 +73,7 @@ func getFENStringFromDB(gameID: String) -> [String] {
 }
 
 func getGamesFromDB(username: String, password: String) -> [String] {
-    let wrapperItem = dbWrapper(title: "/Users/jadedavis/Documents/gambs-sprint-4-2/ChessMaster/Client/ChessMaster/test")
+    let wrapperItem = dbWrapper(title: "/Users/roeebelkin/Desktop/School/CSCE 482/the-gamblers/ChessMaster/Client/ChessMaster/test")
     
     if let wrapperItem = wrapperItem, wrapperItem.checkUser(username, password: password) {
         // Retrieve games by user
