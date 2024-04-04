@@ -130,6 +130,7 @@ struct SquareTargetedPreview: View {
                         self.store.game.board.resetBoard(FEN:bestFenStrings[fenIndex])
                     } else {
                         self.store.game.board.resetBoard(FEN:fenStrings[fenIndex])
+                        getBestMove(fen: fenStrings[fenIndex])
                     }
                 }) {
                     Image(systemName: isPlaying ? "pause" : "hand.thumbsup") // Toggle play/pause icon
