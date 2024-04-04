@@ -1,5 +1,6 @@
 import sqlite3
 import datetime
+import time
 
 # from stockfish import Stockfish
 
@@ -9,14 +10,19 @@ cursor = conn.cursor()
 # cursor.execute("DELETE FROM games;")
 # conn.commit()
 
-gameid = 1
+gameid = -1
 
-cursor.execute("DELETE FROM games;")
-conn.commit()
+# cursor.execute("DELETE FROM games;")
+# conn.commit()
+
 
 def end_game():
     cursor.close()
     conn.close()
+
+
+cursor.execute("DELETE FROM games;")
+conn.commit()
 
 
 def get_game():
@@ -28,10 +34,6 @@ def get_game():
     conn.commit()
     global gameid
     gameid = cursor.fetchone()[0]
-
-
-# gameid = get_game()
-# print(gameid)
 
 
 def write_fen(fen):
@@ -46,6 +48,16 @@ def write_uci(uci):
     cursor.execute("UPDATE games SET uci = '" + uci + "' WHERE GAMEID = " + str(gameid))
     conn.commit()
 
+
+def write_time(start, end):
+    totalTime = end - start
+    elapsed_time = time.strftime("%H:%M:%S", totalTime)
+
+    cursor.execute(
+        "UPDATE games SET time = '" + elapsed_time + "' WHERE GAMEID = " + str(gameid)
+    )
+    print("wrote to database")
+    conn.commit()
 
 
 # need to figure out python constructor
