@@ -171,12 +171,34 @@ func uciToFEN(uciMoves: [(String, String)]) -> String  {
  * - Parameter uciMoves: Array of tuples representing moves.
  * - Returns: A string representing the best move.
  */
-func getBestMoveForUCI(uciMoves: [(String, String)]) -> String{
+
+//  inp: fen string of move to show best move for (probably curr_fen -1)
+func getBestMove(fen: String) -> String{
     // TODO: Best move logic goes here... For now hardcoded
-    let bestMove = "g2-g3" // Instead of f2-f3
+    // let bestMove = "g2-g3" // Instead of f2-f3
     
-    // create Stockfish engine
-   
+    let engine = Engine(type: .stockfish)
+    engine.receiveResponse = { response in print(response)}
+
+    engine.start()
+
+    guard engine.isRunning else { return }
+
+    engine.send(command: .stop)
+    engine.send(command: .position(.fen(fen)))
+    // Q: is next line needed
+    engine.send(command: .go(depth: 15))
+
+    engine.receiveResponse = { response in 
+        switch response {
+        case let .info(info):
+            print(info.score)
+            print(info.pv)
+            let bestMove = info.pv
+        default:
+                break
+        }}
+    engine.stop()
     
     return bestMove
 }
@@ -191,6 +213,7 @@ func getBestMoveForUCI(uciMoves: [(String, String)]) -> String{
  */
 func changeMoveToBestMove(originalMove: [(String, String)], bestMove: String) -> [(String, String)] {
     // TODO: Implementation goes here
+
     return [("e2e4", "b7b5"), (bestMove, "h7h5")]
 }
 

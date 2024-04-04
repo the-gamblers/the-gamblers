@@ -251,21 +251,27 @@ void Database::edit_fen(std::string fen)
     }
 }
 
-void Database::record_game_result(std::string username, std::string result) {
+void Database::record_game_result(std::string username, std::string result)
+{
     std::string query = "UPDATE users SET ";
-    if (result == "win") {
+    if (result == "win")
+    {
         query += "wins = wins + 1";
-    } else if (result == "loss") {
+    }
+    else if (result == "loss")
+    {
         query += "losses = losses + 1";
-    } else if (result == "draw") {
+    }
+    else if (result == "draw")
+    {
         query += "draws = draws + 1";
     }
     query += " WHERE username = '" + username + "';";
     sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
 }
 
-
-std::tuple<int, int, int, int> Database::get_user_stats(std::string username) {
+std::tuple<int, int, int, int> Database::get_user_stats(std::string username)
+{
     std::string query = "SELECT wins, losses, draws FROM users WHERE username = '" + username + "';";
     return std::make_tuple(0, 0, 0, 0);
 }
@@ -283,7 +289,7 @@ std::vector<std::string> Database::get_fen(int gameid = -1)
         std::cerr << "ERROR: " << zErrMsg << std::endl;
         return {};
     }
-    
+
     // replace column title, only get fen between commas
     std::string fenstr = buffer.at(0);
 
@@ -324,7 +330,6 @@ std::vector<std::string> Database::get_uci(int gameid = -1)
     {
         std::smatch match = *i;
         res.push_back(match[0].str());
-        std::cout << match[0].str() << std::endl;
     }
 
     return res;
@@ -334,24 +339,24 @@ std::vector<std::string> Database::get_uci(int gameid = -1)
 // {
 //     Database db = Database("test");
 
-//     db.check_user("ansley", "thompson");
+//     db.check_user("ansley", "ansley");
 
 //     // db.create_game();
 
 //     // db.edit_title("game4");
 
-//     db.switch_game("game2");
+//     db.switch_game("ansley10");
 
 //     std::vector<std::string>
 //         uci = db.get_uci();
 
-//     // for (auto a : uci)
-//     //     std::cout << a << std::endl;
+//     for (auto a : uci)
+//         std::cout << a << std::endl;
 
 //     std::cout << "----------------------------------" << std::endl;
 
-//     std::vector<std::string> uci2 = db.get_uci(5);
+//     std::vector<std::string> uci2 = db.get_fen();
 
-//     // for (auto a : uci2)
-//     //     std::cout << a << std::endl;
+//     for (auto a : uci2)
+//         std::cout << a << std::endl;
 // }
