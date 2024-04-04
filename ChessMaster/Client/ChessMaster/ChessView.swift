@@ -45,15 +45,17 @@ struct SquareTargetedPreview: View {
         for uciString in uciStrings {
             let uciMoves = getUCIMoves(UCIs: uciString)
             // print("Parsed UCI Moves", uciMoves)
-            //let fen = uciToFEN(uciMoves: uciMoves)
+            let fen = uciToFEN(uciMoves: uciMoves)
             // print("UCI converted to fen",fen)
             //fenStrings.append(fen)
             
             // Get best move for each FEN string
-            let bestMove = getBestMoveForUCI(uciMoves: uciMoves)
-            let modifiedMoves = changeMoveToBestMove(originalMove: uciMoves, bestMove: bestMove)
-            let bestFen = uciToFEN(uciMoves: modifiedMoves)
-            bestFenStrings.append(bestFen)
+            let bestMove = getBestMove(fen: fen)
+            // let bestMove = getBestMoveForUCI(uciMoves: uciMoves)
+            // FIXME: check that bestMove returns the best move in the format changeMove is looking for
+            // let modifiedMoves = changeMoveToBestMove(originalMove: uciMoves, bestMove: bestMove)
+            // let bestFen = uciToFEN(uciMoves: modifiedMoves)
+            // bestFenStrings.append(bestFen)
         }
        
         
@@ -128,6 +130,7 @@ struct SquareTargetedPreview: View {
                         self.store.game.board.resetBoard(FEN:bestFenStrings[fenIndex])
                     } else {
                         self.store.game.board.resetBoard(FEN:fenStrings[fenIndex])
+                        getBestMove(fen: fenStrings[fenIndex])
                     }
                 }) {
                     Image(systemName: isPlaying ? "pause" : "hand.thumbsup") // Toggle play/pause icon

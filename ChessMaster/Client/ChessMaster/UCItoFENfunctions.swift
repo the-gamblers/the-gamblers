@@ -169,14 +169,90 @@ func uciToFEN(uciMoves: [(String, String)]) -> String  {
  * - Parameter uciMoves: Array of tuples representing moves.
  * - Returns: A string representing the best move.
  */
-func getBestMoveForUCI(uciMoves: [(String, String)]) -> String{
+
+//  inp: fen string of move to show best move for (probably curr_fen -1)
+func getBestMove(fen: String) -> String{
     // TODO: Best move logic goes here... For now hardcoded
-    let bestMove = "g2-g3" // Instead of f2-f3
+    // let bestMove = "g2-g3" // Instead of f2-f3
+    print("pre url")
+    let apiUrlString = "https://stockfish.online/api/stockfish.php?fen=\(fen)&depth=5&mode=bestmove"
+    var message : String = ""
+    if let apiUrl = URL(string: apiUrlString){
+        //let apiUrl = URL(string: "https://stockfish.online/api/stockfish.php?fen=r2q1rk1/ppp2ppp/3bbn2/3p4/8/1B1P4/PPP2PPP/RNB1QRK1 w - - 5 11&depth=5&mode=bestmove")!
     
-    // create Stockfish engine
-   
-    
-    return bestMove
+        let session = URLSession.shared
+        print("post session")
+        
+        // Create a data task to fetch the data
+        let task = session.dataTask(with: apiUrl) { data, response, error in
+            // Check for errors
+            
+            print("post task")
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                return
+            }
+            
+            // Check if a response was received
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print("Error: No HTTP response")
+                return
+            }
+            
+            // Check if the response status code indicates success
+            guard (200...299).contains(httpResponse.statusCode) else {
+                print("Error: HTTP status code \(httpResponse.statusCode)")
+                return
+            }
+            
+            // Check if data was returned
+            guard let responseData = data else {
+                print("Error: No data received")
+                return
+            }
+            
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
+                
+                // Check if parsing succeeded and "data" key exists
+                if let jsonData = json?["data"] as? String {
+                    // Now you have the string "bestmove b1c3 ponder h7h6" in jsonData
+                    print("Best move: \(jsonData)")
+                    
+                    // Split the string by whitespace
+                    let moves = jsonData.components(separatedBy: " ")
+                    
+                    // Find the index of "bestmove"
+                    if let index = moves.firstIndex(of: "bestmove") {
+                        // Check if the move exists after "bestmove"
+                        if index + 1 < moves.count {
+                            let firstMove = moves[index + 1]
+                            
+                            // Replace "b1c3" with "b1-c3"
+                            message = firstMove.prefix(2) + "-" + firstMove.suffix(2)
+                            
+                            
+                            print("First move after bestmove: \(message)")
+                        } else {
+                            print("No move found after bestmove")
+                        }
+                    } else {
+                        print("No bestmove found in JSON response")
+                    }
+                } else {
+                    print("Data key not found in JSON response")
+                }
+                
+            } catch {
+                // Handle error thrown by JSONSerialization.jsonObject
+                print("Error parsing JSON: \(error)")
+            }
+            
+        }
+        task.resume()
+    }
+        return message
 }
 
 /**
@@ -189,6 +265,7 @@ func getBestMoveForUCI(uciMoves: [(String, String)]) -> String{
  */
 func changeMoveToBestMove(originalMove: [(String, String)], bestMove: String) -> [(String, String)] {
     // TODO: Implementation goes here
+
     return [("e2e4", "b7b5"), (bestMove, "h7h5")]
 }
 

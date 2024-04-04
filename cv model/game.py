@@ -36,8 +36,8 @@ class Game:
         self.features = None
         self.labels = None
         self.save_file = "hog.bin"
-        self.uci = ' '
-        self.fen = ' '
+        self.uci = " "
+        self.fen = " "
 
         if token:
             commentator_thread = Lichess_commentator()
@@ -339,31 +339,29 @@ class Game:
         # print("FEN:" + self.board.fen())
 
         # TODO: check that this runs when it should (valid moves)
-            
 
         cv2.imwrite("moves/" + valid_move_string + ".jpg", previous_frame)
         if not success:
             success, valid_move_string = self.get_valid_move_canny(fgmask, next_frame)
-            #print("Valid move string 2:" + valid_move_string)
             print("Camera detected a potential move, but no valid move was played")
             if not success:
                 success, valid_move_string = self.get_valid_move_hog(fgmask, next_frame)
-                #print("Valid move string 3:" + valid_move_string)
+                # print("Valid move string 3:" + valid_move_string)
             if success:
                 pass
             else:
-                #print(self.board.fen())
+                # print(self.board.fen())
                 return False
         else:
-            if self.uci == ' ':
+            if self.uci == " ":
                 self.uci = valid_move_string
             else:
                 self.uci += valid_move_string
-            
-            if self.fen == ' ':
-                self.fen = self.board.fen() + ','
+
+            if self.fen == " ":
+                self.fen = self.board.fen() + ","
             else:
-                self.fen += self.board.fen() + ','
+                self.fen += self.board.fen() + ","
 
             write_uci(self.uci)
             write_fen(self.fen)
@@ -457,7 +455,7 @@ class Game:
             try:
                 move = chess.Move.from_uci(uci_move)
             except Exception as e:
-                #print(e)
+                # print(e)
                 continue
 
             if move in self.board.legal_moves:
