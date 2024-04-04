@@ -117,4 +117,16 @@
     return result;
 }
 
+- (void)recordGameResultForUser:(NSString *)username result:(NSString *)result {
+    self.cppitem->record_game_result(std::string([username UTF8String]), std::string([result UTF8String]));
+}
+
+- (NSDictionary *)getUserStats:(NSString *)username {
+    auto stats = self.cppitem->get_user_stats(std::string([username UTF8String]));
+    return @{@"wins": @(std::get<0>(stats)),
+             @"losses": @(std::get<1>(stats)),
+             @"draws": @(std::get<2>(stats))
+    };
+}
+
 @end
