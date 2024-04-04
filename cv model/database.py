@@ -21,11 +21,12 @@ def end_game():
     conn.close()
 
 
-cursor.execute("DELETE FROM games;")
-conn.commit()
+
 
 
 def get_game():
+    # cursor.execute("DELETE FROM games;")
+    # conn.commit()
     cursor.execute(
         "INSERT INTO games (user, title, uci, fens) VALUES ('ansley', 'ansley10ABCs', '', '')"
     )

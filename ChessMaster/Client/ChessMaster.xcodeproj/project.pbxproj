@@ -36,6 +36,7 @@
 		E1030E082BB9C83F001189E6 /* db2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1030E062BB9C83F001189E6 /* db2.cpp */; };
 		E1030E0C2BB9CC1F001189E6 /* dbWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = E1030E0B2BB9CC1F001189E6 /* dbWrapper.mm */; };
 		E1030E0E2BBA44BA001189E6 /* test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E1030E0D2BBA44BA001189E6 /* test.sqlite */; };
+		E12255B72BBE2D4C0036B2D7 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12255B62BBE2D4C0036B2D7 /* GlobalVariables.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		E1030E0A2BB9CBC6001189E6 /* dbWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dbWrapper.h; sourceTree = "<group>"; };
 		E1030E0B2BB9CC1F001189E6 /* dbWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = dbWrapper.mm; sourceTree = "<group>"; };
 		E1030E0D2BBA44BA001189E6 /* test.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.sqlite; sourceTree = "<group>"; };
+		E12255B62BBE2D4C0036B2D7 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		E1F823202BB3789F00FECCCD /* ChessMaster-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChessMaster-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +146,7 @@
 			children = (
 				200A11F22BB122C200F28AC0 /* LandingLoginView.swift */,
 				E1030E062BB9C83F001189E6 /* db2.cpp */,
+				E12255B62BBE2D4C0036B2D7 /* GlobalVariables.swift */,
 				E1030E072BB9C83F001189E6 /* db2.hpp */,
 				E1030E0A2BB9CBC6001189E6 /* dbWrapper.h */,
 				E1030E0B2BB9CC1F001189E6 /* dbWrapper.mm */,
@@ -358,6 +361,7 @@
 				202CD6A72B83A13F009FB1C0 /* ContentView.swift in Sources */,
 				202CD6A52B83A13F009FB1C0 /* ChessMasterApp.swift in Sources */,
 				E1030E0C2BB9CC1F001189E6 /* dbWrapper.mm in Sources */,
+				E12255B72BBE2D4C0036B2D7 /* GlobalVariables.swift in Sources */,
 				37DD43812B8F942A00D59D9E /* HomePage.swift in Sources */,
 				37DD437F2B8F302500D59D9E /* ProgressPage.swift in Sources */,
 			);
