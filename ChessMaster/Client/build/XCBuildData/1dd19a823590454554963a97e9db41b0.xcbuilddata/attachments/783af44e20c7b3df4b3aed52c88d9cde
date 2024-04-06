@@ -1,4 +1,0 @@
-module ChessKit {
-header "ChessKit-Swift.h"
-export *
-}

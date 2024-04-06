@@ -1,4 +1,0 @@
-module ChessKitEngineCore {
-umbrella header "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/Sources/ChessKitEngineCore/include/ChessKitEngineCore.h"
-export *
-}
