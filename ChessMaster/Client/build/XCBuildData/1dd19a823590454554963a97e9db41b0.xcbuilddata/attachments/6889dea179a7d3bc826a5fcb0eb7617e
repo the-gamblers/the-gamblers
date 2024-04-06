@@ -1,0 +1,4 @@
+module ChessKitEngine {
+header "ChessKitEngine-Swift.h"
+export *
+}

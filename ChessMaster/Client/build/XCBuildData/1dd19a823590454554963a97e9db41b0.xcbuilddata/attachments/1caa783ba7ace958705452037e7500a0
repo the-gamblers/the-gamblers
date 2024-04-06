@@ -1,0 +1,55 @@
+{
+  "" : {
+    "const-values" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/ChessKitEngine-master.swiftconstvalues",
+    "dependencies" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/ChessKitEngine-master.d",
+    "diagnostics" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/ChessKitEngine-master.dia",
+    "emit-module-dependencies" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/ChessKitEngine-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/ChessKitEngine-master-emit-module.dia",
+    "swift-dependencies" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/ChessKitEngine-master.swiftdeps"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/DerivedSources/resource_bundle_accessor.swift" : {
+    "index-unit-output-path" : "/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/resource_bundle_accessor.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/resource_bundle_accessor.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/resource_bundle_accessor.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/Sources/ChessKitEngine/Engine.swift" : {
+    "index-unit-output-path" : "/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/Engine.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/Engine.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/Engine.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/Sources/ChessKitEngine/EngineCommand/EngineCommand.swift" : {
+    "index-unit-output-path" : "/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineCommand.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineCommand.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineCommand.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/Sources/ChessKitEngine/EngineCommand/EngineCommandPosition.swift" : {
+    "index-unit-output-path" : "/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineCommandPosition.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineCommandPosition.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineCommandPosition.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/Sources/ChessKitEngine/EngineResponse/EngineResponse.swift" : {
+    "index-unit-output-path" : "/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineResponse.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineResponse.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineResponse.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/Sources/ChessKitEngine/EngineResponse/EngineResponseID.swift" : {
+    "index-unit-output-path" : "/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineResponseID.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineResponseID.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineResponseID.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/Sources/ChessKitEngine/EngineResponse/EngineResponseInfo.swift" : {
+    "index-unit-output-path" : "/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineResponseInfo.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineResponseInfo.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineResponseInfo.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/Sources/ChessKitEngine/EngineResponse/EngineResponseParser.swift" : {
+    "index-unit-output-path" : "/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineResponseParser.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineResponseParser.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineResponseParser.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/Sources/ChessKitEngine/EngineType.swift" : {
+    "index-unit-output-path" : "/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineType.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineType.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/chesskit-engine/build/ChessKitEngine.build/Release-iphoneos/ChessKitEngine.build/Objects-normal/arm64/EngineType.o"
+  }
+}

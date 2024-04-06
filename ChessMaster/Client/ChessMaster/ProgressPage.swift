@@ -21,9 +21,7 @@ struct ProgressPage: View {
     @State private var draws: Int = 0
     
     
-    func fetchUserStats() {
-        let wrapperItem = dbWrapper(title: "/Users/saddy_khakimova/Documents/CSCE482/the-gamblers/ChessMaster/Client/ChessMaster/test1")
-        
+    func fetchUserStats() {        
         if let stats = wrapperItem?.getUserStats(username) as? [String: NSNumber] {
 
             wins = stats["wins"]?.intValue ?? 0

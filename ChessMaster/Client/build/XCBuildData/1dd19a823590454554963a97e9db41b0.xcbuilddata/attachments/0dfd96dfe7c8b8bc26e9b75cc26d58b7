@@ -1,0 +1,385 @@
+{
+  "" : {
+    "const-values" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Chess-master.swiftconstvalues",
+    "dependencies" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Chess-master.d",
+    "diagnostics" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Chess-master.dia",
+    "emit-module-dependencies" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Chess-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Chess-master-emit-module.dia",
+    "swift-dependencies" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Chess-master.swiftdeps"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Board/Board.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Board/Board+Analysis.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board+Analysis.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board+Analysis.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board+Analysis.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Board/Board+FEN.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board+FEN.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board+FEN.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board+FEN.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Board/Board+Game.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board+Game.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board+Game.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board+Game.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Board/Board+Moves.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board+Moves.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board+Moves.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Board+Moves.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Board/BoardVariant.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/BoardVariant.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/BoardVariant.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/BoardVariant.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Board/BoardVariant+GameplayKit.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/BoardVariant+GameplayKit.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/BoardVariant+GameplayKit.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/BoardVariant+GameplayKit.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Board/Position.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Position.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Position.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Position.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Board/Position+Names.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Position+Names.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Position+Names.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Position+Names.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Board/SingleMoveVariant.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SingleMoveVariant.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SingleMoveVariant.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SingleMoveVariant.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Board/Square.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Square.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Square.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Square.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Chess.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Chess.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Chess.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Chess.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Game/Game.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Game.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Game.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Game.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Game/Game+Notation.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Game+Notation.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Game+Notation.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Game+Notation.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Game/Game+Piece.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Game+Piece.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Game+Piece.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Game+Piece.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Game/Game+Rules.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Game+Rules.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Game+Rules.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Game+Rules.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Game/GameStatus.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GameStatus.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GameStatus.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GameStatus.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Game/Move.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Move.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Move.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Move.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Game/Move+Names.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Move+Names.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Move+Names.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Move+Names.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Game/Piece.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Piece.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Piece.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Piece.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Game/PieceType.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceType.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceType.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceType.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Game/Side.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Side.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Side.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Side.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Game/Side+Move.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Side+Move.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Side+Move.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Side+Move.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Game/SideEffect.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SideEffect.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SideEffect.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SideEffect.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Online/Chess+URL.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Chess+URL.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Chess+URL.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Chess+URL.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Player/ChessRobot.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessRobot.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessRobot.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessRobot.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Player/HumanPlayer.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/HumanPlayer.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/HumanPlayer.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/HumanPlayer.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Player/Player.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Player.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Player.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Player.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Player/PlayerFactory.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlayerFactory.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlayerFactory.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlayerFactory.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Robots/CautiousBot.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/CautiousBot.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/CautiousBot.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/CautiousBot.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Robots/GreedyBot.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GreedyBot.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GreedyBot.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GreedyBot.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Robots/MindyMaxBot.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/MindyMaxBot.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/MindyMaxBot.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/MindyMaxBot.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Robots/MontyCarlo.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/MontyCarlo.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/MontyCarlo.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/MontyCarlo.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Robots/PlaybackBot.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlaybackBot.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlaybackBot.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlaybackBot.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Robots/Robot+Choices.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Robot+Choices.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Robot+Choices.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Robot+Choices.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Robots/Robot+Names.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Robot+Names.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Robot+Names.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Robot+Names.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Robots/Robot+Previews.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Robot+Previews.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Robot+Previews.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Robot+Previews.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Settings/ChessPreferences.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessPreferences.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessPreferences.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessPreferences.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Store/ChessEnvironment.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessEnvironment.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessEnvironment.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessEnvironment.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Store/ChessStore.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessStore.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessStore.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessStore.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Store/ChessStore+Preview.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessStore+Preview.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessStore+Preview.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessStore+Preview.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Store/EnvironmentReducer.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/EnvironmentReducer.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/EnvironmentReducer.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/EnvironmentReducer.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Store/GameActions.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GameActions.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GameActions.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GameActions.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/Store/GameReducer.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GameReducer.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GameReducer.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GameReducer.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/BoardIconView.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/BoardIconView.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/BoardIconView.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/BoardIconView.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/BoardView.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/BoardView.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/BoardView.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/BoardView.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/ChessSettingsView.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessSettingsView.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessSettingsView.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessSettingsView.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/ChessThemes.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessThemes.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessThemes.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ChessThemes.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/Defaults.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Defaults.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Defaults.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Defaults.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/Extensions/CoreGraphics+RelativeShape.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/CoreGraphics+RelativeShape.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/CoreGraphics+RelativeShape.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/CoreGraphics+RelativeShape.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/Extensions/GridItem+Chess.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GridItem+Chess.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GridItem+Chess.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/GridItem+Chess.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/Interactions/PieceDrag.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceDrag.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceDrag.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceDrag.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PieceArtwork/Bishop.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Bishop.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Bishop.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Bishop.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PieceArtwork/King.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/King.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/King.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/King.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PieceArtwork/Knight.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Knight.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Knight.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Knight.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PieceArtwork/Pawn.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Pawn.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Pawn.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Pawn.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PieceArtwork/PieceArtwork.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceArtwork.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceArtwork.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceArtwork.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PieceArtwork/PieceArtwork+Drawing.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceArtwork+Drawing.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceArtwork+Drawing.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceArtwork+Drawing.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PieceArtwork/Queen.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Queen.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Queen.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Queen.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PieceArtwork/Rook.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Rook.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Rook.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Rook.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PieceGlyph.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceGlyph.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceGlyph.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceGlyph.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PieceShape.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceShape.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceShape.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceShape.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PieceShape+Details.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceShape+Details.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceShape+Details.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceShape+Details.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PieceStyle.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceStyle.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceStyle.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceStyle.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PieceView.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceView.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceView.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PieceView.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PlayAsButton.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlayAsButton.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlayAsButton.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlayAsButton.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PlayerTitleView.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlayerTitleView.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlayerTitleView.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlayerTitleView.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/PlayPauseButton.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlayPauseButton.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlayPauseButton.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/PlayPauseButton.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/ResetBoardButton.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ResetBoardButton.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ResetBoardButton.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/ResetBoardButton.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/Sound.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Sound.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Sound.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/Sound.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/SquareBackground.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SquareBackground.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SquareBackground.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SquareBackground.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/SquareMoveHighlight.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SquareMoveHighlight.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SquareMoveHighlight.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SquareMoveHighlight.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/SquareSelected.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SquareSelected.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SquareSelected.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SquareSelected.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/SquareTargeted.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SquareTargeted.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SquareTargeted.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/SquareTargeted.o"
+  },
+  "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/Sources/Chess/UI/UI.swift" : {
+    "index-unit-output-path" : "/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/UI.o",
+    "llvm-bc" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/UI.bc",
+    "object" : "/Users/roeebelkin/Library/Developer/Xcode/DerivedData/ChessMaster-azyixgmhdxzlkmgixwjspwrpzuhy/SourcePackages/checkouts/swift-chess/build/swift-chess.build/Release-iphoneos/Chess.build/Objects-normal/arm64/UI.o"
+  }
+}

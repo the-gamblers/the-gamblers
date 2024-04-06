@@ -1,0 +1,25 @@
+Target dependency graph (11 targets)
+Target 'ChessMaster' in project 'ChessMaster'
+➜ Explicit dependency on target 'ChessKit' in project 'ChessKit'
+➜ Explicit dependency on target 'Chess' in project 'swift-chess'
+➜ Explicit dependency on target 'ChessKitEngine' in project 'ChessKitEngine'
+Target 'ChessKitEngine' in project 'ChessKitEngine'
+➜ Explicit dependency on target 'ChessKitEngine' in project 'ChessKitEngine'
+➜ Explicit dependency on target 'ChessKitEngine_ChessKitEngine' in project 'ChessKitEngine'
+➜ Explicit dependency on target 'ChessKitEngineCore' in project 'ChessKitEngine'
+Target 'ChessKitEngine' in project 'ChessKitEngine'
+➜ Explicit dependency on target 'ChessKitEngine_ChessKitEngine' in project 'ChessKitEngine'
+➜ Explicit dependency on target 'ChessKitEngineCore' in project 'ChessKitEngine'
+Target 'ChessKitEngineCore' in project 'ChessKitEngine' (no dependencies)
+Target 'ChessKitEngine_ChessKitEngine' in project 'ChessKitEngine' (no dependencies)
+Target 'Chess' in project 'swift-chess'
+➜ Explicit dependency on target 'Chess' in project 'swift-chess'
+➜ Explicit dependency on target 'Logging' in project 'swift-log'
+Target 'Chess' in project 'swift-chess'
+➜ Explicit dependency on target 'Logging' in project 'swift-log'
+Target 'Logging' in project 'swift-log'
+➜ Explicit dependency on target 'Logging' in project 'swift-log'
+Target 'Logging' in project 'swift-log' (no dependencies)
+Target 'ChessKit' in project 'ChessKit'
+➜ Explicit dependency on target 'ChessKit' in project 'ChessKit'
+Target 'ChessKit' in project 'ChessKit' (no dependencies)

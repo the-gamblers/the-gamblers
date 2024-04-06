@@ -29,16 +29,18 @@ public:
     bool check_user(std::string username, std::string password);
     void change_password(std::string new_password);
     void delete_user();
-    void create_game(std::string title, std::string notes, std::string uci);
+    void create_game(std::string title, std::string notes, std::string uci, std::string fen);
+    void edit_title(std::string title);
     void edit_note(std::string note);
     std::vector<std::string> retrieve_games_by_title(std::string title);
+    std::vector<std::string> retrieve_games_by_user();
     void delete_games_by_user();
     void delete_games_by_id();
     void switch_game(std::string title);
     void edit_fen(std::string fen);
     void record_game_result(std::string username, std::string result);
     std::tuple<int, int, int, int> get_user_stats(std::string username);
-    std::vector<std::string> get_fen();
-    std::string testy();
+    std::vector<std::string> get_fen(int gameid);
+    std::vector<std::string> get_uci(int gameid);
 };
 #endif /* db2_hpp */

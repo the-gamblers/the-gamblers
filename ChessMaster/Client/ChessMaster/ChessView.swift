@@ -4,26 +4,42 @@ import ChessKit
 
 /// View for displaying chess moves with animations.
 struct SquareTargetedPreview: View {
+    var replay: Replays?
     // State variables
     @State private var fenIndex = 0 // Index to track the current FEN string
     @StateObject private var store: ChessStore
     @State private var isPlaying = false // State variable to track play/pause
     
-    // TODO: get fen strings from replay game
-    var fenStrings: [String] = ["rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",] // starting postion
+    // get fen strings from replay game
+    private var fenStrings: [String] {
+        guard let replay = replay else { return [] }
+        var fenStrings1: [String] = ["rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",] // starting postion
+        let fens = getFENStringFromDB(gameID: replay.gameID)
+        for move in fens{
+            fenStrings1.append(move)
+        }
+        print(fenStrings1)
+        return fenStrings1
+    }
+    
     // TODO: get best move for each fen str and convert to fen to display
     var bestFenStrings: [String] = ["rnbqkbnr/ppp1pppp/8/3p4/8/1P6/P1PPPPPP/RNBQKBNR w KQkq d6 0 2"] // best move orig (doesnt mean anything)
     
-    // TODO: UCI String from db
-    let uciStrings = makeUCIStrings(originalUCI: "e2e4 d7d5 f2f3 h7h5 d2d3 a7a6 b3b4 d5d4")
+    // get uci str from replay and parse into play-by-play ucis
+    private var uciStrings: [String] {
+        guard let replay = replay else { return [] }
+        //print(replay)
+        return makeUCIStrings(originalUCI: getUCIStringFromDB(gameID: replay.gameID))
+    }
     
-    init() {
-    
+    init(replay: Replays?) {
+        self.replay = replay
         // Initialize ChessStore with a sample game
         let game = Chess.Game.sampleGame()
         self._store = StateObject(wrappedValue: ChessStore(game: game))
         self.store.game.userPaused = true
         self.store.game.setRobotPlaybackSpeed(3.0)
+        //print(getGamesFromDB())
         
         // Parse UCI strings and generate FEN strings
         for uciString in uciStrings {
@@ -31,14 +47,17 @@ struct SquareTargetedPreview: View {
             // print("Parsed UCI Moves", uciMoves)
             let fen = uciToFEN(uciMoves: uciMoves)
             // print("UCI converted to fen",fen)
-            fenStrings.append(fen)
+            //fenStrings.append(fen)
             
             // Get best move for each FEN string
-            let bestMove = getBestMoveForUCI(uciMoves: uciMoves)
-            let modifiedMoves = changeMoveToBestMove(originalMove: uciMoves, bestMove: bestMove)
-            let bestFen = uciToFEN(uciMoves: modifiedMoves)
-            bestFenStrings.append(bestFen)
+            let bestMove = getBestMove(fen: fen)
+            // let bestMove = getBestMoveForUCI(uciMoves: uciMoves)
+            // FIXME: check that bestMove returns the best move in the format changeMove is looking for
+            // let modifiedMoves = changeMoveToBestMove(originalMove: uciMoves, bestMove: bestMove)
+            // let bestFen = uciToFEN(uciMoves: modifiedMoves)
+            // bestFenStrings.append(bestFen)
         }
+       
         
     }
     
@@ -111,6 +130,7 @@ struct SquareTargetedPreview: View {
                         self.store.game.board.resetBoard(FEN:bestFenStrings[fenIndex])
                     } else {
                         self.store.game.board.resetBoard(FEN:fenStrings[fenIndex])
+                        getBestMove(fen: fenStrings[fenIndex])
                     }
                 }) {
                     Image(systemName: isPlaying ? "pause" : "hand.thumbsup") // Toggle play/pause icon
@@ -140,24 +160,27 @@ struct SquareTargetedPreview: View {
 
 /// View for displaying the SquareTargetedPreview.
 struct SquareTargetedPreviewView: View {
-    var body: some View {
-        SquareTargetedPreview()
-    }
+    let replay: Replays // Define a property to hold the replay object
+        
+        var body: some View {
+            SquareTargetedPreview(replay: replay) // Pass the replay object to SquareTargetedPreview
+        }
 }
 
 /// Main ChessView containing other views.
 struct ChessView: View {
+    let replay: Replays
     var body: some View {
         VStack {
-            SquareTargetedPreviewView()
+            SquareTargetedPreviewView(replay: replay)
         }
     }
 }
 
 /// Preview provider for ChessView.
 struct ChessView_Previews: PreviewProvider {
+    static var replay: Replays = Replays(gameID: "1", user: "jade", date: "Feb 20, 2024 11:45 PM", title: "Feb 20, 20", notes: "Notes", uci:  "b2b3d7d5f2f3h7h5d2d3a7a6", fen: "rnbqkbnpppppppp RNBQKBNR")
     static var previews: some View {
-        ChessView()
+        ChessView(replay: replay)
     }
 }
-

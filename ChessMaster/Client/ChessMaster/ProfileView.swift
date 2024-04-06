@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ProfileView: View {
     @State private var username: String = ""
-    @State private var firstname: String = "Jade"
-    @State private var lastname: String = "Davis"
     @State private var password: String = ""
-    @State private var showAlert = false
+    @State private var origPassword: String = ""
+    @State private var showChangeAlert = false
+    @State private var showDeleteAlert = false
     @State private var isEditing: Bool = false
+    @State private var showPassword: Bool = false
     @Binding var isLoggedin: Bool
     
     var body: some View {
@@ -25,49 +26,43 @@ struct ProfileView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100)
                     .padding(.bottom, 20)
-                
-                TextField("First Name", text: $firstname)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(20)
-                    .padding(.horizontal)
-                    .padding(.bottom, 20)
-                
-                TextField("Last Name", text: $lastname)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(20)
-                    .padding(.horizontal)
-                    .padding(.bottom, 20)
-                
                 TextField("Email Address", text: $username)
                     .padding()
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(20)
                     .padding(.horizontal)
-                    .padding(.bottom, 20)
+                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 
-                SecureField("New Password", text: $password)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(20)
-                    .padding(.horizontal)
-                    .padding(.bottom, 20)
-                    .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Change Password"), message: Text("Are you sure you want to change the password?"),
-                                primaryButton: .default(Text("Yes")) {
-                                    // TODO: fix password change
-                                    print(password)
-                                    let wrapperItem = dbWrapper(title: "/Users/jadedavis/Documents/gambs-sprint-4-2/ChessMaster/Client/ChessMaster/test")
-                                    wrapperItem?.changePassword(password)
-                                    print(wrapperItem?.testy())
+                ZStack(alignment: .trailing) {
+                        if showPassword {
+                            TextField("Password", text: $password)
+                                    .padding()
+                                    .background(Color.gray.opacity(0.1))
+                                    .cornerRadius(20)
+                                    .padding(.horizontal)
+                                    .autocapitalization(.none)
+                            } else {
+                                SecureField("Password", text: $password)
+                                    .padding()
+                                    .background(Color.gray.opacity(0.1))
+                                    .cornerRadius(20)
+                                    .padding(.horizontal)
+                                    .autocapitalization(.none)
+                            }
                             
-                            },
-                            secondaryButton: .cancel(Text("No")))
-                        }
+                            Button(action: {
+                                self.showPassword.toggle()
+                            }) {
+                                Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
+                                    .padding(.trailing, 30)
+                            }
+                            .foregroundColor(.secondary)
+                    }
+                    .padding(.vertical)
+            
                 Button(action: {
-                               // Display alert
-                               showAlert = true
+                               // Display change password alert
+                               showChangeAlert = true
                            }) {
                                Text("Change Password")
                                    .padding()
@@ -76,25 +71,59 @@ struct ProfileView: View {
                                    .foregroundColor(.white)
                                    .cornerRadius(25)
                                    .padding(.horizontal)
+                                   .alert(isPresented: $showChangeAlert) {
+                                       Alert(title: Text("Change Password"), message: Text("Are you sure you want to change your password?"),
+                                               primaryButton: .default(Text("Yes")) {
+                                               wrapperItem?.checkUser(username, password: origPassword)
+                                               wrapperItem?.changePassword(password)
+                                    
+                                               },
+                                               secondaryButton: .cancel(Text("No")))
+                                       }
                            }
     
                 Button(action: {
-                    // TODO: Perform logout action
+                    // Perform logout action
                     print("Logout button pressed")
                     isLoggedin = false
-                    print(isLoggedin)
                     UserDefaults.standard.removeObject(forKey: "username")
                     UserDefaults.standard.removeObject(forKey: "password")
                 }) {
                     Text("Logout")
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.red)
+                        .background(Color.gray)
                         .foregroundColor(.white)
                         .cornerRadius(25)
                         .padding(.horizontal)
+                    
                 }
                 Spacer()
+                Button(action: {
+                    // Perform delete action
+                    showDeleteAlert = true
+                    print("delete button pressed")
+                }) {
+                    Text("Delete Account")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.red)
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                        .padding(.horizontal) 
+                        .alert(isPresented: $showDeleteAlert) {
+                            Alert(title: Text("Delete Account"), message: Text("Are you sure you want to delete your account? This cannot be undone."),
+                                    primaryButton: .default(Text("Yes")) {
+                                    wrapperItem?.checkUser(username, password: origPassword)
+                                    wrapperItem?.deleteUser()
+                                    isLoggedin = false
+                                    UserDefaults.standard.removeObject(forKey: "username")
+                                    UserDefaults.standard.removeObject(forKey: "password")
+                                
+                                    },
+                                    secondaryButton: .cancel(Text("No")))
+                            }
+                }
                 if isLoggedin == false {
                     Text("Logging Out...")
                         .padding(.top, 20)
@@ -109,7 +138,8 @@ struct ProfileView: View {
                 // Retrieve saved credentials
                 username = UserDefaults.standard.string(forKey: "username") ?? ""
                 // Password retrieval can be insecure; use a secure storage option for sensitive data
-                password = UserDefaults.standard.string(forKey: "password") ?? ""
+                origPassword = UserDefaults.standard.string(forKey: "password") ?? ""
+                password = origPassword
             }
         }
     }

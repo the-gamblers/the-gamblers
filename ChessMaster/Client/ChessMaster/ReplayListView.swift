@@ -10,27 +10,16 @@ import SwiftUI
 // TODO: match to database schema
 struct Replays: Identifiable {
     let id = UUID()
+    let gameID: String
     let user: String
-    let title: String
     let date: String
+    let title: String
     let notes: String
     let uci: String
-    let fen: [String]
+    let fen: String
 }
-
-// TODO: need to read from database
-private var replay = [
-    Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4",fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
-    Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
-    Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4",fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
-    Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
-    Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
-    Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
-    Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
-    Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
-    Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ]),
-    Replays(user: "jade", title: "Game #49", date: "Feb 20, 2024 11:45 PM", notes: "Notes", uci: "e2e4 b3b5 g7g5 a2a4", fen: ["rnbqkbnr", "pppppppp", "RNBQKBNR" ])
-]
+// read from database, get list of games with (user,title,etc) in form of Replay
+//private var replay = parseReplays(data: getGamesFromDB(username: userName, password: passWord))
 
 // button style for the list (for later)
 struct ListButton: ButtonStyle {
@@ -48,11 +37,16 @@ struct ListButton: ButtonStyle {
 struct ReplayListView: View {
     @State private var showTableView = false
     @State private var showProfile = false // Step 1
+    @State private var passWord: String = ""
+    @State private var userName: String = ""
+    @State private var replay: [Replays] = []
+    @Binding var isLoggedin: Bool
 
     // Step 2
     func showProfileView() {
         showProfile.toggle()
     }
+    
 
     var body: some View {
         NavigationView {
@@ -79,7 +73,7 @@ struct ReplayListView: View {
                                                 .font(.caption)
                                         }
                                         Spacer()
-                                        NavigationLink(destination: ReplayTableView(replay: replayItem)) {}
+                                        NavigationLink(destination: ReplayTableView(replay: replayItem, isLoggedin: $isLoggedin)) {}
                                     }
                                     .padding(.vertical, 8)
                                     .buttonStyle(ListButton())
@@ -103,15 +97,23 @@ struct ReplayListView: View {
                 }
             }
             .sheet(isPresented: $showProfile) {
-                ProfileView(isLoggedin: .constant(true))
+                ProfileView(isLoggedin: $isLoggedin)
             }
+        }
+        .onAppear {
+            // Retrieve saved credentials
+            userName = UserDefaults.standard.string(forKey: "username") ?? ""
+            // Password retrieval can be insecure; use a secure storage option for sensitive data
+            passWord = UserDefaults.standard.string(forKey: "password") ?? ""
+            // Initialize replay using the retrieved username and password
+            replay = parseReplays(data: getGamesFromDB(username: userName, password: passWord))
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ReplayListView()
+        ReplayListView(isLoggedin: .constant(true))
     }
 }
 
