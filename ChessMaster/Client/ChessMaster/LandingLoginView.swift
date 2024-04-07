@@ -41,7 +41,6 @@ struct LandingLoginView: View {
                     .padding(.horizontal)
                 
                 Button(action: {
-                    // TODO: Perform login authentication here
                     getBestMove(fen: "rnbqkbnr/ppp1pppp/8/3p4/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2")
                     let isValid = wrapperItem?.checkUser(username,password: password)
                     //print(wrapperItem?.testy())
@@ -131,7 +130,6 @@ struct CreateUserView: View {
             .navigationBarTitle("Create an Account")
         
         Button(action: {
-            // TODO: Perform creation user process here
            wrapperItem?.createUser(username, password: password)
             if wrapperItem != nil {
                 isLoggedin = true

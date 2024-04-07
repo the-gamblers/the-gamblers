@@ -57,11 +57,9 @@ struct ProfileView: View {
                     .alert(isPresented: $showAlert) {
                         Alert(title: Text("Change Password"), message: Text("Are you sure you want to change the password?"),
                                 primaryButton: .default(Text("Yes")) {
-                                    // TODO: fix password change
                                     print("entered password: ", password)
                                     let istrue = wrapperItem?.checkUser(username, password: origPassword)
                                     wrapperItem?.changePassword(password)
-                                    //print(wrapperItem?.testy())
                             
                             },
                             secondaryButton: .cancel(Text("No")))
