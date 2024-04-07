@@ -69,8 +69,6 @@ struct ReplayListView: View {
                                                 .bold()
                                             Text(replayItem.date)
                                                 .font(.subheadline)
-                                            Text(replayItem.notes)
-                                                .font(.caption)
                                         }
                                         Spacer()
                                         NavigationLink(destination: ReplayTableView(replay: replayItem, isLoggedin: $isLoggedin)) {}

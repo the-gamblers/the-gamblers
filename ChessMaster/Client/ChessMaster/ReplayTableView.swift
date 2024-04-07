@@ -27,9 +27,16 @@ struct ReplayTableView: View {
                         .bold()
                     Text(replay.date)
                         .font(.subheadline)
-                    Text("Notes: \(replay.notes)")
-                        .font(.caption)
-                        .padding(.bottom)
+                    if replay.notes == "NULL" {
+                                Text("Notes: ")
+                                    .font(.caption)
+                                    .padding(.bottom)
+                    }
+                    else {
+                        Text("Notes: \(replay.notes)")
+                            .font(.caption)
+                            .padding(.bottom)
+                    }
                     // Analysis section
                     Text("Analysis")
                         .font(.headline)

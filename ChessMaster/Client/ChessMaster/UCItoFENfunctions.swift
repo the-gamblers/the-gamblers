@@ -100,7 +100,7 @@ func parseReplays(data: [String]) -> [Replays] {
         
         index += 8
     }
-    //print(replays)
+    print(replays)
     return replays
 }
 

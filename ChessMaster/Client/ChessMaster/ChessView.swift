@@ -97,7 +97,7 @@ struct SquareTargetedPreview: View {
                 
             }
             else{
-                Text("\(fenIndex). This is the move you made.")
+                Text("\(fenIndex). This is the move that was made.")
                     .font(.headline)
             }
             
