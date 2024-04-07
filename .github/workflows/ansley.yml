@@ -56,7 +56,7 @@ jobs:
           -archivePath $RUNNER_TEMP/ChessMaster\build\ChessMaster.xcarchive \
           -sdk iphonesimulator \
           -configuration Debug \
-          -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0'\
+          -destination 'platform=iOS, id=25CEC2EF-1CBF-477A-A198-D30EBFC51485'\
           -allowProvisioningUpdates \
           clean archive          
 
