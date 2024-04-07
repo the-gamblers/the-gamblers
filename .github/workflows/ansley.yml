@@ -2,9 +2,9 @@ name: "Build iOS app 1"
 
 on:
   push:
-    branches: "main"
+    branches: "CICD-2"
   pull_request:
-    branches: "**"
+    branches: "main"
   # manual trigger but change to any supported event
   # see addl: https://www.andrewhoog.com/post/how-to-build-react-native-android-app-with-github-actions/#3-run-build-workflow
   # addl comment
