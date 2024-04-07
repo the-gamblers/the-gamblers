@@ -16,11 +16,6 @@ jobs:
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
-
-      - name: set xcode version
-        uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: latest-stable
           
       - name: check Xcode version
         run: /usr/bin/xcodebuild -version
@@ -60,7 +55,7 @@ jobs:
           -archivePath $RUNNER_TEMP/ChessMaster\build\ChessMaster.xcarchive \
           -sdk iphoneos \
           -configuration Debug \
-          -destination generic/platform=iOS \
+          -destination 'platform=iOS Simulator, name=iPhone 15 Pro Max, OS=15.0'\
           -allowProvisioningUpdates \
           clean archive          
 
