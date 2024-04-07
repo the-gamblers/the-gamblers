@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/chesskit-app/chesskit-engine",
       "state" : {
-        "revision" : "84b9687a5a2316b984d8079e83493c28ed4d73d5",
-        "version" : "0.2.2"
+        "revision" : "24f9364de45c35a9ff1e702f58ffd84e76dd1ba1",
+        "version" : "0.3.0"
       }
     },
     {
@@ -38,5 +38,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
