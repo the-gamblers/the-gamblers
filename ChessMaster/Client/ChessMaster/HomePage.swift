@@ -108,10 +108,12 @@ struct HomePage: View {
     }
     
     func startNewGame() {
-        // Call create_game() to add an empty game entry to the
-        wrapperItem?.createGame(withTitle: "", notes: "", uci: "", fen: "")
+        // Call create_game() to add an empty game
+        let defaultTitle = "New Game Started"
+        let defaultNotes = "No notes yet"
+
+        wrapperItem?.createGame(withTitle: defaultTitle, notes: defaultNotes, uci: "", fen: "")
         
-        // Trigger navigation to FinishGameView
         navigateToFinishGame = true
     }
 }

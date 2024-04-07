@@ -153,10 +153,10 @@ struct GameSavingView: View {
     
     func saveGameDetails() {
         wrapperItem?.editTitle(gameTitle)
-        wrapperItem?.editTitle(notes)
+        wrapperItem?.editNote(notes)
         
         
-        let gameResult = isSelected ? "win" : isSelected2 ? "loss" : "draw"
+        let gameResult = isSelected ? "win" : isSelected2 ? "loss" : isSelected3 ? "draw" : ""
         wrapperItem?.recordGameResult(forUser: username, result: gameResult)
     }
 }
