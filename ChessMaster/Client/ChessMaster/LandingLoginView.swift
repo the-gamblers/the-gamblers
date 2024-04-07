@@ -5,6 +5,7 @@ struct LandingLoginView: View {
     @State private var password: String = ""
     @State private var isLoginSuccessful = false
     @State private var showPassword: Bool = false
+    @State private var showError = false
     @Binding var isLoggedin: Bool
     
     func saveCredentials(username: String, password: String) {
@@ -65,16 +66,17 @@ struct LandingLoginView: View {
             
                 Button(action: {
                     // TODO: Perform login authentication here
-                    getBestMove(fen: "rnbqkbnr/ppp1pppp/8/3p4/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2")
                     let isValid = wrapperItem?.checkUser(username,password: password)
-                    //print(wrapperItem?.testy())
                     if isValid ?? false {
-                        isLoginSuccessful = true
-                        isLoggedin = true
-                        saveCredentials(username: username, password: password)
-                    } else {
-                        isLoginSuccessful = false
-                    }
+                               isLoginSuccessful = true
+                               isLoggedin = true
+                               saveCredentials(username: username, password: password)
+                           } else {
+                               showError = true
+                               DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                                   showError = false // Hide the error message after 4 seconds
+                               }
+                           }
                 }) {
                     Text("LOG IN")
                         .foregroundColor(.white)
@@ -85,6 +87,12 @@ struct LandingLoginView: View {
                         .padding(.horizontal)
                 }
                 
+                if showError {
+                        Text("Invalid Username or Password")
+                            .foregroundColor(.red)
+                            .padding(.top, 20)
+                    }
+                
                 if isLoginSuccessful {
                     Text("Login Successful!")
                         .foregroundColor(.green)
@@ -94,10 +102,6 @@ struct LandingLoginView: View {
                                                    EmptyView()
                             }
                         )
-                } else {
-                    Text("Invalid Username or Password")
-                        .foregroundColor(.red)
-                        .padding(.top, 20)
                 }
                 
                 Spacer()
@@ -117,87 +121,102 @@ struct CreateUserView: View {
     @State private var password: String = ""
     @State private var firstname: String = ""
     @State private var lastname: String = ""
-    @State private var isLoginSuccessful = false
+    @State private var isSignupSuccessful = false
     @State private var showPassword: Bool = false
+    @State private var showError = false
     @Binding var isLoggedin: Bool
     
+    @Environment(\.presentationMode) var presentationMode
+    
+    func saveCredentials(username: String, password: String) {
+        UserDefaults.standard.set(username, forKey: "username")
+        UserDefaults.standard.set(password, forKey: "password")
+    }
+    
     var body: some View {
-        
-        Text("CREATE ACCOUNT")
-            .font(.title)
-            .lineLimit(nil)
-            .padding(.bottom, 10)
-        
-        TextField("Username", text: $username)
-            .padding()
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(20)
-            .padding(.horizontal)
-            .autocapitalization(.none)
-        
-        ZStack(alignment: .trailing) {
+        VStack {
+            Text("CREATE ACCOUNT")
+                .font(.title)
+                .lineLimit(nil)
+                .padding(.bottom, 10)
+            
+            TextField("Username", text: $username)
+                .padding()
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(20)
+                .padding(.horizontal)
+                .autocapitalization(.none)
+            
+            ZStack(alignment: .trailing) {
                 if showPassword {
                     TextField("Password", text: $password)
-                            .padding()
-                            .background(Color.gray.opacity(0.1))
-                            .cornerRadius(20)
-                            .padding(.horizontal)
-                            .autocapitalization(.none)
-                    } else {
-                        SecureField("Password", text: $password)
-                            .padding()
-                            .background(Color.gray.opacity(0.1))
-                            .cornerRadius(20)
-                            .padding(.horizontal)
-                            .autocapitalization(.none)
-                    }
-                    
-                    Button(action: {
-                        self.showPassword.toggle()
-                    }) {
-                        Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
-                            .padding(.trailing, 30)
-                    }
-                    .foregroundColor(.secondary)
+                        .padding()
+                        .background(Color.gray.opacity(0.1))
+                        .cornerRadius(20)
+                        .padding(.horizontal)
+                        .autocapitalization(.none)
+                } else {
+                    SecureField("Password", text: $password)
+                        .padding()
+                        .background(Color.gray.opacity(0.1))
+                        .cornerRadius(20)
+                        .padding(.horizontal)
+                        .autocapitalization(.none)
+                }
+                
+                Button(action: {
+                    self.showPassword.toggle()
+                }) {
+                    Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
+                        .padding(.trailing, 30)
+                }
+                .foregroundColor(.secondary)
             }
             .padding(.vertical)
-    
-        
-        Button(action: {
-            // TODO: Perform creation user process here
-           wrapperItem?.createUser(username, password: password)
-            if wrapperItem != nil {
-                isLoggedin = true
-                isLoginSuccessful = true
-            }
-        }) {
-            Text("SIGN UP")
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.blue)
-                .cornerRadius(25)
-                .padding(.horizontal)
-        }
-        
-        if isLoginSuccessful {
-            Text("You signed up successfully! Now you can Log in.")
-                .foregroundColor(.green)
-                .padding(.top, 20)
             
-                .background(
-                    NavigationLink(destination: NavigationPage2(isLoggedin: $isLoggedin)) {
-                                           EmptyView()
+            Button(action: {
+                // Perform creation user process here
+                let isMade = wrapperItem?.checkUser(username, password: password)
+                wrapperItem?.createUser(username, password: password)
+                if wrapperItem != nil && isMade == false {
+                    isLoggedin = true
+                    isSignupSuccessful = true
+                    saveCredentials(username: username, password: password)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        presentationMode.wrappedValue.dismiss()
                     }
-                )
-        } else {
-            Text("Invalid Username or Password")
-                .foregroundColor(.red)
-                .padding(.top, 20)
+                } else {
+                    showError = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                        showError = false // Hide the error message after 4 seconds
+                    }
+                }
+            }) {
+                Text("SIGN UP")
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .cornerRadius(25)
+                    .padding(.horizontal)
+            }
+            
+            // Display error message if sign-up fails
+            if showError {
+                Text("Username already exists")
+                    .foregroundColor(.red)
+                    .padding(.top, 20)
+            }
+            
+            if isSignupSuccessful {
+                Text("Sign up Successful!")
+                    .foregroundColor(.green)
+                    .padding(.top, 20)
+            }
         }
-        
     }
 }
+
 
 struct LandingLoginView_Previews: PreviewProvider {
     static var previews: some View {

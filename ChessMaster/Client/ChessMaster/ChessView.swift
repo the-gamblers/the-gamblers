@@ -1,35 +1,49 @@
 import SwiftUI
 import Chess
 import ChessKit
+import Foundation
 
 /// View for displaying chess moves with animations.
 struct SquareTargetedPreview: View {
     var replay: Replays?
+    
     // State variables
     @State private var fenIndex = 0 // Index to track the current FEN string
     @StateObject private var store: ChessStore
     @State private var isPlaying = false // State variable to track play/pause
+    @State var isTrue = false
+    @State private var isTimerRunning = false
+    @State private var timer: Timer? = nil
+    
+ 
+    // Arrays to store UCI moves and corresponding best move
+    private var bestMoves = [String]()
+    private var uciPlays = [String]()
     
     // get fen strings from replay game
     private var fenStrings: [String] {
         guard let replay = replay else { return [] }
-        var fenStrings1: [String] = ["rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",] // starting postion
+        var fenStrings1: [String] = [] // starting postion
         let fens = getFENStringFromDB(gameID: replay.gameID)
         for move in fens{
             fenStrings1.append(move)
         }
-        print(fenStrings1)
+        //print(fenStrings1)
         return fenStrings1
     }
     
-    // TODO: get best move for each fen str and convert to fen to display
-    var bestFenStrings: [String] = ["rnbqkbnr/ppp1pppp/8/3p4/8/1P6/P1PPPPPP/RNBQKBNR w KQkq d6 0 2"] // best move orig (doesnt mean anything)
+    // get best move for each fen str and convert to fen to display
+    var bestFenStrings = [String]()
     
     // get uci str from replay and parse into play-by-play ucis
     private var uciStrings: [String] {
         guard let replay = replay else { return [] }
-        //print(replay)
-        return makeUCIStrings(originalUCI: getUCIStringFromDB(gameID: replay.gameID))
+            
+            var uciStrings = makeUCIStrings(originalUCI: getUCIStringFromDB(gameID: replay.gameID))
+            // Insert an empty string at the beginning
+            uciStrings.insert("", at: 0)
+            
+            return uciStrings
     }
     
     init(replay: Replays?) {
@@ -37,28 +51,35 @@ struct SquareTargetedPreview: View {
         // Initialize ChessStore with a sample game
         let game = Chess.Game.sampleGame()
         self._store = StateObject(wrappedValue: ChessStore(game: game))
-        self.store.game.userPaused = true
-        self.store.game.setRobotPlaybackSpeed(3.0)
-        //print(getGamesFromDB())
         
-        // Parse UCI strings and generate FEN strings
-        for uciString in uciStrings {
-            let uciMoves = getUCIMoves(UCIs: uciString)
-            // print("Parsed UCI Moves", uciMoves)
-            let fen = uciToFEN(uciMoves: uciMoves)
-            // print("UCI converted to fen",fen)
-            //fenStrings.append(fen)
-            
+        //print(getGamesFromDB())
+        print("UCI strings: ", uciStrings)
+        print("FEN strings: ", fenStrings)
+        // Parse Best move UCI strings and generate FEN strings
+        for (fen, uci) in zip(fenStrings, uciStrings) {
             // Get best move for each FEN string
             let bestMove = getBestMove(fen: fen)
-            // let bestMove = getBestMoveForUCI(uciMoves: uciMoves)
-            // FIXME: check that bestMove returns the best move in the format changeMove is looking for
-            // let modifiedMoves = changeMoveToBestMove(originalMove: uciMoves, bestMove: bestMove)
-            // let bestFen = uciToFEN(uciMoves: modifiedMoves)
-            // bestFenStrings.append(bestFen)
-        }
-       
+            bestMoves.append(bestMove)
+            //print("Best move from stock", bestMove)
         
+            //print("Orginal UCI", uci)
+            let bestMoveUCIString = changeMoveToBestMove(originalMove: uci, bestMove: bestMove)
+            //print("best move ucis", bestMoveUCIString)
+            let bestMoveFEN = uciToFEN(uciMoves: bestMoveUCIString)
+            bestFenStrings.append(bestMoveFEN)
+            //print("Best FEN: " bestMoveFEN)
+            
+            if let gameID = replay?.gameID {
+                       self.uciPlays = getUCIStringFromDB(gameID: gameID)
+                }
+            
+        }
+        bestFenStrings.insert("", at: 0)
+        bestMoves.insert("press the thumbs up button to see the what the best move wouldve been at that position", at: 0)
+        uciPlays.insert("your moves will appear here", at: 0)
+        print("Best fen str:", bestFenStrings)
+        
+       
     }
     
     var body: some View {
@@ -66,14 +87,17 @@ struct SquareTargetedPreview: View {
         VStack {
             BoardView()
                 .environmentObject(store)
-            
-            if isPlaying{
-                Text("This would've been the best move...")
+            if fenIndex == 0 {
+                Text("Click through to see your moves! ")
+                    .font(.headline)
+            }
+            else if isPlaying{
+                Text("\(fenIndex). This would've been the best move...")
                     .font(.headline)
                 
             }
             else{
-                Text("This was your move")
+                Text("\(fenIndex). This is the move you made.")
                     .font(.headline)
             }
             
@@ -82,7 +106,7 @@ struct SquareTargetedPreview: View {
                 .fill(Color(hex: 0xF3F3F3))
                 .frame(height: 100)
                 .overlay(
-                    Text(isPlaying ? bestFenStrings[fenIndex] : fenStrings[fenIndex])
+                    Text(isPlaying ? bestMoves[fenIndex] : uciPlays[fenIndex])
                     .padding()
                 )
                 .padding()
@@ -97,6 +121,7 @@ struct SquareTargetedPreview: View {
             HStack {
                 Button(action: {
                     // Handle back button action
+                    timer?.invalidate() // Stops the timer if running
                     isPlaying = false
                     if fenIndex > 0 {
                         fenIndex -= 1
@@ -112,26 +137,50 @@ struct SquareTargetedPreview: View {
                 }
                 Spacer()
                 Button(action: {
+                    timer?.invalidate() // Stops the timer if running
                     // Handle reset button action
-                    store.gameAction(.resetBoard)
                     fenIndex = 0
                     isPlaying = false
+                    store.gameAction(.resetBoard)
+                    store.environmentChange(.boardColor(newColor: .blue))
+                     
                 }) {
                     Image(systemName: "memories")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: 30)
                 }
+                .disabled(true)
+                
                 Spacer()
                 Button(action: {
                     // Handle pause/play best move button action
-                    isPlaying.toggle() // Toggle play/pause state
-                    if isPlaying {
-                        self.store.game.board.resetBoard(FEN:bestFenStrings[fenIndex])
-                    } else {
-                        self.store.game.board.resetBoard(FEN:fenStrings[fenIndex])
-                        getBestMove(fen: fenStrings[fenIndex])
+                    if fenIndex > 0 {
+                        self.store.game.board.resetBoard(FEN: fenStrings[fenIndex - 1])
+                        timer?.invalidate()
+                        isPlaying.toggle() // Toggle play/pause state
+                        if isPlaying {
+                            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+                               // Toggle the value of 'isTrue'
+                               isTrue.toggle()
+                               if isTrue{
+                                   self.store.game.board.resetBoard(FEN: fenStrings[fenIndex - 1])
+                               }
+                               else{
+                                   self.store.game.board.resetBoard(FEN: bestFenStrings[fenIndex])
+                               }
+                           }
+                           DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                               timer?.invalidate() // Stops the timer after 10 seconds
+                               self.store.game.board.resetBoard(FEN: bestFenStrings[fenIndex])
+                           }
+                        
+                        } else {
+                            self.store.game.board.resetBoard(FEN:fenStrings[fenIndex])
+                            store.environmentChange(.boardColor(newColor: .blue))
+                        }
                     }
+                   
                 }) {
                     Image(systemName: isPlaying ? "pause" : "hand.thumbsup") // Toggle play/pause icon
                         .resizable()
@@ -142,9 +191,29 @@ struct SquareTargetedPreview: View {
                 Button(action: {
                     // Handle forward button action
                     isPlaying = false
+                   
+                    timer?.invalidate() // Stops the timer if running
+                        
                     if fenIndex < fenStrings.count - 1 {
-                        fenIndex += 1
-                        self.store.game.board.resetBoard(FEN: fenStrings[fenIndex])}
+                            fenIndex += 1
+                            // Create a timer that fires every 1 second
+                        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+                                // Toggle the value of 'isTrue'
+                                isTrue.toggle()
+                                if isTrue{
+                                    self.store.game.board.resetBoard(FEN: fenStrings[fenIndex - 1])
+                                }
+                                else{
+                                    self.store.game.board.resetBoard(FEN: fenStrings[fenIndex])
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                timer?.invalidate() // Stops the timer after 10 seconds
+                                self.store.game.board.resetBoard(FEN: fenStrings[fenIndex])
+                            }
+                           
+                        }
+                            
                 }) {
                     Image(systemName: "chevron.forward")
                         .resizable()
