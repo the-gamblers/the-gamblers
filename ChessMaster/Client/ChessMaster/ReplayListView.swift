@@ -36,6 +36,7 @@ struct ReplayListView: View {
     @State private var passWord: String = ""
     @State private var userName: String = ""
     @State private var replay: [Replays] = []
+    @Binding var isLoggedin: Bool
 
     // Step 2
     func showProfileView() {
@@ -64,11 +65,9 @@ struct ReplayListView: View {
                                                 .bold()
                                             Text(replayItem.date)
                                                 .font(.subheadline)
-                                            Text(replayItem.notes)
-                                                .font(.caption)
                                         }
                                         Spacer()
-                                        NavigationLink(destination: ReplayTableView(replay: replayItem)) {}
+                                        NavigationLink(destination: ReplayTableView(replay: replayItem, isLoggedin: $isLoggedin)) {}
                                     }
                                     .padding(.vertical, 8)
                                     .buttonStyle(ListButton())
@@ -92,7 +91,7 @@ struct ReplayListView: View {
                 }
             }
             .sheet(isPresented: $showProfile) {
-                ProfileView(isLoggedin: .constant(true))
+                ProfileView(isLoggedin: $isLoggedin)
             }
         }
         .onAppear {
@@ -101,14 +100,14 @@ struct ReplayListView: View {
             // Password retrieval can be insecure; use a secure storage option for sensitive data
             passWord = UserDefaults.standard.string(forKey: "password") ?? ""
             // Initialize replay using the retrieved username and password
-            replay = parseReplays(data: getGamesFromDB(username: userName, password: passWord))
+            replay = parseReplays(data: getGamesFromDB())
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ReplayListView()
+        ReplayListView(isLoggedin: .constant(true))
     }
 }
 

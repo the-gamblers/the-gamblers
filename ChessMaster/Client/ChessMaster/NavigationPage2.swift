@@ -36,7 +36,7 @@ struct NavigationPage2: View {
                     }
                     .tag(Tab.home)
                 
-                ReplayListView()
+                ReplayListView(isLoggedin: $isLoggedin)
                     .tabItem {
                         Label("Replay", systemImage: "arrow.triangle.2.circlepath")
                             .font(.title2.bold())
