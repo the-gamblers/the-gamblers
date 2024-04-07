@@ -30,6 +30,8 @@ struct HomePage: View {
         showProfile.toggle()
     }
     
+    @State private var navigateToFinishGame = false
+    
     var body: some View {
         NavigationView {
             ZStack{
@@ -75,7 +77,15 @@ struct HomePage: View {
                     }
                     .padding(.bottom, 20)
                     
-                    NavigationLink(destination: UploadPhotoView()) {
+                    NavigationLink(destination: FinishGameView(), isActive: $navigateToFinishGame) { EmptyView() }
+                    
+//                    NavigationLink(destination: FinishGameView()) {
+//                        StartGameContent()
+//                    }
+                    
+                    Button(action: {
+                        startNewGame()
+                    }) {
                         StartGameContent()
                     }
                     
@@ -95,6 +105,14 @@ struct HomePage: View {
                                 }
             }
         }
+    }
+    
+    func startNewGame() {
+        // Call create_game() to add an empty game entry to the
+        wrapperItem?.createGame(withTitle: "", notes: "", uci: "", fen: "")
+        
+        // Trigger navigation to FinishGameView
+        navigateToFinishGame = true
     }
 }
 

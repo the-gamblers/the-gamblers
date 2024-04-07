@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GameSavingView: View {
+    @State private var username: String = UserDefaults.standard.string(forKey: "username") ?? "Unknown User"
     @State private var gameTitle: String = "Great Game"
     @State private var notes: String = ""
     @State private var showSaveConfirmation = false
@@ -15,6 +16,7 @@ struct GameSavingView: View {
     @State private var isSelected = false
     @State private var isSelected2 = false
     @State private var isSelected3 = false
+    @State private var isUserLoggedIn = false
     
     var body: some View {
         NavigationView{
@@ -131,7 +133,7 @@ struct GameSavingView: View {
                     )
                 }
                 
-                NavigationLink(destination: ReplayListView(), isActive: $shouldNavigateToReplayList) { EmptyView() }
+                NavigationLink(destination: ReplayListView(isLoggedin: $isUserLoggedIn), isActive: $shouldNavigateToReplayList) { EmptyView() }
             }
             .padding()
         }
@@ -150,6 +152,12 @@ struct GameSavingView: View {
     }
     
     func saveGameDetails() {
+        wrapperItem?.editTitle(gameTitle)
+        wrapperItem?.editTitle(notes)
+        
+        
+        let gameResult = isSelected ? "win" : isSelected2 ? "loss" : "draw"
+        wrapperItem?.recordGameResult(forUser: username, result: gameResult)
     }
 }
 
