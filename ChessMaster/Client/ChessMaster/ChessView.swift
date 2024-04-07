@@ -22,7 +22,6 @@ struct SquareTargetedPreview: View {
         return fenStrings1
     }
     
-    // TODO: get best move for each fen str and convert to fen to display
     var bestFenStrings: [String] = ["rnbqkbnr/ppp1pppp/8/3p4/8/1P6/P1PPPPPP/RNBQKBNR w KQkq d6 0 2"] // best move orig (doesnt mean anything)
     
     // get uci str from replay and parse into play-by-play ucis
