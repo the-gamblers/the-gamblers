@@ -69,8 +69,6 @@ struct ReplayListView: View {
                                                 .bold()
                                             Text(replayItem.date)
                                                 .font(.subheadline)
-                                            Text(replayItem.notes)
-                                                .font(.caption)
                                         }
                                         Spacer()
                                         NavigationLink(destination: ReplayTableView(replay: replayItem, isLoggedin: $isLoggedin)) {}
@@ -106,7 +104,7 @@ struct ReplayListView: View {
             // Password retrieval can be insecure; use a secure storage option for sensitive data
             passWord = UserDefaults.standard.string(forKey: "password") ?? ""
             // Initialize replay using the retrieved username and password
-            replay = parseReplays(data: getGamesFromDB(username: userName, password: passWord))
+            replay = parseReplays(data: getGamesFromDB())
         }
     }
 }

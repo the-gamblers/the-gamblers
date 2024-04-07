@@ -26,10 +26,8 @@ struct ProfileView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100)
                     .padding(.bottom, 20)
-                TextField("Email Address", text: $username)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(20)
+                
+                Text(username)
                     .padding(.horizontal)
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 
