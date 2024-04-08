@@ -73,7 +73,7 @@ struct GameSavingView: View {
                             self.isSelected3 = false
                         }
                     }) {
-                        Text("Win")
+                        Text("win")
                             .foregroundColor(isSelected ? .white : .blue)
                             .padding()
                             .background(isSelected ? Color.blue : Color.clear)
@@ -88,7 +88,7 @@ struct GameSavingView: View {
                             self.isSelected3 = false
                         }
                     }) {
-                        Text("Loss")
+                        Text("loss")
                             .foregroundColor(isSelected2 ? .white : .red)
                             .padding()
                             .background(isSelected2 ? Color.red : Color.clear)
@@ -103,7 +103,7 @@ struct GameSavingView: View {
                             self.isSelected2 = false
                         }
                     }) {
-                        Text("Draw")
+                        Text("draw")
                             .foregroundColor(isSelected3 ? .white : .green)
                             .padding()
                             .background(isSelected3 ? Color.green : Color.clear)
@@ -152,11 +152,15 @@ struct GameSavingView: View {
     }
     
     func saveGameDetails() {
+        print("Saving game for user: \(username)")
         wrapperItem?.editTitle(gameTitle)
         wrapperItem?.editNote(notes)
         
         
         let gameResult = isSelected ? "win" : isSelected2 ? "loss" : isSelected3 ? "draw" : ""
+        
+        print("Game result is: \(gameResult)")
+        
         wrapperItem?.recordGameResult(forUser: username, result: gameResult)
     }
 }

@@ -251,30 +251,66 @@ void Database::edit_fen(std::string fen)
     }
 }
 
-void Database::record_game_result(std::string username, std::string result)
-{
+//void Database::record_game_result(std::string username, std::string result)
+//{
+//    std::string query = "UPDATE users SET ";
+//    if (result == "win")
+//    {
+//        query += "wins = wins + 1";
+//    }
+//    else if (result == "loss")
+//    {
+//        query += "losses = losses + 1";
+//    }
+//    else if (result == "draw")
+//    {
+//        query += "draws = draws + 1";
+//    }
+//    query += " WHERE username = '" + username + "';";
+//    sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
+//}
+
+void Database::record_game_result(std::string username, std::string result) {
     std::string query = "UPDATE users SET ";
-    if (result == "win")
-    {
+    if (result == "win") {
         query += "wins = wins + 1";
-    }
-    else if (result == "loss")
-    {
+    } else if (result == "loss") {
         query += "losses = losses + 1";
-    }
-    else if (result == "draw")
-    {
+    } else if (result == "draw") {
         query += "draws = draws + 1";
     }
     query += " WHERE username = '" + username + "';";
+
+    // Log the query
+    std::cout << "Executing query: " << query << std::endl;
+
     sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
+    if (zErrMsg != NULL) {
+        std::cerr << "SQL error: " << zErrMsg << std::endl;
+        sqlite3_free(zErrMsg);
+    }
 }
 
-std::tuple<int, int, int, int> Database::get_user_stats(std::string username)
-{
-    std::string query = "SELECT wins, losses, draws FROM users WHERE username = '" + username + "';";
-    return std::make_tuple(0, 0, 0, 0);
+std::tuple<int, int, int> Database::get_user_stats(std::string username) {
+    int wins = 0, losses = 0, draws = 0;
+    std::string query = "SELECT wins, losses, draws FROM users WHERE username = ?";
+    sqlite3_stmt* stmt;
+
+    if (sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL) == SQLITE_OK) {
+        sqlite3_bind_text(stmt, 1, username.c_str(), -1, SQLITE_STATIC);
+
+        if (sqlite3_step(stmt) == SQLITE_ROW) {
+            wins = sqlite3_column_int(stmt, 0);
+            losses = sqlite3_column_int(stmt, 1);
+            draws = sqlite3_column_int(stmt, 2);
+        }
+        sqlite3_finalize(stmt);
+    }
+    
+    return std::make_tuple(wins, losses, draws);
 }
+
+
 
 std::vector<std::string> Database::get_fen(int gameid = -1)
 {

@@ -21,14 +21,34 @@ struct ProgressPage: View {
     @State private var draws: Int = 0
     
     
-    func fetchUserStats() {        
+//    func fetchUserStats() {        
+//        if let stats = wrapperItem?.getUserStats(username) as? [String: NSNumber] {
+//
+//            wins = stats["wins"]?.intValue ?? 0
+//            losses = stats["losses"]?.intValue ?? 0
+//            draws = stats["draws"]?.intValue ?? 0
+//        }
+//    }
+    
+    func fetchUserStats() {
+        // Check if stats fetching is called
+        print("Fetching stats for user: \(username)")
+        
         if let stats = wrapperItem?.getUserStats(username) as? [String: NSNumber] {
+            // Check what stats are being fetched
+            print("Stats fetched: \(stats)")
 
-            wins = stats["wins"]?.intValue ?? 0
-            losses = stats["losses"]?.intValue ?? 0
-            draws = stats["draws"]?.intValue ?? 0
+            // Update the UI
+            DispatchQueue.main.async {
+                self.wins = stats["wins"]?.intValue ?? 0
+                self.losses = stats["losses"]?.intValue ?? 0
+                self.draws = stats["draws"]?.intValue ?? 0
+            }
+        } else {
+            print("Stats fetching returned an unexpected type.")
         }
     }
+
     
     var body: some View {
         NavigationView {
@@ -79,7 +99,7 @@ struct ProgressPage: View {
                                                 .frame(width: 20, height: 20)
                                             Text("\(losses)")
                                                 .font(.headline)
-                                            Text("Losses")
+                                            Text("losses")
                                                 .font(.subheadline)
                                         }
                                         .padding(20)
@@ -95,7 +115,7 @@ struct ProgressPage: View {
                                                 .frame(width: 20, height: 20)
                                             Text("\(wins)")
                                                 .font(.headline)
-                                            Text("Wins")
+                                            Text("wins")
                                                 .font(.subheadline)
                                         }
                                         .padding(20)
@@ -109,7 +129,7 @@ struct ProgressPage: View {
                                             Image(systemName: "person.line.dotted.person.fill")
                                             Text("\(draws)")
                                                 .font(.headline)
-                                            Text("Draws")
+                                            Text("draws")
                                                 .font(.subheadline)
                                         }
                                         .padding(20)
@@ -204,6 +224,7 @@ struct ProgressPage: View {
             .onAppear {
                 self.username = UserDefaults.standard.string(forKey: "username") ?? "Default Username"
                 fetchUserStats()
+//                wrapperItem?.getUserStats(username)
              }
 
         }
