@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct GameSavingView: View {
+//    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentationMode
+    @Binding var showGameFlow: Bool
     @State private var username: String = UserDefaults.standard.string(forKey: "username") ?? "Unknown User"
     @State private var gameTitle: String = "Great Game"
     @State private var notes: String = ""
@@ -17,6 +20,7 @@ struct GameSavingView: View {
     @State private var isSelected2 = false
     @State private var isSelected3 = false
     @State private var isUserLoggedIn = false
+    
     
     var body: some View {
         NavigationView{
@@ -127,13 +131,16 @@ struct GameSavingView: View {
                 .padding(.bottom, 50)
                 .alert(isPresented: $showSaveConfirmation) {
                     Alert(title: Text("Game Saved"), message: Text("Successfully saved the game and added to the replay page"), dismissButton: .default(Text("OK")){
-                        shouldNavigateToReplayList = true
+                        
+                        self.presentationMode.wrappedValue.dismiss()
+//                        shouldNavigateToReplayList = true
+                        self.showGameFlow = false
                     }
                           
                     )
                 }
                 
-                NavigationLink(destination: ReplayListView(isLoggedin: $isUserLoggedIn), isActive: $shouldNavigateToReplayList) { EmptyView() }
+//                NavigationLink(destination: ReplayListView(isLoggedin: $isUserLoggedIn), isActive: $shouldNavigateToReplayList) { EmptyView() }
             }
             .padding()
         }
@@ -167,6 +174,6 @@ struct GameSavingView: View {
 
 struct GameSavingView_Previews: PreviewProvider {
     static var previews: some View {
-        GameSavingView()
+        GameSavingView(showGameFlow: .constant(true))
     }
 }

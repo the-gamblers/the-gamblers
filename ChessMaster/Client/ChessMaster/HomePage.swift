@@ -25,7 +25,8 @@ extension Color {
 struct HomePage: View {
     @State private var showProfile = false
     @Binding var isLoggedin: Bool
-       
+    @State private var showGameFlow = false
+
     func showProfileView() {
         showProfile.toggle()
     }
@@ -77,7 +78,7 @@ struct HomePage: View {
                     }
                     .padding(.bottom, 20)
                     
-                    NavigationLink(destination: FinishGameView(), isActive: $navigateToFinishGame) { EmptyView() }
+                    NavigationLink(destination: FinishGameView(showGameFlow: $showGameFlow), isActive: $navigateToFinishGame) { EmptyView() }
                     
 //                    NavigationLink(destination: FinishGameView()) {
 //                        StartGameContent()

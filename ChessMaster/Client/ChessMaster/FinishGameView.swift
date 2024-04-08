@@ -12,6 +12,8 @@ import AVFoundation
 struct FinishGameView: View {
 //    @State private var cameraSession = AVCaptureSession()
     @State private var navigateToGameSaving = false
+//    @Environment(\.presentationMode) var presentationMode
+    @Binding var showGameFlow: Bool
 
     var body: some View {
         ZStack {
@@ -35,8 +37,9 @@ struct FinishGameView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: GameSavingView(), isActive: $navigateToGameSaving) {
+                NavigationLink(destination: GameSavingView(showGameFlow: .constant(true)), isActive: $navigateToGameSaving) {
                     EmptyView()
+//                    self.presentationMode.wrappedValue.dismiss()
                 }
                 .hidden()
             }
@@ -47,7 +50,7 @@ struct FinishGameView: View {
 
 struct FinishGameView_Previews: PreviewProvider {
     static var previews: some View {
-        FinishGameView()
+        FinishGameView(showGameFlow: .constant(true))
     }
 }
 

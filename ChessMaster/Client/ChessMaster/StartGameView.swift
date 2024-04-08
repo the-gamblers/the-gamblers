@@ -52,7 +52,7 @@ struct StartGameView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: FinishGameView(), isActive: $navigateToEndGame) {
+                NavigationLink(destination: FinishGameView(showGameFlow: .constant(true)), isActive: $navigateToEndGame) {
                         EmptyView()
                 }
 
