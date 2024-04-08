@@ -217,9 +217,17 @@ void Database::delete_games_by_user()
         std::cerr << "ERROR: " << zErrMsg << std::endl;
 }
 
-void Database::delete_games_by_id()
-{
-    std::string query = ("DELETE FROM games WHERE GAMEID = '" + std::to_string(curr_game) + "'");
+//void Database::delete_games_by_id()
+//{
+//    std::string query = ("DELETE FROM games WHERE GAMEID = '" + std::to_string(curr_game) + "'");
+//    int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
+//
+//    if (rc != SQLITE_OK)
+//        std::cerr << "ERROR: " << zErrMsg << std::endl;
+//}
+
+void Database::delete_games_by_id(std::string gameid) {
+    std::string query = "DELETE FROM games WHERE GAMEID = '" + gameid + "'";
     int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
 
     if (rc != SQLITE_OK)

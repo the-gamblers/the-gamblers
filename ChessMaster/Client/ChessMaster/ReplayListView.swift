@@ -43,6 +43,14 @@ struct ReplayListView: View {
         showProfile.toggle()
     }
     
+    func deleteItems(at offsets: IndexSet) {
+        offsets.forEach { index in
+            let gameID = replay[index].gameID
+            wrapperItem?.deleteGames(byId: gameID)
+        }
+        // Remove the items from the local array after deletion
+        replay.remove(atOffsets: offsets)
+    }
 
     var body: some View {
         NavigationView {
@@ -72,6 +80,7 @@ struct ReplayListView: View {
                                     .padding(.vertical, 8)
                                     .buttonStyle(ListButton())
                                 }
+                                .onDelete(perform: deleteItems)
                             }
                             .listStyle(.insetGrouped)
                             .scrollContentBackground(.hidden)

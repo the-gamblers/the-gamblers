@@ -35,7 +35,8 @@ public:
     std::vector<std::string> retrieve_games_by_title(std::string title);
     std::vector<std::string> retrieve_games_by_user();
     void delete_games_by_user();
-    void delete_games_by_id();
+//    void delete_games_by_id();
+    void delete_games_by_id(std::string gameid);
     void switch_game(std::string title);
     void edit_fen(std::string fen);
     void record_game_result(std::string username, std::string result);
