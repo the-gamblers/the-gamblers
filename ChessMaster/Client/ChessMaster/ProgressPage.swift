@@ -32,11 +32,11 @@ struct ProgressPage: View {
     
     func fetchUserStats() {
         // Check if stats fetching is called
-        print("Fetching stats for user: \(username)")
+//        print("Fetching stats for user: \(username)")
         
         if let stats = wrapperItem?.getUserStats(username) as? [String: NSNumber] {
             // Check what stats are being fetched
-            print("Stats fetched: \(stats)")
+//            print("Stats fetched: \(stats)")
 
             // Update the UI
             DispatchQueue.main.async {
@@ -45,7 +45,7 @@ struct ProgressPage: View {
                 self.draws = stats["draws"]?.intValue ?? 0
             }
         } else {
-            print("Stats fetching returned an unexpected type.")
+//            print("Stats fetching returned an unexpected type.")
         }
     }
 
@@ -74,8 +74,8 @@ struct ProgressPage: View {
                                     Text(username)
                                         .font(.title2)
                                     Spacer()
-                                    Image(systemName: "flame.fill")
-                                    Text("6")
+//                                    Image(systemName: "flame.fill")
+//                                    Text("6")
                                 }
                                 .padding(.horizontal)
                                 .padding(.top, 20)
@@ -141,19 +141,19 @@ struct ProgressPage: View {
                                     }
                                     LazyVGrid(columns: [GridItem(.flexible(), spacing: 20), GridItem(.flexible(), spacing: 20)], spacing: 20) {
                                             // Avg Time
-                                            VStack {
-                                                Image(systemName: "clock.fill")
-                                                Text("Avg Time")
-                                                    .font(.headline)
-                                                Text("2 hours")
-                                                    .font(.subheadline)
-                                            }
-                                            .padding(20)
-                                            .frame(width:155, height: 90)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-                                            )
+//                                            VStack {
+//                                                Image(systemName: "clock.fill")
+//                                                Text("Avg Time")
+//                                                    .font(.headline)
+//                                                Text("2 hours")
+//                                                    .font(.subheadline)
+//                                            }
+//                                            .padding(20)
+//                                            .frame(width:155, height: 90)
+//                                            .overlay(
+//                                                RoundedRectangle(cornerRadius: 10)
+//                                                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+//                                            )
                                             
                                             // Best Game
 //                                            VStack {
@@ -171,19 +171,19 @@ struct ProgressPage: View {
 //                                            )
                                             
                                             // Total Games
-                                            VStack {
-                                                Image(systemName: "number")
-                                                Text("Total Games")
-                                                    .font(.headline)
-                                                Text("109")
-                                                    .font(.subheadline)
-                                            }
-                                            .padding(20)
-                                            .frame(width:155, height: 90)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-                                            )
+//                                            VStack {
+//                                                Image(systemName: "number")
+//                                                Text("Total Games")
+//                                                    .font(.headline)
+//                                                Text("109")
+//                                                    .font(.subheadline)
+//                                            }
+//                                            .padding(20)
+//                                            .frame(width:155, height: 90)
+//                                            .overlay(
+//                                                RoundedRectangle(cornerRadius: 10)
+//                                                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+//                                            )
                                             
                                        
                                         Spacer()

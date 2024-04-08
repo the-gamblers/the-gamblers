@@ -159,14 +159,14 @@ struct GameSavingView: View {
     }
     
     func saveGameDetails() {
-        print("Saving game for user: \(username)")
+//        print("Saving game for user: \(username)")
         wrapperItem?.editTitle(gameTitle)
         wrapperItem?.editNote(notes)
         
         
         let gameResult = isSelected ? "win" : isSelected2 ? "loss" : isSelected3 ? "draw" : ""
         
-        print("Game result is: \(gameResult)")
+//        print("Game result is: \(gameResult)")
         
         wrapperItem?.recordGameResult(forUser: username, result: gameResult)
     }
