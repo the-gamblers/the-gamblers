@@ -308,6 +308,7 @@ std::tuple<int, int, int> Database::get_user_stats(std::string username) {
     }
     
     return std::make_tuple(wins, losses, draws);
+//    return std::make_tuple(0, 0, 0);
 }
 
 
