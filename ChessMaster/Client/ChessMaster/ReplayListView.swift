@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// TODO: match to database schema
 struct Replays: Identifiable {
     let id = UUID()
     let gameID: String
@@ -18,10 +17,7 @@ struct Replays: Identifiable {
     let uci: String
     let fen: String
 }
-// read from database, get list of games with (user,title,etc) in form of Replay
-//private var replay = parseReplays(data: getGamesFromDB(username: userName, password: passWord))
 
-// button style for the list (for later)
 struct ListButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

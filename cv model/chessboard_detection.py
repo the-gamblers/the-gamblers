@@ -180,6 +180,5 @@ def find_chessboard_from_image(img):
             resized_board,
         )
     else:
-        # TODO: disable online chess board
         print("Chess board of online game could not be found.")
         return False, image, 0, 0, 0, 0, image

@@ -81,7 +81,6 @@ def contains_piece(square, view):
 def detect_state(frame, view, roi_mask):
     edges = edge_detection(frame)
     edges = cv2.bitwise_and(edges, roi_mask)
-    # cv2.imwrite("edge.jpg", edges)
     board_image = [
         [get_square_image(row, column, edges) for column in range(8)]
         for row in range(8)

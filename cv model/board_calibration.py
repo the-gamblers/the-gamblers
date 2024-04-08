@@ -83,8 +83,8 @@ def mark_corners(frame, augmented_corners, rotation_count):
     return frame
 
 
-# cap = cv2.VideoCapture(cap_index, cap_api)
-cap = cv2.VideoCapture(1, cap_api)
+cap = cv2.VideoCapture(cap_index, cap_api)
+# cap = cv2.VideoCapture(1, cap_api)
 if not cap.isOpened():
 
     print("Couldn't open your webcam. Please check your webcam connection.")
@@ -189,22 +189,13 @@ while True:
 
         empty_board = perspective_transform(frame, pts1)
         edges = edge_detection(empty_board)
-        # cv2.imshow("edge", edges)
-        # cv2.waitKey(0)
         kernel = np.ones((7, 7), np.uint8)
         edges = cv2.dilate(edges, kernel, iterations=1)
         roi_mask = cv2.bitwise_not(edges)
-        # cv2.imshow("edge", edges)
-        # cv2.waitKey(0)
-        # cv2.imshow("roi", roi_mask)
-        # cv2.waitKey(0)
         roi_mask[:7, :] = 0
         roi_mask[:, :7] = 0
         roi_mask[-7:, :] = 0
         roi_mask[:, -7:] = 0
-        # cv2.imshow("roi", roi_mask)
-        # cv2.waitKey(0)
-        # cv2.imwrite("empty_board.jpg", empty_board)
 
         rotation_count = 0
         while True:

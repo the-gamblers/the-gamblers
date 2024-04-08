@@ -83,12 +83,6 @@ class Board_basics:
                 self.SSIM_THRESHOLD_DARK_BLACK,
             ]
         )
-        # print(
-        #     self.SSIM_THRESHOLD_LIGHT_WHITE,
-        #     self.SSIM_THRESHOLD_LIGHT_BLACK,
-        #     self.SSIM_THRESHOLD_DARK_WHITE,
-        #     self.SSIM_THRESHOLD_DARK_BLACK,
-        # )
         self.ssim_table = [
             [self.SSIM_THRESHOLD_DARK_BLACK, self.SSIM_THRESHOLD_DARK_WHITE],
             [self.SSIM_THRESHOLD_LIGHT_BLACK, self.SSIM_THRESHOLD_LIGHT_WHITE],
@@ -118,12 +112,6 @@ class Board_basics:
                 self.SSIM_THRESHOLD,
             ) = pickle.load(infile)
             infile.close()
-            # print(
-            #     self.SSIM_THRESHOLD_LIGHT_WHITE,
-            #     self.SSIM_THRESHOLD_LIGHT_BLACK,
-            #     self.SSIM_THRESHOLD_DARK_WHITE,
-            #     self.SSIM_THRESHOLD_DARK_BLACK,
-            # )
             self.ssim_table = [
                 [self.SSIM_THRESHOLD_DARK_BLACK, self.SSIM_THRESHOLD_DARK_WHITE],
                 [self.SSIM_THRESHOLD_LIGHT_BLACK, self.SSIM_THRESHOLD_LIGHT_WHITE],
@@ -206,7 +194,6 @@ class Board_basics:
                 return False
 
     def get_potential_moves(self, fgmask, previous_frame, next_frame, chessboard):
-        # NOTE: find where fgmask comes from
         board = [
             [self.get_square_image(row, column, fgmask).mean() for column in range(8)]
             for row in range(8)
@@ -222,7 +209,6 @@ class Board_basics:
         potential_squares = []
         for row in range(8):
             for column in range(8):
-                # NOTE: what is stored in board
                 score = board[row][column]
                 if score < 10.0:
                     continue
@@ -289,11 +275,8 @@ class Board_basics:
                 )
 
                 arrival_square = chess.parse_square(arrival_square_name)
-                # TODO: figure out where piece_at is and how it works
-                # NOTE: this might be figuring out if there is already a piece at square (capture)
                 arrival_piece = chessboard.piece_at(arrival_square)
                 if arrival_piece:
-                    # NOTE: unsure about how this works, shouldn't these be the same OR figuring out a capture
                     if arrival_piece.color == chessboard.turn:
                         continue
                 else:
@@ -302,14 +285,12 @@ class Board_basics:
                     if arrival_ssim > self.ssim_table[is_light][color]:
                         continue
                 arrival_region = self.square_region(arrival_row, arrival_column)
-                # NOTE: this might be GOLD, start U arrival R/C for determining UCI
                 region = start_region.union(arrival_region)
                 total_square_score = (
                     sum(board[row][column] for row, column in region)
                     + start_square_score
                     + arrival_square_score
                 )
-                # NOTE: here is where the explicit UCI will be
                 potential_moves.append(
                     (total_square_score, start_square_name, arrival_square_name)
                 )

@@ -50,8 +50,8 @@ game = Game(board_basics, start_delay, token, roi_mask, " ", " ")
 
 video_capture_thread = Video_capture_thread()
 video_capture_thread.daemon = True
-# video_capture_thread.capture = cv2.VideoCapture(cap_index, cap_api)
-video_capture_thread.capture = cv2.VideoCapture(1, cap_api)
+video_capture_thread.capture = cv2.VideoCapture(cap_index, cap_api)
+# video_capture_thread.capture = cv2.VideoCapture(1, cap_api)
 video_capture_thread.start()
 
 pts1 = np.float32(
@@ -110,7 +110,6 @@ def stabilize_background_subtractors():
 previous_frame = stabilize_background_subtractors()
 previous_frame_queue = deque(maxlen=10)
 previous_frame_queue.append(previous_frame)
-# FIXME: is this needed?
 game.commentator.start()
 while game.commentator.game_state.variant == "wait":
     time.sleep(0.1)
@@ -130,14 +129,12 @@ while not game.board.is_game_over() and not game.commentator.game_state.resign_o
     fgmask = cv2.erode(fgmask, kernel, iterations=1)
     mean = fgmask.mean()
     if mean > MOTION_START_THRESHOLD:
-        # cv2.imwrite("motion.jpg", fgmask)
         waitUntilMotionCompletes()
         frame = video_capture_thread.get_frame()
         frame = perspective_transform(frame, pts1)
         fgmask = move_fgbg.apply(frame, learningRate=0.0)
         if fgmask.mean() >= 10.0:
             ret, fgmask = cv2.threshold(fgmask, 250, 255, cv2.THRESH_BINARY)
-        # print("Move mean " + str(fgmask.mean()))
         if fgmask.mean() >= MAX_MOVE_MEAN:
             fgmask = np.zeros(fgmask.shape, dtype=np.uint8)
         motion_fgbg.apply(frame)
@@ -145,20 +142,6 @@ while not game.board.is_game_over() and not game.commentator.game_state.resign_o
         last_frame = stabilize_background_subtractors()
         previous_frame = previous_frame_queue[0]
 
-        if (game.is_light_change(last_frame) == False) and game.register_move(
-            fgmask, previous_frame, last_frame
-        ):
-            pass
-            # cv2.imwrite(game.executed_moves[-1] + " frame.jpg", last_frame)
-            # cv2.imwrite(game.executed_moves[-1] + " mask.jpg", fgmask)
-            # cv2.imwrite(game.executed_moves[-1] + " background.jpg", previous_frame)
-        else:
-            pass
-            # import uuid
-            # id = str(uuid.uuid1())
-            # cv2.imwrite(id+"frame_fail.jpg", last_frame)
-            # cv2.imwrite(id+"mask_fail.jpg", fgmask)
-            # cv2.imwrite(id+"background_fail.jpg", previous_frame)
         previous_frame_queue = deque(maxlen=10)
         previous_frame_queue.append(last_frame)
     else:
