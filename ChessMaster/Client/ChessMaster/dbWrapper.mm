@@ -134,4 +134,8 @@
     };
 }
 
+- (NSInteger)getTotalGames:(NSString *)username {
+    return self.cppitem->get_total_games(std::string([username UTF8String]));
+}
+
 @end

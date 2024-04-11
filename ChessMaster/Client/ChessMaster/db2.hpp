@@ -41,6 +41,7 @@ public:
     void edit_fen(std::string fen);
     void record_game_result(std::string username, std::string result);
     std::tuple<int, int, int> get_user_stats(std::string username);
+    int get_total_games(std::string username);
     std::vector<std::string> get_fen(int gameid);
     std::vector<std::string> get_uci(int gameid);
 };

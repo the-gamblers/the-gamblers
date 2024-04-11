@@ -13,7 +13,7 @@ struct FinishGameView: View {
 //    @State private var cameraSession = AVCaptureSession()
     @State private var navigateToGameSaving = false
 //    @Environment(\.presentationMode) var presentationMode
-    @Binding var showGameFlow: Bool
+    @Binding var rootPresenting: Bool
 
     var body: some View {
         ZStack {
@@ -26,6 +26,7 @@ struct FinishGameView: View {
 
                 Button("END GAME") {
                     navigateToGameSaving = true
+                    self.rootPresenting = false
                 }
                 .font(.headline)
                 .foregroundColor(Color.white)
@@ -37,7 +38,7 @@ struct FinishGameView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: GameSavingView(showGameFlow: .constant(true)), isActive: $navigateToGameSaving) {
+                NavigationLink(destination: GameSavingView(rootPresenting: $rootPresenting), isActive: $navigateToGameSaving) {
                     EmptyView()
 //                    self.presentationMode.wrappedValue.dismiss()
                 }
@@ -49,8 +50,10 @@ struct FinishGameView: View {
 }
 
 struct FinishGameView_Previews: PreviewProvider {
+    @State static var rootPresentingPreview = true
+    
     static var previews: some View {
-        FinishGameView(showGameFlow: .constant(true))
+        FinishGameView(rootPresenting: $rootPresentingPreview)
     }
 }
 
