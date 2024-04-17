@@ -138,4 +138,13 @@
     return self.cppitem->get_total_games(std::string([username UTF8String]));
 }
 
+- (void)updateGameWithDuration:(NSString *)duration gameid:(NSString *)gameid {
+    self.cppitem->update_game_duration(std::string([gameid UTF8String]), std::string([duration UTF8String]));
+}
+
+- (NSString *)getAverageGameDurationForUser:(NSString *)username {
+    std::string averageDuration = self.cppitem->getAverageGameDurationForUser(std::string([username UTF8String]));
+    return [NSString stringWithUTF8String:averageDuration.c_str()];
+}
+
 @end

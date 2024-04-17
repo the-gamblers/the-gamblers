@@ -14,7 +14,28 @@ struct FinishGameView: View {
     @State private var navigateToGameSaving = false
 //    @Environment(\.presentationMode) var presentationMode
     @Binding var rootPresenting: Bool
+    @Binding var gameStartTime: Date?
+    
+    func endGame() {
+        if let startTime = gameStartTime, let gameId = currentGameId {
+            let endTime = Date()
+            let gameDuration = endTime.timeIntervalSince(startTime)
 
+            let durationString = formatDuration(gameDuration)
+            wrapperItem?.updateGameWithDuration(durationString, gameid: gameId)
+            gameStartTime = nil
+
+        }
+    }
+    
+    func formatDuration(_ duration: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .pad
+        return formatter.string(from: duration) ?? "0:00:00"
+    }
+    
     var body: some View {
         ZStack {
             Color(red: 238/255, green: 238/255, blue: 238/255)
@@ -25,6 +46,7 @@ struct FinishGameView: View {
 
 
                 Button("END GAME") {
+                    endGame()
                     navigateToGameSaving = true
                     self.rootPresenting = false
                 }

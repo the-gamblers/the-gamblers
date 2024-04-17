@@ -21,6 +21,8 @@
 - (void)recordGameResultForUser:(NSString *)username result:(NSString *)result;
 - (NSInteger)getTotalGames:(NSString *)username;
 - (NSDictionary *)getUserStats:(NSString *)username;
+- (void)updateGameWithDuration:(NSString *)duration gameid:(NSString *)gameid;
+- (NSString *)getAverageGameDurationForUser:(NSString *)username;
 - (NSArray<NSString *> *)getFen:(NSInteger)gameid;
 - (NSArray<NSString *> *)getUci:(NSInteger)gameid;
 

@@ -20,6 +20,8 @@ struct ProgressPage: View {
     @State private var losses: Int = 0
     @State private var draws: Int = 0
     @State private var totalGames: Int = 0
+    @State private var averageGameTime: String = ""
+
 
 
 //    func fetchUserStats() {        
@@ -50,6 +52,22 @@ struct ProgressPage: View {
     
     func fetchTotalGames(for username: String) -> Int {
         return wrapperItem?.getTotalGames(username) ?? 0
+    }
+    
+    func fetchAverageGameTime() {
+        if let username = UserDefaults.standard.string(forKey: "username") {
+            let averageDurationString = wrapperItem?.getAverageGameDuration(forUser: username) ?? "0:00:00"
+            DispatchQueue.main.async {
+                self.averageGameTime = averageDurationString
+            }
+        }
+    }
+    
+    func formatTime(totalSeconds: Double) -> String {
+        let hours = Int(totalSeconds) / 3600
+        let minutes = Int(totalSeconds) / 60 % 60
+        let seconds = Int(totalSeconds) % 60
+        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
 
 
@@ -150,7 +168,7 @@ struct ProgressPage: View {
                                             Image(systemName: "clock.fill")
                                             Text("Avg Time")
                                                 .font(.headline)
-                                            Text("2 hours")
+                                            Text("\(averageGameTime)")
                                                 .font(.subheadline)
                                         }
                                         .padding(20)

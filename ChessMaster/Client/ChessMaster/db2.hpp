@@ -42,6 +42,8 @@ public:
     void record_game_result(std::string username, std::string result);
     std::tuple<int, int, int> get_user_stats(std::string username);
     int get_total_games(std::string username);
+    void update_game_duration(std::string gameid, std::string duration);
+    std::string getAverageGameDurationForUser(const std::string& username);
     std::vector<std::string> get_fen(int gameid);
     std::vector<std::string> get_uci(int gameid);
 };

@@ -26,6 +26,8 @@ struct HomePage: View {
     @State private var showProfile = false
     @Binding var isLoggedin: Bool
     @State private var rootPresenting: Bool = false
+    @State private var gameStartTime: Date?
+    @State private var currentGameId: String?
 
     func showProfileView() {
         showProfile.toggle()
@@ -78,7 +80,7 @@ struct HomePage: View {
                     }
                     .padding(.bottom, 20)
                     
-                    NavigationLink(destination: FinishGameView(rootPresenting: $rootPresenting), isActive: $navigateToFinishGame) { EmptyView() }
+                    NavigationLink(destination: FinishGameView(rootPresenting: $rootPresenting, gameStartTime: $gameStartTime), isActive: $navigateToFinishGame) { EmptyView() }
                     
 //                    NavigationLink(destination: FinishGameView()) {
 //                        StartGameContent()
@@ -110,10 +112,13 @@ struct HomePage: View {
     
     func startNewGame() {
         // Call create_game() to add an empty game
+        gameStartTime = Date()
         let defaultTitle = "New Game Started"
         let defaultNotes = "No notes yet"
 
-        wrapperItem?.createGame(withTitle: defaultTitle, notes: defaultNotes, uci: "", fen: "")
+        let gameId = wrapperItem?.createGame(withTitle: defaultTitle, notes: defaultNotes, uci: "", fen: "")
+        
+        currentGameId = gameId
         
         navigateToFinishGame = true
     }

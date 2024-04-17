@@ -325,6 +325,36 @@ int Database::get_total_games(std::string username) {
 }
 
 
+void Database::update_game_duration(std::string gameid, std::string duration) {
+    std::string query = "UPDATE games SET time = '" + duration + "' WHERE GAMEID = '" + gameid + "'";
+    int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
+    if (rc != SQLITE_OK) {
+        std::cerr << "SQL error: " << zErrMsg << std::endl;
+        sqlite3_free(zErrMsg);
+    }
+}
+
+std::string Database::getAverageGameDurationForUser(const std::string& username) {
+    std::string averageTime;
+    std::string query = "SELECT AVG(time) AS AverageTime FROM games WHERE user = '" + username + "'";
+    
+    char* queryResult = nullptr;
+    int rc = sqlite3_exec(db, query.c_str(),
+        [](void* data, int argc, char** argv, char** azColName) -> int {
+            *static_cast<std::string*>(data) = argv[0] ? argv[0] : "0";
+            return 0;
+        }, &averageTime, &zErrMsg);
+
+    if (rc != SQLITE_OK) {
+        std::cerr << "SQL error: " << zErrMsg << std::endl;
+        sqlite3_free(zErrMsg);
+        return "0";
+    }
+    
+    return averageTime;
+}
+
+
 std::vector<std::string> Database::get_fen(int gameid = -1)
 {
     buffer = {};
