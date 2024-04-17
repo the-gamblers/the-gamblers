@@ -12,7 +12,7 @@ from database import get_game, write_fen, write_uci
 
 i = 0
 get_game()
-print("Game started")
+print("Game")
 
 
 class Game:
