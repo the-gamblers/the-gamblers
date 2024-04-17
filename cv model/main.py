@@ -142,6 +142,8 @@ while not game.board.is_game_over() and not game.commentator.game_state.resign_o
         last_frame = stabilize_background_subtractors()
         previous_frame = previous_frame_queue[0]
 
+        game.register_move(fgmask, previous_frame, last_frame)
+
         previous_frame_queue = deque(maxlen=10)
         previous_frame_queue.append(last_frame)
     else:
