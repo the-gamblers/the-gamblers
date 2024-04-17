@@ -1,8 +1,9 @@
 #include <cassert>
-#include "../ChessMaster/Client/ChessMaster/db2.h"
+#include "../ChessMaster/Client/ChessMaster/db2.hpp"
 
 void test_pass() {
-
+    Database db = Database("test");
+    // test();
     assert(0 == 0);
 }
 

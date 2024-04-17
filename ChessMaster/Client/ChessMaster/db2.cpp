@@ -334,3 +334,7 @@ std::vector<std::string> Database::get_uci(int gameid = -1)
 
     return res;
 }
+
+std::string Database::test() {
+    return "Hello"
+}
