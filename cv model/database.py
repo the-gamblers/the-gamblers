@@ -43,3 +43,8 @@ def write_time(start, end):
         + str(gameid)
     )
     conn.commit()
+
+
+def delete_swift_game():
+    cursor.execute("DELETE FROM games where title = 'New Game Started'")
+    conn.commit()
