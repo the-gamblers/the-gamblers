@@ -138,12 +138,10 @@ class Board_basics:
                 ssim = ssim + 0.1
                 if ssim > self.SSIM_THRESHOLD:
                     self.SSIM_THRESHOLD = ssim
-                    # print("new threshold is " + str(ssim))
                 is_light = int(self.is_light(square_name))
                 if (square_name == from_square) or (not is_capture):
                     if ssim > self.ssim_table[is_light][color]:
                         self.ssim_table[is_light][color] = ssim
-                        # print((is_light, color, ssim))
 
     def get_square_image(self, row, column, board_img):
         height, width = board_img.shape[:2]
@@ -219,7 +217,6 @@ class Board_basics:
                     channel_axis=-1,
                 )
                 square_name = self.convert_row_column_to_square_name(row, column)
-                # print(ssim, square_name)
                 if ssim > self.SSIM_THRESHOLD:
                     continue
                 square = chess.parse_square(square_name)

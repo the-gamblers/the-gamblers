@@ -52,9 +52,10 @@ def board_calibration(ignore=None):
     if selected_camera != OPTIONS[0]:
         cap_index = OPTIONS.index(selected_camera) - 1
         arguments.append("cap=" + str(cap_index))
-    process = subprocess.Popen(
-        arguments, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
-    )
+    # process = subprocess.Popen(
+    #     arguments, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+    # )
+    process = subprocess.Popen(arguments, stdout=subprocess.PIPE, stderr=None)
     global running_process
     running_process = process
     log_thread = Thread(

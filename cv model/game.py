@@ -12,6 +12,7 @@ from database import get_game, write_fen, write_uci
 
 i = 0
 get_game()
+print("Game started")
 
 
 class Game:
@@ -346,7 +347,7 @@ class Game:
         color = int(self.board.turn)
         self.board.push(valid_move_UCI)
         print(self.board)
-        print("\n\n")
+        print("\n")
 
         self.learn(next_frame)
         self.board_basics.update_ssim(
