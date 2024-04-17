@@ -24,9 +24,6 @@
 		202CD6C02B83A144009FB1C0 /* ChessMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6BF2B83A144009FB1C0 /* ChessMasterUITests.swift */; };
 		202CD6C22B83A144009FB1C0 /* ChessMasterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6C12B83A144009FB1C0 /* ChessMasterUITestsLaunchTests.swift */; };
 		202CD6CF2B864574009FB1C0 /* ReplayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CD6CE2B864574009FB1C0 /* ReplayListView.swift */; };
-		37203D7C2BB091780021EEE2 /* UploadPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37203D7B2BB091780021EEE2 /* UploadPhotoView.swift */; };
-		37203D7E2BB092090021EEE2 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37203D7D2BB092090021EEE2 /* CameraView.swift */; };
-		372380A82BB0D63800B74B70 /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372380A72BB0D63800B74B70 /* StartGameView.swift */; };
 		372380AA2BB0F03C00B74B70 /* FinishGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372380A92BB0F03C00B74B70 /* FinishGameView.swift */; };
 		372380AC2BB0F99400B74B70 /* GameSavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372380AB2BB0F99400B74B70 /* GameSavingView.swift */; };
 		37DD437D2B8F2C5300D59D9E /* NavigationPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */; };
@@ -74,9 +71,6 @@
 		202CD6BF2B83A144009FB1C0 /* ChessMasterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessMasterUITests.swift; sourceTree = "<group>"; };
 		202CD6C12B83A144009FB1C0 /* ChessMasterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessMasterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		202CD6CE2B864574009FB1C0 /* ReplayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayListView.swift; sourceTree = "<group>"; };
-		37203D7B2BB091780021EEE2 /* UploadPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotoView.swift; sourceTree = "<group>"; };
-		37203D7D2BB092090021EEE2 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		372380A72BB0D63800B74B70 /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
 		372380A92BB0F03C00B74B70 /* FinishGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishGameView.swift; sourceTree = "<group>"; };
 		372380AB2BB0F99400B74B70 /* GameSavingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSavingView.swift; sourceTree = "<group>"; };
 		37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPage2.swift; sourceTree = "<group>"; };
@@ -155,13 +149,10 @@
 				200A11F12BB122C200F28AC0 /* ProfileView.swift */,
 				202CD6A42B83A13F009FB1C0 /* ChessMasterApp.swift */,
 				202CD6A62B83A13F009FB1C0 /* ContentView.swift */,
-				37203D7D2BB092090021EEE2 /* CameraView.swift */,
 				37DD437E2B8F302500D59D9E /* ProgressPage.swift */,
 				E1030E0D2BBA44BA001189E6 /* test.sqlite */,
-				37203D7B2BB091780021EEE2 /* UploadPhotoView.swift */,
 				37DD43822B94E57E00D59D9E /* ReplayTableView.swift */,
 				372380A92BB0F03C00B74B70 /* FinishGameView.swift */,
-				372380A72BB0D63800B74B70 /* StartGameView.swift */,
 				372380AB2BB0F99400B74B70 /* GameSavingView.swift */,
 				37DD43802B8F942A00D59D9E /* HomePage.swift */,
 				37DD437C2B8F2C5300D59D9E /* NavigationPage2.swift */,
@@ -346,15 +337,12 @@
 				200A11ED2BB1225600F28AC0 /* ChessView.swift in Sources */,
 				200A11F52BB122C200F28AC0 /* LandingLoginView.swift in Sources */,
 				372380AA2BB0F03C00B74B70 /* FinishGameView.swift in Sources */,
-				372380A82BB0D63800B74B70 /* StartGameView.swift in Sources */,
 				202CD6CF2B864574009FB1C0 /* ReplayListView.swift in Sources */,
 				37DD437D2B8F2C5300D59D9E /* NavigationPage2.swift in Sources */,
 				372380AC2BB0F99400B74B70 /* GameSavingView.swift in Sources */,
 				200A11F82BB45C2F00F28AC0 /* ChessSettingsView.swift in Sources */,
 				200A11F42BB122C200F28AC0 /* ProfileView.swift in Sources */,
 				200A11FD2BB478B300F28AC0 /* UCItoFENfunctions.swift in Sources */,
-				37203D7E2BB092090021EEE2 /* CameraView.swift in Sources */,
-				37203D7C2BB091780021EEE2 /* UploadPhotoView.swift in Sources */,
 				E1030E082BB9C83F001189E6 /* db2.cpp in Sources */,
 				200A11F62BB122C200F28AC0 /* PlayableView.swift in Sources */,
 				37DD43832B94E57E00D59D9E /* ReplayTableView.swift in Sources */,
