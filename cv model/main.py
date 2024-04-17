@@ -142,15 +142,20 @@ while not game.board.is_game_over() and not game.commentator.game_state.resign_o
         last_frame = stabilize_background_subtractors()
         previous_frame = previous_frame_queue[0]
 
-        game.register_move(fgmask, previous_frame, last_frame)
+        if (game.is_light_change(last_frame) == False) and game.register_move(
+            fgmask, previous_frame, last_frame
+        ):
+            pass
+        else:
+            pass
 
         previous_frame_queue = deque(maxlen=10)
         previous_frame_queue.append(last_frame)
     else:
         move_fgbg.apply(frame)
         previous_frame_queue.append(frame)
-end_game()
 end_time = time.time()
 write_time(start_time, end_time)
+end_game()
 cv2.destroyAllWindows()
 time.sleep(2)
