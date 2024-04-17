@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct GameSavingView: View {
-//    @Environment(\.presentationMode) var presentationMode
     @Environment(\.presentationMode) var presentationMode
-    @Binding var showGameFlow: Bool
+    @Binding var rootPresenting: Bool
     @State private var username: String = UserDefaults.standard.string(forKey: "username") ?? "Unknown User"
     @State private var gameTitle: String = "Great Game"
     @State private var notes: String = ""
@@ -130,11 +129,11 @@ struct GameSavingView: View {
                 .shadow(radius: 5)
                 .padding(.bottom, 50)
                 .alert(isPresented: $showSaveConfirmation) {
+
                     Alert(title: Text("Game Saved"), message: Text("Successfully saved the game and added to the replay page"), dismissButton: .default(Text("OK")){
-                        
+                        self.rootPresenting = false
                         self.presentationMode.wrappedValue.dismiss()
 //                        shouldNavigateToReplayList = true
-                        self.showGameFlow = false
                     }
                           
                     )
@@ -173,7 +172,9 @@ struct GameSavingView: View {
 }
 
 struct GameSavingView_Previews: PreviewProvider {
+    @State static var rootPresentingPreview = true
+    
     static var previews: some View {
-        GameSavingView(showGameFlow: .constant(true))
+        GameSavingView(rootPresenting: $rootPresentingPreview)
     }
 }

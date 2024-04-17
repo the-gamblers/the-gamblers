@@ -316,9 +316,13 @@ std::tuple<int, int, int> Database::get_user_stats(std::string username) {
     }
     
     return std::make_tuple(wins, losses, draws);
-//    return std::make_tuple(0, 0, 0);
 }
 
+int Database::get_total_games(std::string username) {
+    int wins, losses, draws;
+    std::tie(wins, losses, draws) = get_user_stats(username);
+    return wins + losses + draws;
+}
 
 
 std::vector<std::string> Database::get_fen(int gameid = -1)
