@@ -19,16 +19,40 @@ struct ProgressPage: View {
     @State private var wins: Int = 0
     @State private var losses: Int = 0
     @State private var draws: Int = 0
-    
-    
-    func fetchUserStats() {        
-        if let stats = wrapperItem?.getUserStats(username) as? [String: NSNumber] {
+    @State private var totalGames: Int = 0
 
-            wins = stats["wins"]?.intValue ?? 0
-            losses = stats["losses"]?.intValue ?? 0
-            draws = stats["draws"]?.intValue ?? 0
+
+//    func fetchUserStats() {        
+//        if let stats = wrapperItem?.getUserStats(username) as? [String: NSNumber] {
+//
+//            wins = stats["wins"]?.intValue ?? 0
+//            losses = stats["losses"]?.intValue ?? 0
+//            draws = stats["draws"]?.intValue ?? 0
+//        }
+//    }
+    
+    func fetchUserStats() {
+        // Check if stats fetching is called
+//        print("Fetching stats for user: \(username)")
+        
+        if let stats = wrapperItem?.getUserStats(username) as? [String: NSNumber] {
+            // Check what stats are being fetched
+//            print("Stats fetched: \(stats)")
+
+            // Update the UI
+            DispatchQueue.main.async {
+                self.wins = stats["wins"]?.intValue ?? 0
+                self.losses = stats["losses"]?.intValue ?? 0
+                self.draws = stats["draws"]?.intValue ?? 0
+            }
         }
     }
+    
+    func fetchTotalGames(for username: String) -> Int {
+        return wrapperItem?.getTotalGames(username) ?? 0
+    }
+
+
     
     var body: some View {
         NavigationView {
@@ -54,8 +78,8 @@ struct ProgressPage: View {
                                     Text(username)
                                         .font(.title2)
                                     Spacer()
-                                    Image(systemName: "flame.fill")
-                                    Text("6")
+//                                    Image(systemName: "flame.fill")
+//                                    Text("6")
                                 }
                                 .padding(.horizontal)
                                 .padding(.top, 20)
@@ -79,7 +103,7 @@ struct ProgressPage: View {
                                                 .frame(width: 20, height: 20)
                                             Text("\(losses)")
                                                 .font(.headline)
-                                            Text("Losses")
+                                            Text("losses")
                                                 .font(.subheadline)
                                         }
                                         .padding(20)
@@ -95,7 +119,7 @@ struct ProgressPage: View {
                                                 .frame(width: 20, height: 20)
                                             Text("\(wins)")
                                                 .font(.headline)
-                                            Text("Wins")
+                                            Text("wins")
                                                 .font(.subheadline)
                                         }
                                         .padding(20)
@@ -109,7 +133,7 @@ struct ProgressPage: View {
                                             Image(systemName: "person.line.dotted.person.fill")
                                             Text("\(draws)")
                                                 .font(.headline)
-                                            Text("Draws")
+                                            Text("draws")
                                                 .font(.subheadline)
                                         }
                                         .padding(20)
@@ -120,20 +144,21 @@ struct ProgressPage: View {
                                         Spacer()
                                     }
                                     LazyVGrid(columns: [GridItem(.flexible(), spacing: 20), GridItem(.flexible(), spacing: 20)], spacing: 20) {
-                                            // Avg Time
-                                            VStack {
-                                                Image(systemName: "clock.fill")
-                                                Text("Avg Time")
-                                                    .font(.headline)
-                                                Text("2 hours")
-                                                    .font(.subheadline)
-                                            }
-                                            .padding(20)
-                                            .frame(width:155, height: 90)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-                                            )
+                                        
+                                        // Avg Time
+                                        VStack {
+                                            Image(systemName: "clock.fill")
+                                            Text("Avg Time")
+                                                .font(.headline)
+                                            Text("2 hours")
+                                                .font(.subheadline)
+                                        }
+                                        .padding(20)
+                                        .frame(width:155, height: 90)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+                                        )
                                             
                                             // Best Game
 //                                            VStack {
@@ -155,7 +180,7 @@ struct ProgressPage: View {
                                                 Image(systemName: "number")
                                                 Text("Total Games")
                                                     .font(.headline)
-                                                Text("109")
+                                                Text("\(totalGames)")
                                                     .font(.subheadline)
                                             }
                                             .padding(20)
@@ -204,6 +229,8 @@ struct ProgressPage: View {
             .onAppear {
                 self.username = UserDefaults.standard.string(forKey: "username") ?? "Default Username"
                 fetchUserStats()
+                self.totalGames = fetchTotalGames(for: username)
+//                wrapperItem?.getUserStats(username)
              }
 
         }

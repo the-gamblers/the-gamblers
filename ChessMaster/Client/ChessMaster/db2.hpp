@@ -35,11 +35,13 @@ public:
     std::vector<std::string> retrieve_games_by_title(std::string title);
     std::vector<std::string> retrieve_games_by_user();
     void delete_games_by_user();
-    void delete_games_by_id();
+//    void delete_games_by_id();
+    void delete_games_by_id(std::string gameid);
     void switch_game(std::string title);
     void edit_fen(std::string fen);
     void record_game_result(std::string username, std::string result);
-    std::tuple<int, int, int, int> get_user_stats(std::string username);
+    std::tuple<int, int, int> get_user_stats(std::string username);
+    int get_total_games(std::string username);
     std::vector<std::string> get_fen(int gameid);
     std::vector<std::string> get_uci(int gameid);
 };

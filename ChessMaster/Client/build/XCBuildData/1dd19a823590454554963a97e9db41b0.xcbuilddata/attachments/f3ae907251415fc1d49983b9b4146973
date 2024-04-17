@@ -1,4 +1,0 @@
-module Chess {
-header "Chess-Swift.h"
-export *
-}

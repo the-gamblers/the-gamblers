@@ -65,9 +65,14 @@
     self.cppitem->delete_games_by_user();
 }
 
-- (void)deleteGamesById {
-    self.cppitem->delete_games_by_id();
+//- (void)deleteGamesById {
+//    self.cppitem->delete_games_by_id();
+//}
+
+- (void)deleteGamesById:(NSString *)gameid {
+    self.cppitem->delete_games_by_id(std::string([gameid UTF8String]));
 }
+
 
 - (void)switchGame:(NSString *)title {
     self.cppitem->switch_game(std::string([title cStringUsingEncoding:NSUTF8StringEncoding]));
@@ -127,6 +132,10 @@
              @"losses": @(std::get<1>(stats)),
              @"draws": @(std::get<2>(stats))
     };
+}
+
+- (NSInteger)getTotalGames:(NSString *)username {
+    return self.cppitem->get_total_games(std::string([username UTF8String]));
 }
 
 @end

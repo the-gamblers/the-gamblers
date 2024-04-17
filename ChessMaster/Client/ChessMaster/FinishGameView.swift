@@ -10,8 +10,10 @@ import AVFoundation
 
 
 struct FinishGameView: View {
-    @State private var cameraSession = AVCaptureSession()
+//    @State private var cameraSession = AVCaptureSession()
     @State private var navigateToGameSaving = false
+//    @Environment(\.presentationMode) var presentationMode
+    @Binding var rootPresenting: Bool
 
     var body: some View {
         ZStack {
@@ -20,25 +22,11 @@ struct FinishGameView: View {
 
             VStack {
                 Spacer()
-                CameraPreviewView(session: cameraSession)
-                    .cornerRadius(25)
-                    .aspectRatio(9/16, contentMode: .fit)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 25)
-                            .stroke(Color.gray, lineWidth: 2)
-                    )
-                    .shadow(radius: 5)
-                    .onAppear {
-                        startCameraSession()
-                    }
-                    .onDisappear {
-                        cameraSession.stopRunning()
-                    }
 
-                Spacer(minLength: 30)
-                
+
                 Button("END GAME") {
                     navigateToGameSaving = true
+                    self.rootPresenting = false
                 }
                 .font(.headline)
                 .foregroundColor(Color.white)
@@ -50,32 +38,22 @@ struct FinishGameView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: GameSavingView(), isActive: $navigateToGameSaving) {
+                NavigationLink(destination: GameSavingView(rootPresenting: $rootPresenting), isActive: $navigateToGameSaving) {
                     EmptyView()
+//                    self.presentationMode.wrappedValue.dismiss()
                 }
                 .hidden()
             }
         }
     }
 
-    func startCameraSession() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            // setup and start the camera session 
-            guard let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else { return }
-            guard let input = try? AVCaptureDeviceInput(device: device) else { return }
-
-            if cameraSession.canAddInput(input) {
-                cameraSession.addInput(input)
-            }
-
-            cameraSession.startRunning()
-        }
-    }
 }
 
 struct FinishGameView_Previews: PreviewProvider {
+    @State static var rootPresentingPreview = true
+    
     static var previews: some View {
-        FinishGameView()
+        FinishGameView(rootPresenting: $rootPresentingPreview)
     }
 }
 

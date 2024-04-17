@@ -25,10 +25,13 @@ extension Color {
 struct HomePage: View {
     @State private var showProfile = false
     @Binding var isLoggedin: Bool
-       
+    @State private var rootPresenting: Bool = false
+
     func showProfileView() {
         showProfile.toggle()
     }
+    
+    @State private var navigateToFinishGame = false
     
     var body: some View {
         NavigationView {
@@ -75,7 +78,15 @@ struct HomePage: View {
                     }
                     .padding(.bottom, 20)
                     
-                    NavigationLink(destination: UploadPhotoView()) {
+                    NavigationLink(destination: FinishGameView(rootPresenting: $rootPresenting), isActive: $navigateToFinishGame) { EmptyView() }
+                    
+//                    NavigationLink(destination: FinishGameView()) {
+//                        StartGameContent()
+//                    }
+                    
+                    Button(action: {
+                        startNewGame()
+                    }) {
                         StartGameContent()
                     }
                     
@@ -95,6 +106,16 @@ struct HomePage: View {
                                 }
             }
         }
+    }
+    
+    func startNewGame() {
+        // Call create_game() to add an empty game
+        let defaultTitle = "New Game Started"
+        let defaultNotes = "No notes yet"
+
+        wrapperItem?.createGame(withTitle: defaultTitle, notes: defaultNotes, uci: "", fen: "")
+        
+        navigateToFinishGame = true
     }
 }
 

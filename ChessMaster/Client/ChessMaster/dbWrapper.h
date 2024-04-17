@@ -13,11 +13,13 @@
 - (NSArray<NSString *> *)retrieveGamesByTitle:(NSString *)title;
 - (NSArray<NSString *> *)retrieveGamesByUser;
 - (void)deleteGamesByUser;
-- (void)deleteGamesById;
+//- (void)deleteGamesById;
+- (void)deleteGamesById:(NSString *)gameid;
 - (void)switchGame:(NSString *)title;
 - (void)editFen:(NSString *)fen;
 - (NSString *)testy;
 - (void)recordGameResultForUser:(NSString *)username result:(NSString *)result;
+- (NSInteger)getTotalGames:(NSString *)username;
 - (NSDictionary *)getUserStats:(NSString *)username;
 - (NSArray<NSString *> *)getFen:(NSInteger)gameid;
 - (NSArray<NSString *> *)getUci:(NSInteger)gameid;
