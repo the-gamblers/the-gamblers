@@ -94,7 +94,6 @@ void Database::create_user(std::string username, std::string password)
 {
     // const char *query = "SELECT * FROM sqlite_master;";
     std::string query = ("INSERT INTO users (username, password) VALUES ('" + username + "', '" + password + "');");
-    std::cout << query << std::endl;
     int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
 
     if (rc != SQLITE_OK)
@@ -144,10 +143,11 @@ void Database::change_password(std::string new_password)
     }
 }
 
-void Database::delete_user()
+void Database::delete_user(std::string username = "")
 {
+    std::string user = username == "" ? curr_user : username;
     delete_games_by_user();
-    std::string query = ("DELETE FROM users WHERE username = '" + curr_user + "'");
+    std::string query = ("DELETE FROM users WHERE username = '" + user + "'");
     int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
 
     if (rc != SQLITE_OK)

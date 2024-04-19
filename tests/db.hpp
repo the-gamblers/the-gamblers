@@ -29,7 +29,7 @@ public:
     bool check_user(std::string username, std::string password);
     std::vector<std::string> get_all_users();
     void change_password(std::string new_password);
-    void delete_user();
+    void delete_user(std::string username);
     void create_game(std::string title, std::string notes, std::string uci, std::string fen);
     void edit_title(std::string title);
     void edit_note(std::string note);
