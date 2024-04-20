@@ -26,21 +26,80 @@ void create_user_pass() {
 }
 
 void check_user_pass() {
-    Database db = Database("test");
-    std::string a = db.test();
-    assert(a == "Hello");
+    Database db = Database("/mnt/c/Users/ansle/school/csce482/the-gamblers/tests/db");
+    std::string username = "check_user_pass";
+    bool db_result = db.check_user(username, "CheckUserPass");
+    
+    sqlite3* check_db;
+    std::vector<std::string> buffer;
+    char *zErrMsg;
+    sqlite3_open("/mnt/c/Users/ansle/school/csce482/the-gamblers/tests/db.sqlite", &check_db);
+
+    std::string query = ("SELECT password FROM users WHERE username = '" + username + "';");
+    int rc = sqlite3_exec(check_db, query.c_str(), write_data, &buffer, &zErrMsg);
+
+    assert(buffer.at(1) == "CheckUserPass" && (db_result == true));
+    sqlite3_close(check_db);
+}
+
+
+void check_user_fail(){ // for this test to past check user should output false 
+    Database db = Database("/mnt/c/Users/ansle/school/csce482/the-gamblers/tests/db");
+    std::string username = "check_user_fail";
+    bool db_result = db.check_user(username, "CheckUserFail");
+    
+    sqlite3* check_db;
+    std::vector<std::string> buffer;
+    char *zErrMsg;
+    sqlite3_open("/mnt/c/Users/ansle/school/csce482/the-gamblers/tests/db.sqlite", &check_db);
+
+    std::string query = ("SELECT password FROM users WHERE username = '" + username + "';");
+    int rc = sqlite3_exec(check_db, query.c_str(), write_data, &buffer, &zErrMsg);
+
+    assert(buffer.at(1) != "CheckUserFail" && (db_result == false));
+    sqlite3_close(check_db);
 }
 
 void change_password_pass() {
-    Database db = Database("test");
-    std::string a = db.test();
-    assert(a == "Hello");
+    Database db = Database("/mnt/c/Users/ansle/school/csce482/the-gamblers/tests/db");
+    std::string username = "change_pasword_pass";
+    bool db_result = db.check_user(username, "ChangePasswordPass");
+    std::string new_passcode = "ChangePasswordNew";
+    db.change_password(new_passcode); 
+    
+    sqlite3* check_db;
+    std::vector<std::string> buffer;
+    char *zErrMsg;
+    sqlite3_open("/mnt/c/Users/ansle/school/csce482/the-gamblers/tests/db.sqlite", &check_db);
+
+    std::string query = ("SELECT password FROM users WHERE username = '" + username + "';");
+    int rc = sqlite3_exec(check_db, query.c_str(), write_data, &buffer, &zErrMsg);
+
+    assert(buffer.at(1) == new_passcode);
+    sqlite3_close(check_db);
 }
 
 void delete_user_pass() {
-    Database db = Database("test");
-    std::string a = db.test();
-    assert(a == "Hello");
+    Database db = Database("/mnt/c/Users/ansle/school/csce482/the-gamblers/tests/db");
+    std::string username = "delete_user_pass";
+    //bool db_result = db.check_user(username, "DeleteUserPass");
+    db.delete_user(username);
+    
+    sqlite3* check_db;
+    std::vector<std::string> buffer;
+    char *zErrMsg;
+    sqlite3_open("/mnt/c/Users/ansle/school/csce482/the-gamblers/tests/db.sqlite", &check_db);
+
+    std::string query = ("SELECT * FROM users where username= '" + username + "'");
+    int rc = sqlite3_exec(check_db, query.c_str(), write_data, &buffer, &zErrMsg);
+
+    assert(buffer.empty());
+
+    std::string query = ("SELECT * FROM games where username= '" + username + "'");
+    int rc = sqlite3_exec(check_db, query.c_str(), write_data, &buffer, &zErrMsg);
+
+    assert(buffer.empty());
+    sqlite3_close(check_db);
 }
 
 // TEST GROUP: USERS, FAIL
