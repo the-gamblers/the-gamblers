@@ -89,9 +89,6 @@
     return result;
 }
 
-- (void)editFen:(NSString *)fen {
-    self.cppitem->edit_fen(std::string([fen cStringUsingEncoding:NSUTF8StringEncoding]));
-}
 
 - (NSArray<NSString *> *)getFen :(NSInteger)gameid{
     std::vector<std::string> fens = self.cppitem->get_fen(gameid);

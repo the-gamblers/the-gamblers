@@ -239,17 +239,6 @@ void Database::switch_game(std::string title)
     curr_game = *id;
 }
 
-void Database::edit_fen(std::string fen)
-{
-    buffer = {};
-    std::string query = ("UPDATE games SET fen = '" + fen + "' WHERE GAMEID = '" + std::to_string(curr_game) + "'");
-    int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
-
-    if (rc != SQLITE_OK)
-    {
-        std::cerr << "ERROR: " << zErrMsg << std::endl;
-    }
-}
 
 void Database::record_game_result(std::string username, std::string result)
 {
