@@ -25,11 +25,11 @@ private:
 public:
     Database(std::string name);
     ~Database();
-    void create_user(std::string username, std::string password);
-    bool check_user(std::string username, std::string password);
+    void create_user(std::string username, std::string password); //Test Written
+    bool check_user(std::string username, std::string password); //Test Written
     std::vector<std::string> get_all_users();
-    void change_password(std::string new_password);
-    void delete_user(std::string username);
+    void change_password(std::string new_password); //Test Written
+    void delete_user(std::string username);  // Test written, data base user, and games for that user
     void create_game(std::string title, std::string notes, std::string uci, std::string fen);
     void edit_title(std::string title);
     void edit_note(std::string note);
