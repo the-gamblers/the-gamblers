@@ -133,14 +133,11 @@ bool Database::check_user(std::string username, std::string password)
 
 void Database::change_password(std::string new_password)
 {
-    if (curr_user != "")
-    {
-        std::string query = ("UPDATE users SET password = '" + new_password + "' WHERE username = '" + curr_user + "'");
-        int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
+    std::string query = ("UPDATE users SET password = '" + new_password + "' WHERE username = '" + curr_user + "'");
+    int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
 
-        if (rc != SQLITE_OK)
-            std::cerr << "ERROR: " << zErrMsg << std::endl;
-    }
+    if (rc != SQLITE_OK)
+        std::cerr << "ERROR: " << zErrMsg << std::endl;
 }
 
 void Database::delete_user(std::string username = "")
@@ -251,18 +248,6 @@ void Database::switch_game(std::string title)
     if (rc != SQLITE_OK)
         std::cerr << "ERROR: " << zErrMsg << std::endl;
     curr_game = *id;
-}
-
-void Database::edit_fen(std::string fen)
-{
-    buffer = {};
-    std::string query = ("UPDATE games SET fen = '" + fen + "' WHERE GAMEID = '" + std::to_string(curr_game) + "'");
-    int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
-
-    if (rc != SQLITE_OK)
-    {
-        std::cerr << "ERROR: " << zErrMsg << std::endl;
-    }
 }
 
 void Database::record_game_result(std::string username, std::string result)
