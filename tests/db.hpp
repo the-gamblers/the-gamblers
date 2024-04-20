@@ -5,8 +5,8 @@
 //  Created by Roee Belkin on 3/31/24.
 //
 
-#ifndef db2_hpp
-#define db2_hpp
+#ifndef db_hpp
+#define db_hpp
 
 #include <stdio.h>
 #include <string>
@@ -25,24 +25,23 @@ private:
 public:
     Database(std::string name);
     ~Database();
-    void create_user(std::string username, std::string password);
-    bool check_user(std::string username, std::string password);
-    void change_password(std::string new_password);
-    void delete_user();
+    void create_user(std::string username, std::string password); //Test Written
+    bool check_user(std::string username, std::string password); //Test Written
+    std::vector<std::string> get_all_users();
+    void change_password(std::string new_password); //Test Written
+    void delete_user(std::string username);  // Test written, data base user, and games for that user
     void create_game(std::string title, std::string notes, std::string uci, std::string fen);
     void edit_title(std::string title);
     void edit_note(std::string note);
     std::vector<std::string> retrieve_games_by_title(std::string title);
     std::vector<std::string> retrieve_games_by_user();
     void delete_games_by_user();
-//    void delete_games_by_id();
-    void delete_games_by_id(std::string gameid);
+    void delete_games_by_id();
     void switch_game(std::string title);
     void record_game_result(std::string username, std::string result);
-    std::tuple<int, int, int> get_user_stats(std::string username);
-    int get_total_games(std::string username);
+    std::tuple<int, int, int, int> get_user_stats(std::string username);
     std::vector<std::string> get_fen(int gameid);
     std::vector<std::string> get_uci(int gameid);
-    std::string static test();
+    std::string test();
 };
 #endif /* db2_hpp */

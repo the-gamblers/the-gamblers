@@ -1,4 +1,4 @@
-#include "db2.hpp"
+#include "db.hpp"
 #include <iostream>
 #include <cstring>
 #include <regex>
@@ -78,9 +78,9 @@ Database::Database(std::string name) : db(nullptr), curr_user(""), curr_game(-1)
 
     // sqlite3_exec(db, "DROP TABLE games;", NULL, 0, NULL);
 
-    // sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS games(GAMEID INTEGER, user TEXT NOT NULL, date DATETIME DEFAULT CURRENT_DATE, title TEXT UNIQUE, notes TEXT, uci TEXT, fens TEXT, primary key (GAMEID), FOREIGN KEY (user) REFERENCES users(username));", NULL, 0, NULL);
-    // sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS users(username TEXT UNIQUE NOT NULL, password TEXT NOT NULL, primary key (username));", NULL, 0, NULL);
-    // sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS games(GAMEID INTEGER, user TEXT NOT NULL, date DATETIME DEFAULT CURRENT_DATE, title TEXT, notes TEXT, uci TEXT, fens TEXT, primary key (GAMEID), FOREIGN KEY (user) REFERENCES users(username));", NULL, 0, NULL);
+
+    // sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS users(username TEXT UNIQUE NOT NULL, password TEXT NOT NULL, wins INTEGER, losses INTEGER, draws INTEGER, primary key (username));", NULL, 0, NULL);
+    // sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS games(GAMEID INTEGER, user TEXT NOT NULL, date DATETIME DEFAULT CURRENT_DATE, title TEXT, notes TEXT, uci TEXT, fens TEXT, time TEXT, primary key (GAMEID), FOREIGN KEY (user) REFERENCES users(username));", NULL, 0, NULL);
     // sqlite3_exec(db, "ALTER TABLE games ADD COLUMN fens TEXT", NULL, 0, &zErrMsg);
 }
 
@@ -94,11 +94,24 @@ void Database::create_user(std::string username, std::string password)
 {
     // const char *query = "SELECT * FROM sqlite_master;";
     std::string query = ("INSERT INTO users (username, password) VALUES ('" + username + "', '" + password + "');");
-    // std::cout << query << std::endl;
     int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
 
     if (rc != SQLITE_OK)
         std::cerr << "ERROR: " << zErrMsg << std::endl;
+}
+
+std::vector<std::string> Database::get_all_users()
+{
+    buffer = {};
+    std::string query = ("SELECT * FROM users");
+    int rc = sqlite3_exec(db, query.c_str(), write_data, &buffer, &zErrMsg);
+
+    if (rc != SQLITE_OK)
+    {
+        std::cerr << "ERROR: " << zErrMsg << std::endl;
+        return {};
+    }
+    return buffer;
 }
 
 // call during login process
@@ -120,20 +133,18 @@ bool Database::check_user(std::string username, std::string password)
 
 void Database::change_password(std::string new_password)
 {
-    if (curr_user != "")
-    {
-        std::string query = ("UPDATE users SET password = '" + new_password + "' WHERE username = '" + curr_user + "'");
-        int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
+    std::string query = ("UPDATE users SET password = '" + new_password + "' WHERE username = '" + curr_user + "'");
+    int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
 
-        if (rc != SQLITE_OK)
-            std::cerr << "ERROR: " << zErrMsg << std::endl;
-    }
+    if (rc != SQLITE_OK)
+        std::cerr << "ERROR: " << zErrMsg << std::endl;
 }
 
-void Database::delete_user()
+void Database::delete_user(std::string username = "")
 {
+    std::string user = username == "" ? curr_user : username;
     delete_games_by_user();
-    std::string query = ("DELETE FROM users WHERE username = '" + curr_user + "'");
+    std::string query = ("DELETE FROM users WHERE username = '" + user + "'");
     int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
 
     if (rc != SQLITE_OK)
@@ -217,17 +228,9 @@ void Database::delete_games_by_user()
         std::cerr << "ERROR: " << zErrMsg << std::endl;
 }
 
-//void Database::delete_games_by_id()
-//{
-//    std::string query = ("DELETE FROM games WHERE GAMEID = '" + std::to_string(curr_game) + "'");
-//    int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
-//
-//    if (rc != SQLITE_OK)
-//        std::cerr << "ERROR: " << zErrMsg << std::endl;
-//}
-
-void Database::delete_games_by_id(std::string gameid) {
-    std::string query = "DELETE FROM games WHERE GAMEID = '" + gameid + "'";
+void Database::delete_games_by_id()
+{
+    std::string query = ("DELETE FROM games WHERE GAMEID = '" + std::to_string(curr_game) + "'");
     int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
 
     if (rc != SQLITE_OK)
@@ -247,72 +250,30 @@ void Database::switch_game(std::string title)
     curr_game = *id;
 }
 
-
-//void Database::record_game_result(std::string username, std::string result)
-//{
-//    std::string query = "UPDATE users SET ";
-//    if (result == "win")
-//    {
-//        query += "wins = wins + 1";
-//    }
-//    else if (result == "loss")
-//    {
-//        query += "losses = losses + 1";
-//    }
-//    else if (result == "draw")
-//    {
-//        query += "draws = draws + 1";
-//    }
-//    query += " WHERE username = '" + username + "';";
-//    sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
-//}
-
-void Database::record_game_result(std::string username, std::string result) {
+void Database::record_game_result(std::string username, std::string result)
+{
     std::string query = "UPDATE users SET ";
-    if (result == "win") {
+    if (result == "win")
+    {
         query += "wins = wins + 1";
-    } else if (result == "loss") {
+    }
+    else if (result == "loss")
+    {
         query += "losses = losses + 1";
-    } else if (result == "draw") {
+    }
+    else if (result == "draw")
+    {
         query += "draws = draws + 1";
     }
     query += " WHERE username = '" + username + "';";
-
-    // Log the query
-    std::cout << "Executing query: " << query << std::endl;
-
     sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
-    if (zErrMsg != NULL) {
-        std::cerr << "SQL error: " << zErrMsg << std::endl;
-        sqlite3_free(zErrMsg);
-    }
 }
 
-std::tuple<int, int, int> Database::get_user_stats(std::string username) {
-    int wins = 0, losses = 0, draws = 0;
-    std::string query = "SELECT wins, losses, draws FROM users WHERE username = ?";
-    sqlite3_stmt* stmt;
-
-    if (sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL) == SQLITE_OK) {
-        sqlite3_bind_text(stmt, 1, username.c_str(), -1, SQLITE_STATIC);
-
-        if (sqlite3_step(stmt) == SQLITE_ROW) {
-            wins = sqlite3_column_int(stmt, 0);
-            losses = sqlite3_column_int(stmt, 1);
-            draws = sqlite3_column_int(stmt, 2);
-        }
-        sqlite3_finalize(stmt);
-    }
-    
-    return std::make_tuple(wins, losses, draws);
+std::tuple<int, int, int, int> Database::get_user_stats(std::string username)
+{
+    std::string query = "SELECT wins, losses, draws FROM users WHERE username = '" + username + "';";
+    return std::make_tuple(0, 0, 0, 0);
 }
-
-int Database::get_total_games(std::string username) {
-    int wins, losses, draws;
-    std::tie(wins, losses, draws) = get_user_stats(username);
-    return wins + losses + draws;
-}
-
 
 std::vector<std::string> Database::get_fen(int gameid = -1)
 {
@@ -374,5 +335,5 @@ std::vector<std::string> Database::get_uci(int gameid = -1)
 }
 
 std::string Database::test() {
-    return "Hello"
+    return "Hello";
 }

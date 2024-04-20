@@ -16,7 +16,6 @@
 //- (void)deleteGamesById;
 - (void)deleteGamesById:(NSString *)gameid;
 - (void)switchGame:(NSString *)title;
-- (void)editFen:(NSString *)fen;
 - (NSString *)testy;
 - (void)recordGameResultForUser:(NSString *)username result:(NSString *)result;
 - (NSInteger)getTotalGames:(NSString *)username;
