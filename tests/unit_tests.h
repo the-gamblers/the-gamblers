@@ -26,9 +26,22 @@ void create_user_pass() {
 }
 
 void check_user_pass() {
-    Database db = Database("test");
-    std::string a = db.test();
-    assert(a == "Hello");
+    // test
+    Database db = Database("/mnt/c/Users/ansle/school/csce482/the-gamblers/tests/db");
+    std::string username = "test" + std::to_string(std::time(0));
+    db.create_user(username, "pass");
+
+    // check
+    sqlite3* check_db;
+    std::vector<std::string> buffer;
+    char *zErrMsg;
+    sqlite3_open("/mnt/c/Users/ansle/school/csce482/the-gamblers/tests/db.sqlite", &check_db);
+
+    std::string query = ("SELECT * FROM users WHERE username = '" + username + "';");
+    int rc = sqlite3_exec(check_db, query.c_str(), write_data, &buffer, &zErrMsg);
+
+    assert(buffer.at(1) == "pass");
+    sqlite3_close(check_db);
 }
 
 void change_password_pass() {
