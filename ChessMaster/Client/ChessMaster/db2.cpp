@@ -93,7 +93,7 @@ Database::~Database()
 void Database::create_user(std::string username, std::string password)
 {
     // const char *query = "SELECT * FROM sqlite_master;";
-    std::string query = ("INSERT INTO users (username, password) VALUES ('" + username + "', '" + password + "');");
+    std::string query = ("INSERT INTO users (username, password, wins, losses, draws) VALUES ('" + username + "', '" + password + "', '0', '0', '0');");
     // std::cout << query << std::endl;
     int rc = sqlite3_exec(db, query.c_str(), NULL, 0, &zErrMsg);
 
@@ -374,5 +374,5 @@ std::vector<std::string> Database::get_uci(int gameid = -1)
 }
 
 std::string Database::test() {
-    return "Hello"
+    return "Hello";
 }
