@@ -336,7 +336,9 @@ class Game:
                 self.fen += self.board.fen() + ","
 
             write_uci(self.uci)
+            print("writing the fen")
             write_fen(self.fen)
+            print("done writing the fen")
 
         valid_move_UCI = chess.Move.from_uci(valid_move_string)
 
@@ -478,3 +480,8 @@ class Game:
             return True, valid_move_string
         else:
             return False, valid_move_string
+
+
+def last_writes(self):
+    write_uci(self.uci)
+    write_fen(self.fen)
