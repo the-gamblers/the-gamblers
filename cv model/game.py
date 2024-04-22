@@ -324,21 +324,6 @@ class Game:
                 pass
             else:
                 return False
-        else:
-            if self.uci == " ":
-                self.uci = valid_move_string
-            else:
-                self.uci += valid_move_string
-
-            if self.fen == " ":
-                self.fen = self.board.fen() + ","
-            else:
-                self.fen += self.board.fen() + ","
-
-            write_uci(self.uci)
-            print("writing the fen")
-            write_fen(self.fen)
-            print("done writing the fen")
 
         valid_move_UCI = chess.Move.from_uci(valid_move_string)
 
@@ -348,6 +333,18 @@ class Game:
         is_capture = self.board.is_capture(valid_move_UCI)
         color = int(self.board.turn)
         self.board.push(valid_move_UCI)
+        if self.uci == " ":
+            self.uci = valid_move_string
+        else:
+            self.uci += valid_move_string
+
+        if self.fen == " ":
+            self.fen = self.board.fen() + ","
+        else:
+            self.fen += self.board.fen() + ","
+        
+        write_uci(self.uci)
+        write_fen(self.fen)
         print(self.board)
         print("\n")
 
@@ -481,7 +478,3 @@ class Game:
         else:
             return False, valid_move_string
 
-
-def last_writes(self):
-    write_uci(self.uci)
-    write_fen(self.fen)

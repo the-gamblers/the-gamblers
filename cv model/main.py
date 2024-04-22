@@ -156,7 +156,6 @@ while not game.board.is_game_over() and not game.commentator.game_state.resign_o
         previous_frame_queue.append(frame)
 end_time = time.time()
 write_time(start_time, end_time)
-game.last_write()
 end_game()
 cv2.destroyAllWindows()
 time.sleep(2)
