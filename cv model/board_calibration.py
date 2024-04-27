@@ -87,20 +87,20 @@ cap = cv2.VideoCapture(cap_index, cap_api)
 # cap = cv2.VideoCapture(1, cap_api)
 if not cap.isOpened():
 
-    print("Couldn't open your webcam. Please check your webcam connection.")
+    # print("Couldn't open your webcam. Please check your webcam connection.")
     sys.exit(0)
 board_dimensions = (7, 7)
 
 for _ in range(10):
     ret, frame = cap.read()
     if ret == False:
-        print("Error reading frame. Please check your webcam connection.")
+        # print("Error reading frame. Please check your webcam connection.")
         continue
 
 while True:
     ret, frame = cap.read()
     if ret == False:
-        print("Error reading frame. Please check your webcam connection.")
+        # print("Error reading frame. Please check your webcam connection.")
         continue
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     retval, corners = cv2.findChessboardCorners(gray, patternSize=board_dimensions)
@@ -238,8 +238,8 @@ else:
     else:
         side_view_compensation = (0, 1)
 
-print("Side view compensation" + str(side_view_compensation))
-print("Rotation count " + str(rotation_count))
+# print("Side view compensation" + str(side_view_compensation))
+# print("Rotation count " + str(rotation_count))
 filename = "constants.bin"
 outfile = open(filename, "wb")
 pickle.dump(

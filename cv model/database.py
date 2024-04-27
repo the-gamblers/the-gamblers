@@ -2,7 +2,7 @@ import sqlite3
 import datetime
 
 
-conn = sqlite3.connect("../ChessMaster/Client/ChessMaster/test.sqlite")
+conn = sqlite3.connect("../ChessMaster/Client/ChessMaster/prod.sqlite")
 cursor = conn.cursor()
 gameid = -1
 
@@ -41,4 +41,9 @@ def write_time(start, end):
         + "' WHERE GAMEID = "
         + str(gameid)
     )
+    conn.commit()
+
+
+def delete_swift_game():
+    cursor.execute("DELETE FROM games where title = 'Demo game'")
     conn.commit()
