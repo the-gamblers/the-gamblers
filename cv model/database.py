@@ -13,7 +13,7 @@ def end_game():
 
 
 def get_game():
-    cursor.execute("SELECT GAMEID FROM games WHERE fens = '' AND uci = ''")
+    cursor.execute("SELECT GAMEID FROM games WHERE title = 'ansley10ABCs'")
     conn.commit()
     global gameid
     gameid = cursor.fetchone()[0]
@@ -47,3 +47,18 @@ def write_time(start, end):
 def delete_swift_game():
     cursor.execute("DELETE FROM games where title = 'Demo game'")
     conn.commit()
+
+def get_GameID_From_Fen(fen):
+    cursor.execute("SELECT GAMEID FROM games where fens = '"+str(fen)+"'")
+    conn.commit()
+    return cursor.fetchone()[0]
+
+def get_GameID_From_UCI(uci):
+    cursor.execute("SELECT GAMEID FROM games where uci = '"+str(uci)+"'")
+    conn.commit()
+    return cursor.fetchone()[0]
+
+def get_GameID_From_Time(time):
+    cursor.execute("SELECT GAMEID FROM games where time = '"+str(time)+"'")
+    conn.commit()
+    return cursor.fetchone()[0]
