@@ -33,12 +33,8 @@ struct ProgressPage: View {
     
     func fetchUserStats() {
         // Check if stats fetching is called
-//        print("Fetching stats for user: \(username)")
-        
         if let stats = wrapperItem?.getUserStats(username) as? [String: NSNumber] {
-            // Check what stats are being fetched
-//            print("Stats fetched: \(stats)")
-
+        
             // Update the UI
             DispatchQueue.main.async {
                 self.wins = stats["wins"]?.intValue ?? 0

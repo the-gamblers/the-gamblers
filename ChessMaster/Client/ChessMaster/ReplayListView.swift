@@ -65,7 +65,7 @@ struct ReplayListView: View {
                                 ForEach(replay) { replayItem in
                                     HStack {
                                         Button("Image") {
-                                            // TODO: Add img of game
+                                            
                                         }
                                         VStack(alignment: .leading) {
                                             Text(replayItem.title)
@@ -76,6 +76,7 @@ struct ReplayListView: View {
                                         }
                                         Spacer()
                                         NavigationLink(destination: ReplayTableView(replay: replayItem, isLoggedin: $isLoggedin)) {}
+                                        
                                     }
                                     .padding(.vertical, 8)
                                     .buttonStyle(ListButton())
@@ -85,7 +86,8 @@ struct ReplayListView: View {
                             .listStyle(.insetGrouped)
                             .scrollContentBackground(.hidden)
                             .shadow(color: Color.gray, radius: 7, x: -0, y: 5)
-                        })
+                            .accessibility(identifier: "replayList")
+                        }.accessibility(identifier: "replay"))
             }
             .navigationTitle("REPLAYS")
             .toolbar {

@@ -25,10 +25,10 @@ struct SquareTargetedPreview: View {
         guard let replay = replay else { return [] }
         var fenStrings1: [String] = [] // starting postion
         let fens = getFENStringFromDB(gameID: replay.gameID)
+        
         for move in fens{
             fenStrings1.append(move)
         }
-        //print(fenStrings1)
         return fenStrings1
     }
     
@@ -52,22 +52,16 @@ struct SquareTargetedPreview: View {
         let game = Chess.Game.sampleGame()
         self._store = StateObject(wrappedValue: ChessStore(game: game))
         
-        //print(getGamesFromDB())
-        print("UCI strings: ", uciStrings)
-        print("FEN strings: ", fenStrings)
         // Parse Best move UCI strings and generate FEN strings
         for (fen, uci) in zip(fenStrings, uciStrings) {
             // Get best move for each FEN string
             let bestMove = getBestMove(fen: fen)
             bestMoves.append(bestMove)
-            //print("Best move from stock", bestMove)
         
-            //print("Orginal UCI", uci)
             let bestMoveUCIString = changeMoveToBestMove(originalMove: uci, bestMove: bestMove)
-            //print("best move ucis", bestMoveUCIString)
+            
             let bestMoveFEN = uciToFEN(uciMoves: bestMoveUCIString)
             bestFenStrings.append(bestMoveFEN)
-            //print("Best FEN: " bestMoveFEN)
             
             if let gameID = replay?.gameID {
                        self.uciPlays = getUCIStringFromDB(gameID: gameID)
@@ -77,9 +71,7 @@ struct SquareTargetedPreview: View {
         bestFenStrings.insert("", at: 0)
         bestMoves.insert("press the thumbs up button to see the what the best move wouldve been at that position", at: 0)
         uciPlays.insert("your moves will appear here", at: 0)
-        print("Best fen str:", bestFenStrings)
-        
-       
+    
     }
     
     var body: some View {
@@ -134,7 +126,7 @@ struct SquareTargetedPreview: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: 30)
-                }
+                }.accessibilityIdentifier("backwards")
                 Spacer()
                 Button(action: {
                     timer?.invalidate() // Stops the timer if running
@@ -186,7 +178,7 @@ struct SquareTargetedPreview: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: 30)
-                }
+                }.accessibilityIdentifier("bestMove")
                 Spacer()
                 Button(action: {
                     // Handle forward button action
@@ -219,7 +211,7 @@ struct SquareTargetedPreview: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: 30)
-                }
+                }.accessibilityIdentifier("forward")
             }
             .padding()
         }
