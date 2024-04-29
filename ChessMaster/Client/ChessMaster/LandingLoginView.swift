@@ -18,7 +18,7 @@ struct LandingLoginView: View {
             VStack {
                 Spacer()
                 
-                Text("ChessVision")
+                Text("ChessMaster")
                     .font(.title)
                     .fontWeight(.heavy)
                     .lineLimit(nil)
@@ -65,7 +65,6 @@ struct LandingLoginView: View {
                     .padding(.vertical)
             
                 Button(action: {
-                    // TODO: Perform login authentication here
                     let isValid = wrapperItem?.checkUser(username,password: password)
                     if isValid ?? false {
                                isLoginSuccessful = true
