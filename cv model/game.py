@@ -12,6 +12,7 @@ from database import get_game, write_fen, write_uci
 
 i = 0
 get_game()
+print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGame started")
 
 
 class Game:
@@ -323,19 +324,6 @@ class Game:
                 pass
             else:
                 return False
-        else:
-            if self.uci == " ":
-                self.uci = valid_move_string
-            else:
-                self.uci += valid_move_string
-
-            if self.fen == " ":
-                self.fen = self.board.fen() + ","
-            else:
-                self.fen += self.board.fen() + ","
-
-            write_uci(self.uci)
-            write_fen(self.fen)
 
         valid_move_UCI = chess.Move.from_uci(valid_move_string)
 
@@ -345,8 +333,20 @@ class Game:
         is_capture = self.board.is_capture(valid_move_UCI)
         color = int(self.board.turn)
         self.board.push(valid_move_UCI)
+        if self.uci == " ":
+            self.uci = valid_move_string
+        else:
+            self.uci += valid_move_string
+
+        if self.fen == " ":
+            self.fen = self.board.fen() + ","
+        else:
+            self.fen += self.board.fen() + ","
+        
+        write_uci(self.uci)
+        write_fen(self.fen)
         print(self.board)
-        print("\n\n")
+        print("\n")
 
         self.learn(next_frame)
         self.board_basics.update_ssim(
@@ -477,3 +477,4 @@ class Game:
             return True, valid_move_string
         else:
             return False, valid_move_string
+
