@@ -100,6 +100,7 @@ struct HomePage: View {
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 40, height: 40)
                                         .foregroundColor(.black)
+                                        .accessibility(identifier: "profileButton")
                                 })
                                 .sheet(isPresented: $showProfile) {
                                                 ProfileView(isLoggedin: $isLoggedin)

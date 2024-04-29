@@ -18,7 +18,6 @@ import ChessKitEngine
 func getUCIStringFromDB(gameID: String) -> [String] {
     // Convert gameID string to integer
         guard let intValue = Int(gameID) else {
-            print("Invalid integer string for gameID:", gameID)
             return []
         }
     
@@ -33,18 +32,6 @@ func getUCIStringFromDB(gameID: String) -> [String] {
     return []
 }
 
-// unused right now
-func UCIFromDBToUCIMoveFormat(databaseUCI: [String]) -> [(String, String)] {
-    var result: [(String, String)] = []
-    
-    for i in stride(from: 0, to: databaseUCI.count - 1, by: 2) {
-        let moveTuple = (databaseUCI[i], databaseUCI[i + 1])
-        result.append(moveTuple)
-    }
-    
-    return result
-}
-
 /**
  * Retrieves FEN string in this format "rnbqkbnr/ppp1pppp/8/3p4/4P3/8/PPPP1PPP/RNBQKBNR w KQkq d6 0 2/etc..." from database.
  *
@@ -53,7 +40,6 @@ func UCIFromDBToUCIMoveFormat(databaseUCI: [String]) -> [(String, String)] {
 func getFENStringFromDB(gameID: String) -> [String] {
     // Convert gameID string to integer
     guard let intValue = Int(gameID) else {
-        print("Invalid integer string for gameID:", gameID)
         return []
     }
     
@@ -71,9 +57,6 @@ func getFENStringFromDB(gameID: String) -> [String] {
 func getGamesFromDB() -> [String] {
         // Retrieve games by user
         if let games = wrapperItem?.retrieveGamesByUser() as? [String] {
-            //print("Parsed Replays:", parseReplays(data: games))
-            //print("UCI from DB:", getUCIStringFromDB(gameID: "1"))
-            //print("FEN from DB:", getFENStringFromDB(gameID: "1"))
             return games
         }
     
@@ -100,34 +83,7 @@ func parseReplays(data: [String]) -> [Replays] {
         
         index += 8
     }
-    print(replays)
     return replays
-}
-
-
-/**
- * Parses UCI string into an array of tuples representing moves.
- *
- * - Parameter UCIs: UCI string to parse.
- * - Returns: An array of tuples representing moves.
- */
-func getUCIMoves(UCIs: String) -> [(String, String)] {
-    var uciMoves: [(String, String)] = []
-    
-    // Split the UCI string into individual moves
-    let moves = UCIs.components(separatedBy: " ")
-    
-    // Group the moves into pairs
-    for i in stride(from: 0, to: moves.count, by: 2) {
-        if i + 1 < moves.count {
-            // Replace spaces with hyphens in each move
-            let firstMove = moves[i].replacingOccurrences(of: " ", with: "-")
-            let secondMove = moves[i + 1].replacingOccurrences(of: " ", with: "-")
-            uciMoves.append((firstMove, secondMove))
-        }
-    }
-    
-    return uciMoves
 }
 
 /**
@@ -141,7 +97,6 @@ func uciToFEN(uciMoves: String) -> String  {
     var board = Board(position: .standard)
     
     let uciMoves = uciMoves.components(separatedBy: " ")
-    //print("TEST uciMoves sep by space:", uciMoves)
     
     // Loop through each move and move pieces on board
     for uciMove in uciMoves {
@@ -258,7 +213,6 @@ func makeUCIStrings(originalUCI: [String]) -> [String] {
         combinedMoves += moves + " "
         uciStrings.append(combinedMoves.trimmingCharacters(in: .whitespaces))
     }
-    print("UCI to uci play play play strs:", uciStrings)
     return uciStrings
 }
 
